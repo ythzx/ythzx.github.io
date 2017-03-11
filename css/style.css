@@ -1066,9 +1066,6 @@ a.article-title:hover {
   content: "\f0da";
   margin-right: 0.5em;
 }
-.archives-category-wrap blockquote .category-list-child {
-  padding-left: 2em;
-}
 .archive-category {
   text-transform: none;
   color: #16171b;
