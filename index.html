@@ -127,88 +127,32 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><ul>
-<li>print()在Python3中是函数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;print(<span class="string">'hello world'</span>)  <span class="comment">#print注意print前面不要有任何空格</span></div></pre></td></tr></table></figure>
-<ul>
-<li>print输出多个字符，中间用逗号连接，最后输出的时候回替换成空格</li>
-</ul>
-<ul>
-<li>name = input()<br>在交互行弹出，输入的内容会存name变量</li>
-</ul>
-<h2 id="Python基础"><a href="#Python基础" class="headerlink" title="Python基础"></a>Python基础</h2><p>任何编程语言都有自己的语法，编译器或者解释器负责把符合语法的代码转换成机器码，然后让CPU执行。Python不是编译型是解释型的。<br>Python主要采用缩进的方式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a=<span class="number">100</span></div><div class="line"><span class="keyword">if</span> a &gt;=<span class="number">0</span>:</div><div class="line">	print(a)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">	print(-a)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>当语句以冒号:结尾时，缩进的语句视为代码块。<br>我认为就是具体的逻辑部分<br>缩进有利有弊。好处是强迫你写出格式化的代码，但没有规定缩进是几个空格还是Tab。按照约定俗成的管理，应该始终坚持使用4个空格的缩进。</p>
-</blockquote>
-<p>网上关于tab和4个空格的争论太多了，这个具体还是看公司的是需求神什么样的</p>
-<blockquote>
-<p>缩进的坏处就是<strong>“复制－粘贴”功能失效了</strong>，这是最坑爹的地方。当你<strong>重构代码</strong>时，粘贴过去的代码必须重新检查缩进是否正确。此外，IDE很难像格式化Java代码那样格式化Python代码。<br>Python程序是大小写敏感的，如果写错了大小写，程序会报错</p>
-</blockquote>
-<p><strong>Python使用缩进来组织代码块，请务必遵守约定俗成的习惯，坚持使用4个空格的缩进。</strong></p>
-<p>注意:需要将所有的文本编辑器的tab设置成4个空格</p>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><blockquote>
-<p>计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。在Python中，能够直接处理的数据类型有以下几种：</p>
-</blockquote>
-<ul>
-<li><p>整数<br>python 可以处理任意大小的整数，正整数、负整数如<em>1000，-1000，0</em><br>计算机使用二进制，使用十六进制表示整数比较方便，0x</p>
-</li>
-<li><p>浮点数</p>
-</li>
-</ul>
-<blockquote>
-<p>浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，比如，1.23x109和12.3x108是完全相等的。</p>
-</blockquote>
-<p>知道了原来浮点数是这样来的</p>
-<blockquote>
-<p>浮点数可以用数学写法，如1.23，3.14，-9.01，等等。但是对于很大或很小的浮点数，就必须用科学计数法表示，把10用e替代，1.23x109就是1.23e9，或者12.3e8，0.000012可以写成1.2e-5，等等。</p>
-</blockquote>
-<p>整数和浮点数在计算机内部的存储方式是不一样的，整数总是精确的，浮点数运算会有四舍五入的误差</p>
-<ul>
-<li>字符串<br>字符串是以单引号’或双引号”括起来的任意文本，比如’abc’，”xyz”等等。请注意，’’或””本身只是一种表示方式，不是字符串的一部分，因此，字符串’abc’只有a，b，c这3个字符。如果’本身也是一个字符，那就可以用””括起来，比如”I’m OK”包含的字符是I，’，m，空格，O，K这6个字符。</li>
-</ul>
-<p>如果字符串内部既包含’又包含”怎么办？可以用转义字符\来标识，比如：</p>
-<blockquote>
-<p>‘I\’m \”OK\”!’<br>这种情况最终是用’’,经过测试””也是可以的</p>
-</blockquote>
-<p>转义字符中用的最多的就是\n，换行<br>\代表字符\<br><strong><em>Python还允许用r’’表示’’内部的字符串默认不转义</em></strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;print(<span class="string">r'\\\t\\'</span>)</div></pre></td></tr></table></figure>
-<p>\\t\</p>
-<p>字符串内部有很多换行，如果都用\n在一行中会不方便阅读，Python中有”…”</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'''line1</span></div><div class="line">line2</div><div class="line">line3''')</div></pre></td></tr></table></figure>
-<p>这里需要和多行注释区分一下<br>“””<br>多行注释<br>多行注释<br>多行注释<br>“””</p>
-<p>多行注释还有一种情况<br>‘’’<br>‘’’<br>这种比较常用</p>
-<ul>
-<li><p>布尔值<br>布尔值只有True和False,注意大小写<br>布尔值也可以通过<em>and</em>，<em>or,not</em>运算</p>
-</li>
-<li><p>空值<br>None,是一种特殊的值，不是0，因为0是有意义的</p>
-</li>
-</ul>
-<p>Python的数据类型还有列表、字典等，<strong>还允许创建自定义的数据类型</strong></p>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>在计算机中，变量可以是数字，<strong>还可以是任何数据类型</strong></p>
-<blockquote>
-<p>变量在程序中就是用一个变量名表示了，变量名必须是大小写英文、数字和_的组合，且不能用数字开头</p>
-<p>在Python中，等号=是赋值语句，可以把任意数据类型赋值给变量，同一个变量可以反复赋值，而且可以是不同类型的变量，例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = <span class="number">123</span> <span class="comment"># a是整数</span></div><div class="line">print(a)</div><div class="line">a = <span class="string">'ABC'</span> <span class="comment"># a变为字符串</span></div><div class="line">print(a)</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p><strong>这种变量类型本身不固定的语言称为动态语言，Java、c等变量的类型都固定了，如 int a;</strong></p>
-<p>动态语言更加灵活</p>
-<p>变量在计算机内存中的表示：<br>如a=’ABC’<br>是Python解释器做两件事</p>
-<ol>
-<li>在内存中创建了’ABC’字符串；</li>
-<li>在内存中创建名为a变量，并<strong>把它指向’ABC’</strong><br>也可以把一个变量a赋值给另一个变量b，这个操作实际上是把变量b指向变量a所指向的数据</li>
-</ol>
-<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>常量是不能变得量，比如π，<strong>在Python中，通常用全部大写的变量名表示常量</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PI = <span class="number">3.1415926</span></div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>事实上PI仍然是一个变量，Python根本没有任何机制保证PI不会被改变，所以，用全部大写的变量名表示常量只是一个习惯上的用法，如果你一定要改变变量PI的值，也没人能拦住你</p>
-</blockquote>
-<p>python中有两种除法，区别Python2</p>
-<ol>
-<li>除法算出来是浮点数<em>/</em></li>
-<li>除法算出来是整数<em>//</em></li>
-</ol>
-<p>python2中都是整除，除非自己将运算的数换成浮点数</p>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+            输入输出
+print()在Python3中是函数
+
+1&gt;&gt;&gt;print('hello world')  #print注意print前面不要有任何空格
+
+
+print输出多个字符，中间用逗号连接，最后输出的时候回替换成空格
+
+
+name = input()在交互行弹出，输入的内容会存name变量
+
+Python基础任何编程语言都有自己的语法，编译器或者解释器负责把符合语法的代码转换成机器码，然后让CPU执行。Python不是编译型是解释型的。Python主要采用缩进的方式
+12345a=100if a &gt;=0:	print(a)else:	print(-a)
+
+当语句以冒号:结尾时，缩进的语句视为代码块。我认为就是具体的逻辑部分缩进有利有弊。好处是强迫你写出格式化...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/03/13/Python数据类型 变量/#more">Continue Reading →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -246,131 +190,29 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-操作系统"><a href="#1-操作系统" class="headerlink" title="1 操作系统"></a>1 操作系统</h2><h3 id="1-1为什么要有操作系统"><a href="#1-1为什么要有操作系统" class="headerlink" title="1.1为什么要有操作系统"></a>1.1为什么要有操作系统</h3><blockquote>
-<p>操作系统（Operating System，简称OS）是管理和控制计算机硬件与软件资源的计算机程序，是直接运行在“裸机”上的最基本的系统软件，任何其他软件都必须在操作系统的支持下才能运行。</p>
-</blockquote>
-<h3 id="1-2操作系统的位置"><a href="#1-2操作系统的位置" class="headerlink" title="1.2操作系统的位置"></a>1.2操作系统的位置</h3><p><img src="http://i.imgur.com/C6MsKBV.png" alt=""></p>
-<p>操作系统位于计算机硬件与应用软件之间，本质也是一个<strong>软件。</strong> 操作系统分为两部分：</p>
-<ul>
-<li>由操作系统的内核（运行于内核态，管理硬件资源）</li>
-<li>系统调用（运行于用户态，为应用程序员写的应用程序提供系统调用接口）<br>所以，单纯的说操作系统是运行于内核态的，是不准确的</li>
-</ul>
-<h3 id="1-3操作系统的功能"><a href="#1-3操作系统的功能" class="headerlink" title="1.3操作系统的功能"></a>1.3操作系统的功能</h3><ul>
-<li>系统调用接口<br>隐藏硬件调用接口，为应用程序员提供调用硬件资源的更好，更简单，更清晰的模型（系统调用接口）。应用程序员有了这些接口后，就不用再考虑操作硬件的细节，专心开发自己的应用程序即可。<br>需要注意的是，命令行shell或者桌面等与用户打交道的都不是操作系统，都是应用软件</li>
-<li>将应用程序对硬件资源的竞态请求变得有序化(多路复用)</li>
-</ul>
-<p>很多的应用软件共享一套硬件，操作系统将应用程序对硬件资源的竞态请求变得有序化，</p>
-<h3 id="1-4-操作系统的发展"><a href="#1-4-操作系统的发展" class="headerlink" title="1.4 操作系统的发展"></a>1.4 操作系统的发展</h3><h4 id="第一代计算机"><a href="#第一代计算机" class="headerlink" title="第一代计算机"></a>第一代计算机</h4><p>这时的计算机是没有操作系统的，程序是机器语言编写的</p>
-<h4 id="第二代计算机"><a href="#第二代计算机" class="headerlink" title="第二代计算机"></a>第二代计算机</h4><p>出现了批处理，节约了机时，但是这时候是顺序执行，执行效率低</p>
-<h4 id="第三代计算机"><a href="#第三代计算机" class="headerlink" title="第三代计算机"></a>第三代计算机</h4><p>集成电路和多道程序设计<br>此时解决了上代计算机的两个问题</p>
-<ol>
-<li>卡片被拿到机房后能够很快的将作业从卡片读入磁盘，于是任何时刻当一个作业结束时，操作系统就能将一个作业从磁带读出，装进空出来的内存区域运行，这种技术叫做<br>同时的外部设备联机操作：SPOOLING，该技术同时用于输出。此时已经不需要人的参与</li>
-<li>多道技术<br>多道技术是指多个程序，<strong>多道技术的实现是为了解决多个程序竞争或者说共享同一个资源（比如cpu）的有序调度问题，解决方式即多路复用，多路复用分为时间上的复用和空间上的复用。</strong></li>
-</ol>
-<ul>
-<li>空间上的复用</li>
-</ul>
-<blockquote>
-<p>将内存分为几部分，每个部分放入一个程序，这样，同一时间内存中就有了多道程序。</p>
-</blockquote>
-<p><img src="http://i.imgur.com/qCzPXWO.png" alt=""></p>
-<p>提前将需要的程序架子啊到内存中，减少了硬盘的压力<br>程序启动后，操作器系统在内存中有专门的区域<br>同时空间上必须要有隔离<br>硬件物理上的隔离，才使得多道技术有意义</p>
-<p>空间上的复用最大的问题是：程序直接的内存必须分割，这种分割在硬件层面实现，由操作系统控制实现。如果内存彼此不分割，则一个程序可以访问另外一个程序的内存，</p>
-<ul>
-<li>时间上的复用</li>
-</ul>
-<p>当一个程序在等待I/O时，另一个程序可以使用cpu，如果内存中可以同时存放足够多的作业，则cpu的利用率可以接近100%。<br>类似统筹方法，是一种安排工作进程的数学方法。</p>
-<blockquote>
-<p>第三代计算机的操作系统仍然是批处理</p>
-</blockquote>
-<p>许多程序员怀念第一代独享的计算机，可以即时调试自己的程序。为了满足程序员们很快可以得到响应，出现了分时操作系统</p>
-<p>如何解决很多人等待程序输出的问题？<br>解决方法是：</p>
-<ul>
-<li><p>分时操作系统</p>
-</li>
-<li><p>多个联机终端+多道技术</p>
-</li>
-</ul>
-<h2 id="2-多道技术-多路复用"><a href="#2-多道技术-多路复用" class="headerlink" title="2 多道技术(多路复用)"></a>2 多道技术(多路复用)</h2><blockquote>
-<p>我们可将上述操作系统的功能总结为：处理来自多个程序发起的多个（多个即多路）共享（共享即复用）资源的请求，简称多路复用</p>
-</blockquote>
-<p>多路复用有两种实现方式:</p>
-<p>1.时间上的复用</p>
-<p>当一个资源在时间上复用时，不同的程序或用户轮流使用它，第一个程序获取该资源使用结束后，在轮到第二个…第三个…</p>
-<p>2.空间上的复用</p>
-<p>每个客户都获取了一个大的资源中的一小部分资源，从而减少了排队等待资源的时间。</p>
-<p>以上，时间上的复用和空间上的复用统称为<strong>多道技术</strong></p>
-<h2 id="3-网络基础"><a href="#3-网络基础" class="headerlink" title="3 网络基础"></a>3 网络基础</h2><h3 id="3-1-互联网协议"><a href="#3-1-互联网协议" class="headerlink" title="3.1 互联网协议"></a>3.1 互联网协议</h3><blockquote>
-<p>一个人／计算机不可能掌握全世界的语言／标准，于是有了世界统一的通信标准：英语。英语成为世界上所有人通信的统一标准，如果把计算机看成分布于世界各地的人，那么连接两台计算机之间的internet实际上就是一系列统一的标准，这些标准称之为互联网协议，互联网的本质就是一系列的协议，总称为‘互联网协议’（Internet Protocol Suite).</p>
-</blockquote>
-<h3 id="3-2-OSI七层模型"><a href="#3-2-OSI七层模型" class="headerlink" title="3.2 OSI七层模型"></a>3.2 OSI七层模型</h3><p><img src="http://i.imgur.com/Vu2kQcA.png" alt=""></p>
-<p>我们将应用层，表示层，会话层并作应用层，从tcp／ip五层协议的角度来阐述每层的由来与功能，搞清楚了每层的主要协议就理解了整个互联网通信的原理。用户感知到的只是最上面一层应用层，自上而下每层都依赖于下一层，所以我们<strong>从最下一层开始切入</strong>，比较好理解。每层都运行特定的协议，越往上越靠近用户，越往下越靠近硬件</p>
-<p><img src="http://i.imgur.com/YOOskX6.png" alt=""></p>
-<h4 id="3-2-1-物理层"><a href="#3-2-1-物理层" class="headerlink" title="3.2.1 物理层"></a>3.2.1 物理层</h4><blockquote>
-<p>物理层是OSI的第一层，它虽然处于最底层，却是整个开放系统的基础。物理层为设备之间的数据通信提供传输媒体及互连设备，为数据传输提供可靠的环境。如果您想要用尽量少的词来记住这个第一层，那就是<strong>“信号和介质”。</strong></p>
-</blockquote>
-<p>物理层的特性就是基于高低电平信号，高电平1，低电平0。<br>物理层对应的设备：无线、光纤、电缆、双绞线</p>
-<h4 id="3-2-2-数据链路层"><a href="#3-2-2-数据链路层" class="headerlink" title="3.2.2 数据链路层"></a>3.2.2 数据链路层</h4><p>数据链路层由来：<br>单纯的电信号0和1没有任何意义，必须规定电信号多少位一组，每组什么意思</p>
-<p>数据链路层的功能：定义了电信号的<strong>分组方式</strong></p>
-<ul>
-<li>以太网协议</li>
-</ul>
-<p>早期的时候各个公司都有自己的分组方式，后来形成了统一的标准，即以太网协议ethernet：</p>
-<ul>
-<li>一组电信号构成一个数据包，叫做‘帧’</li>
-<li>每一数据帧分成：报头head和数据data两部分</li>
-</ul>
-<p>报头head:包含发送者 接受者 数据类型  都是6个字节<br>数据data:包含数据的内容</p>
-<ul>
-<li>MAC地址</li>
-</ul>
-<p>head中包含的源和目标地址由来：ethernet规定接入internet的设备都必须具备网卡，发送端和接收端的地址便是<strong>指网卡的地址</strong>，即mac地址</p>
-<blockquote>
-<p>mac地址：每块网卡出厂时都被烧制上一个世界唯一的mac地址，长度为48位2进制，通常由12位16进制数表示（前六位是厂商编号，后六位是流水线号）</p>
-</blockquote>
-<ul>
-<li>广播</li>
-</ul>
-<p>有了mac地址，同一网络内的两台主机就可以通信了，<br>ethernet采用最原始的方式，广播的方式进行通信</p>
-<h4 id="3-2-3-网络层"><a href="#3-2-3-网络层" class="headerlink" title="3.2.3 网络层"></a>3.2.3 网络层</h4><p>网络层由来：有了ethernet、mac地址、广播的发送方式，世界上的计算机就可以彼此通信了，问题是世界范围的互联网是由一个个彼此隔离的小的局域网组成的，那么如果所有的通信都采用以太网的广播方式，那么一台机器发送的包全世界都会收到</p>
-<p>网络层功能：引入一套新的地址用来区分不同的广播域／子网，这套地址即网络地址</p>
-<p><strong>IP协议</strong></p>
-<blockquote>
-<p>IP协议是用于将多个包交换网络连接起来的，它在源地址和目的地址之间传送一种称之为数据包的东西，它还提供对数据大小的重新组装功能，以适应不同网络对包大小的要求。</p>
-</blockquote>
-<ul>
-<li>IP协议是网络地址,广泛采用的v4版本即ipv4，它规定网络地址由32位2进制表示</li>
-<li>范围0.0.0.0-255.255.255.255</li>
-<li>一个ip地址通常写成四段十进制数</li>
-</ul>
-<p><strong>子网掩码</strong></p>
-<p>子网掩码不能单独存在，它必须结合IP地址一起使用。子网掩码只有一个作用，就是将某个IP地址划分成网络地址和主机地址两部分</p>
-<p>知道”子网掩码”，我们就能判断，任意两个IP地址是否处在同一个子网络。方法是将两个IP地址与子网掩码分别进行AND运算（两个数位都为1，运算结果为1，否则为0），然后比较结果是否相同，如果是的话，就表明它们在同一个子网络中，否则就不是。</p>
-<p>IP协议的作用主要有两个，一个是为每一台计算机<strong>分配IP地址</strong>，另一个是确定哪些地址在<strong>同一个子网络</strong>。</p>
-<p><strong>ip数据包</strong></p>
-<p>p数据包也分为head和data部分</p>
-<h4 id="3-2-4-传输层"><a href="#3-2-4-传输层" class="headerlink" title="3.2.4 传输层"></a>3.2.4 传输层</h4><p>传输层的由来：网络层的ip帮我们区分子网，以太网层的mac帮我们找到主机，电脑上运行着各种程序，需要找到相应的应用程序通过<strong>端口</strong>。<br>端口即应用程序与网卡关联的编号。</p>
-<p>传输层功能：建立端口到端口的通信</p>
-<p>端口范围0-65535，0-1023为系统占用端口</p>
-<h4 id="3-2-5-应用层"><a href="#3-2-5-应用层" class="headerlink" title="3.2.5 应用层"></a>3.2.5 应用层</h4><p>应用层由来：用户使用的都是应用程序，均工作于应用层，包括我们的后期的Python开发都属于应用开发</p>
-<p><img src="http://i.imgur.com/Ybn9V4F.jpg" alt=""></p>
-<p>发送数据是一个封装过程，接收数据是一个解封过程</p>
-<h3 id="3-3-Socket"><a href="#3-3-Socket" class="headerlink" title="3.3 Socket"></a>3.3 Socket</h3><p>socket是在应用层和传输层之间的一个抽象层，它把TCP/IP层复杂的操作抽象为几个简单的接口供应用层调用已实现进程在网络中通信。</p>
-<blockquote>
-<p>socket起源于UNIX，在Unix一切皆文件哲学的思想下，socket是一种”打开—读/写—关闭”模式的实现，服务器和客户端各自维护一个”文件”，在建立连接打开后，可以向自己文件写入内容供对方读取或者读取对方内容，通讯结束时关闭文件。</p>
-</blockquote>
-<h2 id="4-网络通信流程"><a href="#4-网络通信流程" class="headerlink" title="4 网络通信流程"></a>4 网络通信流程</h2><h3 id="4-1-本机获取"><a href="#4-1-本机获取" class="headerlink" title="4.1 本机获取"></a>4.1 本机获取</h3><ul>
-<li>本机的IP地址</li>
-<li>子网掩码</li>
-<li>网关的IP地址</li>
-<li>DNS的IP地址</li>
-</ul>
-<h3 id="4-2-打开浏览器，用户在地址栏输入相应的网址"><a href="#4-2-打开浏览器，用户在地址栏输入相应的网址" class="headerlink" title="4.2 打开浏览器，用户在地址栏输入相应的网址"></a>4.2 打开浏览器，用户在地址栏输入相应的网址</h3><h3 id="4-3-DNS协议-基于udp协议"><a href="#4-3-DNS协议-基于udp协议" class="headerlink" title="4.3 DNS协议(基于udp协议)"></a>4.3 DNS协议(基于udp协议)</h3><p><img src="http://i.imgur.com/WSYHsVm.jpg" alt=""></p>
-<h3 id="4-4-HTTP协议"><a href="#4-4-HTTP协议" class="headerlink" title="4.4 HTTP协议"></a>4.4 HTTP协议</h3><h3 id="4-5-TCP协议"><a href="#4-5-TCP协议" class="headerlink" title="4.5 TCP协议"></a>4.5 TCP协议</h3><p>TCP数据包需要设置端口，接收方（Google）的HTTP端口默认是80，发送方（本机）的端口是一个随机生成的1024-65535之间的整数，TCP数据包的标头长度为20字节</p>
-<h3 id="4-6-IP协议"><a href="#4-6-IP协议" class="headerlink" title="4.6 IP协议"></a>4.6 IP协议</h3><p>TCP数据包再嵌入IP数据包。IP数据包需要设置双方的IP地址</p>
-<h3 id="4-7-以太网协议"><a href="#4-7-以太网协议" class="headerlink" title="4.7 以太网协议"></a>4.7 以太网协议</h3><p>IP数据包嵌入以太网数据包。以太网数据包需要设置双方的MAC地址，发送方为本机的网卡MAC地址，接收方为网关192.168.1.1的MAC地址（通过ARP协议得到）</p>
-<h3 id="4-8-服务器响应"><a href="#4-8-服务器响应" class="headerlink" title="4.8 服务器响应"></a>4.8 服务器响应</h3><p>经过多个网关的转发，Google的服务器172.194.72.105，收到了这四个以太网数据包。根据IP标头的序号，Google将四个包拼起来，取出完整的TCP数据包，然后读出里面的”HTTP请求”，接着做出”HTTP响应”，再用TCP协议发回来。本机收到HTTP响应以后，就可以将网页显示出来，完成一次网络通信。</p>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+            1 操作系统1.1为什么要有操作系统
+操作系统（Operating System，简称OS）是管理和控制计算机硬件与软件资源的计算机程序，是直接运行在“裸机”上的最基本的系统软件，任何其他软件都必须在操作系统的支持下才能运行。
+
+
+1.2操作系统的位置
+操作系统位于计算机硬件与应用软件之间，本质也是一个软件。 操作系统分为两部分：
+
+由操作系统的内核（运行于内核态，管理硬件资源）
+系统调用（运行于用户态，为应用程序员写的应用程序提供系统调用接口）所以，单纯的说操作系统是运行于内核态的，是不准确的
+
+1.3操作系统的功能
+系统调用接口隐藏硬件调用接口，为应用程序员提供调用硬件资源的更好，更简单，更清晰的模型（系统调用接口）。应用程序员有了这些接口后，就不用再考虑操作硬件的细节，专心开发自...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/03/13/操作系统和网络基础/#more">Continue Reading →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -408,8 +250,20 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;<span class="keyword">import</span> this</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">Beautiful is better than ugly.</div><div class="line"></div><div class="line">Explicit is better than implicit.</div><div class="line"></div><div class="line">Simple is better than complex.</div><div class="line"></div><div class="line">Complex is better than complicated.</div><div class="line"></div><div class="line">Flat is better than nested.</div><div class="line"></div><div class="line">Sparse is better than dense.</div><div class="line"></div><div class="line">Readability counts.</div><div class="line"></div><div class="line">Special cases aren&apos;t special enough to break the rules.</div><div class="line"></div><div class="line">Although practicality beats purity.</div><div class="line"></div><div class="line">Errors should never pass silently.</div><div class="line"></div><div class="line">Unless explicitly silenced.</div><div class="line"></div><div class="line">In the face of ambiguity, refuse the temptation to guess.</div><div class="line"></div><div class="line">There should be one-- and preferably only one --obvious way to do</div><div class="line"></div><div class="line">Although that way may not be obvious at first unless you&apos;re Dutch</div><div class="line"></div><div class="line">Now is better than never.</div><div class="line"></div><div class="line">Although never is often better than *right* now.</div><div class="line"></div><div class="line">If the implementation is hard to explain, it&apos;s a bad idea.</div><div class="line"></div><div class="line">If the implementation is easy to explain, it may be a good idea.</div><div class="line"></div><div class="line">Namespaces are one honking great idea -- let&apos;s do more of those!</div></pre></td></tr></table></figure>
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            1&gt;&gt;&gt;import this
+
+12345678910111213141516171819202122232425262728293031323334353637Beautiful is better than ugly.Explicit is better than implicit.Simple is better than complex.Complex is better than complicated.Flat is better than nested.Sparse is better than dense.Readability counts.Special cases aren&apos;t special enough to break the ...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/03/11/Python之禅/#more">Continue Reading →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -507,8 +361,20 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="this-is-a-test"><a href="#this-is-a-test" class="headerlink" title="this is a test"></a>this is a test</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hello world</div></pre></td></tr></table></figure>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+            this is a test
+1hello world
+
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/03/09/hello-world/#more">Continue Reading →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
