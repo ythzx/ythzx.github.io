@@ -9,26 +9,12 @@
   
   
   
-  <meta name="description" content="1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）使用 cat命令将查看的文件合并输出到/1.txt
-这里的关键：定位到文件，如果后面加上/后被认为是目录 
-
-分为两步，先将/etc/passwd 通过cat查看后将信息输出到/2.txt,之后将/etc/group 追加到/2.txt中
-也可以同上面 的覆盖一样，直接追加
-
-2 归档文件 tar
-2.1 gzip">
+  <meta name="description" content="1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/16/Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode/index.html">
 <meta property="og:site_name" content="小鑫">
-<meta property="og:description" content="1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）使用 cat命令将查看的文件合并输出到/1.txt
-这里的关键：定位到文件，如果后面加上/后被认为是目录 
-
-分为两步，先将/etc/passwd 通过cat查看后将信息输出到/2.txt,之后将/etc/group 追加到/2.txt中
-也可以同上面 的覆盖一样，直接追加
-
-2 归档文件 tar
-2.1 gzip">
+<meta property="og:description" content="1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316150220729-1876489816.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316150500807-1461748563.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316150732416-427916931.jpg">
@@ -43,17 +29,10 @@
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316182255010-1936445635.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316182915760-1629539025.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316183327151-779236588.jpg">
-<meta property="og:updated_time" content="2017-03-16T10:41:00.105Z">
+<meta property="og:updated_time" content="2017-03-16T10:58:43.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode">
-<meta name="twitter:description" content="1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）使用 cat命令将查看的文件合并输出到/1.txt
-这里的关键：定位到文件，如果后面加上/后被认为是目录 
-
-分为两步，先将/etc/passwd 通过cat查看后将信息输出到/2.txt,之后将/etc/group 追加到/2.txt中
-也可以同上面 的覆盖一样，直接追加
-
-2 归档文件 tar
-2.1 gzip">
+<meta name="twitter:description" content="1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）">
 <meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316150220729-1876489816.jpg">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
@@ -165,8 +144,8 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h3 id="1-将用户信息数据库文件和组信息数据库文件纵向合并为一个文件-1-txt（覆盖）"><a href="#1-将用户信息数据库文件和组信息数据库文件纵向合并为一个文件-1-txt（覆盖）" class="headerlink" title="1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）"></a>1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）</h3><p>使用 cat命令将查看的文件合并输出到/1.txt</p>
+        <h3 id="1-将用户信息数据库文件和组信息数据库文件纵向合并为一个文件-1-txt（覆盖）"><a href="#1-将用户信息数据库文件和组信息数据库文件纵向合并为一个文件-1-txt（覆盖）" class="headerlink" title="1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）"></a>1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）</h3><a id="more"></a>
+<p>使用 cat命令将查看的文件合并输出到/1.txt</p>
 <p><strong>这里的关键：定位到文件，如果后面加上/后被认为是目录 </strong></p>
 <p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316150220729-1876489816.jpg" alt=""></p>
 <p>分为两步，先将/etc/passwd 通过cat查看后将信息输出到/2.txt,之后将/etc/group 追加到/2.txt中</p>

@@ -127,74 +127,35 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h3 id="1-将用户信息数据库文件和组信息数据库文件纵向合并为一个文件-1-txt（覆盖）"><a href="#1-将用户信息数据库文件和组信息数据库文件纵向合并为一个文件-1-txt（覆盖）" class="headerlink" title="1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）"></a>1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）</h3><p>使用 cat命令将查看的文件合并输出到/1.txt</p>
-<p><strong>这里的关键：定位到文件，如果后面加上/后被认为是目录 </strong></p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316150220729-1876489816.jpg" alt=""></p>
-<p>分为两步，先将/etc/passwd 通过cat查看后将信息输出到/2.txt,之后将/etc/group 追加到/2.txt中</p>
-<p>也可以同上面 的覆盖一样，直接追加</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316150500807-1461748563.jpg" alt=""></p>
-<h3 id="2-归档文件-tar"><a href="#2-归档文件-tar" class="headerlink" title="2 归档文件 tar"></a>2 归档文件 tar</h3><p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316150732416-427916931.jpg" alt=""></p>
-<h4 id="2-1-gzip-bzip2压缩"><a href="#2-1-gzip-bzip2压缩" class="headerlink" title="2.1 gzip bzip2压缩"></a>2.1 gzip bzip2压缩</h4><p>相应的解压时gunzip bunzip2</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316153013620-1502746323.jpg" alt=""></p>
-<h4 id="2-2-tar-加参数"><a href="#2-2-tar-加参数" class="headerlink" title="2.2 tar 加参数"></a>2.2 tar 加参数</h4><p>tar czf 直接打包后压缩gzip</p>
-<p>tar cjf 直接打包后压缩bzip2</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316153614698-1022491563.jpg" alt=""></p>
-<p>tar xf 是统一的解压方法</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316154138979-149323437.jpg" alt=""></p>
-<h3 id="3-vi编辑器的使用"><a href="#3-vi编辑器的使用" class="headerlink" title="3 vi编辑器的使用"></a>3 vi编辑器的使用</h3><p>进入命令行模式复制改行内容，在下方粘贴80行</p>
-<p><strong>yy 80p</strong></p>
-<p>G :定位到最后一行</p>
-<p>gg:定位到第一行</p>
-<p>u:恢复</p>
-<p><strong>Ctrl + r：重做命令</strong></p>
-<p>通过u恢复后，可以重做</p>
-<p>P:上一行粘贴</p>
-<p>n dd :删除下面n行</p>
-<p>yy:复制当前行</p>
-<p>yy p :复制当前行并粘贴</p>
-<p>yy np : 复制后向下粘贴n行</p>
-<p>H：跳到屏幕的最前面<br>M：屏幕中间<br>L：跳到屏幕的最后</p>
-<p>n G :定位到第n行</p>
-<h4 id="3-1-插入的位置"><a href="#3-1-插入的位置" class="headerlink" title="3.1 插入的位置"></a>3.1 插入的位置</h4><p>命令行模式下：</p>
-<p>i:在光标的左边插入</p>
-<p>a:在光标的右边插入</p>
-<p>o:在这一行的下一行插入</p>
-<p>O：在这一行的上一行插入</p>
-<h4 id="3-2-Esc-输入冒号-进入扩展模式"><a href="#3-2-Esc-输入冒号-进入扩展模式" class="headerlink" title="3.2 Esc 输入冒号 进入扩展模式"></a>3.2 Esc 输入冒号 进入扩展模式</h4><p>输入wq退出</p>
-<h3 id="4-Linux系统添加新的硬盘并进行分区-挂载"><a href="#4-Linux系统添加新的硬盘并进行分区-挂载" class="headerlink" title="4 Linux系统添加新的硬盘并进行分区 挂载"></a>4 Linux系统添加新的硬盘并进行分区 挂载</h3><h4 id="4-1-开启Linux系统前添加一块大小为20G的SCSI硬盘"><a href="#4-1-开启Linux系统前添加一块大小为20G的SCSI硬盘" class="headerlink" title="4.1 开启Linux系统前添加一块大小为20G的SCSI硬盘"></a>4.1 开启Linux系统前添加一块大小为20G的SCSI硬盘</h4><p>fsisk /dev/sdb 对新建的磁盘进行分区，创建主分区和逻辑分区</p>
-<p>输入m 查看帮助信息</p>
-<ul>
-<li><p>输入n新建分区</p>
-</li>
-<li><p>输入p新建主分区</p>
-</li>
-</ul>
-<p>输入p打印分区的信息</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316162822729-1458262539.jpg" alt=""></p>
-<h4 id="4-2-创建扩展分区"><a href="#4-2-创建扩展分区" class="headerlink" title="4.2 创建扩展分区"></a>4.2 创建扩展分区</h4><p>选择e新建扩展分区，将剩余的全部空间都给扩展分区，逻辑分区是在扩展分区上建立的，分区号是从5开始，1-4是主分区</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316165136932-933035145.jpg" alt=""></p>
-<h3 id="4-3-逻辑分区"><a href="#4-3-逻辑分区" class="headerlink" title="4.3 逻辑分区"></a>4.3 逻辑分区</h3><p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316165314916-751007312.jpg" alt=""></p>
-<h3 id="4-5-格式化文件系统"><a href="#4-5-格式化文件系统" class="headerlink" title="4.5 格式化文件系统"></a>4.5 格式化文件系统</h3><p>df -T 查看文件系统的详细信息</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316165825026-750909389.jpg" alt=""></p>
-<p>mkfs.xfs /dev/sdb2</p>
-<p>mkfs.ext4  /dev/sdb1</p>
-<h3 id="4-5-需要挂载点"><a href="#4-5-需要挂载点" class="headerlink" title="4.5 需要挂载点"></a>4.5 需要挂载点</h3><p>挂载点就相当于一条通路，钥匙</p>
-<p>首先新建/sdb1  /sdb5  /sdb6  作为挂载点</p>
-<p>mount</p>
-<p>mount /dev/sdb1  /sdb1</p>
-<p>mount /dev/adb6  /sdb6</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316171511385-1724115850.jpg" alt=""></p>
-<p>df -T 查看文件系统类型</p>
-<p>df -h 查看挂载点的详细信息</p>
-<h2 id="5-软连接-硬链接"><a href="#5-软连接-硬链接" class="headerlink" title="5 软连接 硬链接"></a>5 软连接 硬链接</h2><h3 id="5-1-软链接"><a href="#5-1-软链接" class="headerlink" title="5.1　软链接"></a>5.1　软链接</h3><p>ln -s /etc/passwd /tmp</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316182255010-1936445635.jpg" alt=""></p>
-<p>软链接是创建了一个文件，这个文件指向原来的文件的名字，原来的文件对应着一个Innode号，innode号指向一个相应的block块，这个block块存放了源文件的内容</p>
-<p>软链接可以跨分区建立</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316182915760-1629539025.jpg" alt=""></p>
-<h3 id="5-2-硬链接"><a href="#5-2-硬链接" class="headerlink" title="5.2 硬链接"></a>5.2 硬链接</h3><p>硬链接的Innode都是指向一个文件，是相同的内容</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170316183327151-779236588.jpg" alt=""></p>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+            1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）
+使用 cat命令将查看的文件合并输出到/1.txt
+这里的关键：定位到文件，如果后面加上/后被认为是目录 
+
+分为两步，先将/etc/passwd 通过cat查看后将信息输出到/2.txt,之后将/etc/group 追加到/2.txt中
+也可以同上面 的覆盖一样，直接追加
+
+2 归档文件 tar
+2.1 gzip bzip2压缩相应的解压时gunzip bunzip2
+
+2.2 tar 加参数tar czf 直接打包后压缩gzip
+tar cjf 直接打包后压缩bzip2
+
+tar xf 是统一的解压方法
+
+3 vi编辑器的使用进入命令行模式复制改行内容，在下方粘贴80行
+yy 80p
+G :定位到最后...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/03/16/Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode/#more">Continue Reading →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
