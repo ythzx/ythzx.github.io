@@ -21,9 +21,10 @@
 <meta property="og:image" content="http://i.imgur.com/qCzPXWO.png">
 <meta property="og:image" content="http://i.imgur.com/Vu2kQcA.png">
 <meta property="og:image" content="http://i.imgur.com/YOOskX6.png">
+<meta property="og:image" content="http://i.imgur.com/qO9v2mM.jpg">
 <meta property="og:image" content="http://i.imgur.com/Ybn9V4F.jpg">
 <meta property="og:image" content="http://i.imgur.com/WSYHsVm.jpg">
-<meta property="og:updated_time" content="2017-03-14T03:41:52.397Z">
+<meta property="og:updated_time" content="2017-03-14T07:28:41.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统和网络基础">
 <meta name="twitter:description" content="1 操作系统1.1为什么要有操作系统
@@ -246,6 +247,28 @@
 <h4 id="3-2-4-传输层"><a href="#3-2-4-传输层" class="headerlink" title="3.2.4 传输层"></a>3.2.4 传输层</h4><p>传输层的由来：网络层的ip帮我们区分子网，以太网层的mac帮我们找到主机，电脑上运行着各种程序，需要找到相应的应用程序通过<strong>端口</strong>。<br>端口即应用程序与网卡关联的编号。</p>
 <p>传输层功能：建立端口到端口的通信</p>
 <p>端口范围0-65535，0-1023为系统占用端口</p>
+<p>TCP的三次握手和四次挥手</p>
+<p><img src="http://i.imgur.com/qO9v2mM.jpg" alt=""></p>
+<p><strong>三次握手：</strong></p>
+<ul>
+<li>客户端和服务端建立连接<br>客户端发送SYN给服务端，同时发送序列号seq=x，服务端接收到后返回一个ACK=X+1，ACK很重要，UDP协议就是没有ACK，就不能确定对方是否接收到</li>
+</ul>
+<p><strong>只有收到ACK后，内存才会把发送的数据清掉所以TCP IP传输是稳定的</strong></p>
+<p>注意：UDP 发送完缓存就清空，没有ACK，所以不稳定</p>
+<ul>
+<li>服务端可客户端建立连接<br><em>服务端发送给客户端一个SYN </em> seq=y,客户端接收到后，回应服务端一个ACK</li>
+</ul>
+<p>注意：此时服务端返回ACK 和发送SYN可以合并成一条路径</p>
+<p><strong>四次挥手</strong></p>
+<p>客户端一直和服务端连接着，会导致服务端的占用资源过多，所以需要断开连接，必须要确定的是数据都已经发送完毕</p>
+<ul>
+<li>客户端和服务端断开</li>
+</ul>
+<p>客户端发送FIN ,服务端接收后会发送一个ACK,此时是客户端已经发送完数据，请求断开与服务端的连接</p>
+<ul>
+<li>服务端和客户端断开</li>
+</ul>
+<p>此时服务端还有发送完数据，就不能发送FIN，一直等到数据发送完毕，客户端接收后，返回一个ACK,断开服务端和客户端的连接</p>
 <h4 id="3-2-5-应用层"><a href="#3-2-5-应用层" class="headerlink" title="3.2.5 应用层"></a>3.2.5 应用层</h4><p>应用层由来：用户使用的都是应用程序，均工作于应用层，包括我们的后期的Python开发都属于应用开发</p>
 <p><img src="http://i.imgur.com/Ybn9V4F.jpg" alt=""></p>
 <p>发送数据是一个封装过程，接收数据是一个解封过程</p>
