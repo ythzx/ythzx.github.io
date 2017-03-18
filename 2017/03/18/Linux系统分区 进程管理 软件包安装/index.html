@@ -9,18 +9,12 @@
   
   
   
-  <meta name="description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。
-一、 Linux系统分区1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G
-
-1.2 查看系统现在的磁盘情况ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英">
+  <meta name="description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux系统分区 进程管理 软件包安装">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/18/Linux系统分区 进程管理 软件包安装/index.html">
 <meta property="og:site_name" content="小鑫">
-<meta property="og:description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。
-一、 Linux系统分区1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G
-
-1.2 查看系统现在的磁盘情况ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英">
+<meta property="og:description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318160400526-1173906289.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317145717213-1558902244.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317151140385-1330103788.jpg">
@@ -72,13 +66,10 @@
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231924838-1069467224.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318232021604-1080040403.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318232114666-301617682.jpg">
-<meta property="og:updated_time" content="2017-03-18T15:22:45.347Z">
+<meta property="og:updated_time" content="2017-03-18T15:27:42.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux系统分区 进程管理 软件包安装">
-<meta name="twitter:description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。
-一、 Linux系统分区1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G
-
-1.2 查看系统现在的磁盘情况ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英">
+<meta name="twitter:description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。">
 <meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318160400526-1173906289.jpg">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
@@ -190,8 +181,8 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<p>对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。</p>
+        <p>对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。</p>
+<a id="more"></a>
 <h2 id="一、-Linux系统分区"><a href="#一、-Linux系统分区" class="headerlink" title="一、 Linux系统分区"></a>一、 Linux系统分区</h2><h3 id="1-1-在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G"><a href="#1-1-在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G" class="headerlink" title="1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G"></a>1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G</h3><p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318160400526-1173906289.jpg" alt=""></p>
 <p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317145717213-1558902244.jpg" alt=""></p>
 <h3 id="1-2-查看系统现在的磁盘情况"><a href="#1-2-查看系统现在的磁盘情况" class="headerlink" title="1.2 查看系统现在的磁盘情况"></a>1.2 查看系统现在的磁盘情况</h3><p>ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英文字母的顺序命名的</p>
