@@ -9,12 +9,18 @@
   
   
   
-  <meta name="description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。">
+  <meta name="description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。
+一、 Linux系统分区1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G
+
+1.2 查看系统现在的磁盘情况ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux系统分区 进程管理 软件包安装">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/18/Linux系统分区 进程管理 软件包安装/index.html">
 <meta property="og:site_name" content="小鑫">
-<meta property="og:description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。">
+<meta property="og:description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。
+一、 Linux系统分区1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G
+
+1.2 查看系统现在的磁盘情况ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318160400526-1173906289.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317145717213-1558902244.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317151140385-1330103788.jpg">
@@ -54,10 +60,25 @@
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318172241213-2076684916.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318172650307-1938811187.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318173348401-1836047937.jpg">
-<meta property="og:updated_time" content="2017-03-18T10:02:50.009Z">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318175346745-582543130.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318181024682-556265012.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318200626307-474493043.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231312463-954437394.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231344963-673455068.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231532213-1942647525.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231559088-610741305.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231718760-878499540.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231811213-394234242.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231924838-1069467224.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318232021604-1080040403.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318232114666-301617682.jpg">
+<meta property="og:updated_time" content="2017-03-18T15:22:45.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux系统分区 进程管理 软件包安装">
-<meta name="twitter:description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。">
+<meta name="twitter:description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。
+一、 Linux系统分区1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G
+
+1.2 查看系统现在的磁盘情况ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英">
 <meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318160400526-1173906289.jpg">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
@@ -115,7 +136,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -169,8 +190,8 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。</p>
-<a id="more"></a>
+        <a id="more"></a>
+<p>对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。</p>
 <h2 id="一、-Linux系统分区"><a href="#一、-Linux系统分区" class="headerlink" title="一、 Linux系统分区"></a>一、 Linux系统分区</h2><h3 id="1-1-在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G"><a href="#1-1-在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G" class="headerlink" title="1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G"></a>1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G</h3><p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318160400526-1173906289.jpg" alt=""></p>
 <p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317145717213-1558902244.jpg" alt=""></p>
 <h3 id="1-2-查看系统现在的磁盘情况"><a href="#1-2-查看系统现在的磁盘情况" class="headerlink" title="1.2 查看系统现在的磁盘情况"></a>1.2 查看系统现在的磁盘情况</h3><p>ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英文字母的顺序命名的</p>
@@ -316,6 +337,40 @@
 <ul>
 <li>使用yum安装组件’KDE 桌面’：yum –y groupinstall 组件名</li>
 </ul>
+<p>在登录的时候可以选择KDE登录</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318175346745-582543130.jpg" alt=""></p>
+<ul>
+<li>删除组件KDE</li>
+</ul>
+<p>yum -y groupremove KDE</p>
+<ul>
+<li>查找yum安装的软件包</li>
+</ul>
+<p>yum search httpd</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318181024682-556265012.jpg" alt=""></p>
+<h3 id="3-使用源码安装Python"><a href="#3-使用源码安装Python" class="headerlink" title="3 使用源码安装Python"></a>3 使用源码安装Python</h3><h5 id="3-1-下载源码文件"><a href="#3-1-下载源码文件" class="headerlink" title="3.1 下载源码文件"></a>3.1 下载源码文件</h5><p>从Python官网下载最新的Python3.6 source code</p>
+<p>使用xshell5远程连接centos7,需要lrzsz软件实现ftp上传下载</p>
+<h4 id="3-2-安装编译器"><a href="#3-2-安装编译器" class="headerlink" title="3.2 安装编译器"></a>3.2 安装编译器</h4><p>源码需要编译，用到的是gcc</p>
+<p>yum grouplist 可以查看仓库中的组件，我们需要的是开发工具，组件安装方式是</p>
+<p>yum groupinstall ‘组件名’</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318200626307-474493043.jpg" alt=""></p>
+<p>yum groupinstall ‘Development tools’</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231312463-954437394.jpg" alt=""></p>
+<p>下面是安装过程，我们需要的就是gcc</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231344963-673455068.jpg" alt=""></p>
+<h4 id="3-3-加压Python源码"><a href="#3-3-加压Python源码" class="headerlink" title="3.3 加压Python源码"></a>3.3 加压Python源码</h4><p>使用tar xf /python3.6解压，进入解压后路径</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231532213-1942647525.jpg" alt=""></p>
+<p>设置安装路径并执行脚本文件</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231559088-610741305.jpg" alt=""></p>
+<h4 id="3-4-编译并安装"><a href="#3-4-编译并安装" class="headerlink" title="3.4 编译并安装"></a>3.4 编译并安装</h4><p>make &amp;&amp; make install</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231718760-878499540.jpg" alt=""></p>
+<p>c出现错误提示，缺少zlib,yum 安装后重新 make install</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231811213-394234242.jpg" alt=""></p>
+<h4 id="3-5-执行"><a href="#3-5-执行" class="headerlink" title="3.5 执行"></a>3.5 执行</h4><p>进入Python3.6的安装路径下的bin文件 可以执行</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231924838-1069467224.jpg" alt=""></p>
+<h4 id="3-6-设置环境变量"><a href="#3-6-设置环境变量" class="headerlink" title="3.6 设置环境变量"></a>3.6 设置环境变量</h4><p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318232021604-1080040403.jpg" alt=""></p>
+<p>这样直接输入python3.6就能在终端中运行</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318232114666-301617682.jpg" alt=""></p>
 
       
     </div>
@@ -356,7 +411,7 @@
   
   
     <a href="/2017/03/16/Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode</div>
     </a>
   
@@ -371,7 +426,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、-Linux系统分区"><span class="nav-number">1.</span> <span class="nav-text">一、 Linux系统分区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-查看系统现在的磁盘情况"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 查看系统现在的磁盘情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-对新添加的磁盘sdc进行分区"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 对新添加的磁盘sdc进行分区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-4-新建分区"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.4 新建分区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-对新创建的分区格式化"><span class="nav-number">1.4.</span> <span class="nav-text">2.1 对新创建的分区格式化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1将新建的主分区格式化成ext3"><span class="nav-number">1.4.1.</span> <span class="nav-text">2.1.1将新建的主分区格式化成ext3</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-挂载分区"><span class="nav-number">2.</span> <span class="nav-text">3 挂载分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-设置交换分区"><span class="nav-number">3.</span> <span class="nav-text">4 设置交换分区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-查看交换分区"><span class="nav-number">3.1.</span> <span class="nav-text">4.1 查看交换分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-将创建的逻辑分区设置成交换分区"><span class="nav-number">3.2.</span> <span class="nav-text">4.2 将创建的逻辑分区设置成交换分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-将设置的交换分区启用（激活）"><span class="nav-number">3.3.</span> <span class="nav-text">4.3 将设置的交换分区启用（激活）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、查看内存以及内存的使用率"><span class="nav-number">4.</span> <span class="nav-text">二、查看内存以及内存的使用率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-free命令查看内存"><span class="nav-number">4.1.</span> <span class="nav-text">1 free命令查看内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-关于buffer和cache"><span class="nav-number">4.2.</span> <span class="nav-text">2 关于buffer和cache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-清空内存"><span class="nav-number">4.3.</span> <span class="nav-text">3 清空内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-真实内存使用率"><span class="nav-number">4.4.</span> <span class="nav-text">4 真实内存使用率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-使用dd命令测试硬盘的速度"><span class="nav-number">4.5.</span> <span class="nav-text">5 使用dd命令测试硬盘的速度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、进程管理"><span class="nav-number">5.</span> <span class="nav-text">二、进程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查询进程"><span class="nav-number">5.1.</span> <span class="nav-text">1 查询进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-杀死进程"><span class="nav-number">5.2.</span> <span class="nav-text">2 杀死进程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、软件包管理"><span class="nav-number">6.</span> <span class="nav-text">三、软件包管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-rpm安装"><span class="nav-number">6.1.</span> <span class="nav-text">1 rpm安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-将光盘挂载到-media"><span class="nav-number">6.1.1.</span> <span class="nav-text">1.1 将光盘挂载到/media</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-查看系统已经安装的rpm"><span class="nav-number">6.1.2.</span> <span class="nav-text">1.2 查看系统已经安装的rpm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-yum"><span class="nav-number">6.2.</span> <span class="nav-text">2 yum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-yum需要一个仓库（在本地自己创建yum仓库）"><span class="nav-number">6.3.</span> <span class="nav-text">2.1 yum需要一个仓库（在本地自己创建yum仓库）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2在本地自己定义yum仓库"><span class="nav-number">6.4.</span> <span class="nav-text">2.2在本地自己定义yum仓库</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、-Linux系统分区"><span class="nav-number">1.</span> <span class="nav-text">一、 Linux系统分区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-查看系统现在的磁盘情况"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 查看系统现在的磁盘情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-对新添加的磁盘sdc进行分区"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 对新添加的磁盘sdc进行分区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-4-新建分区"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.4 新建分区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-对新创建的分区格式化"><span class="nav-number">1.4.</span> <span class="nav-text">2.1 对新创建的分区格式化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1将新建的主分区格式化成ext3"><span class="nav-number">1.4.1.</span> <span class="nav-text">2.1.1将新建的主分区格式化成ext3</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-挂载分区"><span class="nav-number">2.</span> <span class="nav-text">3 挂载分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-设置交换分区"><span class="nav-number">3.</span> <span class="nav-text">4 设置交换分区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-查看交换分区"><span class="nav-number">3.1.</span> <span class="nav-text">4.1 查看交换分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-将创建的逻辑分区设置成交换分区"><span class="nav-number">3.2.</span> <span class="nav-text">4.2 将创建的逻辑分区设置成交换分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-将设置的交换分区启用（激活）"><span class="nav-number">3.3.</span> <span class="nav-text">4.3 将设置的交换分区启用（激活）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、查看内存以及内存的使用率"><span class="nav-number">4.</span> <span class="nav-text">二、查看内存以及内存的使用率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-free命令查看内存"><span class="nav-number">4.1.</span> <span class="nav-text">1 free命令查看内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-关于buffer和cache"><span class="nav-number">4.2.</span> <span class="nav-text">2 关于buffer和cache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-清空内存"><span class="nav-number">4.3.</span> <span class="nav-text">3 清空内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-真实内存使用率"><span class="nav-number">4.4.</span> <span class="nav-text">4 真实内存使用率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-使用dd命令测试硬盘的速度"><span class="nav-number">4.5.</span> <span class="nav-text">5 使用dd命令测试硬盘的速度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、进程管理"><span class="nav-number">5.</span> <span class="nav-text">二、进程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查询进程"><span class="nav-number">5.1.</span> <span class="nav-text">1 查询进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-杀死进程"><span class="nav-number">5.2.</span> <span class="nav-text">2 杀死进程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、软件包管理"><span class="nav-number">6.</span> <span class="nav-text">三、软件包管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-rpm安装"><span class="nav-number">6.1.</span> <span class="nav-text">1 rpm安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-将光盘挂载到-media"><span class="nav-number">6.1.1.</span> <span class="nav-text">1.1 将光盘挂载到/media</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-查看系统已经安装的rpm"><span class="nav-number">6.1.2.</span> <span class="nav-text">1.2 查看系统已经安装的rpm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-yum"><span class="nav-number">6.2.</span> <span class="nav-text">2 yum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-yum需要一个仓库（在本地自己创建yum仓库）"><span class="nav-number">6.3.</span> <span class="nav-text">2.1 yum需要一个仓库（在本地自己创建yum仓库）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2在本地自己定义yum仓库"><span class="nav-number">6.4.</span> <span class="nav-text">2.2在本地自己定义yum仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用源码安装Python"><span class="nav-number">6.5.</span> <span class="nav-text">3 使用源码安装Python</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-下载源码文件"><span class="nav-number">6.5.0.1.</span> <span class="nav-text">3.1 下载源码文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-安装编译器"><span class="nav-number">6.5.1.</span> <span class="nav-text">3.2 安装编译器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-加压Python源码"><span class="nav-number">6.5.2.</span> <span class="nav-text">3.3 加压Python源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-编译并安装"><span class="nav-number">6.5.3.</span> <span class="nav-text">3.4 编译并安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-执行"><span class="nav-number">6.5.4.</span> <span class="nav-text">3.5 执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-设置环境变量"><span class="nav-number">6.5.5.</span> <span class="nav-text">3.6 设置环境变量</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>
