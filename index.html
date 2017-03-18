@@ -71,7 +71,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -127,154 +127,31 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<p>对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。</p>
-<h2 id="一、-Linux系统分区"><a href="#一、-Linux系统分区" class="headerlink" title="一、 Linux系统分区"></a>一、 Linux系统分区</h2><h3 id="1-1-在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G"><a href="#1-1-在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G" class="headerlink" title="1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G"></a>1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G</h3><p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318160400526-1173906289.jpg" alt=""></p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317145717213-1558902244.jpg" alt=""></p>
-<h3 id="1-2-查看系统现在的磁盘情况"><a href="#1-2-查看系统现在的磁盘情况" class="headerlink" title="1.2 查看系统现在的磁盘情况"></a>1.2 查看系统现在的磁盘情况</h3><p>ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英文字母的顺序命名的</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317151140385-1330103788.jpg" alt=""></p>
-<h3 id="1-3-对新添加的磁盘sdc进行分区"><a href="#1-3-对新添加的磁盘sdc进行分区" class="headerlink" title="1.3 对新添加的磁盘sdc进行分区"></a>1.3 对新添加的磁盘sdc进行分区</h3><p>分区命令是fdisk  /dev/sdc</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317151743729-588433609.jpg" alt=""></p>
-<p>现在通过帮助信息开始操作</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317151752338-1876320090.jpg" alt=""></p>
-<h4 id="1-3-4-新建分区"><a href="#1-3-4-新建分区" class="headerlink" title="1.3.4 新建分区"></a>1.3.4 新建分区</h4><p>输入n,在选项中有两个，p和e,p是创建主分区，e是扩展分区。</p>
-<p>给主分区添加5G</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317152916791-1990261218.jpg" alt=""></p>
-<p>扩展分区选择系统大小的时候，将剩余的全部空间给扩展分区，就选择默认</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317152815604-1310616356.jpg" alt=""></p>
-<p>主分区最多能创建4个，需要注意的是，如果先创建了4个主分区后就不能再创建扩展分区</p>
-<p><strong>逻辑分区是在扩展分区的基础上创建的</strong></p>
-<p>当再选择n创建的时候，选项就可以选择创建逻辑分区l,逻辑分区的默认标号是从5开始，为新创建的逻辑分区添加5G的空间</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317153416213-1133379766.jpg" alt=""></p>
-<p>最后通过w命令写入，完成分区，通过查看/dev/sdc下面的磁盘可以看出，分区已经完成</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317154623370-1095560166.jpg" alt=""></p>
-<h3 id="2-1-对新创建的分区格式化"><a href="#2-1-对新创建的分区格式化" class="headerlink" title="2.1 对新创建的分区格式化"></a>2.1 对新创建的分区格式化</h3><p>文件系统有很多种，当前最常用的文件系统是ext4,centos6采用的就是此文件系统，centos7采用的是xfs文件系统，这是未来的主流文件操作系统</p>
-<p>查看当前文件系统的命令 df -T</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317154929073-1262809194.jpg" alt=""></p>
-<h4 id="2-1-1将新建的主分区格式化成ext3"><a href="#2-1-1将新建的主分区格式化成ext3" class="headerlink" title="2.1.1将新建的主分区格式化成ext3"></a>2.1.1将新建的主分区格式化成ext3</h4><p>使用的命令是mkfs.ext3,当不知道的时候可以mkfs.+tab按键</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317155359088-363502878.jpg" alt=""></p>
-<p>通过命令将mkfs.ext3 /dev/sdc1 格式化成ext3</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317155839573-879721232.jpg" alt=""></p>
-<h2 id="3-挂载分区"><a href="#3-挂载分区" class="headerlink" title="3 挂载分区"></a>3 挂载分区</h2><p>在根目录新建一个/sdc1用于挂载新建的主分区，使用mount进行挂载</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317160340729-877617422.jpg" alt=""></p>
-<h2 id="4-设置交换分区"><a href="#4-设置交换分区" class="headerlink" title="4 设置交换分区"></a>4 设置交换分区</h2><h3 id="4-1-查看交换分区"><a href="#4-1-查看交换分区" class="headerlink" title="4.1 查看交换分区"></a>4.1 查看交换分区</h3><p>swapon -s 可以查看当前的交换分区,这个交换分区是当初安装系统的时候创建的</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317161758323-1770091531.jpg" alt=""></p>
-<h3 id="4-2-将创建的逻辑分区设置成交换分区"><a href="#4-2-将创建的逻辑分区设置成交换分区" class="headerlink" title="4.2 将创建的逻辑分区设置成交换分区"></a>4.2 将创建的逻辑分区设置成交换分区</h3><p>mkswap命令用于在一个文件或者设备上建立交换分区</p>
-<p>mkswap /dev/sdc5 将/dev/sdc5  设置成交换分区</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317162908385-1146545943.jpg" alt=""></p>
-<h3 id="4-3-将设置的交换分区启用（激活）"><a href="#4-3-将设置的交换分区启用（激活）" class="headerlink" title="4.3 将设置的交换分区启用（激活）"></a>4.3 将设置的交换分区启用（激活）</h3><p>swapon -a /dev/sdc5  </p>
-<p>通过swapon -s查看交换分区的状态  </p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317162920291-1052886180.jpg" alt=""></p>
-<p>通过swapoff /dev/sdc5就可以关闭启用的交换分区，重新启用下并查看</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317164118479-1330844515.jpg" alt=""></p>
-<h2 id="二、查看内存以及内存的使用率"><a href="#二、查看内存以及内存的使用率" class="headerlink" title="二、查看内存以及内存的使用率"></a>二、查看内存以及内存的使用率</h2><h3 id="1-free命令查看内存"><a href="#1-free命令查看内存" class="headerlink" title="1 free命令查看内存"></a>1 free命令查看内存</h3><p>free命令可以显示当前系统未使用的和已使用的内存数目，还可以显示被内核使用的内存缓冲区。</p>
-<p>free不加参数默认数据单位是字节，可以加-m,-g，分别以M、G为单位查看，下面是对比图</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317164932698-550664978.jpg" alt=""></p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317164943026-1674897849.jpg" alt=""></p>
-<p>通过对比发现，以字节为单位的方式是最精确的，<em>使用M更符合人的查看</em>，使用G时误差较大</p>
-<h3 id="2-关于buffer和cache"><a href="#2-关于buffer和cache" class="headerlink" title="2 关于buffer和cache"></a>2 关于buffer和cache</h3><blockquote>
-<p>buffer:通过buffer可以减少进程间通信需要等待的时间,当存储速度快的设备与存储速度慢的设备进行通信时，存储慢的数据先把数据存放到buffer，达到一定程度存储快的设备再读取buffer的数据。</p>
-<p>cache：缓存区，是高速缓存，是位于CPU和主内存之间的容量较小但速度很快的存储器，因为CPU的速度远远高于主内存的速度，CPU从内存中读取数据需等待很长的时间，而  Cache保存着CPU刚用过的数据或循环使用的部分数据，这时从Cache中读取数据会更快，减少了CPU等待的时间，提高了系统的性能。</p>
-</blockquote>
-<p>总结一下就是，CPU、内存、硬盘之间存在速度差，为了解决这个问题，引入了buffer和cache，buffer是将没有写入的数据积累一定的量后一块写入，cache是将数据读入内存中的，下次可以直接使用</p>
-<h3 id="3-清空内存"><a href="#3-清空内存" class="headerlink" title="3 清空内存"></a>3 清空内存</h3><p>echo 3 &gt; /proc/sys/vm/drop_caches </p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317173017182-24580347.jpg" alt=""></p>
-<h3 id="4-真实内存使用率"><a href="#4-真实内存使用率" class="headerlink" title="4 真实内存使用率"></a>4 真实内存使用率</h3><p>使用free命令查看内存的信息</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317185549338-832315750.jpg" alt=""></p>
-<p>内存的使用率计算：</p>
-<p>{used+(buff/cache)}/total=(519116+211236)/2172412=33.6%</p>
-<h3 id="5-使用dd命令测试硬盘的速度"><a href="#5-使用dd命令测试硬盘的速度" class="headerlink" title="5 使用dd命令测试硬盘的速度"></a>5 使用dd命令测试硬盘的速度</h3><p>dd if=/dev/zero of=/a.txt  bs=2M count=1</p>
-<p>if:input file</p>
-<p>of:output file </p>
-<p>bs:block size </p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317191130213-1156165005.jpg" alt=""></p>
-<p>在测试的时候需要考虑真实物理内存的大小</p>
-<h2 id="二、进程管理"><a href="#二、进程管理" class="headerlink" title="二、进程管理"></a>二、进程管理</h2><p>进程是一个资源单位，当执行一个命令的时候就会产生一个进程</p>
-<h3 id="1-查询进程"><a href="#1-查询进程" class="headerlink" title="1 查询进程"></a>1 查询进程</h3><p>查询一个进程</p>
-<p>ps命令直接查询全部的命令</p>
-<p>ps aux |grep firewalld  查询到的进程pid是608</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317193441448-717583545.jpg" alt=""></p>
-<h3 id="2-杀死进程"><a href="#2-杀死进程" class="headerlink" title="2 杀死进程"></a>2 杀死进程</h3><p>想要杀死进程  kill -9 pid</p>
-<p>-9是传递信息，所以只需要知道进程的pid就可以</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317193621963-2078531799.jpg" alt=""></p>
-<p>再次查看后，firewalld进程已经不存在了，下面的进程是执行的命令，<strong>每次执行一次命令都会产生一个进程</strong></p>
-<h2 id="三、软件包管理"><a href="#三、软件包管理" class="headerlink" title="三、软件包管理"></a>三、软件包管理</h2><p>软件包的安装有两种方式，第一种是二进制文件安装，第二种是源码安装</p>
-<h3 id="1-rpm安装"><a href="#1-rpm安装" class="headerlink" title="1 rpm安装"></a>1 rpm安装</h3><p>rpm的全称是Redhat package Manager</p>
-<h4 id="1-1-将光盘挂载到-media"><a href="#1-1-将光盘挂载到-media" class="headerlink" title="1.1 将光盘挂载到/media"></a>1.1 将光盘挂载到/media</h4><p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317200554120-213350950.jpg" alt=""></p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317200735245-179804614.jpg" alt=""></p>
-<p>进入/media下查看Package文件，文件中存放的是安装的文件</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317200740495-871381683.jpg" alt=""></p>
-<p>卸载命令是umount  /media ，在当下的路径下的时候是不能卸载的，想要强制卸载，加上参数-l</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317201630120-1576195688.jpg" alt=""></p>
-<h4 id="1-2-查看系统已经安装的rpm"><a href="#1-2-查看系统已经安装的rpm" class="headerlink" title="1.2 查看系统已经安装的rpm"></a>1.2 查看系统已经安装的rpm</h4><ul>
-<li>查看系统已经安装的rpm : rpm -qa  </li>
-</ul>
-<p>rpm -qa|less  可以将已经暗转的信息分屏输出</p>
-<ul>
-<li>查看时否安装了某个安装包,如dhcp</li>
-</ul>
-<p>rpm -q 直接查看是否安装<br><strong>rpm -qa |grep dhcp</strong> 是将所有安装过的过滤出来</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318153905213-1418315600.jpg" alt=""></p>
-<p>通过验证发现，已经安装了dhcp</p>
-<ul>
-<li>查看安装包的信息</li>
-</ul>
-<p><strong>rpm -qi  dhcp</strong></p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318154126838-1897355112.jpg" alt=""></p>
-<ul>
-<li>查看安装路径，里面包含的文件</li>
-</ul>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318154415870-532817056.jpg" alt=""></p>
-<ul>
-<li><p>which ls 可以查看ls时由哪个软件包产生的</p>
-</li>
-<li><p>rpm -qf /bin/ls 查看ls是由哪个安装包产生的</p>
-</li>
-</ul>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318154738838-743264796.jpg" alt=""></p>
-<p><strong>ls是怎么和文件建立联系的</strong></p>
-<p>ls—–&gt;sehll—-&gt;PATH(环境变量)——&gt;user/bin/ls——-&gt;alias(别名)—-&gt;ls —&gt;color =auto</p>
-<p>通过which ls 可以查看ls命令的路劲，/user/bin/ls 的效果和ls是一样的，都能实现查看的功能，ls命令在此基础上添加了颜色自动高亮的功能</p>
-<ul>
-<li>卸载dhcp</li>
-</ul>
-<p>rpm -e dhcp</p>
-<p>这里注意的是dhcp不是全名，可以通过tab补全，之前的也已经通过-qa命令获得了全名</p>
-<p>测试中发现想要卸载dhcp安装包，必须卸载dhclient,他们之间有依赖关系，想要卸载必须把他们的依赖全部卸载</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318160231198-1413301807.jpg" alt=""></p>
-<h3 id="2-yum"><a href="#2-yum" class="headerlink" title="2 yum"></a>2 yum</h3><blockquote>
-<p>Yum（全称为 Yellow dog Updater, Modified）是一个在Fedora和RedHat以及CentOS中的Shell前端软件包管理器。基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。</p>
-</blockquote>
-<p>采用rpm安装的时候，安装某个软件还需要安装相应的依赖，比较繁琐，通过yum就可以自动获取依赖关系并安装。</p>
-<h3 id="2-1-yum需要一个仓库（在本地自己创建yum仓库）"><a href="#2-1-yum需要一个仓库（在本地自己创建yum仓库）" class="headerlink" title="2.1 yum需要一个仓库（在本地自己创建yum仓库）"></a>2.1 yum需要一个仓库（在本地自己创建yum仓库）</h3><p>在系统光盘中Package目录下存放的就相当于一个仓库，有了仓库还需要相应的配置文件指向仓库。配置文件存放在/etc/yum.repo.d/中，这些事yum的网络配置文件</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318165725791-1529021801.jpg" alt=""></p>
-<h3 id="2-2在本地自己定义yum仓库"><a href="#2-2在本地自己定义yum仓库" class="headerlink" title="2.2在本地自己定义yum仓库"></a>2.2在本地自己定义yum仓库</h3><p>在本地定义仓库的配置文件同样要放在/etc/yum.repo.d/，需要先把网络的配置文件保存到/tmp/bak中，这样做是为了自己严格控制版本</p>
-<ul>
-<li>自定义yum的配置文件</li>
-</ul>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318171401604-1675392380.jpg" alt=""></p>
-<ul>
-<li>yum安装httpd</li>
-</ul>
-<p>yum repolist all 可以查看现在所有的yum源</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318172108651-177226464.jpg" alt=""></p>
-<p>yum install httpd</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318172241213-2076684916.jpg" alt=""></p>
-<p>yum在安装的时候自动查找依赖并自动安装，下面是在安装的时候依赖自动安装</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318172650307-1938811187.jpg" alt=""></p>
-<p>yum -y install 不提示输入y</p>
-<ul>
-<li>yum 删除httpd</li>
-</ul>
-<p>卸载的时候不会把依赖删除</p>
-<p>yum -y remove httpd</p>
-<p>yum -y erase httpd</p>
-<p>通过rpm -qa |grep httpd 查看已经安装了httpd</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318173348401-1836047937.jpg" alt=""></p>
-<ul>
-<li>使用yum安装组件’KDE 桌面’：yum –y groupinstall 组件名</li>
-</ul>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+            对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。
+
+一、 Linux系统分区1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G
+
+1.2 查看系统现在的磁盘情况ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英文字母的顺序命名的
+
+1.3 对新添加的磁盘sdc进行分区分区命令是fdisk  /dev/sdc
+
+现在通过帮助信息开始操作
+
+1.3.4 新建分区输入n,在选项中有两个，p和e,p是创建主分区，e是扩展分区。
+给主分区添加5G
+
+扩展分区选择系统大小的时候，将剩余的全部空间给扩展分区，就选...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/03/18/Linux系统分区 进程管理 软件包安装/#more">Continue Reading →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -533,7 +410,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next</a>
   </nav>
 
 </section>
@@ -545,9 +422,9 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
     <form class="search-form">
         <label style="width: 75%;">
             <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Suche…" value="" name="s" title="Search for:">
+            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
         </label>
-        <input type="submit" class="search-form-submit" value="Suche">
+        <input type="submit" class="search-form-submit" value="Search">
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
@@ -634,7 +511,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
     
   <div class="widget_athemes_tabs">
     <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>letzter Beitrag</a></li>
+      <li class="active"><a>Recent Posts</a></li>
     </ul>
     <div class="widget">
       <ul>
@@ -726,7 +603,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">7</span></li></ul>
