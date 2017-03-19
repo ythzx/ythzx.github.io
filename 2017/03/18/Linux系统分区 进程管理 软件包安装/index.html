@@ -66,7 +66,7 @@
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318231924838-1069467224.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318232021604-1080040403.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318232114666-301617682.jpg">
-<meta property="og:updated_time" content="2017-03-18T15:27:42.181Z">
+<meta property="og:updated_time" content="2017-03-19T14:32:10.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux系统分区 进程管理 软件包安装">
 <meta name="twitter:description" content="对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。">
@@ -362,6 +362,9 @@
 <h4 id="3-6-设置环境变量"><a href="#3-6-设置环境变量" class="headerlink" title="3.6 设置环境变量"></a>3.6 设置环境变量</h4><p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318232021604-1080040403.jpg" alt=""></p>
 <p>这样直接输入python3.6就能在终端中运行</p>
 <p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170318232114666-301617682.jpg" alt=""></p>
+<p>现在Python3.6能够在当前终端中运行，但是PATH接受的是临时变量，想要以后应用就要写入配置文件</p>
+<p>vim /etc/profie</p>
+<p>在最后面添加PATH=/usr/local/python3.6/bin:$PATH,保存后再在任何终端中输入Python3.6都能执行</p>
 
       
     </div>
