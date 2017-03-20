@@ -10,13 +10,17 @@
   
   
   <meta name="description" content="一、搭建Nginx服务
-Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器">
+Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器
+
+1 安装扩展包epel在安装Nginx之前需要安装epel扩展包，先通过rpm -qi epel-release 查看一下是否安装，通过查看已经安装，如果没有安装就需要通过yum">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux之Nginx服务 nfs文件存储 负载均衡">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/index.html">
 <meta property="og:site_name" content="小鑫">
 <meta property="og:description" content="一、搭建Nginx服务
-Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器">
+Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器
+
+1 安装扩展包epel在安装Nginx之前需要安装epel扩展包，先通过rpm -qi epel-release 查看一下是否安装，通过查看已经安装，如果没有安装就需要通过yum">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320150802565-1438558602.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320151610611-876421812.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320151808440-1738759998.jpg">
@@ -38,11 +42,15 @@ Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320224124658-1944175940.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320224131455-1751243742.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320224138268-757710677.jpg">
-<meta property="og:updated_time" content="2017-03-20T15:52:14.474Z">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320235749861-1392797157.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320235804533-1033867702.jpg">
+<meta property="og:updated_time" content="2017-03-20T16:00:10.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux之Nginx服务 nfs文件存储 负载均衡">
 <meta name="twitter:description" content="一、搭建Nginx服务
-Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器">
+Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器
+
+1 安装扩展包epel在安装Nginx之前需要安装epel扩展包，先通过rpm -qi epel-release 查看一下是否安装，通过查看已经安装，如果没有安装就需要通过yum">
 <meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320150802565-1438558602.jpg">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
@@ -100,7 +108,7 @@ Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -155,7 +163,7 @@ Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="一、搭建Nginx服务"><a href="#一、搭建Nginx服务" class="headerlink" title="一、搭建Nginx服务"></a>一、搭建Nginx服务</h2><blockquote>
-<p>Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器<br><a id="more"></a></p>
+<p>Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器</p>
 </blockquote>
 <h3 id="1-安装扩展包epel"><a href="#1-安装扩展包epel" class="headerlink" title="1 安装扩展包epel"></a>1 安装扩展包epel</h3><p>在安装Nginx之前需要安装epel扩展包，先通过<strong>rpm -qi epel-release</strong> 查看一下是否安装，通过查看已经安装，如果没有安装就需要通过<strong>yum install epel</strong>进行安装</p>
 <p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320150802565-1438558602.jpg" alt=""></p>
@@ -265,8 +273,10 @@ Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发
 <p>在<strong>web1、web2、web3</strong>中进行挂载</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mount -t nfs 192.168.16.134:/share /var/www/html/</div></pre></td></tr></table></figure>
 <p>-t nfs 是指定文件的类型</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320235749861-1392797157.jpg" alt=""></p>
 <p>此时，就可以在浏览器中访问<em>192.168.16.134/share.txt</em></p>
 <p><em>web1、web2、web3</em> 此时共享<em>/var/www/html/</em></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320235804533-1033867702.jpg" alt=""></p>
 <h2 id="四、源码安装nginx"><a href="#四、源码安装nginx" class="headerlink" title="四、源码安装nginx"></a>四、源码安装nginx</h2><h3 id="1-安装环境"><a href="#1-安装环境" class="headerlink" title="1 安装环境"></a>1 安装环境</h3><p>从GitHub下载nginx的源码包并解压，在机器上安装开发工具</p>
 <h3 id="2-制作Makefile文件"><a href="#2-制作Makefile文件" class="headerlink" title="2 制作Makefile文件"></a>2 制作Makefile文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure --prefix=/usr/local/nginx</div></pre></td></tr></table></figure>
 <h3 id="3-编译并安装"><a href="#3-编译并安装" class="headerlink" title="3 编译并安装"></a>3 编译并安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
@@ -313,7 +323,7 @@ Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发
   
   
     <a href="/2017/03/18/Linux系统分区 进程管理 软件包安装/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Linux系统分区 进程管理 软件包安装</div>
     </a>
   

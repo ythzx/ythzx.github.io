@@ -71,7 +71,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -127,27 +127,128 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="一、搭建Nginx服务"><a href="#一、搭建Nginx服务" class="headerlink" title="一、搭建Nginx服务"></a>一、搭建Nginx服务</h2><blockquote>
+<p>Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器</p>
+</blockquote>
+<h3 id="1-安装扩展包epel"><a href="#1-安装扩展包epel" class="headerlink" title="1 安装扩展包epel"></a>1 安装扩展包epel</h3><p>在安装Nginx之前需要安装epel扩展包，先通过<strong>rpm -qi epel-release</strong> 查看一下是否安装，通过查看已经安装，如果没有安装就需要通过<strong>yum install epel</strong>进行安装</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320150802565-1438558602.jpg" alt=""></p>
+<p>通过yum安装Nginx需要有扩展的源<em>epel.repo</em> ，确定有后<strong>yum</strong> <strong>install nginx -y</strong> 就开始安装</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320151610611-876421812.jpg" alt=""></p>
+<p>查看下Nginx版本是1.10.2，这是官方的稳定版本</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320151808440-1738759998.jpg" alt=""></p>
+<h3 id="2-修改配置文件"><a href="#2-修改配置文件" class="headerlink" title="2 修改配置文件"></a>2 修改配置文件</h3><p>Nginx的配置文件村村存放在<em>/etc/nginx/nginx.conf</em></p>
+<p><em>vim /etc/nginx/nginx.conf</em></p>
+<h4 id="2-1-server"><a href="#2-1-server" class="headerlink" title="2.1 server"></a>2.1 server</h4><p>下图中sever中 80代表的是监听的是80端口，root 的路径/var/share/nginx/html;是网站的根目录，这是去全局的，最后必须用分号结尾</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320152735971-476356813.jpg" alt=""></p>
+<h4 id="2-2-location"><a href="#2-2-location" class="headerlink" title="2.2 location"></a>2.2 location</h4><ul>
+<li><strong>url 统一资源定位符</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://192.168.1.1:80 能定位到唯一的一个软件</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>uri 统一资源占位符</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://192.168.1.1:80/a/b/c.txt</div></pre></td></tr></table></figure>
+<p>能定位到服务端的c.txt文件</p>
+<p>客户端提交请求，最终服务端寻找的就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/var/share/nginx/html/a/b/c.txt</div></pre></td></tr></table></figure>
+<p><strong>上网最终就是上网查找文件下载到本地</strong></p>
+<p>1 http://         —&gt;sever端基于http给clint发送数据<br>2 192.168.1.1:80  —&gt;定位到全世界唯一的软件<br>3 /a/b/c.txt      —&gt; /先找软件的根 root /usr/share/nginx/html</p>
+<p>在找根的时候会先找location，没有location会从root寻找</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320160746299-1570907420.jpg" alt=""></p>
+<h3 id="3-启动软件"><a href="#3-启动软件" class="headerlink" title="3 启动软件"></a>3 启动软件</h3><h4 id="3-1-启动Nginx服务"><a href="#3-1-启动Nginx服务" class="headerlink" title="3.1 启动Nginx服务"></a>3.1 启动Nginx服务</h4><p>第一次启动的时候需要用Start,<strong>systemctl start nginx</strong>，启动后可以通过<strong>systemctl status nginx</strong> 查看状态</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320160511252-2082606466.jpg" alt=""></p>
+<p>Nginx启动后，修改配置文件后需要重新启动，用<strong>systemctl restart nginx
+</strong></p>
+<h4 id="3-2-通过浏览器访问"><a href="#3-2-通过浏览器访问" class="headerlink" title="3.2 通过浏览器访问"></a>3.2 通过浏览器访问</h4><p>先获得服务端的IP地址，<em>ifconfig</em> 得到IP地址是<strong>192.168.16.134</strong></p>
+<p>在浏览器中输入<strong>192.168.16.134</strong>不能访问，这是软件防火墙的问题，通过<strong>systemctl stop firewall</strong> 就能把防火墙关闭，重新输入就能访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl disable firewalld配置开机关闭防火墙</div></pre></td></tr></table></figure></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320161736252-2082008674.jpg" alt=""></p>
+<p>下面修改index文件，在文件中写入<strong>welcome Nginx</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320162258799-108314643.jpg" alt=""></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320162307908-959804725.jpg" alt=""></p>
+<h4 id="3-3-创建一个文件的，通过目录进行访问"><a href="#3-3-创建一个文件的，通过目录进行访问" class="headerlink" title="3.3 创建一个文件的，通过目录进行访问"></a>3.3 创建一个文件的，通过目录进行访问</h4><p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320164159190-1496077513.jpg" alt=""></p>
+<p>重启Nginx在浏览器中</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320164249502-1637057947.jpg" alt=""></p>
+<h4 id="3-4-修改location"><a href="#3-4-修改location" class="headerlink" title="3.4 修改location"></a>3.4 修改location</h4><p>在location中添加 根目录和<em>index</em></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320170926565-682033960.jpg" alt=""></p>
+<p>将在文件中写入内容</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320171001658-2127643452.jpg" alt=""></p>
+<p>在浏览中输入<em>192.168.16.134/index.html</em>出现403页面，尝试关闭软件防火墙还是不行，通过查找资料关闭内核防火墙，修改/etc/selinux/config 文件,</p>
+<p>将<strong>SELINUX=enforcing</strong>改为<strong>SELINUX=disabled</strong></p>
+<p>重启机器</p>
+<p>在浏览中输入<strong>192.168.16.134/index.html</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320173310190-1899714918.jpg" alt=""></p>
+<h2 id="二、Nginx反向代理"><a href="#二、Nginx反向代理" class="headerlink" title="二、Nginx反向代理"></a>二、Nginx反向代理</h2><p>在<a href="https://nginx.org/en/docs/" target="_blank" rel="external">Nginx官网</a>中找到<strong>Using nginx as HTTP load balancer</strong>,意思是使用Nginx作为负载均衡</p>
+<p>将一台机器配置为Nginx服务器，当有访问的时候，由这台服务器负责分配流量到不同的服务器</p>
+<p><em>下面通过搭建一台Nginx服务器，反向代理3台服务器</em></p>
+<p>具体的环境是在<em>VMware</em>中操作，同过软件的克隆功能复制出3台web服务器，分别是<em>web1、web2、web3.</em>原来的主机做负载均衡</p>
+<p>通过xshell5进行远程连接</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320221136580-1636824393.jpg" alt=""></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320221235440-1640369629.jpg" alt=""></p>
+<p><strong>修改3个web服务器的主页</strong></p>
+<p>分别修改<strong> /var/www/html/index.html</strong>中的内容为<strong>web1、web2、web3</strong>，用<strong>systemctl restart nginx</strong>重启nginx服务，在浏览器中分别输入相应的IP地址就能验验证修改的内容。</p>
+<p>我们要做的是通过访问反向代理主机就能访问web123的内容</p>
+<p><strong>修改反向代理主机的配置文件</strong></p>
+<p>nginx做负载均衡的时候有3中调度算法</p>
+<ul>
+<li>轮询</li>
+<li>最小连接</li>
+<li>IP hash</li>
+</ul>
+<p>1 <strong>基于轮询的方式调度三台web</strong></p>
+<p>在反向代理主机的配置文件中添加</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">http &#123;</div><div class="line">    upstream myapp1 &#123;</div><div class="line">        server srv1.example.com;</div><div class="line">        server srv2.example.com;</div><div class="line">        server srv3.example.com;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    server &#123;</div><div class="line">        listen <span class="number">80</span>;</div><div class="line"></div><div class="line">        location / &#123;</div><div class="line">            proxy_pass http://myapp1;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里面这要是修改三处，一是名字<strong>myapp1</strong>,在实际的测试中修改成了<strong>Pythonwebtest</strong>,二是下面的域名修改成<strong>web1、web2、web3</strong>的IP地址，三是在server中添加<strong>proxy_pass <a href="http://pythonwebtest" target="_blank" rel="external">http://pythonwebtest</a></strong>;</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320223602033-615912643.jpg" alt=""></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320223729018-1296822822.jpg" alt=""></p>
+<p>实验结果：</p>
+<p>在浏览器中访问反向代理主机的IP地址，不断刷新显示的内容依次是<strong>web1、web2、web3</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320224124658-1944175940.jpg" alt=""></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320224131455-1751243742.jpg" alt=""></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320224138268-757710677.jpg" alt=""></p>
+<p>2 <strong>hash的方式调用三台web</strong></p>
+<p><strong>IP hash</strong>会将访问的IP地址固定到一台web服务器，作用就是会话保持</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">upstream myapp1 &#123;</div><div class="line">    ip_hash;</div><div class="line">    server srv1.example.com;</div><div class="line">    server srv2.example.com;</div><div class="line">    server srv3.example.com;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>同样的将<strong>myapp1</strong>修改成<strong>pythonwebtest</strong></p>
+<p>实验结果就是当访问反向代理主机的时候一直刷新返回的都是web1</p>
+<p>3 <strong>基于权重的方式调度三台web</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">upstream myapp1 &#123;</div><div class="line">      server srv1.example.com weight=<span class="number">3</span>;</div><div class="line">      server srv2.example.com;</div><div class="line">      server srv3.example.com;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>具体的实现就是在轮询的基础上再相应的IP后面添加weight并赋值</p>
+<p>实验结果：</p>
+<p>当访问反向代理主机的时候不断刷新，前3次返回的是web1,之后依次返回web2、web3，然后是3次web1，依次往复循环</p>
+<h2 id="三、nfs服务"><a href="#三、nfs服务" class="headerlink" title="三、nfs服务"></a>三、nfs服务</h2><blockquote>
+<p>NFS 是<em>Network File System</em>的缩写，即网络文件系统。</p>
+</blockquote>
+<p>###　1 安装nfs</p>
+<p><strong>yum install rpcbind nfs-utils -y</strong></p>
+<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2 配置"></a>2 配置</h3><p>配置文件在<em>/etc/exports</em></p>
+<p><strong>/share 192.168.16.0/24(rw,sync,fsid=0)</strong></p>
+<p>把IP地址设置成相同的子网16，这样就都能访问了，这里通过设置反向代理服务器上的文件作为共享文件</p>
+<h3 id="3-修改share目录的权限"><a href="#3-修改share目录的权限" class="headerlink" title="3 修改share目录的权限"></a>3 修改share目录的权限</h3><p>将share目录的权限修改成 <strong>chmod -R o+w /share</strong></p>
+<p>###　４　先为rpcbind和nfs做开机启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl enable nfs-server.service</div><div class="line"></div><div class="line">systemctl enable rpcbind.service</div></pre></td></tr></table></figure>
+<h4 id="5-启动"><a href="#5-启动" class="headerlink" title="5 启动"></a>5 启动</h4><p>必须先启动rpcbind服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl start rpcbind.service</div><div class="line"></div><div class="line">systemctl start nfs-server.service</div></pre></td></tr></table></figure>
+<h4 id="6-确认NFS服务器启动成功"><a href="#6-确认NFS服务器启动成功" class="headerlink" title="6 确认NFS服务器启动成功"></a>6 确认NFS服务器启动成功</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">exportfs</div></pre></td></tr></table></figure>
+<p>出现share目录证明启动成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">showmount -e #默认查看自己共享的服务</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">showmount -a #显示已经与客户端连接上的目录信息</div></pre></td></tr></table></figure>
+<p>现在还没有服务器连接</p>
+<h4 id="7客户端安装并开启服务"><a href="#7客户端安装并开启服务" class="headerlink" title="7客户端安装并开启服务"></a>7客户端安装并开启服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install rpcbind nfs-utils -y</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl enable rpcbind.service &amp;&amp; systemctl start rpcbind.service</div></pre></td></tr></table></figure>
+<p>在<strong>web1、web2、web3</strong>中进行挂载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mount -t nfs 192.168.16.134:/share /var/www/html/</div></pre></td></tr></table></figure>
+<p>-t nfs 是指定文件的类型</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320235749861-1392797157.jpg" alt=""></p>
+<p>此时，就可以在浏览器中访问<em>192.168.16.134/share.txt</em></p>
+<p><em>web1、web2、web3</em> 此时共享<em>/var/www/html/</em></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320235804533-1033867702.jpg" alt=""></p>
+<h2 id="四、源码安装nginx"><a href="#四、源码安装nginx" class="headerlink" title="四、源码安装nginx"></a>四、源码安装nginx</h2><h3 id="1-安装环境"><a href="#1-安装环境" class="headerlink" title="1 安装环境"></a>1 安装环境</h3><p>从GitHub下载nginx的源码包并解压，在机器上安装开发工具</p>
+<h3 id="2-制作Makefile文件"><a href="#2-制作Makefile文件" class="headerlink" title="2 制作Makefile文件"></a>2 制作Makefile文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure --prefix=/usr/local/nginx</div></pre></td></tr></table></figure>
+<h3 id="3-编译并安装"><a href="#3-编译并安装" class="headerlink" title="3 编译并安装"></a>3 编译并安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<h3 id="4设置环境变量"><a href="#4设置环境变量" class="headerlink" title="4设置环境变量"></a>4设置环境变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile.d/http.sh</div><div class="line">PATH=/usr/local/nginx/sbin:$PATH</div></pre></td></tr></table></figure>
+<h3 id="5-启动-1"><a href="#5-启动-1" class="headerlink" title="5 启动"></a>5 启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start nginx</div></pre></td></tr></table></figure>
+<p>在浏览器中输入主机的IP地址就能访问了</p>
 
-          
-            <div class="entry-summary" style="margin-left:0;">
-            一、搭建Nginx服务
-Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器
-
-1 安装扩展包epel在安装Nginx之前需要安装epel扩展包，先通过rpm -qi epel-release 查看一下是否安装，通过查看已经安装，如果没有安装就需要通过yum install epel进行安装
-
-通过yum安装Nginx需要有扩展的源epel.repo ，确定有后yum install nginx -y 就开始安装
-
-查看下Nginx版本是1.10.2，这是官方的稳定版本
-
-2 修改配置文件Nginx的配置文件村村存放在/etc/nginx/ngi...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/#more">Continue Reading →</a>
-          </p>
-        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -423,7 +524,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next</a>
   </nav>
 
 </section>
@@ -435,9 +536,9 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
     <form class="search-form">
         <label style="width: 75%;">
             <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Suche…" value="" name="s" title="Search for:">
+            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
         </label>
-        <input type="submit" class="search-form-submit" value="Suche">
+        <input type="submit" class="search-form-submit" value="Search">
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
@@ -524,7 +625,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
     
   <div class="widget_athemes_tabs">
     <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>letzter Beitrag</a></li>
+      <li class="active"><a>Recent Posts</a></li>
     </ul>
     <div class="widget">
       <ul>
@@ -608,7 +709,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/2017-03-17/">2017.03.17</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
@@ -637,7 +738,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">8</span></li></ul>
