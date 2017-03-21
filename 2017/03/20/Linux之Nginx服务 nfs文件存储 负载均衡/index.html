@@ -41,8 +41,9 @@ Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320235749861-1392797157.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170320235804533-1033867702.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170321170018752-1183497308.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170321231903221-971476118.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170321191229049-1465380424.jpg">
-<meta property="og:updated_time" content="2017-03-21T11:35:21.402Z">
+<meta property="og:updated_time" content="2017-03-21T15:19:17.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux之Nginx服务 nfs文件存储 负载均衡">
 <meta name="twitter:description" content="一、搭建Nginx服务
@@ -104,7 +105,7 @@ Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -289,11 +290,15 @@ Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发
 </ul>
 <p><strong>/share 192.168.16.0/24(rw,sync,fsid=0)</strong></p>
 <h4 id="3-1-服务端"><a href="#3-1-服务端" class="headerlink" title="3.1 服务端"></a>3.1 服务端</h4><p>在服务端新建<em>/share</em>并把目录的权限的设置成其他用户可读可写</p>
-<p>输入<strong>exportfs</strong>可以查看服务端分享的目录</p>
+<p>输入<strong>exportfs</strong>可以查看服务端分享的目录，这个文件中可以写入的内容是需要共享的IP段，文件的权限，同步等</p>
+<p><strong><br>需要注意的是服务端的配置文件中，location中不需要路径，root也不需要路径</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170321231903221-971476118.jpg" alt=""></p>
 <h4 id="3-2-客户端"><a href="#3-2-客户端" class="headerlink" title="3.2 客户端"></a>3.2 客户端</h4><p>在客户端安装<em>nfs和rpcbind</em>并启动，通过<strong>showmount -e 192.168.16.122</strong>可以查看主机分享的目录。下一步就是把客户端分别挂载到/<em>share</em>下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mount -t nfs 192.168.16.122:/share /var/www/html</div></pre></td></tr></table></figure></p>
+<p>这个命令只能挂载一次，重启后需要重新挂载。</p>
 <p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170321191229049-1465380424.jpg" alt=""></p>
 <p>现在在<strong>/var/www/html</strong>下新建文件，在其他的web中都可以查看 修改</p>
-<p>现在通过监控日志文件查看负载均衡</p>
+<p>现在通过监控日志文件查看负载均衡，<strong>在nginx反向代理的服务器中看到的是Windows电脑访问的IP等信息，在web1、web2、web3中监控信息都是反向代理服务器的IP等信息，但是是以轮询的方式进行访问</strong></p>
+<p>此时默认访问的是index的信息，在共享路径下有别的文件也能够访问。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail -f access.log</div></pre></td></tr></table></figure>
 <p>基于nginx的负载均衡配置，打开后端被代理服务的access.log日志，<strong>tail -f access.log</strong>来观察访问，访问LB刷新页面发现内容保持一致，但是每台被代理的机器的access.log日志都有新的内容进来</p>
 <h2 id="五、源码安装nginx"><a href="#五、源码安装nginx" class="headerlink" title="五、源码安装nginx"></a>五、源码安装nginx</h2><h3 id="1-安装环境"><a href="#1-安装环境" class="headerlink" title="1 安装环境"></a>1 安装环境</h3><p>从GitHub下载nginx的源码包并解压，在机器上安装开发工具</p>
@@ -342,7 +347,7 @@ Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发
   
   
     <a href="/2017/03/18/Linux系统分区 进程管理 软件包安装/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Linux系统分区 进程管理 软件包安装</div>
     </a>
   
