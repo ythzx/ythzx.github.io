@@ -9,16 +9,18 @@
   
   
   
-  <meta name="description" content="1 临时配置网络（ip，网关，dns）">
+  <meta name="description" content="一、网络管理1 临时配置网络（ip，网关，dns）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linu网络管理及基础设置">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/21/Linux网络服务/index.html">
 <meta property="og:site_name" content="小鑫">
-<meta property="og:description" content="1 临时配置网络（ip，网关，dns）">
-<meta property="og:updated_time" content="2017-03-21T15:47:18.423Z">
+<meta property="og:description" content="一、网络管理1 临时配置网络（ip，网关，dns）">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170322002126299-1634151104.jpg">
+<meta property="og:updated_time" content="2017-03-21T16:32:52.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linu网络管理及基础设置">
-<meta name="twitter:description" content="1 临时配置网络（ip，网关，dns）">
+<meta name="twitter:description" content="一、网络管理1 临时配置网络（ip，网关，dns）">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170322002126299-1634151104.jpg">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
   
@@ -75,7 +77,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -129,7 +131,36 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-临时配置网络（ip，网关，dns）"><a href="#1-临时配置网络（ip，网关，dns）" class="headerlink" title="1 临时配置网络（ip，网关，dns）"></a>1 临时配置网络（ip，网关，dns）</h3><a id="more"></a>
+        <h2 id="一、网络管理"><a href="#一、网络管理" class="headerlink" title="一、网络管理"></a>一、网络管理</h2><h3 id="1-临时配置网络（ip，网关，dns）"><a href="#1-临时配置网络（ip，网关，dns）" class="headerlink" title="1 临时配置网络（ip，网关，dns）"></a>1 临时配置网络（ip，网关，dns）</h3><a id="more"></a>
+<p>用<em>ifconfig</em>命令设定网卡的IP地址：</p>
+<p><em>ens33</em>网卡的IP地址为<strong>192.168.16.154</strong>,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig ens33 192.168.16.33 netmask 255.255.255.0</div></pre></td></tr></table></figure></p>
+<p>或者是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig ens33 192.168.16.33/24</div></pre></td></tr></table></figure>
+<p><strong>/24 代表子网掩码 255.255.255.0</strong></p>
+<p>-添加dns服务器<br>    <strong>servername 192.168.16.254</strong></p>
+<ul>
+<li><p>添加默认网关</p>
+<p>  <strong>route add default gw192.168.16.254 netmask 255.255.255.0</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">route -n 查看刚刚添加的网关</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-永久修改IP地址"><a href="#2-永久修改IP地址" class="headerlink" title="2 永久修改IP地址"></a>2 永久修改IP地址</h3><p>需要修改网卡的配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">网卡的配置文件存放在/etc/sysconfig/network-scripts</div></pre></td></tr></table></figure>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170322002126299-1634151104.jpg" alt=""></p>
+<p>下面是修改后的<br>        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">		BOOTPROTP=&quot;static&quot;</div><div class="line"></div><div class="line">		IPADDR=192.168.16.1</div><div class="line"></div><div class="line">		NETMASK=255.255.255.0</div><div class="line"></div><div class="line">		GATEMASK192.168.16.254</div><div class="line"></div><div class="line">		DNS1=192.168.16.254</div><div class="line">.</div><div class="line">		ONBOOT=“yes”</div></pre></td></tr></table></figure></p>
+<h2 id="二、ssh"><a href="#二、ssh" class="headerlink" title="二、ssh"></a>二、ssh</h2><h3 id="1-ssh登录"><a href="#1-ssh登录" class="headerlink" title="1 ssh登录"></a>1 ssh登录</h3><h3 id="2-scp-上传下载"><a href="#2-scp-上传下载" class="headerlink" title="2 scp 上传下载"></a>2 scp 上传下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">scp  /etc/hosts  192.168.168.xx:/tmp</div><div class="line">		远程拷贝  冒号分割  路径</div><div class="line">		输入对方的密码</div><div class="line">	scp  /etc/hosts  python-web2:/tmp</div><div class="line">		主机名</div></pre></td></tr></table></figure>
+<p>下载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp 192.168.168.xx:/root/123.txt</div></pre></td></tr></table></figure></p>
+<h3 id="3-ssh秘钥登录"><a href="#3-ssh秘钥登录" class="headerlink" title="3 ssh秘钥登录"></a>3 ssh秘钥登录</h3><p>不用输入密码</p>
+<pre><code>公钥
+ssh-keygen
+ls /root/.ssh
+
+ssh-copy-id -i 服务端的ip
+</code></pre><h3 id="4-修改ssh-server端口登录"><a href="#4-修改ssh-server端口登录" class="headerlink" title="4 修改ssh server端口登录"></a>4 修改ssh server端口登录</h3><p>ssh 改端口  防止攻击</p>
+<h2 id="三、bash命令"><a href="#三、bash命令" class="headerlink" title="三、bash命令"></a>三、bash命令</h2><p>命令解释器<br>an builtin<br>cd就是内置的<br>source a.sh 没有权限也可以执行</p>
+<p>命令的优先级</p>
+<p>命令分为：</p>
+<p>==&gt; alias<br>　　==&gt; Compound Commands<br>　　　　==&gt; function<br>　　　　　　==&gt; build_in<br>　　　　　　　　==&gt; hash<br>　　　　　　　　　　==&gt; $PATH<br>　　　　　　　　　　　　==&gt; error: command not found</p>
 
       
     </div>
@@ -170,7 +201,7 @@
   
   
     <a href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">Linux之Nginx服务 nfs文件存储 负载均衡</div>
     </a>
   
@@ -185,7 +216,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-临时配置网络（ip，网关，dns）"><span class="nav-number">1.</span> <span class="nav-text">1 临时配置网络（ip，网关，dns）</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、网络管理"><span class="nav-number">1.</span> <span class="nav-text">一、网络管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-临时配置网络（ip，网关，dns）"><span class="nav-number">1.1.</span> <span class="nav-text">1 临时配置网络（ip，网关，dns）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-永久修改IP地址"><span class="nav-number">1.2.</span> <span class="nav-text">2 永久修改IP地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、ssh"><span class="nav-number">2.</span> <span class="nav-text">二、ssh</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ssh登录"><span class="nav-number">2.1.</span> <span class="nav-text">1 ssh登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-scp-上传下载"><span class="nav-number">2.2.</span> <span class="nav-text">2 scp 上传下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ssh秘钥登录"><span class="nav-number">2.3.</span> <span class="nav-text">3 ssh秘钥登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-修改ssh-server端口登录"><span class="nav-number">2.4.</span> <span class="nav-text">4 修改ssh server端口登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、bash命令"><span class="nav-number">3.</span> <span class="nav-text">三、bash命令</span></a></li></ol>
     
     </div>
   </aside>
