@@ -104,6 +104,196 @@
         
           <section id="main">
   
+    <article id="post-正则表达式"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/22/正则表达式/" class="article-date">
+	  <time datetime="2017-03-22T06:14:12.081Z" itemprop="datePublished">March 22, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="title：-正则表达式"><a href="#title：-正则表达式" class="headerlink" title="title： 正则表达式 "></a>title： 正则表达式 </h2><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><blockquote>
+<p>正则就是用一些具有特殊含义的符号组合到一起（称为正则表达式）来描述字符或者字符串的方法</p>
+<p>正则表达式主要用于查找符合某些复杂规则的字符串</p>
+</blockquote>
+<p>在linux中，通配符是由shell解释的，而正则表达式则是由命令解释的，文本处理工具有grep、sed</p>
+<h3 id="1-grep"><a href="#1-grep" class="headerlink" title="1 grep"></a>1 grep</h3><p><strong>grep   文本处理工具</strong></p>
+<p>下面是grep的参数</p>
+<pre><code>-n 显示内容的行号
+-0 只显示内容
+-q 静默  不显示
+    echo $? 返回0证明执行
+-l 文件名
+-A 5 返回该内容以及该内容的后5行(通常用于显示错误日志的内容，错误内容的前后信息)
+-B 3 返回该内容以及该内容的前3行
+-C 2 返回该内容以及该内容的上下两行
+-c  行数(count数量)
+-E==egrep  (以后用grep)
+-i 忽略大小写
+-v 取反
+-w 单词
+</code></pre><h3 id="2-正则表达式的规则"><a href="#2-正则表达式的规则" class="headerlink" title="2 正则表达式的规则"></a>2 正则表达式的规则</h3><p>^<br>    行首</p>
+<pre><code>gerp &apos;^root&apos;  匹配root开头的
+</code></pre><p>$<br>    行尾部</p>
+<pre><code>gerp &apos;bash$&apos;   匹配bash结尾的 能都登录的
+</code></pre><p>.<br>    任意一个字符</p>
+<pre><code>gerp &apos;^.&apos; 查找任意字符开头的
+
+gerp &apos;^b.n&apos; 
+</code></pre><p>*<br>    前面的字符有0个到无穷个</p>
+<pre><code>*前面紧贴的字符
+
+左边那一个字符
+</code></pre><p>+<br>    不能直接用grep,这是扩展正则用egrep</p>
+<pre><code>egrep gerp -e 
+
+左边 有一个到无穷个
+
+ 左边那一个字符
+</code></pre><p>{}<br>    匹配前面字符的数量</p>
+<pre><code>内部可以指定数量
+
+&apos;ab{2,4}&apos; 指定范围
+
+&apos;ab{2,}&apos; 2-无穷
+
+- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">egrep -w &apos;ab&#123;3&#125;&apos; a.txt 匹配单词</div></pre></td></tr></table></figure>
+</code></pre><p>？<br>    左边出现0次或者1次</p>
+<p>[]<br>    取其中的一个</p>
+<pre><code>egrep 
+
+[asdfasdt123456\-]
+
+需要转义
+
+-放到结尾 需要匹配-本身
+
+[a-z]小写字母
+
+[A-Z]大写字母
+
+[a-zA-Z]==[a-Z]小写大写字母
+
+[0-9]
+
+[0-9]+    
+
+^[0-9]  取开头是数字的
+
+^[^0-9]取反
+</code></pre><h3 id="3-sed-stream-editor-流编辑器"><a href="#3-sed-stream-editor-流编辑器" class="headerlink" title="3 sed stream editor  流编辑器"></a>3 sed stream editor  流编辑器</h3><pre><code>过滤一行的内容  1 定位 2 处理
+
+    -n 不打印 静默
+
+    -e &apos;&apos; -e &apos;&apos; 处理多个
+
+    -i 
+
+    -f 规则写入文件
+
+定位 &apos;1&apos;
+
+    &apos;3d&apos; 删除第3行 实际文件没有写入
+
+    ‘3p’打印第三行再打印一次
+
+    -n &apos;3p&apos;只打印第三行
+
+    ‘3c 1111111’ 第三行改成1111111打印
+
+    ‘3a  11111’ 追加
+
+    ‘3i 111’  插入在原来第三行的前面
+
+正则定位：
+
+    sed
+        &apos;/^root/d&apos; test.txt 杀出root 开头
+
+        ‘1,4d’ tes.txt 删除1-4
+
+        ‘1d;4d’            删除1和4行
+
+
+
+最常用
+
+sed &apos;s&apos; test  替换
+
+sed &apos;s/root/hello/&apos; test  没定位 全部匹配
+
+sed &apos;s/root/hello/g&apos; test  没定位 全部匹配  g 把一行中的全部修改
+
+sed -r 扩展
+</code></pre><h3 id="作业二：grep作业（正则表达式及字符处理）"><a href="#作业二：grep作业（正则表达式及字符处理）" class="headerlink" title="作业二：grep作业（正则表达式及字符处理）"></a>作业二：grep作业（正则表达式及字符处理）</h3><pre><code>目标文件/etc/passwd,使用grep命令或egrep
+
+1．显示出所有含有root的行：
+
+2．输出任何包含bash的所有行，还要输出紧接着这行的上下各两行的内容：
+
+3.  显示出有多少行含有nologin。
+
+4．显示出那些行含有root，并将行号一块输出。
+
+5．显示出文件中
+
+6．新建用户
+    abominable
+    abominate
+    anomie
+    atomize
+    编写正则表达式，将他们匹配出来
+
+7．建四个用户
+    Alex213sb
+    Wpq2222b
+    yH438PIG
+    egon666
+    egon
+
+    过滤出用户名组成是字母+数字+字母的行
+
+8．显示出/etc目录下所有包含root的文件名
+
+9. 过滤掉/etc/ssh/sshd_config内所有注释和所有空行
+</code></pre><h2 id="作业三：Sed作业：以-etc-passwd文件为模板"><a href="#作业三：Sed作业：以-etc-passwd文件为模板" class="headerlink" title="作业三：Sed作业：以/etc/passwd文件为模板"></a>作业三：Sed作业：以/etc/passwd文件为模板</h2><p>1，删除文件每行的第一个字符。</p>
+<p>2，删除文件每行的第二个字符。</p>
+<p>3，删除文件每行的最后一个字符。</p>
+<p>4，删除文件每行的倒数第二个字符。</p>
+<p>5，删除文件每行的第二个单词。</p>
+<p>6，删除文件每行的倒数第二个单词。</p>
+<p>7，删除文件每行的最后一个单词。</p>
+<p>8，交换每行的第一个字符和第二个字符。</p>
+<p>9，交换每行的第一个字符和第二个单词。</p>
+<p>10，交换每行的第一个单词和最后一个单词。</p>
+<p>11，删除一个文件中所有的数字。</p>
+<p>12，删除每行开头的所有空格。</p>
+<p>13，用制表符替换文件中出现的所有空格。</p>
+<p>14，把所有大写字母用括号（）括起来。<br>    sed -r ‘s/[A-Z]/(&amp;)/g’ /etc/passwd<br>15，打印每行3次。</p>
+<p>16，只显示每行的第一个单词。</p>
+<p>17，打印每行的第一个单词和第三个单词。</p>
+<p>18，用命令获取格式为    mm/yy/dd    的日期格式，结合管道，将其换成   mm；yy；dd格式</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Linux网络管理及基础设置"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -362,69 +552,6 @@ G :定位到最后...
 <!-- Table of Contents -->
 
   
-    <article id="post-Python数据类型 变量"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/13/Python数据类型 变量/">python输入输出 数据类型 变量</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/13/Python数据类型 变量/" class="article-date">
-	  <time datetime="2017-03-13T11:28:58.885Z" itemprop="datePublished">March 13, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            输入输出
-print()在Python3中是函数
-
-1&gt;&gt;&gt;print('hello world')  #print注意print前面不要有任何空格
-
-
-print输出多个字符，中间用逗号连接，最后输出的时候回替换成空格
-
-
-name = input()在交互行弹出，输入的内容会存name变量
-
-Python基础任何编程语言都有自己的语法，编译器或者解释器负责把符合语法的代码转换成机器码，然后让CPU执行。Python不是编译型是解释型的。Python主要采用缩进的方式
-12345a=100if a &gt;=0:	print(a)else:	print(-a)
-
-当语句以冒号:结尾时，缩进的语句视为代码块。我认为就是具体的逻辑部分缩进有利有弊。好处是强迫你写出格式化...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/13/Python数据类型 变量/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -541,6 +668,18 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/03/22/正则表达式/">(no title)</a></h6>
+              <span>March 22, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/03/21/Linux网络管理及基础设置/">Linux网络管理及基础设置</a></h6>
               <span>March 21, 2017</span>
             </div>
@@ -595,18 +734,6 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/03/13/操作系统和网络基础/">操作系统和网络基础</a></h6>
-              <span>March 13, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -646,7 +773,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
     <h3 class="widget-title">Archiv</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">9</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">10</span></li></ul>
     </div>
   </div>
 
