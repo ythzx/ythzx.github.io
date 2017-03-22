@@ -18,7 +18,8 @@
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170322143258424-1020483639.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170322002126299-1634151104.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170322150814783-1846446467.jpg">
-<meta property="og:updated_time" content="2017-03-22T08:38:53.142Z">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170322170256393-1850021736.jpg">
+<meta property="og:updated_time" content="2017-03-22T09:10:01.806Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux网络管理及基础设置">
 <meta name="twitter:description" content="一、网络管理1 临时配置网络（ip，网关，dns）">
@@ -180,6 +181,36 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">这里把写上公钥的具体路径</div><div class="line"></div><div class="line">![](http://images2015.cnblogs.com/blog/658994/201703/658994-20170322162007752-705470887.jpg)</div></pre></td></tr></table></figure>
 <p>ssh 192.168.16.xx -p 8888<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 三、bash环境 ##</div><div class="line"></div><div class="line">shell有两层意思，一是命令解释器，二是shell脚本</div><div class="line"></div><div class="line"></div><div class="line">###  1 命令的优先级 ###</div><div class="line"></div><div class="line">命令分为：</div></pre></td></tr></table></figure></p>
 <p>==&gt; alias==&gt; Compound Commands==&gt; function ==&gt; build_in<br>==&gt; hash==&gt; $PATH==&gt; error: command not found<br>```</p>
+<h4 id="2-别名alias"><a href="#2-别名alias" class="headerlink" title="2 别名alias"></a>2 别名alias</h4><p>当修改ps aux的别名为aaa后.执行aaa就是执行ps aux的功能，unalias aaa 取消别名</p>
+<h4 id="3-内置函数"><a href="#3-内置函数" class="headerlink" title="3 内置函数"></a>3 内置函数</h4><p>buildin,内置函数是存在于bash中的，只要bash运行，内置函数就能执行</p>
+<h4 id="4-函数"><a href="#4-函数" class="headerlink" title="4 函数"></a>4 函数</h4><p>函数能够将命令进行组合完成相应的任务，当再次需要的时候能够直接调用，这就是函数的模块化作用。</p>
+<h4 id="5-hash"><a href="#5-hash" class="headerlink" title="5 hash"></a>5 hash</h4><p>hash 会将常用的命令的路径存放在缓存中，能够减少搜索命令的时间</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170322170256393-1850021736.jpg" alt=""></p>
+<h2 id="四、元字符"><a href="#四、元字符" class="headerlink" title="四、元字符"></a>四、元字符</h2><p><code>反引号
+     命令替换 取命令的执行结果
+$()
+    同上,但它弥补了</code>的嵌套缺陷</p>
+<p>~ 家目录</p>
+<p>! 取非<br>    ! 历史命令调用+history的编号</p>
+<p>echo $?<br>    返回值为0代表命令执行，非零表示没有执行</p>
+<p>$ 变量取值</p>
+<pre><code>$() 命令替换
+${} 变量名的范围
+</code></pre><p>^ 取非===！</p>
+<p>&amp; 后台执行</p>
+<p>&amp;&amp; 逻辑与</p>
+<p>| 管道</p>
+<p>|| 逻辑或</p>
+<p>= 赋值</p>
+<p>“” 软引</p>
+<p>‘’硬引</p>
+<p>&lt; 输入重定向</p>
+<blockquote>
+<p>输出重定向</p>
+<blockquote>
+<p>追加</p>
+</blockquote>
+</blockquote>
 <p>source a.sh 没有权限也可以立即执行</p>
 
       
@@ -236,7 +267,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、网络管理"><span class="nav-number">1.</span> <span class="nav-text">一、网络管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-临时配置网络（ip，网关，dns）"><span class="nav-number">1.1.</span> <span class="nav-text">1 临时配置网络（ip，网关，dns）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-永久修改IP地址"><span class="nav-number">1.2.</span> <span class="nav-text">2 永久修改IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-hosts文件–本地解析规则"><span class="nav-number">1.3.</span> <span class="nav-text">3 hosts文件–本地解析规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、ssh-服务"><span class="nav-number">2.</span> <span class="nav-text">二、ssh 服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ssh登录"><span class="nav-number">2.1.</span> <span class="nav-text">1 ssh登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-scp-上传下载"><span class="nav-number">2.2.</span> <span class="nav-text">2 scp 上传下载</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、网络管理"><span class="nav-number">1.</span> <span class="nav-text">一、网络管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-临时配置网络（ip，网关，dns）"><span class="nav-number">1.1.</span> <span class="nav-text">1 临时配置网络（ip，网关，dns）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-永久修改IP地址"><span class="nav-number">1.2.</span> <span class="nav-text">2 永久修改IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-hosts文件–本地解析规则"><span class="nav-number">1.3.</span> <span class="nav-text">3 hosts文件–本地解析规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、ssh-服务"><span class="nav-number">2.</span> <span class="nav-text">二、ssh 服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ssh登录"><span class="nav-number">2.1.</span> <span class="nav-text">1 ssh登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-scp-上传下载"><span class="nav-number">2.2.</span> <span class="nav-text">2 scp 上传下载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-别名alias"><span class="nav-number">2.2.1.</span> <span class="nav-text">2 别名alias</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-内置函数"><span class="nav-number">2.2.2.</span> <span class="nav-text">3 内置函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-函数"><span class="nav-number">2.2.3.</span> <span class="nav-text">4 函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-hash"><span class="nav-number">2.2.4.</span> <span class="nav-text">5 hash</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、元字符"><span class="nav-number">3.</span> <span class="nav-text">四、元字符</span></a></li></ol>
     
     </div>
   </aside>
