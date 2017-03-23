@@ -15,10 +15,13 @@
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/23/awk文本处理 shell脚本/index.html">
 <meta property="og:site_name" content="小鑫">
 <meta property="og:description" content="一、awk文本处理awk可以处理有格式的文本，可以指定分割的符号">
-<meta property="og:updated_time" content="2017-03-23T08:38:41.272Z">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170323192500486-1854519208.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170323192501893-368432709.jpg">
+<meta property="og:updated_time" content="2017-03-23T12:33:19.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="awk文本处理 shell脚本">
 <meta name="twitter:description" content="一、awk文本处理awk可以处理有格式的文本，可以指定分割的符号">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170323192500486-1854519208.jpg">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
   
@@ -91,6 +94,14 @@
 </header>
 
 
+  <div style="background:#fff;width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;">
+        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
+      </div>
+
+  </div>
+
 
 
   <div id="container">
@@ -134,6 +145,39 @@
 <p><strong>定位前3行的第一部分内容内容</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F: &apos;NR&lt;=3&#123;print NR,$1&#125;&apos; b.txt</div></pre></td></tr></table></figure>
 <p><strong>&amp;&amp;条件同时满足</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F: &apos;NR&gt;=3 &amp;&amp; NR &lt;=5&#123;print NR,$1&#125;&apos; b.txt</div></pre></td></tr></table></figure></p>
+<p><strong>||或</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F: &apos;NR&lt;=3 || NR &gt;=5&#123;print NR,$1&#125;&apos; b.txt</div></pre></td></tr></table></figure>
+<p><strong>通过正则定位最后的单词并显示第一部分</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F: &apos;/nologin$/&#123;print $1&#125;&apos; b.txt</div></pre></td></tr></table></figure></p>
+<p><strong>先定位第一部分$1~,找出第一部分中r开头t结尾的UID($3)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F: &apos;$1~/^r.*t$/&#123;print $3&#125;&apos; b.txt^C</div></pre></td></tr></table></figure>
+<p><strong>定位第三部分UID&gt;=7并输出行号和第一部分的内容</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">awk -F: &apos;$3&gt;=7&#123;print NR,$1&#125;&apos; b.txt</div></pre></td></tr></table></figure>
+<p><strong>-v有变量要赋值，有多个变量，用多个-v</strong></p>
+<p>后期可以对count变量的值进行改变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">count=7 赋值的时候不能有空格</div><div class="line">awk -v x=$count -F: &apos;$3&gt;=x&#123;print NR,$1,$4&#125;&apos; b.txt</div></pre></td></tr></table></figure></p>
+<p><strong>找到第一组中是root，在’’中需要用“”进行区分</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@test /]# awk -F: &apos;$1==&quot;root&quot;&#123;print NR,$1,$3&#125;&apos; b.txt</div><div class="line">1 root 0</div></pre></td></tr></table></figure>
+<h3 id="取IP地址"><a href="#取IP地址" class="headerlink" title="取IP地址"></a>取IP地址</h3><p>awk不指定符号，默认是空格，网卡IP信息是用空格分割的</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170323192500486-1854519208.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ifconfig  |awk &apos;NR==2&#123;print $2&#125;&apos;</div><div class="line">反引号代表取值</div><div class="line">将结果赋值给ip_addr</div><div class="line"></div><div class="line">echo $ip_addr取值并显示</div></pre></td></tr></table></figure>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170323192501893-368432709.jpg" alt=""></p>
+<h3 id="排序、去掉重复行"><a href="#排序、去掉重复行" class="headerlink" title="排序、去掉重复行"></a>排序、去掉重复行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat a.txt |sort |uniq</div></pre></td></tr></table></figure>
+<h3 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h3><p>awk是一个复杂的工具，在这里只用了它的文本编辑功能，cut是一个精简的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/passwd |cut -d: -f1,3</div></pre></td></tr></table></figure>
+<p>-d指定分割符是冒号，-f代表取的部分，取多个用逗号分开</p>
+<h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find / -type f  查看根下的普通文件</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">find / -name &quot;*.txt&quot; 查看根下的txt文件</div><div class="line"></div><div class="line">这里的文件名需要加双引号</div><div class="line">或者</div><div class="line">find 、-name \*.txt</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find / -size +30M  查找大于30M的文件</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find / -size +10M -size -30M  查找大于10M小于30M的文件</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">find / -size +20M -f -name *.txt</div><div class="line">可以结合起来测试</div><div class="line"></div><div class="line">```			</div><div class="line">find / -name \*.txt -type f -size +10M</div></pre></td></tr></table></figure>
+<h3 id="从文件夹中的文件中找内容"><a href="#从文件夹中的文件中找内容" class="headerlink" title="从文件夹中的文件中找内容"></a>从文件夹中的文件中找内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">grep -rl &apos;root&apos; /test</div><div class="line"></div><div class="line">-r是递归找/test 下子文件，子文件夹下的子文件中的含有root的</div><div class="line"></div><div class="line"></div><div class="line">-l找含有root的文件名</div></pre></td></tr></table></figure>
+<h2 id="shell-脚本"><a href="#shell-脚本" class="headerlink" title="shell 脚本"></a>shell 脚本</h2><h3 id="修改主机名脚本"><a href="#修改主机名脚本" class="headerlink" title="修改主机名脚本"></a>修改主机名脚本</h3><p>修改主机名的时候引入name变量，$name取变量名，文件命名xx.sh<br>```</p>
+<ol>
+<li>read -p “input your hostname” name</li>
+<li>hostnamectl set-hostname $name</li>
+</ol>
+<p>``</p>
+<p><strong>修改完后一定要给给脚本文件添加可执行权限</strong></p>
+<p><strong>chmod +x set-hostname.sh</strong></p>
 
       
     </div>
@@ -189,7 +233,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、awk文本处理"><span class="nav-number">1.</span> <span class="nav-text">一、awk文本处理</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、awk文本处理"><span class="nav-number">1.</span> <span class="nav-text">一、awk文本处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#取IP地址"><span class="nav-number">1.1.</span> <span class="nav-text">取IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序、去掉重复行"><span class="nav-number">1.2.</span> <span class="nav-text">排序、去掉重复行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cut"><span class="nav-number">1.3.</span> <span class="nav-text">cut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find"><span class="nav-number">1.4.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从文件夹中的文件中找内容"><span class="nav-number">1.5.</span> <span class="nav-text">从文件夹中的文件中找内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-脚本"><span class="nav-number">2.</span> <span class="nav-text">shell 脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改主机名脚本"><span class="nav-number">2.1.</span> <span class="nav-text">修改主机名脚本</span></a></li></ol></li></ol>
     
     </div>
   </aside>
