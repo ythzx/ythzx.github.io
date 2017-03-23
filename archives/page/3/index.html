@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>小鑫</title>
+  <title>archiv | 小鑫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -11,7 +11,7 @@
   
   <meta property="og:type" content="website">
 <meta property="og:title" content="小鑫">
-<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/index.html">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/archives/page/3/index.html">
 <meta property="og:site_name" content="小鑫">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小鑫">
@@ -95,327 +95,246 @@
       <div id="content" class="outer">
         
           <section id="main">
-  
-    <article id="post-awk文本处理 shell脚本"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
+  <div class="archives-tags-wrap"><blockquote><span>There are 11 posts in total till now.</span></blockquote>
+
+
+<!-- 完全显示 -->
+
+
+	
+	
+	  
+	  
+	  <section class="archives-wrap">
+	    <div class="archive-year-wrap">
+	      <h1><a href="/archives/2017" class="archive-year">2017</a></h1>
+	    </div>
+	    <div class="archives">
+	
+	<article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/03/23/awk文本处理 shell脚本/" class="archive-article-date">
+		  <time datetime="2017-03-23T08:17:09.855Z" itemprop="datePublished">Mar 23, 2017</time>
+	  </a>
+      
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/23/awk文本处理 shell脚本/">awk文本处理 shell脚本</a>
+      <a class="archive-article-title" href="/2017/03/23/awk文本处理 shell脚本/">awk文本处理 shell脚本</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/23/awk文本处理 shell脚本/" class="article-date">
-	  <time datetime="2017-03-23T08:17:09.855Z" itemprop="datePublished">March 23, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            一、awk文本处理awk可以处理有格式的文本，可以指定分割的符号
-
-提取冒号分割的第一部分
-1awk -F: &apos;&#123;print $1&#125;&apos; b.txt
-提取第一部分并输出冒号分割的有几部分
-1awk -F: &apos;&#123;print $1,NF&#125;&apos; b.txt
-输出冒号分割的第一部分和最后一部分
-1awk -F: &apos;&#123;print $1,$NF&#125;&apos; b.txt
-显示第一部分的行号
-1awk -F: &apos;&#123;print NR,$1&#125;&apos; b.txt
-定位前3行的第一部分内容内容
-1awk -F: &apos;NR&lt;=3&#123;print NR...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/23/awk文本处理 shell脚本/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
+    </header>
   </div>
-  
 </article>
 
-<!-- Table of Contents -->
+	
+	
+	<article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
 
-  
-    <article id="post-正则表达式"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
+      <a href="/2017/03/22/正则表达式/" class="archive-article-date">
+		  <time datetime="2017-03-22T06:14:12.081Z" itemprop="datePublished">Mar 22, 2017</time>
+	  </a>
+      
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/22/正则表达式/">正则表达式</a>
+      <a class="archive-article-title" href="/2017/03/22/正则表达式/">正则表达式</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/22/正则表达式/" class="article-date">
-	  <time datetime="2017-03-22T06:14:12.081Z" itemprop="datePublished">March 22, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
-正则就是用一些具有特殊含义的符号组合到一起（称为正则表达式）来描述字符或者字符串的方法
-正则表达式主要用于查找符合某些复杂规则的字符串
-
-
-在linux中，通配符是由shell解释的，而正则表达式则是由命令解释的，文本处理工具有grep、sed
-1 grepgrep   文本处理工具
-下面是grep的参数
--n 显示内容的行号
--0 只显示内容
--q 静默  不显示
-    echo $? 返回0证明执行
--l 文件名
--A 5 返回该内容以及该内容的后5行(通常用于显示错误日志的内容，错误内容的前后信息)
--B 3 返回该内容以及该内容的前3行
--C 2 返回该内容以及该内容的上下两行
--c  行数(count数量)
--E==egrep  (以后用grep)
--i 忽略大小写
--v...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/22/正则表达式/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
+    </header>
   </div>
-  
 </article>
 
-<!-- Table of Contents -->
+	
+	
+	<article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
 
-  
-    <article id="post-Linux网络管理及基础设置"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
+      <a href="/2017/03/21/Linux网络管理及基础设置/" class="archive-article-date">
+		  <time datetime="2017-03-21T15:37:39.529Z" itemprop="datePublished">Mar 21, 2017</time>
+	  </a>
+      
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/21/Linux网络管理及基础设置/">Linux网络管理及基础设置</a>
+      <a class="archive-article-title" href="/2017/03/21/Linux网络管理及基础设置/">Linux网络管理及基础设置</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/21/Linux网络管理及基础设置/" class="article-date">
-	  <time datetime="2017-03-21T15:37:39.529Z" itemprop="datePublished">March 21, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            一、网络管理1 临时配置网络（ip，网关，dns）
-用ifconfig命令设定网卡的IP地址：
-ens33网卡的IP地址为192.168.16.154,1ifconfig ens33 192.168.16.33 netmask 255.255.255.0
-或者是
-1ifconfig ens33 192.168.16.33/24
-/24 代表子网掩码 255.255.255.0
--添加dns服务器
-**servername 192.168.16.254**
-
-添加默认网关
-  route add default gw192.168.16.254 netmask 255.255.255.0
-  1route -n 查看刚刚添加的网关
-
-
-
-
-删除添加的网关
-  route del defa...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/21/Linux网络管理及基础设置/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
+    </header>
   </div>
-  
 </article>
 
-<!-- Table of Contents -->
+	
+	
+	<article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
 
-  
-    <article id="post-Linux之Nginx服务 nfs文件存储 负载均衡"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
+      <a href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/" class="archive-article-date">
+		  <time datetime="2017-03-20T15:51:25.666Z" itemprop="datePublished">Mar 20, 2017</time>
+	  </a>
+      
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/">Linux之Nginx服务 nfs文件存储 负载均衡</a>
+      <a class="archive-article-title" href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/">Linux之Nginx服务 nfs文件存储 负载均衡</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/" class="article-date">
-	  <time datetime="2017-03-20T15:51:25.666Z" itemprop="datePublished">March 20, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            一、搭建Nginx服务
-Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器
-
-1 安装扩展包epel在安装Nginx之前需要安装epel扩展包，先通过rpm -qi epel-release 查看一下是否安装，通过查看已经安装，如果没有安装就需要通过yum install epel进行安装
-
-通过yum安装Nginx需要有扩展的源epel.repo ，确定有后yum install nginx -y 就开始安装
-
-查看下Nginx版本是1.10.2，这是官方的稳定版本
-
-2 修改配置文件Nginx的配置文件村村存放在/etc/nginx/ngi...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
+    </header>
   </div>
-  
 </article>
 
-<!-- Table of Contents -->
+	
+	
+	<article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
 
-  
-    <article id="post-Linux系统分区 进程管理 软件包安装"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
+      <a href="/2017/03/18/Linux系统分区 进程管理 软件包安装/" class="archive-article-date">
+		  <time datetime="2017-03-18T09:51:05.862Z" itemprop="datePublished">Mar 18, 2017</time>
+	  </a>
+      
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/18/Linux系统分区 进程管理 软件包安装/">Linux系统分区 进程管理 软件包安装</a>
+      <a class="archive-article-title" href="/2017/03/18/Linux系统分区 进程管理 软件包安装/">Linux系统分区 进程管理 软件包安装</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/18/Linux系统分区 进程管理 软件包安装/" class="article-date">
-	  <time datetime="2017-03-18T09:51:05.862Z" itemprop="datePublished">March 18, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。
-
-一、 Linux系统分区1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G
-
-1.2 查看系统现在的磁盘情况ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英文字母的顺序命名的
-
-1.3 对新添加的磁盘sdc进行分区分区命令是fdisk  /dev/sdc
-
-现在通过帮助信息开始操作
-
-1.3.4 新建分区输入n,在选项中有两个，p和e,p是创建主分区，e是扩展分区。
-给主分区添加5G
-
-扩展分区选择系统大小的时候，将剩余的全部空间给扩展分区，就选...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/18/Linux系统分区 进程管理 软件包安装/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
+    </header>
   </div>
-  
 </article>
 
-<!-- Table of Contents -->
+	
+	
+	<article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
 
+      <a href="/2017/03/17/Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode/" class="archive-article-date">
+		  <time datetime="2017-03-16T16:00:00.000Z" itemprop="datePublished">Mar 17, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/03/17/Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode/">Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode</a>
+    </h1>
   
 
+    </header>
+  </div>
+</article>
 
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">weiter</a>
-  </nav>
+	
+	
+	<article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/03/13/Python数据类型 变量/" class="archive-article-date">
+		  <time datetime="2017-03-13T11:28:58.885Z" itemprop="datePublished">Mar 13, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/03/13/Python数据类型 变量/">python输入输出 数据类型 变量</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+
+	
+	
+	<article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/03/13/操作系统和网络基础/" class="archive-article-date">
+		  <time datetime="2017-03-13T10:56:53.622Z" itemprop="datePublished">Mar 13, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/03/13/操作系统和网络基础/">操作系统和网络基础</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+
+	
+	
+	<article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/03/11/Python之禅/" class="archive-article-date">
+		  <time datetime="2017-03-11T09:32:33.065Z" itemprop="datePublished">Mar 11, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/03/11/Python之禅/">Python之禅</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+
+	
+	
+	<article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/03/11/计算机基础/" class="archive-article-date">
+		  <time datetime="2017-03-11T02:32:23.653Z" itemprop="datePublished">Mar 11, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/03/11/计算机基础/">计算机组成原理基础</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+
+	
+	
+	<article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/03/09/hello-world/" class="archive-article-date">
+		  <time datetime="2017-03-09T09:07:24.008Z" itemprop="datePublished">Mar 09, 2017</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2017/03/09/hello-world/">Hello World</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+
+
+
+	</div></section>
+
+
+
 
 </section>
           <aside id="sidebar">

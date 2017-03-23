@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="小鑫">
 <meta property="og:description" content="正则就是用一些具有特殊含义的符号组合到一起（称为正则表达式）来描述字符或者字符串的方法
 正则表达式主要用于查找符合某些复杂规则的字符串">
-<meta property="og:updated_time" content="2017-03-22T11:53:38.458Z">
+<meta property="og:updated_time" content="2017-03-23T08:02:11.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
 <meta name="twitter:description" content="正则就是用一些具有特殊含义的符号组合到一起（称为正则表达式）来描述字符或者字符串的方法
@@ -93,14 +93,6 @@
   </div>
 </header>
 
-
-  <div style="background:#fff;width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;">
-        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
-      </div>
-
-  </div>
 
 
 
@@ -197,7 +189,7 @@ gerp &apos;^b.n&apos;
 
 [0-9]
 
-[0-9]+    
+[0-9]+    左边的字符有一个或者无穷个
 
 ^[0-9]  取开头是数字的
 
@@ -208,11 +200,11 @@ gerp &apos;^b.n&apos;
 
     -e &apos;&apos; -e &apos;&apos; 处理多个
 
-    -i 
+    -i 对文件本身修改
 
     -f 规则写入文件
 
-定位 &apos;1&apos;
+定位 &apos;1&apos; 用数字代表行
 
     &apos;3d&apos; 删除第3行 实际文件没有写入
 
@@ -220,18 +212,18 @@ gerp &apos;^b.n&apos;
 
     -n &apos;3p&apos;只打印第三行
 
-    ‘3c 1111111’ 第三行改成1111111打印
+    ‘3c 1111111’ 第三行改成1111111打印，其他行不变
 
-    ‘3a  11111’ 追加
+    ‘3a  11111’  第三行后面追加
 
     ‘3i 111’  插入在原来第三行的前面
 
 正则定位：
 
     sed
-        &apos;/^root/d&apos; test.txt 杀出root 开头
+        &apos;/^root/d&apos; test.txt 删除root 开头
 
-        ‘1,4d’ tes.txt 删除1-4
+        ‘1,4d’ tes.txt 删除1-4行
 
         ‘1d;4d’            删除1和4行
 
@@ -239,14 +231,24 @@ gerp &apos;^b.n&apos;
 
 最常用
 
-sed &apos;s&apos; test  替换
+sed &apos;s&apos; test  替换 后面三斜杠原则
 
 sed &apos;s/root/hello/&apos; test  没定位 全部匹配
 
 sed &apos;s/root/hello/g&apos; test  没定位 全部匹配  g 把一行中的全部修改
 
-sed -r 扩展
-</code></pre><h3 id="作业二：grep作业（正则表达式及字符处理）"><a href="#作业二：grep作业（正则表达式及字符处理）" class="headerlink" title="作业二：grep作业（正则表达式及字符处理）"></a>作业二：grep作业（正则表达式及字符处理）</h3><pre><code>目标文件/etc/passwd,使用grep命令或egrep
+sed -r 扩展 用到小括号
+</code></pre><p><strong>对/etc/passwd文件进行处理，将第一个字母删除</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -r &apos;s/^[a-Z]+[^a-Z]+//g&apos; b.txt</div></pre></td></tr></table></figure>
+<p><strong>这种情况是将第一部分和第二部分用空格替换<br>解决办法是通过括号和括号的位置进行替换</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -r &apos;s/(^[a-Z]+)([^a-Z]+)/\1\2/g&apos; b.txt  此时是保持不变</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -r &apos;s/(^[a-Z]+)([^a-Z]+)/\2/g&apos; b.txt  保留第二部分冒号</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -r &apos;s/(^[a-Z]+)([^a-Z]+)/\2\1/g&apos; b.txt  第一和第二部分替换</div></pre></td></tr></table></figure>
+<p><strong>将最后一个单词删除</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -r &apos;s/([^a-Z]+)([a-Z]+)$/\1/g&apos; b.txt</div></pre></td></tr></table></figure>
+<p><strong>将第一个和第二个单词替换</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -r &apos;s/(^[a-Z]+)([^a-Z]+)([a-z]+)([^a-z]+)/\3\2\1\4/g&apos; b.txt</div></pre></td></tr></table></figure>
+<h3 id="作业二：grep作业（正则表达式及字符处理）"><a href="#作业二：grep作业（正则表达式及字符处理）" class="headerlink" title="作业二：grep作业（正则表达式及字符处理）"></a>作业二：grep作业（正则表达式及字符处理）</h3><pre><code>目标文件/etc/passwd,使用grep命令或egrep
 
 1．显示出所有含有root的行：
 
@@ -331,6 +333,15 @@ sed -r 扩展
   
     
 <nav id="article-nav">
+  
+    <a href="/2017/03/23/awk文本处理 shell脚本/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          awk文本处理 shell脚本
+        
+      </div>
+    </a>
   
   
     <a href="/2017/03/21/Linux网络管理及基础设置/" id="article-nav-older" class="article-nav-link-wrap">
