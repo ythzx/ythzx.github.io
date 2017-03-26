@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>脚本自动部署及监控 | 小鑫</title>
+  <title>shell脚本自动部署及监控 | 小鑫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -22,7 +22,7 @@
 
 3.编写计划任务，定时运行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="脚本自动部署及监控">
+<meta property="og:title" content="shell脚本自动部署及监控">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/26/shell脚本自动部署及监控/index.html">
 <meta property="og:site_name" content="小鑫">
 <meta property="og:description" content="开发脚本自动部署及监控
@@ -37,9 +37,9 @@
 2.编写监控脚本，监控集群内所有服务存活状态，内存、磁盘剩余率检测，异常则发送报警邮件
 
 3.编写计划任务，定时运行">
-<meta property="og:updated_time" content="2017-03-26T03:54:17.473Z">
+<meta property="og:updated_time" content="2017-03-26T04:16:34.835Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="脚本自动部署及监控">
+<meta name="twitter:title" content="shell脚本自动部署及监控">
 <meta name="twitter:description" content="开发脚本自动部署及监控
 1.编写脚本自动部署反向代理、web、nfs；
 
@@ -108,7 +108,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -147,7 +147,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      脚本自动部署及监控
+      shell脚本自动部署及监控
     </h1>
   
 
@@ -175,9 +175,8 @@
 
 3.编写计划任务，定时运行监控脚本，完成监控操作
 </code></pre><a id="more"></a>
-<h2 id="一、shell脚本部署nginx反向代理和三个web服务"><a href="#一、shell脚本部署nginx反向代理和三个web服务" class="headerlink" title="一、shell脚本部署nginx反向代理和三个web服务"></a>一、shell脚本部署nginx反向代理和三个web服务</h2><p>对反向代理服务器进行配置</p>
-<p>对三台web服务器分别进行配置</p>
-
+<h2 id="一、shell脚本部署nginx反向代理和三个web服务"><a href="#一、shell脚本部署nginx反向代理和三个web服务" class="headerlink" title="一、shell脚本部署nginx反向代理和三个web服务"></a>一、shell脚本部署nginx反向代理和三个web服务</h2><h3 id="1-对反向代理服务器进行配置"><a href="#1-对反向代理服务器进行配置" class="headerlink" title="1 对反向代理服务器进行配置"></a>1 对反向代理服务器进行配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">#修改用户交互页面 用户输入参数执行相应的参数</div><div class="line">#安装epel扩展包和nginx</div><div class="line">function ng_yum_install()&#123;</div><div class="line"></div><div class="line">    yum install epel-release -y</div><div class="line">    yum install nginx -y</div><div class="line"></div><div class="line">&#125;</div><div class="line">#nginx init function </div><div class="line">#nginx status</div><div class="line">#nginx 开机enable</div><div class="line">function ng_init()&#123;</div><div class="line"></div><div class="line">    systemctl start nginx</div><div class="line">    systemctl enable nginx</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">ng_yum_install</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">sed -ri &apos;/^http/a \ \ \ \ upstream pythonweb&#123;\n server\ 192.168.43.21;weight=3;\n server\ 192.168.43.23;\nserver\ 192.168.43.24;\n&#125;&apos; /etc/nginx/nginx.conf  #四个反斜杠是四个空格</div><div class="line">sed -ri &apos;/^location\ \&#123;/a proxy_pass http:\/\/pythonweb;&apos; /etc/nginx/nginx.conf</div><div class="line"></div><div class="line">ng_init</div><div class="line">systemctl stop firewalld</div></pre></td></tr></table></figure>
+<h3 id="2-对三台web服务器分别进行配置"><a href="#2-对三台web服务器分别进行配置" class="headerlink" title="2 对三台web服务器分别进行配置"></a>2 对三台web服务器分别进行配置</h3>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -188,7 +187,7 @@
 	<div id="comment">
 	
 	<!-- 多说评论框 start -->
-	 <div class="ds-thread" data-thread-key="/2017/03/26/shell脚本自动部署及监控/" data-title="脚本自动部署及监控" data-url="https://github.com/ythzx/ythzx.github.io/2017/03/26/shell脚本自动部署及监控/"></div>
+	 <div class="ds-thread" data-thread-key="/2017/03/26/shell脚本自动部署及监控/" data-title="shell脚本自动部署及监控" data-url="https://github.com/ythzx/ythzx.github.io/2017/03/26/shell脚本自动部署及监控/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -217,7 +216,7 @@
   
   
     <a href="/2017/03/23/awk文本处理 shell脚本/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">awk文本处理 shell脚本</div>
     </a>
   
@@ -232,7 +231,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、shell脚本部署nginx反向代理和三个web服务"><span class="nav-number">1.</span> <span class="nav-text">一、shell脚本部署nginx反向代理和三个web服务</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、shell脚本部署nginx反向代理和三个web服务"><span class="nav-number">1.</span> <span class="nav-text">一、shell脚本部署nginx反向代理和三个web服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-对反向代理服务器进行配置"><span class="nav-number">1.1.</span> <span class="nav-text">1 对反向代理服务器进行配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-对三台web服务器分别进行配置"><span class="nav-number">1.2.</span> <span class="nav-text">2 对三台web服务器分别进行配置</span></a></li></ol></li></ol>
     
     </div>
   </aside>
