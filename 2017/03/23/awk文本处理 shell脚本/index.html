@@ -17,7 +17,7 @@
 <meta property="og:description" content="一、awk文本处理awk可以处理有格式的文本，可以指定分割的符号">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170323192500486-1854519208.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170323192501893-368432709.jpg">
-<meta property="og:updated_time" content="2017-03-23T12:33:19.832Z">
+<meta property="og:updated_time" content="2017-03-24T09:28:21.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="awk文本处理 shell脚本">
 <meta name="twitter:description" content="一、awk文本处理awk可以处理有格式的文本，可以指定分割的符号">
@@ -170,14 +170,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find / -size +10M -size -30M  查找大于10M小于30M的文件</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">find / -size +20M -f -name *.txt</div><div class="line">可以结合起来测试</div><div class="line"></div><div class="line">```			</div><div class="line">find / -name \*.txt -type f -size +10M</div></pre></td></tr></table></figure>
 <h3 id="从文件夹中的文件中找内容"><a href="#从文件夹中的文件中找内容" class="headerlink" title="从文件夹中的文件中找内容"></a>从文件夹中的文件中找内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">grep -rl &apos;root&apos; /test</div><div class="line"></div><div class="line">-r是递归找/test 下子文件，子文件夹下的子文件中的含有root的</div><div class="line"></div><div class="line"></div><div class="line">-l找含有root的文件名</div></pre></td></tr></table></figure>
-<h2 id="shell-脚本"><a href="#shell-脚本" class="headerlink" title="shell 脚本"></a>shell 脚本</h2><h3 id="修改主机名脚本"><a href="#修改主机名脚本" class="headerlink" title="修改主机名脚本"></a>修改主机名脚本</h3><p>修改主机名的时候引入name变量，$name取变量名，文件命名xx.sh<br>```</p>
-<ol>
-<li>read -p “input your hostname” name</li>
-<li>hostnamectl set-hostname $name</li>
-</ol>
-<p>``</p>
-<p><strong>修改完后一定要给给脚本文件添加可执行权限</strong></p>
-<p><strong>chmod +x set-hostname.sh</strong></p>
+<h2 id="shell-脚本"><a href="#shell-脚本" class="headerlink" title="shell 脚本"></a>shell 脚本</h2><h3 id="修改主机名脚本"><a href="#修改主机名脚本" class="headerlink" title="修改主机名脚本"></a>修改主机名脚本</h3><p>修改主机名的时候引入name变量，$name取变量名，文件命名xx.sh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">1. read -p &quot;input your hostname&quot; name</div><div class="line">2. hostnamectl set-hostname $name</div><div class="line"></div><div class="line">``</div><div class="line"></div><div class="line">**修改完后一定要给给脚本文件添加可执行权限**</div><div class="line"></div><div class="line">**chmod +x set-hostname.sh**</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">### 变量 ###</div><div class="line"></div><div class="line"> </div><div class="line"></div><div class="line">系统变量</div><div class="line"></div><div class="line">全局变量</div><div class="line"></div><div class="line">局部变量</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">### 测试文件 ###</div><div class="line"></div><div class="line">test==[]，在shell的判断中，用[]</div><div class="line"></div><div class="line"></div><div class="line">使用man test查看帮助文档</div><div class="line"></div><div class="line">####  1 整数的比较 ####</div><div class="line"></div><div class="line">	   INTEGER1 -eq INTEGER2</div><div class="line">              INTEGER1 is equal to INTEGER2  等于</div><div class="line"></div><div class="line">       INTEGER1 -ge INTEGER2</div><div class="line">              INTEGER1 is greater than or equal to INTEGER2						大于等于</div><div class="line"></div><div class="line">       INTEGER1 -gt INTEGER2</div><div class="line">              INTEGER1 is greater than INTEGER2  大于</div><div class="line">	</div><div class="line">       INTEGER1 -le INTEGER2</div><div class="line">              INTEGER1 is less than or equal to 小于等于 INTEGER 2</div><div class="line"></div><div class="line">       INTEGER1 -lt INTEGER2      小于</div><div class="line">	   INTEGER1 -ne INTEGER2      不等于</div><div class="line"></div><div class="line">例如：</div></pre></td></tr></table></figure></p>
+<p>[ 3 -lt 2 ]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">echo $?  返回0代表执行成功 返回非零代表没有执行</div><div class="line"></div><div class="line">**方括号左右需要有空格**</div><div class="line"></div><div class="line">**想要用符号用（（））**</div></pre></td></tr></table></figure></p>
+<p>((3&gt;4))<br>echo $?<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 2 与或 ####</div><div class="line"></div><div class="line">	   EXPRESSION1 -a EXPRESSION2    逻辑与</div><div class="line">              both EXPRESSION1 and EXPRESSION2 are true</div><div class="line"></div><div class="line">       EXPRESSION1 -o EXPRESSION2    逻辑或</div><div class="line">              either EXPRESSION1 or EXPRESSION2 is true</div></pre></td></tr></table></figure></p>
+<p>[ 5 -gt 3 -a 5 -lt 3 ]<br>echo $?  返回1</p>
+<p>```</p>
+<h4 id="2-比较字符串"><a href="#2-比较字符串" class="headerlink" title="2 比较字符串"></a>2 比较字符串</h4><p>字符串的比较</p>
 
       
     </div>
@@ -216,6 +214,15 @@
     
 <nav id="article-nav">
   
+    <a href="/2017/03/26/shell脚本自动部署及监控/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/03/22/正则表达式/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
@@ -233,7 +240,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、awk文本处理"><span class="nav-number">1.</span> <span class="nav-text">一、awk文本处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#取IP地址"><span class="nav-number">1.1.</span> <span class="nav-text">取IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序、去掉重复行"><span class="nav-number">1.2.</span> <span class="nav-text">排序、去掉重复行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cut"><span class="nav-number">1.3.</span> <span class="nav-text">cut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find"><span class="nav-number">1.4.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从文件夹中的文件中找内容"><span class="nav-number">1.5.</span> <span class="nav-text">从文件夹中的文件中找内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-脚本"><span class="nav-number">2.</span> <span class="nav-text">shell 脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改主机名脚本"><span class="nav-number">2.1.</span> <span class="nav-text">修改主机名脚本</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、awk文本处理"><span class="nav-number">1.</span> <span class="nav-text">一、awk文本处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#取IP地址"><span class="nav-number">1.1.</span> <span class="nav-text">取IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序、去掉重复行"><span class="nav-number">1.2.</span> <span class="nav-text">排序、去掉重复行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cut"><span class="nav-number">1.3.</span> <span class="nav-text">cut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find"><span class="nav-number">1.4.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从文件夹中的文件中找内容"><span class="nav-number">1.5.</span> <span class="nav-text">从文件夹中的文件中找内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-脚本"><span class="nav-number">2.</span> <span class="nav-text">shell 脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改主机名脚本"><span class="nav-number">2.1.</span> <span class="nav-text">修改主机名脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-比较字符串"><span class="nav-number">2.1.1.</span> <span class="nav-text">2 比较字符串</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>
