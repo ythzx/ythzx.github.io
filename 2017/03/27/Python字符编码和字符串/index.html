@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://i.imgur.com/aejNtv6.png">
 <meta property="og:image" content="http://i.imgur.com/Ncn5OPS.png">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317094251604-1713476685.jpg">
-<meta property="og:updated_time" content="2017-03-27T08:58:07.672Z">
+<meta property="og:updated_time" content="2017-03-27T09:03:06.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python字符编码及字符串">
 <meta name="twitter:description" content="字符编码">
@@ -80,7 +80,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -157,30 +157,15 @@
 <p><img src="http://i.imgur.com/Ncn5OPS.png" alt=""></p>
 <h3 id="python-字符串"><a href="#python-字符串" class="headerlink" title="python 字符串"></a>python 字符串</h3><p>Python3的字符串是Unicode编码，能够支持所有的语言，也就不用像Python2中那样需要开头添加 #coding：utf-8</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;print(<span class="string">'中文'</span>)</div></pre></td></tr></table></figure>
-<p>Python提供了ord()函数获取字符的整数表示，chr()函数把编码转换为对应的字符<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;ord(<span class="string">'A'</span>)</div></pre></td></tr></table></figure></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>65</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;chr(<span class="number">66</span>)</div></pre></td></tr></table></figure>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>‘B’</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<p>Python提供了ord()函数获取字符的整数表示，chr()函数把编码转换为对应的字符<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;ord(<span class="string">'A'</span>)</div><div class="line"><span class="number">65</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;chr(<span class="number">66</span>)</div><div class="line"><span class="string">'B'</span></div></pre></td></tr></table></figure>
 <p><strong>python 的字符类型是str,在内存中以Unicode存储，一个字符对应多个字节，要存放到磁盘上，到网络上传输，需要str变成以字节为单位的bytes</strong></p>
 <p>Python的bytes用带b前缀的单引号或双引号表示</p>
 <p>x=b’ABC’</p>
 <p>‘ABC’是str,</p>
 <p>b’ABC’是bytes</p>
 <p>两者的显示内容是一样的，以Unicode表示的str转换成bytes是通过encode()方法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;<span class="string">'ABC'</span>.encode(<span class="string">'ascii'</span>)</div></pre></td></tr></table></figure>
-<p>b’ABC’</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;<span class="string">'ABC'</span>.encode(<span class="string">'ascii'</span>)</div><div class="line"><span class="string">b'ABC'</span></div></pre></td></tr></table></figure>
 <p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317094251604-1713476685.jpg" alt=""></p>
 <p>encode()可以指定转换成相应的格式，纯英文的str可以转换成ASCII，中文转换ASCII的时候超出范围，只能转换成utf-8的时候没有问题</p>
 <p><strong>反过来，想要将网络或者磁盘上读取的数据bytes转换成str，用decode</strong></p>
@@ -246,7 +231,7 @@
   
   
     <a href="/2017/03/26/shell脚本自动部署及监控/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">shell脚本自动部署及监控</div>
     </a>
   
