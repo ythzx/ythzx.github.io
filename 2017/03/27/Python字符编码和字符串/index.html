@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python字符编码及字符串 | 小鑫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="字符编码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python字符编码及字符串">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/27/Python字符编码和字符串/index.html">
+<meta property="og:site_name" content="小鑫">
+<meta property="og:description" content="字符编码">
+<meta property="og:image" content="http://i.imgur.com/nllx1lC.png">
+<meta property="og:image" content="http://i.imgur.com/aejNtv6.png">
+<meta property="og:image" content="http://i.imgur.com/Ncn5OPS.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317094251604-1713476685.jpg">
+<meta property="og:updated_time" content="2017-03-27T08:58:07.672Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python字符编码及字符串">
+<meta name="twitter:description" content="字符编码">
+<meta name="twitter:image" content="http://i.imgur.com/nllx1lC.png">
+  
+    <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="小鑫" rel="home"> 小鑫 </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background:#fff;width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;">
+        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
+      </div>
+
+  </div>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Python字符编码和字符串" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python字符编码及字符串
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/27/Python字符编码和字符串/" class="article-date">
+	  <time datetime="2017-03-27T08:45:11.553Z" itemprop="datePublished">March 27, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h3><a id="more"></a>
+<p>字符串是一种数据类型，但是字符串比较特殊的是编码问题，计算机只能处理数字，处理文本就需要将文本转换成数字。<br>计算机设计时8bit作为一个字节byte,一个字节能表示的最大整数就是(2^8)-1  255(二进制11111111)，两个字节65535,4个字节4294967295.</p>
+<blockquote>
+<p>计算机最初由127个字符被编码到计算机中，包含大小写字母，数字，字符，称作ASCII码</p>
+</blockquote>
+<p>但是处理中文至少需要2个字节，中国制定了GBK2312，各个国家都有相应的编码，为了统一制定了Unicode编码。Unicode将所有的所有的语言统一编码，防止出现乱码。</p>
+<p><strong>ASCII和Unicode的区别是ASCII通常是1个字节，Unicode是2个字节</strong></p>
+<blockquote>
+<p>如果把ASCII编码的A用Unicode编码，只需要在前面补0就可以，因此，A的Unicode编码是00000000 01000001</p>
+<p>如果统一成Unicode编码，乱码问题从此消失了。但是，如果你写的文本基本上全部是英文的话，用Unicode编码比ASCII编码需要多一倍的存储空间，在存储和传输上就十分不划算。</p>
+</blockquote>
+<p>本着节约的精神，又出现了把Unicode编码转化为“可变长编码”的UTF-8编码。UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会被编码成4-6个字节。如果你要传输的文本包含<strong>大量英文字符</strong>，用<strong>UTF-8编码就能节省空</strong>间：</p>
+<p><img src="http://i.imgur.com/nllx1lC.png" alt=""></p>
+<p>从上面的表格还可以发现，UTF-8编码有一个额外的好处，就是ASCII编码实际上可以被看成是UTF-8编码的一部分，所以，大量只支持ASCII编码的历史遗留软件可以在UTF-8编码下继续工作。</p>
+<blockquote>
+<p>在计算机<strong>内存中</strong>，统一使用Unicode编码，当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码</p>
+</blockquote>
+<p>用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件：</p>
+<p><img src="http://i.imgur.com/aejNtv6.png" alt=""></p>
+<p>浏览网页的时候，服务器会把动态生成的Unicode内容转换为UTF-8再传输到浏览器：</p>
+<p><img src="http://i.imgur.com/Ncn5OPS.png" alt=""></p>
+<h3 id="python-字符串"><a href="#python-字符串" class="headerlink" title="python 字符串"></a>python 字符串</h3><p>Python3的字符串是Unicode编码，能够支持所有的语言，也就不用像Python2中那样需要开头添加 #coding：utf-8</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;print(<span class="string">'中文'</span>)</div></pre></td></tr></table></figure>
+<p>Python提供了ord()函数获取字符的整数表示，chr()函数把编码转换为对应的字符<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;ord(<span class="string">'A'</span>)</div></pre></td></tr></table></figure></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>65</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;chr(<span class="number">66</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>‘B’</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>python 的字符类型是str,在内存中以Unicode存储，一个字符对应多个字节，要存放到磁盘上，到网络上传输，需要str变成以字节为单位的bytes</strong></p>
+<p>Python的bytes用带b前缀的单引号或双引号表示</p>
+<p>x=b’ABC’</p>
+<p>‘ABC’是str,</p>
+<p>b’ABC’是bytes</p>
+<p>两者的显示内容是一样的，以Unicode表示的str转换成bytes是通过encode()方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;<span class="string">'ABC'</span>.encode(<span class="string">'ascii'</span>)</div></pre></td></tr></table></figure>
+<p>b’ABC’</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201703/658994-20170317094251604-1713476685.jpg" alt=""></p>
+<p>encode()可以指定转换成相应的格式，纯英文的str可以转换成ASCII，中文转换ASCII的时候超出范围，只能转换成utf-8的时候没有问题</p>
+<p><strong>反过来，想要将网络或者磁盘上读取的数据bytes转换成str，用decode</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;<span class="string">b'ABC'</span>decode(<span class="string">'ascii'</span>)</div></pre></td></tr></table></figure>
+<p>‘ABC’</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span>.decode(<span class="string">'utf-8'</span>)</div></pre></td></tr></table></figure>
+<h3 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h3><h4 id="1-字符串格式化"><a href="#1-字符串格式化" class="headerlink" title="1 字符串格式化"></a>1 字符串格式化</h4><p>格式化字符串用%，通常用于输出不同的变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&apos;hello,%s&apos; %word</div><div class="line"></div><div class="line">&gt;&gt;&apos;hello,world&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;hi %s,your  %d&apos; %(&apos;haha&apos;,122)</div></pre></td></tr></table></figure>
+<p>多个需要括号，字符串加引号</p>
+<blockquote>
+<p><em>%</em>运算符就是用来格式化字符串的。在字符串内部，<em>%s</em>表示用字符串替换，<em>%d</em>表示用整数替换，有几个<em>%?</em>占位符，后面就跟几个变量或者值，顺序要对应好。如果只有一个<em>%?</em>，括号可以省略。</p>
+</blockquote>
+<p>格式化整数和浮点数还可以指定是否补0和整数与小数的位数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;%2d-%02d&apos; %(3,1)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;&apos;%.2f&apos; %3.1415      #显示两位小数</div><div class="line">3.14</div></pre></td></tr></table></figure>
+<h4 id="2-数据类型转换"><a href="#2-数据类型转换" class="headerlink" title="2 数据类型转换"></a>2 数据类型转换</h4><p><strong>你不太确定应该用什么，%s永远起作用，它会把任何数据类型转换为字符串
+</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &apos;Age: %s. Gender: %s&apos; % (25, True)</div><div class="line">age :25 Gender : True</div></pre></td></tr></table></figure></p>
+<h4 id="3-str和int的转换"><a href="#3-str和int的转换" class="headerlink" title="3 str和int的转换"></a>3 str和int的转换</h4><p>将字符串str转换成int</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; type(int(&quot;123&quot;))</div><div class="line">&lt;class &apos;int&apos;&gt;</div></pre></td></tr></table></figure>
+<p>将整型int转换成字符串str</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; type(str(&quot;123&quot;))</div><div class="line">&lt;class &apos;str&apos;&gt;</div></pre></td></tr></table></figure>
+<p>用type查看数据类型</p>
+<h4 id="4-的转义"><a href="#4-的转义" class="headerlink" title="4  %的转义"></a>4  %的转义</h4><p>字符串中的%是一个普通的字符，需要转义，<em>%%
+</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;&apos;rate is %d %%&apos; % 8</div><div class="line">rate is  8%</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/03/27/Python字符编码和字符串/" data-title="Python字符编码及字符串" data-url="https://github.com/ythzx/ythzx.github.io/2017/03/27/Python字符编码和字符串/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/26/shell脚本自动部署及监控/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">shell脚本自动部署及监控</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符编码"><span class="nav-number">1.</span> <span class="nav-text">字符编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python-字符串"><span class="nav-number">2.</span> <span class="nav-text">python 字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串格式化"><span class="nav-number">3.</span> <span class="nav-text">字符串格式化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-字符串格式化"><span class="nav-number">3.1.</span> <span class="nav-text">1 字符串格式化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-数据类型转换"><span class="nav-number">3.2.</span> <span class="nav-text">2 数据类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-str和int的转换"><span class="nav-number">3.3.</span> <span class="nav-text">3 str和int的转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-的转义"><span class="nav-number">3.4.</span> <span class="nav-text">4  %的转义</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 小鑫 All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+</body>
+</html>
