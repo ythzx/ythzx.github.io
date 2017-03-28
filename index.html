@@ -71,7 +71,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -103,6 +103,48 @@
       <div id="content" class="outer">
         
           <section id="main">
+  
+    <article id="post-Python数据结构和类型"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/28/Python数据结构和类型/" class="article-date">
+	  <time datetime="2017-03-28T01:36:17.446Z" itemprop="datePublished">March 28, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python数据结构和类型</p>
+<h2 id="1-1-解压序列赋值给多个变量"><a href="#1-1-解压序列赋值给多个变量" class="headerlink" title="1.1 解压序列赋值给多个变量"></a>1.1 解压序列赋值给多个变量</h2><p>现在有一个包含N个元素的元组或者是序列，怎样将它里面的值解压后同时赋值给N个变量？</p>
+<blockquote>
+<p>解决思路：先通过简单的解压赋值给多个变量，前提是变量的数量和序列元素的数量是一致的</p>
+</blockquote>
+<p>下面是简单的代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">p = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</div><div class="line">x,y,y = p</div><div class="line">&gt;&gt;&gt;x --<span class="number">-1</span></div><div class="line">&gt;&gt;&gt;y--<span class="number">-2</span></div><div class="line">&gt;&gt;&gt;z--<span class="number">-3</span></div><div class="line"></div><div class="line">**代码实现<span class="number">1</span>**</div><div class="line">data = [ <span class="string">'ABC'</span>,<span class="number">20</span>,<span class="number">30.11</span>,(<span class="number">16</span>,<span class="number">28</span>,<span class="number">99</span>) ]   <span class="comment"># data中的元素有4个</span></div><div class="line">name,share,price,hello = data     <span class="comment"># 赋值</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;name</div><div class="line"><span class="string">'ABC'</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;share</div><div class="line"><span class="number">20</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;price</div><div class="line"><span class="number">30.11</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;date</div><div class="line">(<span class="number">16</span>,<span class="number">28</span>,<span class="number">39</span>)</div><div class="line"></div><div class="line">**代码实现<span class="number">2</span>**</div><div class="line"></div><div class="line">data = [ <span class="string">'ABC'</span>,<span class="number">20</span>,<span class="number">30.11</span>,(<span class="number">16</span>,<span class="number">28</span>,<span class="number">99</span>) ]   </div><div class="line"></div><div class="line">name,share,price,(one,two,three)= data </div><div class="line"></div><div class="line">&gt;&gt;&gt;name </div><div class="line"><span class="string">'ABC'</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;one</div><div class="line"></div><div class="line"><span class="number">16</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;two</div><div class="line"><span class="number">28</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;three</div><div class="line"><span class="number">99</span></div></pre></td></tr></table></figure>
+<p><strong>如果变量个数和元素的个数不匹配，就会出现错误</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt;&gt;&gt;p = ( <span class="number">4</span>,<span class="number">5</span>)</div><div class="line">x,y,z = p    <span class="comment">#变量的个数超过元素的个数</span></div><div class="line"></div><div class="line">ValueError: <span class="keyword">not</span> enough values to unpack (expected <span class="number">3</span>, got <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>这种解压赋值适合任何迭代对象，字符串，。。。。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a,b,c,d,e = p</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line"><span class="string">'h'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line"><span class="string">'e'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>c</div><div class="line"><span class="string">'l'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d</div><div class="line"><span class="string">'l'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>e</div><div class="line"><span class="string">'o'</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<p><strong>如果想要解压一部分，丢弃其他值，只需要通过任意变量进行占位，最后将这些变量丢弃即可</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">data = [ <span class="string">'ABC'</span>,<span class="number">20</span>,<span class="number">30.11</span>,(<span class="number">16</span>,<span class="number">28</span>,<span class="number">99</span>) ] </div><div class="line">_,share,price,_ = date</div><div class="line">&gt;&gt;&gt;share</div><div class="line"><span class="number">20</span></div><div class="line">&gt;&gt;&gt;price</div><div class="line"><span class="number">30.11</span></div></pre></td></tr></table></figure>
+<p>在测试中发现，输入丢弃变量的<em>_</em>的时候，显示的值是<em>(16,28,99)</em></p>
+<h2 id="1-2-解压可迭代对象赋值给多个变量"><a href="#1-2-解压可迭代对象赋值给多个变量" class="headerlink" title="1.2  解压可迭代对象赋值给多个变量"></a>1.2  解压可迭代对象赋值给多个变量</h2>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
   
     <article id="post-Python字符编码和字符串"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
@@ -351,77 +393,11 @@ awk可以处理有格式的文本，可以指定分割的符号
 <!-- Table of Contents -->
 
   
-    <article id="post-Linux网络管理及基础设置"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/21/Linux网络管理及基础设置/">Linux网络管理及基础设置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/21/Linux网络管理及基础设置/" class="article-date">
-	  <time datetime="2017-03-21T15:37:39.529Z" itemprop="datePublished">March 21, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            一、网络管理1 临时配置网络（ip，网关，dns）
-用ifconfig命令设定网卡的IP地址：
-ens33网卡的IP地址为192.168.16.154,1ifconfig ens33 192.168.16.33 netmask 255.255.255.0
-或者是
-1ifconfig ens33 192.168.16.33/24
-/24 代表子网掩码 255.255.255.0
--添加dns服务器
-**servername 192.168.16.254**
-
-添加默认网关
-  route add default gw192.168.16.254 netmask 255.255.255.0
-  1route -n 查看刚刚添加的网关
-
-
-
-
-删除添加的网关
-  route del defa...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/21/Linux网络管理及基础设置/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">weiter</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next</a>
   </nav>
 
 </section>
@@ -433,9 +409,9 @@ ens33网卡的IP地址为192.168.16.154,1ifconfig ens33 192.168.16.33 netmask 25
     <form class="search-form">
         <label style="width: 75%;">
             <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Suche…" value="" name="s" title="Search for:">
+            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
         </label>
-        <input type="submit" class="search-form-submit" value="Suche">
+        <input type="submit" class="search-form-submit" value="Search">
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
@@ -522,10 +498,22 @@ ens33网卡的IP地址为192.168.16.154,1ifconfig ens33 192.168.16.33 netmask 25
     
   <div class="widget_athemes_tabs">
     <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>letzter Beitrag</a></li>
+      <li class="active"><a>Recent Posts</a></li>
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/03/28/Python数据结构和类型/">(no title)</a></h6>
+              <span>March 28, 2017</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -587,18 +575,6 @@ ens33网卡的IP地址为192.168.16.154,1ifconfig ens33 192.168.16.33 netmask 25
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/">Linux之Nginx服务 nfs文件存储 负载均衡</a></h6>
-              <span>March 20, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -606,7 +582,7 @@ ens33网卡的IP地址为192.168.16.154,1ifconfig ens33 192.168.16.33 netmask 25
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/2017-03-17/">2017.03.17</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
@@ -635,10 +611,10 @@ ens33网卡的IP地址为192.168.16.154,1ifconfig ens33 192.168.16.33 netmask 25
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 
