@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python 解压序列、可迭代对象并赋值给多个变量 | 小鑫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Python数据结构和类型
+1.1 解压序列赋值给多个变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 解压序列、可迭代对象并赋值给多个变量">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/28/Python 解压序列、可迭代对象并赋值给多个变量/index.html">
+<meta property="og:site_name" content="小鑫">
+<meta property="og:description" content="Python数据结构和类型
+1.1 解压序列赋值给多个变量">
+<meta property="og:updated_time" content="2017-03-28T16:31:55.019Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 解压序列、可迭代对象并赋值给多个变量">
+<meta name="twitter:description" content="Python数据结构和类型
+1.1 解压序列赋值给多个变量">
+  
+    <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="小鑫" rel="home"> 小鑫 </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background:#fff;width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;">
+        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
+      </div>
+
+  </div>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Python 解压序列、可迭代对象并赋值给多个变量" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python 解压序列、可迭代对象并赋值给多个变量
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/28/Python 解压序列、可迭代对象并赋值给多个变量/" class="article-date">
+	  <time datetime="2017-03-28T01:36:17.446Z" itemprop="datePublished">March 28, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python数据结构和类型</p>
+<h2 id="1-1-解压序列赋值给多个变量"><a href="#1-1-解压序列赋值给多个变量" class="headerlink" title="1.1 解压序列赋值给多个变量"></a>1.1 解压序列赋值给多个变量</h2><a id="more"></a>
+<p>现在有一个包含N个元素的元组或者是序列，怎样将它里面的值解压后同时赋值给N个变量？</p>
+<blockquote>
+<p>解决思路：先通过简单的解压赋值给多个变量，前提是变量的数量和序列元素的数量是一致的</p>
+</blockquote>
+<p>下面是简单的代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">p = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</div><div class="line">x,y,y = p</div><div class="line">&gt;&gt;&gt;x --<span class="number">-1</span></div><div class="line">&gt;&gt;&gt;y--<span class="number">-2</span></div><div class="line">&gt;&gt;&gt;z--<span class="number">-3</span></div><div class="line"></div><div class="line">**代码实现<span class="number">1</span>**</div><div class="line">data = [ <span class="string">'ABC'</span>,<span class="number">20</span>,<span class="number">30.11</span>,(<span class="number">16</span>,<span class="number">28</span>,<span class="number">99</span>) ]   <span class="comment"># data中的元素有4个</span></div><div class="line">name,share,price,hello = data     <span class="comment"># 赋值</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;name</div><div class="line"><span class="string">'ABC'</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;share</div><div class="line"><span class="number">20</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;price</div><div class="line"><span class="number">30.11</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;date</div><div class="line">(<span class="number">16</span>,<span class="number">28</span>,<span class="number">39</span>)</div><div class="line"></div><div class="line">**代码实现<span class="number">2</span>**</div><div class="line"></div><div class="line">data = [ <span class="string">'ABC'</span>,<span class="number">20</span>,<span class="number">30.11</span>,(<span class="number">16</span>,<span class="number">28</span>,<span class="number">99</span>) ]   </div><div class="line"></div><div class="line">name,share,price,(one,two,three)= data </div><div class="line"></div><div class="line">&gt;&gt;&gt;name </div><div class="line"><span class="string">'ABC'</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;one</div><div class="line"></div><div class="line"><span class="number">16</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;two</div><div class="line"><span class="number">28</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;three</div><div class="line"><span class="number">99</span></div></pre></td></tr></table></figure>
+<p><strong>如果变量个数和元素的个数不匹配，就会出现错误</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt;&gt;&gt;p = ( <span class="number">4</span>,<span class="number">5</span>)</div><div class="line">x,y,z = p    <span class="comment">#变量的个数超过元素的个数</span></div><div class="line"></div><div class="line">ValueError: <span class="keyword">not</span> enough values to unpack (expected <span class="number">3</span>, got <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>这种解压赋值适合任何迭代对象，字符串，。。。。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a,b,c,d,e = p</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line"><span class="string">'h'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line"><span class="string">'e'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>c</div><div class="line"><span class="string">'l'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d</div><div class="line"><span class="string">'l'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>e</div><div class="line"><span class="string">'o'</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<p><strong>如果想要解压一部分，丢弃其他值，只需要通过任意变量进行占位，最后将这些变量丢弃即可</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">data = [ <span class="string">'ABC'</span>,<span class="number">20</span>,<span class="number">30.11</span>,(<span class="number">16</span>,<span class="number">28</span>,<span class="number">99</span>) ] </div><div class="line">_,share,price,_ = date</div><div class="line">&gt;&gt;&gt;share</div><div class="line"><span class="number">20</span></div><div class="line">&gt;&gt;&gt;price</div><div class="line"><span class="number">30.11</span></div></pre></td></tr></table></figure>
+<p>在测试中发现，输入丢弃变量的<em>_</em>的时候，显示的值是<em>(16,28,99)</em></p>
+<h2 id="1-2-解压可迭代对象赋值给多个变量"><a href="#1-2-解压可迭代对象赋值给多个变量" class="headerlink" title="1.2  解压可迭代对象赋值给多个变量"></a>1.2  解压可迭代对象赋值给多个变量</h2><p><strong> 问题</strong></p>
+<blockquote>
+<p>如果一个可迭代对象的元素个数超过变量个数时，会抛出一个 ValueError 。 那么怎样才能从这个可迭代对象中解压出N个元素出来？</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/03/28/Python 解压序列、可迭代对象并赋值给多个变量/" data-title="Python 解压序列、可迭代对象并赋值给多个变量" data-url="https://github.com/ythzx/ythzx.github.io/2017/03/28/Python 解压序列、可迭代对象并赋值给多个变量/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/28/Python学习list和tuple/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python list和tuple
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/27/Python字符编码和字符串/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python字符编码及字符串</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-解压序列赋值给多个变量"><span class="nav-number">1.</span> <span class="nav-text">1.1 解压序列赋值给多个变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-解压可迭代对象赋值给多个变量"><span class="nav-number">2.</span> <span class="nav-text">1.2  解压可迭代对象赋值给多个变量</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 小鑫 All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+</body>
+</html>
