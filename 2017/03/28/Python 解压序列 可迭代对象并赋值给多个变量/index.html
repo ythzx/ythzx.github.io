@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="小鑫">
 <meta property="og:description" content="Python数据结构和类型
 1.1 解压序列赋值给多个变量">
-<meta property="og:updated_time" content="2017-03-29T00:38:05.227Z">
+<meta property="og:updated_time" content="2017-03-30T07:13:56.738Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 解压序列、可迭代对象并赋值给多个变量">
 <meta name="twitter:description" content="Python数据结构和类型
@@ -155,6 +155,10 @@
 <p>Python的<strong>星号表达式</strong>可以用来解决这个问题</p>
 <p><a href="http://blog.csdn.net/liuxingen/article/details/50113923" title="*表达式" target="_blank" rel="external">http://blog.csdn.net/liuxingen/article/details/50113923</a></p>
 <p><strong>函数参数前面的星号(*)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>recore = (<span class="string">'hh'</span>,<span class="string">'abdf@163.com'</span>,<span class="string">'1223-456-456'</span>,<span class="string">'456789-123-456'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>name, email,*numbers = recore</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>name</div><div class="line"><span class="string">'hh'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>email</div><div class="line"><span class="string">'abdf@163.com'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>numbers      <span class="comment"># 通过星号存储了同一类的</span></div><div class="line">[<span class="string">'1223-456-456'</span>, <span class="string">'456789-123-456'</span>]  </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(type(numbers))    <span class="comment"># 自动转化成了list</span></div><div class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">list</span>'&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>值得注意的是上面解压出的numbers 变量永远都是<strong>列表类型</strong>，不管解压的电话号码数量是多少(包括0个)。 所以，任何使用到 numbers 变量的代码就不需要做多余的类型检查去确认它是否是列表类型了。</p>
+</blockquote>
 
       
     </div>

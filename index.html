@@ -104,6 +104,54 @@
         
           <section id="main">
   
+    <article id="post-列表字典的复制"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/30/列表字典的复制/">列表、字典的复制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/30/列表字典的复制/" class="article-date">
+	  <time datetime="2017-03-30T06:43:21.908Z" itemprop="datePublished">March 30, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>定义一个列表/字典，当复制这个列表/字典并定义一个新的列表/字典时，通过修改之前的列表/字典来了解这个问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">count = &#123;</div><div class="line">    <span class="string">"name"</span>:<span class="string">"hh"</span>,</div><div class="line">    <span class="string">"conut"</span>: <span class="number">1234</span>,</div><div class="line">    <span class="string">"info"</span>: [<span class="number">100</span>,<span class="number">10</span>]</div><div class="line">&#125;</div><div class="line"></div><div class="line">count2 = count.copy()   <span class="comment"># 复制count内存中的地址</span></div><div class="line">count2[<span class="string">"name"</span>] = <span class="string">"zz"</span></div><div class="line">count[<span class="string">'info'</span>][<span class="number">1</span>] += <span class="number">30</span>  <span class="comment"># 修改info的值 后钻count 和count2 中都有变化</span></div><div class="line"></div><div class="line">print(count,count2)   <span class="comment"># 类似主卡和副卡的概念</span></div></pre></td></tr></table></figure>
+<p>在上面的程序中定义一个字典count，count2复制了count,此时打印count和count2 ，显示的内容是一样的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="string">'name'</span>: <span class="string">'hh'</span>, <span class="string">'conut'</span>: <span class="number">1234</span>, <span class="string">'info'</span>: [<span class="number">100</span>, <span class="number">10</span>]&#125; </div><div class="line">&#123;<span class="string">'name'</span>: <span class="string">'hh'</span>, <span class="string">'conut'</span>: <span class="number">1234</span>, <span class="string">'info'</span>: [<span class="number">100</span>, <span class="number">10</span>]&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>现在修改count的“name”</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;count[<span class="string">"name"</span>] = <span class="string">"aa"</span>  <span class="comment"># 修改count的“name”的值为"aa"</span></div><div class="line">&#123;<span class="string">'name'</span>: <span class="string">'aa'</span>, <span class="string">'conut'</span>: <span class="number">1234</span>, <span class="string">'info'</span>: [<span class="number">100</span>, <span class="number">10</span>]&#125;  <span class="comment"># count中</span></div><div class="line">&#123;<span class="string">'name'</span>: <span class="string">'hh'</span>, <span class="string">'conut'</span>: <span class="number">1234</span>, <span class="string">'info'</span>: [<span class="number">100</span>, <span class="number">10</span>]&#125; <span class="comment"># count2中</span></div></pre></td></tr></table></figure></p>
+<p>通过修改count的“name”的值后发现，此时，字典count变化了但是count2的没有变化</p>
+<p><strong>现在修改info中的内容</strong></p>
+<p>两个字典的内容都是变化的</p>
+<p>这个变化是发生在内存中的，新建一个字典的时，内存会分配一块内存空间给count，这个内存存放的是字典内容的地址，count2复制的仅仅是count1的内存地址。</p>
+<p>当字典count中增加新的内容的时，这个内容会分配一块新的内存，并指向新的内容，而原来的name指向的“hh”还指向了count2，所以“hh”不会被回收。</p>
+<p>当修改count的列表的时候，是修改的列表的内容，而列表的地址没有被修改，所以count和count2中变化是一样的。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python条件判断 if-else  for循环 while循环 break continue"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -141,7 +189,7 @@ if语句执行有个特点，它是从上往下判断，如果在某个判断上
 if条件简写
 123x=1if x:    print('True')
 只要x是非零数值、非空字符串、非空list等，就判断为True，否则为False。
-input 强制类型转换input读入用户的输入后，返...
+bool为假：123456false		[]空列表		...
           
 
         
@@ -333,68 +381,6 @@ ASCII和Unicode的区别是ASCII通常是1个字节，Unicode是2个字节
 <!-- Table of Contents -->
 
   
-    <article id="post-shell脚本自动部署及监控"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/26/shell脚本自动部署及监控/">shell脚本自动部署及监控</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/26/shell脚本自动部署及监控/" class="article-date">
-	  <time datetime="2017-03-26T03:48:43.812Z" itemprop="datePublished">March 26, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            开发脚本自动部署及监控
-1.编写脚本自动部署反向代理、web、nfs；
-
-    要求：
-
-        I、部署nginx反向代理三个web服务，调度算法使用加权轮询；
-
-        II、所有web服务使用共享存储nfs，保证所有web都对其有读写权限，保证数据一致性；
-
-2.编写监控脚本，监控集群内所有服务存活状态，内存、磁盘剩余率检测，异常则发送报警邮件
-
-3.编写计划任务，定时运行监控脚本，完成监控操作
-
-一、shell脚本部署nginx反向代理和三个web服务1 对反向代理服务器进行配置1234567891011121314151617181920212223242526272829303132333435#!/bin/bash#修改用户交互页面 用户输入参数执行相应...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/26/shell脚本自动部署及监控/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -511,6 +497,18 @@ ASCII和Unicode的区别是ASCII通常是1个字节，Unicode是2个字节
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/03/30/列表字典的复制/">列表、字典的复制</a></h6>
+              <span>March 30, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/">Python条件判断 if-else  for循环 while循环 break continue</a></h6>
               <span>March 29, 2017</span>
             </div>
@@ -565,18 +563,6 @@ ASCII和Unicode的区别是ASCII通常是1个字节，Unicode是2个字节
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/03/23/awk文本处理 shell脚本/">awk文本处理 shell脚本</a></h6>
-              <span>March 23, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -616,7 +602,7 @@ ASCII和Unicode的区别是ASCII通常是1个字节，Unicode是2个字节
     <h3 class="widget-title">Archiv</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 

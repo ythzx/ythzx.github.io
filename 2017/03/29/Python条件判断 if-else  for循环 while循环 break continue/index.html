@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/index.html">
 <meta property="og:site_name" content="小鑫">
 <meta property="og:description" content="条件判断 if-else">
-<meta property="og:updated_time" content="2017-03-29T15:16:51.235Z">
+<meta property="og:updated_time" content="2017-03-30T02:22:18.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python条件判断 if-else  for循环 while循环 break continue">
 <meta name="twitter:description" content="条件判断 if-else">
@@ -139,6 +139,7 @@
 <p><strong>if条件简写</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x=<span class="number">1</span></div><div class="line"><span class="keyword">if</span> x:</div><div class="line">    print(<span class="string">'True'</span>)</div></pre></td></tr></table></figure>
 <p><strong>只要x是非零数值、非空字符串、非空list等，就判断为True，否则为False。</strong></p>
+<p>bool为假：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">false</div><div class="line">		[]空列表</div><div class="line">		&#123;&#125;空字典</div><div class="line">		<span class="string">''</span>空字符串</div><div class="line">		()空元组 空结合</div><div class="line">		<span class="number">0</span></div></pre></td></tr></table></figure></p>
 <h2 id="input-强制类型转换"><a href="#input-强制类型转换" class="headerlink" title="input 强制类型转换"></a>input 强制类型转换</h2><p>input读入用户的输入后，返回值类型是字符串<em>str</em><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">age = input(<span class="string">'age'</span>)</div><div class="line"><span class="keyword">if</span> age &lt; <span class="number">20</span>:</div><div class="line">	print(<span class="string">"yong"</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">	print(<span class="string">"old"</span>)</div></pre></td></tr></table></figure></p>
 <p>执行后会出现以下错误<br><strong>TypeError: ‘&lt;’ not supported between instances of ‘str’ and ‘int’</strong></p>
 <p>需要将input的返回值转换成int<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">age = int(input(<span class="string">'age'</span>))</div><div class="line"><span class="keyword">if</span> age &lt; <span class="number">20</span>:</div><div class="line">	print(<span class="string">"yong"</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">	print(<span class="string">"old"</span>)</div></pre></td></tr></table></figure></p>
@@ -201,6 +202,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2017/03/30/列表字典的复制/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          列表、字典的复制
+        
+      </div>
+    </a>
   
   
     <a href="/2017/03/28/Python学习list和tuple/" id="article-nav-older" class="article-nav-link-wrap">

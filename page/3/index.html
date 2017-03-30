@@ -104,6 +104,68 @@
         
           <section id="main">
   
+    <article id="post-Linux系统分区 进程管理 软件包安装"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/18/Linux系统分区 进程管理 软件包安装/">Linux系统分区 进程管理 软件包安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/18/Linux系统分区 进程管理 软件包安装/" class="article-date">
+	  <time datetime="2017-03-18T09:51:05.862Z" itemprop="datePublished">March 18, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。
+
+一、 Linux系统分区1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G
+
+1.2 查看系统现在的磁盘情况ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英文字母的顺序命名的
+
+1.3 对新添加的磁盘sdc进行分区分区命令是fdisk  /dev/sdc
+
+现在通过帮助信息开始操作
+
+1.3.4 新建分区输入n,在选项中有两个，p和e,p是创建主分区，e是扩展分区。
+给主分区添加5G
+
+扩展分区选择系统大小的时候，将剩余的全部空间给扩展分区，就选...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/03/18/Linux系统分区 进程管理 软件包安装/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -390,57 +452,6 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
 <!-- Table of Contents -->
 
   
-    <article id="post-Python之禅"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/11/Python之禅/">Python之禅</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/11/Python之禅/" class="article-date">
-	  <time datetime="2017-03-11T09:32:33.065Z" itemprop="datePublished">March 11, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1&gt;&gt;&gt;import this
-
-12345678910111213141516171819202122232425262728293031323334353637Beautiful is better than ugly.Explicit is better than implicit.Simple is better than complex.Complex is better than complicated.Flat is better than nested.Sparse is better than dense.Readability counts.Special cases aren&apos;t special enough to break the ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/11/Python之禅/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -557,6 +568,18 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/03/30/列表字典的复制/">列表、字典的复制</a></h6>
+              <span>March 30, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/">Python条件判断 if-else  for循环 while循环 break continue</a></h6>
               <span>March 29, 2017</span>
             </div>
@@ -611,18 +634,6 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/03/23/awk文本处理 shell脚本/">awk文本处理 shell脚本</a></h6>
-              <span>March 23, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -662,7 +673,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
     <h3 class="widget-title">Archiv</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
