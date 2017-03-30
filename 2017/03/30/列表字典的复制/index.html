@@ -3,25 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>列表、字典的复制 | 小鑫</title>
+  <title>列表list、字典dict的复制 | 小鑫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   
-  <meta name="description" content="定义一个列表/字典，当复制这个列表/字典并定义一个新的列表/字典时，通过修改之前的列表/字典来了解这个问题
-1234567891011count = &amp;#123;    &quot;name&quot;:&quot;hh&quot;,    &quot;conut&quot;: 1234,    &quot;info&quot;: [100,10]&amp;#125;count2 = count.copy()   # 复制count内存中的地址count2[&quot;name&quot;] = &quot;zz">
+  <meta name="description" content="定义一个列表/字典，当复制这个列表/字典并定义一个新的列表/字典时，通过修改之前的列表/字典来了解这个问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="列表、字典的复制">
+<meta property="og:title" content="列表list、字典dict的复制">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/30/列表字典的复制/index.html">
 <meta property="og:site_name" content="小鑫">
-<meta property="og:description" content="定义一个列表/字典，当复制这个列表/字典并定义一个新的列表/字典时，通过修改之前的列表/字典来了解这个问题
-1234567891011count = &amp;#123;    &quot;name&quot;:&quot;hh&quot;,    &quot;conut&quot;: 1234,    &quot;info&quot;: [100,10]&amp;#125;count2 = count.copy()   # 复制count内存中的地址count2[&quot;name&quot;] = &quot;zz">
-<meta property="og:updated_time" content="2017-03-30T07:10:56.751Z">
+<meta property="og:description" content="定义一个列表/字典，当复制这个列表/字典并定义一个新的列表/字典时，通过修改之前的列表/字典来了解这个问题">
+<meta property="og:updated_time" content="2017-03-30T10:19:48.316Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="列表、字典的复制">
-<meta name="twitter:description" content="定义一个列表/字典，当复制这个列表/字典并定义一个新的列表/字典时，通过修改之前的列表/字典来了解这个问题
-1234567891011count = &amp;#123;    &quot;name&quot;:&quot;hh&quot;,    &quot;conut&quot;: 1234,    &quot;info&quot;: [100,10]&amp;#125;count2 = count.copy()   # 复制count内存中的地址count2[&quot;name&quot;] = &quot;zz">
+<meta name="twitter:title" content="列表list、字典dict的复制">
+<meta name="twitter:description" content="定义一个列表/字典，当复制这个列表/字典并定义一个新的列表/字典时，通过修改之前的列表/字典来了解这个问题">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
   
@@ -117,7 +114,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      列表、字典的复制
+      列表list、字典dict的复制
     </h1>
   
 
@@ -133,6 +130,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>定义一个列表/字典，当复制这个列表/字典并定义一个新的列表/字典时，通过修改之前的列表/字典来了解这个问题</p>
+<a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">count = &#123;</div><div class="line">    <span class="string">"name"</span>:<span class="string">"hh"</span>,</div><div class="line">    <span class="string">"conut"</span>: <span class="number">1234</span>,</div><div class="line">    <span class="string">"info"</span>: [<span class="number">100</span>,<span class="number">10</span>]</div><div class="line">&#125;</div><div class="line"></div><div class="line">count2 = count.copy()   <span class="comment"># 复制count内存中的地址</span></div><div class="line">count2[<span class="string">"name"</span>] = <span class="string">"zz"</span></div><div class="line">count[<span class="string">'info'</span>][<span class="number">1</span>] += <span class="number">30</span>  <span class="comment"># 修改info的值 后钻count 和count2 中都有变化</span></div><div class="line"></div><div class="line">print(count,count2)   <span class="comment"># 类似主卡和副卡的概念</span></div></pre></td></tr></table></figure>
 <p>在上面的程序中定义一个字典count，count2复制了count,此时打印count和count2 ，显示的内容是一样的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="string">'name'</span>: <span class="string">'hh'</span>, <span class="string">'conut'</span>: <span class="number">1234</span>, <span class="string">'info'</span>: [<span class="number">100</span>, <span class="number">10</span>]&#125; </div><div class="line">&#123;<span class="string">'name'</span>: <span class="string">'hh'</span>, <span class="string">'conut'</span>: <span class="number">1234</span>, <span class="string">'info'</span>: [<span class="number">100</span>, <span class="number">10</span>]&#125;</div></pre></td></tr></table></figure></p>
 <p><strong>现在修改count的“name”</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;count[<span class="string">"name"</span>] = <span class="string">"aa"</span>  <span class="comment"># 修改count的“name”的值为"aa"</span></div><div class="line">&#123;<span class="string">'name'</span>: <span class="string">'aa'</span>, <span class="string">'conut'</span>: <span class="number">1234</span>, <span class="string">'info'</span>: [<span class="number">100</span>, <span class="number">10</span>]&#125;  <span class="comment"># count中</span></div><div class="line">&#123;<span class="string">'name'</span>: <span class="string">'hh'</span>, <span class="string">'conut'</span>: <span class="number">1234</span>, <span class="string">'info'</span>: [<span class="number">100</span>, <span class="number">10</span>]&#125; <span class="comment"># count2中</span></div></pre></td></tr></table></figure></p>
@@ -153,7 +151,7 @@
 	<div id="comment">
 	
 	<!-- 多说评论框 start -->
-	 <div class="ds-thread" data-thread-key="/2017/03/30/列表字典的复制/" data-title="列表、字典的复制" data-url="https://github.com/ythzx/ythzx.github.io/2017/03/30/列表字典的复制/"></div>
+	 <div class="ds-thread" data-thread-key="/2017/03/30/列表字典的复制/" data-title="列表list、字典dict的复制" data-url="https://github.com/ythzx/ythzx.github.io/2017/03/30/列表字典的复制/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
