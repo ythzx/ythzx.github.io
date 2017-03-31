@@ -87,14 +87,6 @@
 </header>
 
 
-  <div style="background:#fff;width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;">
-        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
-      </div>
-
-  </div>
-
 
 
   <div id="container">
@@ -103,6 +95,64 @@
       <div id="content" class="outer">
         
           <section id="main">
+  
+    <article id="post-Linux之Nginx服务 nfs文件存储 负载均衡"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/">Linux之Nginx服务 nfs文件存储 负载均衡</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/" class="article-date">
+	  <time datetime="2017-03-20T15:51:25.666Z" itemprop="datePublished">March 20, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            一、搭建Nginx服务
+Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器
+
+1 安装扩展包epel在安装Nginx之前需要安装epel扩展包，先通过rpm -qi epel-release 查看一下是否安装，通过查看已经安装，如果没有安装就需要通过yum install epel进行安装
+
+通过yum安装Nginx需要有扩展的源epel.repo ，确定有后yum install nginx -y 就开始安装
+
+查看下Nginx版本是1.10.2，这是官方的稳定版本
+
+2 修改配置文件Nginx的配置文件村村存放在/etc/nginx/ngi...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
   
     <article id="post-Linux系统分区 进程管理 软件包安装"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
@@ -392,66 +442,6 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
 <!-- Table of Contents -->
 
   
-    <article id="post-操作系统和网络基础"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/13/操作系统和网络基础/">操作系统和网络基础</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/13/操作系统和网络基础/" class="article-date">
-	  <time datetime="2017-03-13T10:56:53.622Z" itemprop="datePublished">March 13, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1 操作系统1.1为什么要有操作系统
-操作系统（Operating System，简称OS）是管理和控制计算机硬件与软件资源的计算机程序，是直接运行在“裸机”上的最基本的系统软件，任何其他软件都必须在操作系统的支持下才能运行。
-
-
-1.2操作系统的位置
-操作系统位于计算机硬件与应用软件之间，本质也是一个软件。 操作系统分为两部分：
-
-由操作系统的内核（运行于内核态，管理硬件资源）
-系统调用（运行于用户态，为应用程序员写的应用程序提供系统调用接口）所以，单纯的说操作系统是运行于内核态的，是不准确的
-
-1.3操作系统的功能
-系统调用接口隐藏硬件调用接口，为应用程序员提供调用硬件资源的更好，更简单，更清晰的模型（系统调用接口）。应用程序员有了这些接口后，就不用再考虑操作硬件的细节，专心开发自...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/13/操作系统和网络基础/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -568,6 +558,18 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/03/31/作业/">作业</a></h6>
+              <span>March 31, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/03/30/列表字典的复制/">列表list、字典dict的复制</a></h6>
               <span>March 30, 2017</span>
             </div>
@@ -622,18 +624,6 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/03/26/shell脚本自动部署及监控/">shell脚本自动部署及监控</a></h6>
-              <span>March 26, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -673,7 +663,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
     <h3 class="widget-title">Archiv</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">19</span></li></ul>
     </div>
   </div>
 
