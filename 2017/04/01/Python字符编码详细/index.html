@@ -18,7 +18,7 @@
 <meta property="og:description" content="字符编码：Python字符编码贯穿Python学习的始终，现在应用的是Python2中字符编码的问题是很多的。
 这次是要彻底解决Python字符编码的问题！！！">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201704/658994-20170404210815550-2132627810.jpg">
-<meta property="og:updated_time" content="2017-04-04T16:04:44.508Z">
+<meta property="og:updated_time" content="2017-04-04T16:14:10.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python字符编码补充">
 <meta name="twitter:description" content="字符编码：Python字符编码贯穿Python学习的始终，现在应用的是Python2中字符编码的问题是很多的。
@@ -171,15 +171,18 @@ Python2默认是ASCII码进行解码
 </blockquote>
 <p><strong>文件的执行编码</strong></p>
  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">s =<span class="string">"中文"</span></div><div class="line"><span class="keyword">print</span> repr(s)  <span class="comment">#repr函数是将数据显示成字符串的方式</span></div></pre></td></tr></table></figure>
-<pre><code>结果：
-**&apos;\xe4\xb8\xad\xe6\x96\x87&apos;  **  现在是字节数据
-</code></pre> <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"> s =<span class="string">u"中文"</span>    <span class="comment">#  在字符串的前面加上u  代表Unicode数据类型</span></div><div class="line"> <span class="keyword">print</span> repr(s)</div><div class="line">结果是：</div><div class="line">	**<span class="string">u'\u4e2d\u6587'</span>**    **Unicode数据类型**</div><div class="line"></div><div class="line"></div><div class="line">**字节数据的解码**</div><div class="line">```python</div><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line"><span class="comment">#Python2.7</span></div><div class="line"></div><div class="line">s1 = <span class="string">'中文'</span></div><div class="line">s2 = <span class="string">u'中文'</span></div><div class="line"></div><div class="line"><span class="comment"># print repr(s)</span></div><div class="line"><span class="keyword">print</span> type(s1)</div><div class="line"><span class="keyword">print</span> type(s1.decode(<span class="string">"utf-8"</span>))  <span class="comment"># 将字节数据(数据类型是str)通过utf-8解码--&gt;unicode数据类型</span></div></pre></td></tr></table></figure>
-<p>结果：<br>**<type 'str'=""></type></p>
-<p><type 'unicode'=""></type></p>
-<blockquote>
-<p>**</p>
-</blockquote>
-<p><strong>数据的编码</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line"><span class="comment">#Python2.7</span></div><div class="line"></div><div class="line">s1 = <span class="string">'中文'</span></div><div class="line">s2 = <span class="string">u'中文'</span></div><div class="line"></div><div class="line"><span class="comment"># print repr(s)</span></div><div class="line"><span class="comment"># print type(s1)</span></div><div class="line"><span class="comment"># print type(s1.decode("utf-8"))  # 将字节数据(数据类型是str)通过utf-8解码--&gt;unicode数据类型</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> type(s2)</div><div class="line"><span class="keyword">print</span> type(s2.encode(<span class="string">"utf-8"</span>))  <span class="comment">#  将Unicode数据(数据类型是Unicode)通过utf-8编码--&gt;str数据类型</span></div><div class="line"><span class="keyword">print</span> s2</div></pre></td></tr></table></figure></p>
+<p>结果：<br><strong>‘\xe4\xb8\xad\xe6\x96\x87’  </strong>  现在是字节数据</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">s =<span class="string">u"中文"</span>    <span class="comment">#  在字符串的前面加上u  代表Unicode数据类型</span></div><div class="line"><span class="keyword">print</span> repr(s)</div></pre></td></tr></table></figure>
+<p>结果是：<br>    <strong>u’\u4e2d\u6587’</strong>    <strong>Unicode数据类型</strong></p>
+<p><strong>字节数据的解码</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line"><span class="comment">#Python2.7</span></div><div class="line"></div><div class="line">s1 = <span class="string">'中文'</span></div><div class="line">s2 = <span class="string">u'中文'</span></div><div class="line"></div><div class="line"><span class="comment"># print repr(s)</span></div><div class="line"><span class="keyword">print</span> type(s1)</div><div class="line"><span class="keyword">print</span> type(s1.decode(<span class="string">"utf-8"</span>))  <span class="comment"># 将字节数据(数据类型是str)通过utf-8解码--&gt;unicode数据类型</span></div></pre></td></tr></table></figure>
+<p>结果：</p>
+<p><type 'str'=""></type></p>
+<type 'unicode'="">
+
+
+<p><strong>数据的编码</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line"><span class="comment">#Python2.7</span></div><div class="line"></div><div class="line">s1 = <span class="string">'中文'</span></div><div class="line">s2 = <span class="string">u'中文'</span></div><div class="line"></div><div class="line"><span class="comment"># print repr(s)</span></div><div class="line"><span class="comment"># print type(s1)</span></div><div class="line"><span class="comment"># print type(s1.decode("utf-8"))  # 将字节数据(数据类型是str)通过utf-8解码--&gt;unicode数据类型</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> type(s2)</div><div class="line"><span class="keyword">print</span> type(s2.encode(<span class="string">"utf-8"</span>))  <span class="comment">#  将Unicode数据(数据类型是Unicode)通过utf-8编码--&gt;str数据类型</span></div><div class="line"><span class="keyword">print</span> s2</div></pre></td></tr></table></figure>
 <p>结果是：</p>
 <p><type 'unicode'=""></type></p>
 <p><type 'str'=""><br>中文</type></p>
@@ -195,7 +198,7 @@ Python2默认是ASCII码进行解码
 <p>注意点：</p>
 <pre><code>1 、Unicode   gbk utf-8 都是编码规则
 2 、内存中是Unicode   Unicode作为转换的中转站
-</code></pre>
+</code></pre></type>
       
     </div>
     <footer class="entry-meta entry-footer">
