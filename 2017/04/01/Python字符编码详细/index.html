@@ -9,16 +9,21 @@
   
   
   
-  <meta name="description" content="字符编码：">
+  <meta name="description" content="字符编码：Python字符编码贯穿Python学习的始终，现在应用的是Python2中字符编码的问题是很多的。
+这次是要彻底解决Python字符编码的问题！！！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python字符编码补充">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/01/Python字符编码详细/index.html">
 <meta property="og:site_name" content="小鑫">
-<meta property="og:description" content="字符编码：">
-<meta property="og:updated_time" content="2017-04-04T12:51:40.770Z">
+<meta property="og:description" content="字符编码：Python字符编码贯穿Python学习的始终，现在应用的是Python2中字符编码的问题是很多的。
+这次是要彻底解决Python字符编码的问题！！！">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201704/658994-20170404210815550-2132627810.jpg">
+<meta property="og:updated_time" content="2017-04-04T16:04:44.508Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python字符编码补充">
-<meta name="twitter:description" content="字符编码：">
+<meta name="twitter:description" content="字符编码：Python字符编码贯穿Python学习的始终，现在应用的是Python2中字符编码的问题是很多的。
+这次是要彻底解决Python字符编码的问题！！！">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201704/658994-20170404210815550-2132627810.jpg">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
   
@@ -129,9 +134,9 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="字符编码："><a href="#字符编码：" class="headerlink" title="字符编码："></a>字符编码：</h3><a id="more"></a>
-<p>字符编码的发展过程：        </p>
-<pre><code>1 、ASCII :256 美国需要128个字符，只需要7位   --美国
+        <h3 id="字符编码："><a href="#字符编码：" class="headerlink" title="字符编码："></a>字符编码：</h3><p>Python字符编码贯穿Python学习的始终，现在应用的是Python2中字符编码的问题是很多的。</p>
+<p>这次是要彻底解决Python字符编码的问题！！！<br><a id="more"></a></p>
+<h4 id="1-字符编码的发展过程："><a href="#1-字符编码的发展过程：" class="headerlink" title="1 字符编码的发展过程："></a>1 字符编码的发展过程：</h4><pre><code>1 、ASCII :256 美国需要128个字符，只需要7位   --美国
 2、扩展ASCII : 8 比特位  --拉丁
 3、GB2312 ：
         中文扩展ASCII 两个字节都大于127   --中国
@@ -142,34 +147,49 @@
     至少两个字节：2^16 = 65536   
     在Unicode基础上产生utf-8，可变长字符编码
             英文 1个字节，非英文2-6
-</code></pre><p><strong>内存中的统一是Unicode编码</strong></p>
-<p><strong>数据的存储是utf-8（硬盘和网络传输）</strong></p>
-<pre><code>存储数据占用空间少
+</code></pre><h4 id="2-数据的存储形式"><a href="#2-数据的存储形式" class="headerlink" title="2 数据的存储形式"></a>2 数据的存储形式</h4><p><strong>内存中的统一是Unicode编码</strong>，<strong>数据的存储是utf-8（硬盘和网络传输）</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201704/658994-20170404210815550-2132627810.jpg" alt=""></p>
+<pre><code>存储数据使用utf-8占用空间少
 传输数据快
 
 Unicode（明文对应二进制）这个二进制是16进制格式的
 utf-8（二进制对应二进制）
-</code></pre><h3 id="程序执行前："><a href="#程序执行前：" class="headerlink" title="程序执行前："></a>程序执行前：</h3><pre><code>文本编辑器的例子：（这是文件的编码）
+</code></pre><h3 id="3-程序执行前："><a href="#3-程序执行前：" class="headerlink" title="3 程序执行前："></a>3 程序执行前：</h3><p>普通软件的执行是通过调用操作系统，让CPU从内存中获取数据，然后执行。</p>
+<pre><code>文本编辑器的例子：（这是文件的编码）
 **存储:**
     明文---Unicode（内存中）------存储到本地--编码成utf-8的格式存放在硬盘上
 **读取：**
     utf-8解码成Unicode，Unicode解码成中文
-</code></pre><h3 id="程序执行中："><a href="#程序执行中：" class="headerlink" title="程序执行中："></a>程序执行中：</h3><p>Python2:<br>        开头的声明，是解码的声明#coding:utf-8  按照utf-8来解码<br>        默认是ASCII</p>
-<pre><code>    文件的执行编码
-     ```python
-     s =&quot;中文&quot;
-     print repr(s)
-
-    1 str (数据类型的名字): bytes 数据 
-    2 unicode (数据类型的名字): unicode将二进制数据编码成另一种二进制数据 （如utf=8）
-
-Python2给解释器的是字节数据
+</code></pre><h3 id="4-程序执行中："><a href="#4-程序执行中：" class="headerlink" title="4 程序执行中："></a>4 程序执行中：</h3><p>Python解释器的有<strong>调用</strong>、<strong>执行</strong>的功能，首先加载到内存职工需要解码，<strong>用什么编码就用什么解码</strong>。</p>
+<p>程序<strong>执行中</strong>主要是针对的是字符串，Python解释器是逐行执行，文件中的字符串有相应的编码格式，这是最重要的内容。</p>
+<p>Python2:</p>
+<pre><code>开头的声明，是解码的声明#coding:utf-8  按照utf-8来解码
+Python2默认是ASCII码进行解码
+</code></pre><blockquote>
+<p>1 str (数据类型的名字): bytes 数据<br>定义一个字符串就是字节数据</p>
+<p>2 unicode (数据类型的名字): unicode将二进制数据编码成另一种二进制数据 （如utf=8）<br>    <strong>Unicode数据前面有u前缀    </strong></p>
+</blockquote>
+<p><strong>文件的执行编码</strong></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">s =<span class="string">"中文"</span></div><div class="line"><span class="keyword">print</span> repr(s)  <span class="comment">#repr函数是将数据显示成字符串的方式</span></div></pre></td></tr></table></figure>
+<pre><code>结果：
+**&apos;\xe4\xb8\xad\xe6\x96\x87&apos;  **  现在是字节数据
+</code></pre> <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"> s =<span class="string">u"中文"</span>    <span class="comment">#  在字符串的前面加上u  代表Unicode数据类型</span></div><div class="line"> <span class="keyword">print</span> repr(s)</div><div class="line">结果是：</div><div class="line">	**<span class="string">u'\u4e2d\u6587'</span>**    **Unicode数据类型**</div><div class="line"></div><div class="line"></div><div class="line">**字节数据的解码**</div><div class="line">```python</div><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line"><span class="comment">#Python2.7</span></div><div class="line"></div><div class="line">s1 = <span class="string">'中文'</span></div><div class="line">s2 = <span class="string">u'中文'</span></div><div class="line"></div><div class="line"><span class="comment"># print repr(s)</span></div><div class="line"><span class="keyword">print</span> type(s1)</div><div class="line"><span class="keyword">print</span> type(s1.decode(<span class="string">"utf-8"</span>))  <span class="comment"># 将字节数据(数据类型是str)通过utf-8解码--&gt;unicode数据类型</span></div></pre></td></tr></table></figure>
+<p>结果：<br>**<type 'str'=""></type></p>
+<p><type 'unicode'=""></type></p>
+<blockquote>
+<p>**</p>
+</blockquote>
+<p><strong>数据的编码</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line"><span class="comment">#Python2.7</span></div><div class="line"></div><div class="line">s1 = <span class="string">'中文'</span></div><div class="line">s2 = <span class="string">u'中文'</span></div><div class="line"></div><div class="line"><span class="comment"># print repr(s)</span></div><div class="line"><span class="comment"># print type(s1)</span></div><div class="line"><span class="comment"># print type(s1.decode("utf-8"))  # 将字节数据(数据类型是str)通过utf-8解码--&gt;unicode数据类型</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> type(s2)</div><div class="line"><span class="keyword">print</span> type(s2.encode(<span class="string">"utf-8"</span>))  <span class="comment">#  将Unicode数据(数据类型是Unicode)通过utf-8编码--&gt;str数据类型</span></div><div class="line"><span class="keyword">print</span> s2</div></pre></td></tr></table></figure></p>
+<p>结果是：</p>
+<p><type 'unicode'=""></type></p>
+<p><type 'str'=""><br>中文</type></p>
+<pre><code>Python2给解 释器的是字节数据
 </code></pre><p>python3；<br>        默认是Unicode数据  就是str</p>
-<pre><code>1 str（数据类型的名字）:  unicode 数据
-2 bytes(数据类型名字): bytes 数据
-
-
-将Unicode数据encode
+<blockquote>
+<p>1 str（数据类型的名字）:  unicode 数据</p>
+<p>2 bytes(数据类型名字): bytes 数据</p>
+</blockquote>
+<pre><code>将Unicode数据encode
 将字节数据decode
 </code></pre><p><strong>完全把字节和字符类型分开了，不能混用</strong></p>
 <p>注意点：</p>
@@ -230,7 +250,7 @@ Python2给解释器的是字节数据
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符编码："><span class="nav-number">1.</span> <span class="nav-text">字符编码：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序执行前："><span class="nav-number">2.</span> <span class="nav-text">程序执行前：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序执行中："><span class="nav-number">3.</span> <span class="nav-text">程序执行中：</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符编码："><span class="nav-number">1.</span> <span class="nav-text">字符编码：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-字符编码的发展过程："><span class="nav-number">1.1.</span> <span class="nav-text">1 字符编码的发展过程：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-数据的存储形式"><span class="nav-number">1.2.</span> <span class="nav-text">2 数据的存储形式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-程序执行前："><span class="nav-number">2.</span> <span class="nav-text">3 程序执行前：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-程序执行中："><span class="nav-number">3.</span> <span class="nav-text">4 程序执行中：</span></a></li></ol>
     
     </div>
   </aside>
