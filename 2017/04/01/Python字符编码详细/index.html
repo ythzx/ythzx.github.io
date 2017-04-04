@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>python之禅 | 小鑫</title>
+  <title>python字符编码补充 | 小鑫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   
-  <meta name="description" content="1&amp;gt;&amp;gt;&amp;gt;import this">
+  <meta name="description" content="字符编码：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python之禅">
-<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/11/Python之禅/index.html">
+<meta property="og:title" content="Python字符编码补充">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/01/Python字符编码详细/index.html">
 <meta property="og:site_name" content="小鑫">
-<meta property="og:description" content="1&amp;gt;&amp;gt;&amp;gt;import this">
-<meta property="og:updated_time" content="2017-03-14T03:42:32.711Z">
+<meta property="og:description" content="字符编码：">
+<meta property="og:updated_time" content="2017-04-04T12:51:40.770Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python之禅">
-<meta name="twitter:description" content="1&amp;gt;&amp;gt;&amp;gt;import this">
+<meta name="twitter:title" content="Python字符编码补充">
+<meta name="twitter:description" content="字符编码：">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
   
@@ -106,7 +106,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Python之禅" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-Python字符编码详细" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -114,7 +114,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Python之禅
+      Python字符编码补充
     </h1>
   
 
@@ -122,16 +122,60 @@
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/03/11/Python之禅/" class="article-date">
-	  <time datetime="2017-03-11T09:32:33.065Z" itemprop="datePublished">March 11, 2017</time>
+	Posted on <a href="/2017/04/01/Python字符编码详细/" class="article-date">
+	  <time datetime="2017-04-01T03:49:14.838Z" itemprop="datePublished">April 1, 2017</time>
 	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;<span class="keyword">import</span> this</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">Beautiful is better than ugly.</div><div class="line"></div><div class="line">Explicit is better than implicit.</div><div class="line"></div><div class="line">Simple is better than complex.</div><div class="line"></div><div class="line">Complex is better than complicated.</div><div class="line"></div><div class="line">Flat is better than nested.</div><div class="line"></div><div class="line">Sparse is better than dense.</div><div class="line"></div><div class="line">Readability counts.</div><div class="line"></div><div class="line">Special cases aren&apos;t special enough to break the rules.</div><div class="line"></div><div class="line">Although practicality beats purity.</div><div class="line"></div><div class="line">Errors should never pass silently.</div><div class="line"></div><div class="line">Unless explicitly silenced.</div><div class="line"></div><div class="line">In the face of ambiguity, refuse the temptation to guess.</div><div class="line"></div><div class="line">There should be one-- and preferably only one --obvious way to do</div><div class="line"></div><div class="line">Although that way may not be obvious at first unless you&apos;re Dutch</div><div class="line"></div><div class="line">Now is better than never.</div><div class="line"></div><div class="line">Although never is often better than *right* now.</div><div class="line"></div><div class="line">If the implementation is hard to explain, it&apos;s a bad idea.</div><div class="line"></div><div class="line">If the implementation is easy to explain, it may be a good idea.</div><div class="line"></div><div class="line">Namespaces are one honking great idea -- let&apos;s do more of those!</div></pre></td></tr></table></figure>
+        <h3 id="字符编码："><a href="#字符编码：" class="headerlink" title="字符编码："></a>字符编码：</h3><a id="more"></a>
+<p>字符编码的发展过程：        </p>
+<pre><code>1 、ASCII :256 美国需要128个字符，只需要7位   --美国
+2、扩展ASCII : 8 比特位  --拉丁
+3、GB2312 ：
+        中文扩展ASCII 两个字节都大于127   --中国
+4、GBK :
+    两个字节，第一个字节大于127
+
+5、Unicode是一种编码方式  两个字节 16
+    至少两个字节：2^16 = 65536   
+    在Unicode基础上产生utf-8，可变长字符编码
+            英文 1个字节，非英文2-6
+</code></pre><p><strong>内存中的统一是Unicode编码</strong></p>
+<p><strong>数据的存储是utf-8（硬盘和网络传输）</strong></p>
+<pre><code>存储数据占用空间少
+传输数据快
+
+Unicode（明文对应二进制）这个二进制是16进制格式的
+utf-8（二进制对应二进制）
+</code></pre><h3 id="程序执行前："><a href="#程序执行前：" class="headerlink" title="程序执行前："></a>程序执行前：</h3><pre><code>文本编辑器的例子：（这是文件的编码）
+**存储:**
+    明文---Unicode（内存中）------存储到本地--编码成utf-8的格式存放在硬盘上
+**读取：**
+    utf-8解码成Unicode，Unicode解码成中文
+</code></pre><h3 id="程序执行中："><a href="#程序执行中：" class="headerlink" title="程序执行中："></a>程序执行中：</h3><p>Python2:<br>        开头的声明，是解码的声明#coding:utf-8  按照utf-8来解码<br>        默认是ASCII</p>
+<pre><code>    文件的执行编码
+     ```python
+     s =&quot;中文&quot;
+     print repr(s)
+
+    1 str (数据类型的名字): bytes 数据 
+    2 unicode (数据类型的名字): unicode将二进制数据编码成另一种二进制数据 （如utf=8）
+
+Python2给解释器的是字节数据
+</code></pre><p>python3；<br>        默认是Unicode数据  就是str</p>
+<pre><code>1 str（数据类型的名字）:  unicode 数据
+2 bytes(数据类型名字): bytes 数据
+
+
+将Unicode数据encode
+将字节数据decode
+</code></pre><p><strong>完全把字节和字符类型分开了，不能混用</strong></p>
+<p>注意点：</p>
+<pre><code>1 、Unicode   gbk utf-8 都是编码规则
+2 、内存中是Unicode   Unicode作为转换的中转站
+</code></pre>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -142,7 +186,7 @@
 	<div id="comment">
 	
 	<!-- 多说评论框 start -->
-	 <div class="ds-thread" data-thread-key="/2017/03/11/Python之禅/" data-title="Python之禅" data-url="https://github.com/ythzx/ythzx.github.io/2017/03/11/Python之禅/"></div>
+	 <div class="ds-thread" data-thread-key="/2017/04/01/Python字符编码详细/" data-title="Python字符编码补充" data-url="https://github.com/ythzx/ythzx.github.io/2017/04/01/Python字符编码详细/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -169,19 +213,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/03/13/操作系统和网络基础/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          操作系统和网络基础
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/11/计算机基础/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/31/作业/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">计算机组成原理基础</div>
+      <div class="article-nav-title">作业</div>
     </a>
   
 </nav>
@@ -195,7 +230,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav">None</ol>
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符编码："><span class="nav-number">1.</span> <span class="nav-text">字符编码：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序执行前："><span class="nav-number">2.</span> <span class="nav-text">程序执行前：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序执行中："><span class="nav-number">3.</span> <span class="nav-text">程序执行中：</span></a></li></ol>
     
     </div>
   </aside>
