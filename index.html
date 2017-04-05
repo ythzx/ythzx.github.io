@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-Python实现进度条"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-敏捷开发"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/05/Python实现进度条/">Python文件读写</a>
+      <a class="article-title" href="/2017/04/05/敏捷开发/">敏捷开发Agile</a>
     </h1>
   
 
@@ -120,50 +120,89 @@
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/04/05/Python实现进度条/" class="article-date">
+	Posted on <a href="/2017/04/05/敏捷开发/" class="article-date">
+	  <time datetime="2017-04-05T09:11:31.546Z" itemprop="datePublished">April 5, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>敏捷开发是今天了解到的一个概念,英文是Agile，</p>
+<ol>
+<li>able to move quickly and easily</li>
+<li>able to think quickly, solve problems, and have new ideas</li>
+</ol>
+<p>敏捷开发宣言的官网：<a href="http://agilemanifesto.org/iso/zhchs/manifesto.html" target="_blank" rel="external">http://agilemanifesto.org/iso/zhchs/manifesto.html</a></p>
+<h1 id="敏捷软件开发宣言"><a href="#敏捷软件开发宣言" class="headerlink" title="敏捷软件开发宣言"></a>敏捷软件开发宣言</h1><p>&gt;<br>我们一直在实践中探寻更好的软件开发方法，<br>身体力行的同时也帮助他人。由此我们建立了如下价值观：</p>
+<p>个体和互动 高于 流程和工具<br>工作的软件 高于 详尽的文档<br>客户合作 高于 合同谈判<br>响应变化 高于 遵循计划</p>
+<p>也就是说，尽管右项有其价值，<br>我们更重视左项的价值。</p>
+<h1 id="敏捷宣言遵循的原则"><a href="#敏捷宣言遵循的原则" class="headerlink" title="敏捷宣言遵循的原则"></a>敏捷宣言遵循的原则</h1><p>我们遵循以下原则：<br>我们最重要的目标，是通过持续不断地<br>及早交付有价值的软件使客户满意。</p>
+<p>欣然面对需求变化，即使在开发后期也一样。<br>为了客户的竞争优势，敏捷过程掌控变化。</p>
+<p>经常地交付可工作的软件，<br>相隔几星期或一两个月，倾向于采取较短的周期。</p>
+<p>业务人员和开发人员必须相互合作，<br>项目中的每一天都不例外。</p>
+<p>激发个体的斗志，以他们为核心搭建项目。<br>提供所需的环境和支援，辅以信任，从而达成目标。</p>
+<p>不论团队内外，传递信息效果最好效率也最高的方式是<br>面对面的交谈。</p>
+<p>可工作的软件是进度的首要度量标准。</p>
+<p>敏捷过程倡导可持续开发。<br>责任人、开发人员和用户要能够共同维持其步调稳定延续。</p>
+<p>坚持不懈地追求技术卓越和良好设计，敏捷能力由此增强。</p>
+<p>以简洁为本，它是极力减少不必要工作量的艺术。</p>
+<p>最好的架构、需求和设计出自自组织团队。</p>
+<p>团队定期地反思如何能提高成效，<br>并依此调整自身的举止表现。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Python文件读写"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/05/Python文件读写/">Python文件读写</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/05/Python文件读写/" class="article-date">
 	  <time datetime="2017-04-05T07:26:09.497Z" itemprop="datePublished">April 5, 2017</time>
 	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-打开文件"><a href="#1-打开文件" class="headerlink" title="1 打开文件"></a>1 打开文件</h2><p>打开文件open(),对于文件来说，Python解释器想要打开磁盘上的文件，需要通过调用<em>操作系统</em>，<strong>让操作系统把文件读入内存</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">"d:/123"</span>,encoding=<span class="string">"utf-8"</span>)   <span class="comment"># 需要用字符串  </span></div><div class="line">                                    				 <span class="comment"># 路径是绝对路径</span></div><div class="line">                                    				 <span class="comment"># 设置解码的方式是utf-8</span></div><div class="line">data= f.read()</div><div class="line">print(data)</div><div class="line">f.close()</div></pre></td></tr></table></figure>
-<p>win操作系统默认的额是<strong>gbk,encoding=”utf-8”</strong>,指定操作系统的编码和解码方式</p>
-<h2 id="2-操作文件"><a href="#2-操作文件" class="headerlink" title="2 操作文件"></a>2 操作文件</h2><h3 id="2-1-字符操作-r-w-a"><a href="#2-1-字符操作-r-w-a" class="headerlink" title="2.1 字符操作 r w a"></a>2.1 字符操作 r w a</h3><h4 id="可读"><a href="#可读" class="headerlink" title="可读"></a>可读</h4><p><strong>f.read()</strong><br>是读全部的内容</p>
-<p><strong>f.read(n)</strong><br>例如f.read(3) 读取的是前3个字符(Python3)，<strong>在系统打开文件的时候，指针(光标默认是在0的位置)</strong></p>
-<p>当读取完全部的内容后，光标位置就到了<strong>最后的位置</strong>。<br>例如文件内容是：hello哈哈1234564789<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">"test"</span>,encoding=<span class="string">"utf-8"</span>)  <span class="comment"># 需要用字符串</span></div><div class="line">                                   			  <span class="comment"># 路径是绝对路径</span></div><div class="line">                                   			  <span class="comment"># 设置解码的方式是utf-8</span></div><div class="line">data= f.read(<span class="number">5</span>)  <span class="comment"># 读取到第5个字符</span></div><div class="line">print(data)</div><div class="line">data2= f.read()   <span class="comment"># 这里就是从光标的位置开始读</span></div><div class="line">print(data2)</div><div class="line">f.close()</div></pre></td></tr></table></figure></p>
-<p>输出结果是：<br>hello<br>哈哈1234564789</p>
-<p>需要注意的是<strong>Python2读取的是字节</strong>。</p>
-<p><strong>f.readline()</strong>  读每一行的内容</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">"test"</span>,encoding=<span class="string">"utf-8"</span>)  <span class="comment"># 需要用字符串</span></div><div class="line">                                   			  <span class="comment"># 路径是绝对路径</span></div><div class="line">                                   			  <span class="comment"># 设置解码的方式是utf-8</span></div><div class="line">data = f.readline().strip()  <span class="comment"># </span></div><div class="line">print(data)</div><div class="line">data2 = f.readline()</div><div class="line">print(data2)</div><div class="line">f.close()</div></pre></td></tr></table></figure>
-<p>结果是：<br>hello哈哈1234564789<br>123132</p>
-<p><strong>f.readlines()</strong>  读所有的行，返回值是列表(列表可以迭代)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">data = f.readlines()</div><div class="line">print(data)</div></pre></td></tr></table></figure></p>
-<p>结果是：<br>[‘hello哈哈1234564789\n’, ‘123132\n’, ‘4567\n’, ‘789\n’]</p>
-<p>迭代显示多有的行：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():  <span class="comment">#  这里迭代的是一个列表</span></div><div class="line">    print(line.strip())      <span class="comment">#  这里是去除所有的换行符</span></div><div class="line"><span class="comment"># data = f.readlines()</span></div></pre></td></tr></table></figure></p>
-<p>结果是：<br>hello哈哈1234564789<br>123132<br>4567<br>789<br>但是这里有一个缺点，是在文件很大的时候，<strong>这个列表的所有的内容都会被读入内存中</strong>。文件很大的情况就造成内存占用过高。</p>
-<p>这里有一种解决方案：</p>
-<p>使用句柄(handle )：</p>
-<blockquote>
-<p>一般说来，你可以把句柄想象成一个对文本信息的“封装”。</p>
-</blockquote>
-<p>资料链接：<a href="http://biopython-cn.readthedocs.io/zh_CN/latest/cn/chr22.html" target="_blank" rel="external">http://biopython-cn.readthedocs.io/zh_CN/latest/cn/chr22.html</a></p>
-<p><strong>相比普通文本信息，使用句柄至少有两个好处：</strong></p>
-<blockquote>
-<p>对于以不同方式存储的信息，句柄提供了一个标准的处理方法。这些文本信息可能来自文件、内存中的一个字符串、命令行指令的输出或者来自于远程网站信息，但是句柄提供了一种通用的方式处理这些不同格式和来源的文本信息。<br>句柄可以依次读取文本信息，而不是一次读取所有信息。这点在处理超大文件时尤为有用，因为一次载入一个大文件可能会占去你所有的内存。</p>
-</blockquote>
-<p><strong>每次只执行一行，执行完的行会被Python内存回收</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">"test"</span>,encoding=<span class="string">"utf-8"</span>) </div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:      		<span class="comment">#这里的f 是一个句柄，句柄也是一个可迭代的对象</span></div><div class="line">	print(line.strip())   <span class="comment">#</span></div></pre></td></tr></table></figure>
-<p>结果是：<br>hello哈哈1234564789<br>123132<br>4567<br>789</p>
-<p><strong>练习，在诗文中的第三行添加李白添加内容</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">count = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:  <span class="comment"># 调用的是句柄的对象</span></div><div class="line">    <span class="keyword">if</span> count == <span class="number">3</span> :   </div><div class="line">        line = <span class="string">""</span>.join([line.strip(),<span class="string">'李白'</span>]) <span class="comment"># 字符串的拼接   在第三行的时候就把换行符删除</span></div><div class="line">    print(line.strip())  <span class="comment"># 把文本中所有的换行符删除</span></div><div class="line">    count += <span class="number">1</span></div><div class="line">f.close()</div></pre></td></tr></table></figure></p>
-<h4 id="可写"><a href="#可写" class="headerlink" title="可写"></a>可写</h4><p>对文件读写前需要设置文件的句柄为读w,<br>f=open(“test3”,mode=”w”,encoding=”utf8”)</p>
-<p>写文件在打开的时候进行句柄操作，<strong>文件一打开的时候就清空</strong>，但是中间的wirte在写的过程中，只要文件没有关闭，不会覆盖。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">f=open(<span class="string">"test"</span>,mode=<span class="string">"w"</span>,encoding=<span class="string">"utf8"</span>)</div><div class="line">f.write(<span class="string">"中文"</span>)   <span class="comment">#  此时是清空原来的文件后，用“中文”覆盖</span></div><div class="line">f.close()</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">f=open(<span class="string">"test"</span>,mode=<span class="string">"w"</span>,encoding=<span class="string">"utf8"</span>)</div><div class="line">f.write(<span class="string">"中文\n"</span>)</div><div class="line">f.write(<span class="string">"123"</span>)   				<span class="comment"># 此时在文件没有关闭前，写入的都是追加的方式</span></div><div class="line">f.close()</div></pre></td></tr></table></figure>
-<p>结果是：<br>中文<br>123</p>
-<h4 id="可读可写"><a href="#可读可写" class="headerlink" title="可读可写"></a>可读可写</h4><h3 id="2-2-字节操作-rb-wb-ab"><a href="#2-2-字节操作-rb-wb-ab" class="headerlink" title="2.2 字节操作  rb wb ab"></a>2.2 字节操作  rb wb ab</h3><h2 id="3-关闭文件"><a href="#3-关闭文件" class="headerlink" title="3 关闭文件"></a>3 关闭文件</h2><p><strong> Python打印进度条</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">count = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">101</span>):  <span class="comment">#range的范围是左开右闭  0-100</span></div><div class="line"></div><div class="line">    sys.stdout.write(<span class="string">"\r%s%%%s"</span>%(i,<span class="string">"#"</span>*i))   <span class="comment"># 字符(#)的拼接，使用乘法   %%  是百分号的转义</span></div><div class="line">                                             <span class="comment"># \r是将光标放到行首</span></div><div class="line">    <span class="comment"># sys.stdout.write("#")</span></div><div class="line">    sys.stdout.flush()   <span class="comment">#马上写入磁盘</span></div><div class="line">    time.sleep(<span class="number">0.5</span>)    <span class="comment"># 延时0.5s</span></div><div class="line">    count += <span class="number">1</span></div></pre></td></tr></table></figure></p>
-<p>结果：<br>100%####################################################################################################</p>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+            1 打开文件
+打开文件open(),对于文件来说，Python解释器想要打开磁盘上的文件，需要通过调用操作系统，让操作系统把文件读入内存
+123456f = open("d:/123",encoding="utf-8")   # 需要用字符串                                      				 # 路径是绝对路径                                    				 # 设置解码的方式是utf-8data= f.read()print(data)f.close()
+win操作系统默认的额是gbk,encoding=”utf-8”,指定操作系统的编码和解码方式
+2 操作文件2.1 字符操作 r w a可读f.read()是读全部的...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/04/05/Python文件读写/#more">Continue Reading →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -344,65 +383,6 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-Python条件判断 if-else  for循环 while循环 break continue"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/">Python条件判断 if-else  for循环 while循环 break continue</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/" class="article-date">
-	  <time datetime="2017-03-29T12:26:12.634Z" itemprop="datePublished">March 29, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            条件判断 if-else
-if-else语句是通过if 后面的是否为真，当为True,就执行if代码块后面的，如果为False,同时又有else语句，执行else后面的内容。没有else,什么都不执行。
-注意，python是通过冒号来进行区分代码块的，后面的需要缩进
-1234567if xxx :.....elif xxx:...else:....
-
-if语句执行有个特点，它是从上往下判断，如果在某个判断上是True，把该判断对应的语句执行后，就忽略掉剩下的elif和else
-
-if条件简写
-123x=1if x:    print('True')
-只要x是非零数值、非空字符串、非空list等，就判断为True，否则为False。
-bool为假：123456false		[]空列表		...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -519,7 +499,19 @@ bool为假：123456false		[]空列表		...
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/04/05/Python实现进度条/">Python文件读写</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/04/05/敏捷开发/">敏捷开发Agile</a></h6>
+              <span>April 5, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/04/05/Python文件读写/">Python文件读写</a></h6>
               <span>April 5, 2017</span>
             </div>
 
@@ -573,18 +565,6 @@ bool为假：123456false		[]空列表		...
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/03/28/Python学习list和tuple/">Python list和tuple</a></h6>
-              <span>March 28, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -624,7 +604,7 @@ bool为假：123456false		[]空列表		...
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">19</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">19</span></li></ul>
     </div>
   </div>
 

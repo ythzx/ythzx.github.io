@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python文件读写 | 小鑫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="1 打开文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python文件读写">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/05/Python文件读写/index.html">
+<meta property="og:site_name" content="小鑫">
+<meta property="og:description" content="1 打开文件">
+<meta property="og:updated_time" content="2017-04-05T09:11:46.886Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python文件读写">
+<meta name="twitter:description" content="1 打开文件">
+  
+    <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="小鑫" rel="home"> 小鑫 </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background:#fff;width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;">
+        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
+      </div>
+
+  </div>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Python文件读写" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python文件读写
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/05/Python文件读写/" class="article-date">
+	  <time datetime="2017-04-05T07:26:09.497Z" itemprop="datePublished">April 5, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-打开文件"><a href="#1-打开文件" class="headerlink" title="1 打开文件"></a>1 打开文件</h2><a id="more"></a>
+<p>打开文件open(),对于文件来说，Python解释器想要打开磁盘上的文件，需要通过调用<em>操作系统</em>，<strong>让操作系统把文件读入内存</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">"d:/123"</span>,encoding=<span class="string">"utf-8"</span>)   <span class="comment"># 需要用字符串  </span></div><div class="line">                                    				 <span class="comment"># 路径是绝对路径</span></div><div class="line">                                    				 <span class="comment"># 设置解码的方式是utf-8</span></div><div class="line">data= f.read()</div><div class="line">print(data)</div><div class="line">f.close()</div></pre></td></tr></table></figure>
+<p>win操作系统默认的额是<strong>gbk,encoding=”utf-8”</strong>,指定操作系统的编码和解码方式</p>
+<h2 id="2-操作文件"><a href="#2-操作文件" class="headerlink" title="2 操作文件"></a>2 操作文件</h2><h3 id="2-1-字符操作-r-w-a"><a href="#2-1-字符操作-r-w-a" class="headerlink" title="2.1 字符操作 r w a"></a>2.1 字符操作 r w a</h3><h4 id="可读"><a href="#可读" class="headerlink" title="可读"></a>可读</h4><p><strong>f.read()</strong><br>是读全部的内容</p>
+<p><strong>f.read(n)</strong><br>例如f.read(3) 读取的是前3个字符(Python3)，<strong>在系统打开文件的时候，指针(光标默认是在0的位置)</strong></p>
+<p>当读取完全部的内容后，光标位置就到了<strong>最后的位置</strong>。<br>例如文件内容是：hello哈哈1234564789<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">"test"</span>,encoding=<span class="string">"utf-8"</span>)  <span class="comment"># 需要用字符串</span></div><div class="line">                                   			  <span class="comment"># 路径是绝对路径</span></div><div class="line">                                   			  <span class="comment"># 设置解码的方式是utf-8</span></div><div class="line">data= f.read(<span class="number">5</span>)  <span class="comment"># 读取到第5个字符</span></div><div class="line">print(data)</div><div class="line">data2= f.read()   <span class="comment"># 这里就是从光标的位置开始读</span></div><div class="line">print(data2)</div><div class="line">f.close()</div></pre></td></tr></table></figure></p>
+<p>输出结果是：<br>hello<br>哈哈1234564789</p>
+<p>需要注意的是<strong>Python2读取的是字节</strong>。</p>
+<p><strong>f.readline()</strong>  读每一行的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">"test"</span>,encoding=<span class="string">"utf-8"</span>)  <span class="comment"># 需要用字符串</span></div><div class="line">                                   			  <span class="comment"># 路径是绝对路径</span></div><div class="line">                                   			  <span class="comment"># 设置解码的方式是utf-8</span></div><div class="line">data = f.readline().strip()  <span class="comment"># </span></div><div class="line">print(data)</div><div class="line">data2 = f.readline()</div><div class="line">print(data2)</div><div class="line">f.close()</div></pre></td></tr></table></figure>
+<p>结果是：<br>hello哈哈1234564789<br>123132</p>
+<p><strong>f.readlines()</strong>  读所有的行，返回值是列表(列表可以迭代)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">data = f.readlines()</div><div class="line">print(data)</div></pre></td></tr></table></figure></p>
+<p>结果是：<br>[‘hello哈哈1234564789\n’, ‘123132\n’, ‘4567\n’, ‘789\n’]</p>
+<p>迭代显示多有的行：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():  <span class="comment">#  这里迭代的是一个列表</span></div><div class="line">    print(line.strip())      <span class="comment">#  这里是去除所有的换行符</span></div><div class="line"><span class="comment"># data = f.readlines()</span></div></pre></td></tr></table></figure></p>
+<p>结果是：<br>hello哈哈1234564789<br>123132<br>4567<br>789<br>但是这里有一个缺点，是在文件很大的时候，<strong>这个列表的所有的内容都会被读入内存中</strong>。文件很大的情况就造成内存占用过高。</p>
+<p>这里有一种解决方案：</p>
+<p>使用句柄(handle )：</p>
+<blockquote>
+<p>一般说来，你可以把句柄想象成一个对文本信息的“封装”。</p>
+</blockquote>
+<p>资料链接：<a href="http://biopython-cn.readthedocs.io/zh_CN/latest/cn/chr22.html" target="_blank" rel="external">http://biopython-cn.readthedocs.io/zh_CN/latest/cn/chr22.html</a></p>
+<p><strong>相比普通文本信息，使用句柄至少有两个好处：</strong></p>
+<blockquote>
+<p>对于以不同方式存储的信息，句柄提供了一个标准的处理方法。这些文本信息可能来自文件、内存中的一个字符串、命令行指令的输出或者来自于远程网站信息，但是句柄提供了一种通用的方式处理这些不同格式和来源的文本信息。<br>句柄可以依次读取文本信息，而不是一次读取所有信息。这点在处理超大文件时尤为有用，因为一次载入一个大文件可能会占去你所有的内存。</p>
+</blockquote>
+<p><strong>每次只执行一行，执行完的行会被Python内存回收</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">"test"</span>,encoding=<span class="string">"utf-8"</span>) </div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:      		<span class="comment">#这里的f 是一个句柄，句柄也是一个可迭代的对象</span></div><div class="line">	print(line.strip())   <span class="comment">#</span></div></pre></td></tr></table></figure>
+<p>结果是：<br>hello哈哈1234564789<br>123132<br>4567<br>789</p>
+<p><strong>练习，在诗文中的第三行添加李白添加内容</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">count = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:  <span class="comment"># 调用的是句柄的对象</span></div><div class="line">    <span class="keyword">if</span> count == <span class="number">3</span> :   </div><div class="line">        line = <span class="string">""</span>.join([line.strip(),<span class="string">'李白'</span>]) <span class="comment"># 字符串的拼接   在第三行的时候就把换行符删除</span></div><div class="line">    print(line.strip())  <span class="comment"># 把文本中所有的换行符删除</span></div><div class="line">    count += <span class="number">1</span></div><div class="line">f.close()</div></pre></td></tr></table></figure></p>
+<h4 id="可写"><a href="#可写" class="headerlink" title="可写"></a>可写</h4><p>对文件读写前需要设置文件的句柄为读w,<br>f=open(“test3”,mode=”w”,encoding=”utf8”)</p>
+<p>写文件在打开的时候进行句柄操作，<strong>文件一打开的时候就清空</strong>，但是中间的wirte在写的过程中，只要文件没有关闭，不会覆盖。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">f=open(<span class="string">"test"</span>,mode=<span class="string">"w"</span>,encoding=<span class="string">"utf8"</span>)</div><div class="line">f.write(<span class="string">"中文"</span>)   <span class="comment">#  此时是清空原来的文件后，用“中文”覆盖</span></div><div class="line">f.close()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">f=open(<span class="string">"test"</span>,mode=<span class="string">"w"</span>,encoding=<span class="string">"utf8"</span>)</div><div class="line">f.write(<span class="string">"中文\n"</span>)</div><div class="line">f.write(<span class="string">"123"</span>)   				<span class="comment"># 此时在文件没有关闭前，写入的都是追加的方式</span></div><div class="line">f.close()</div></pre></td></tr></table></figure>
+<p>结果是：<br>中文<br>123</p>
+<h4 id="可读可写"><a href="#可读可写" class="headerlink" title="可读可写"></a>可读可写</h4><h3 id="2-2-字节操作-rb-wb-ab"><a href="#2-2-字节操作-rb-wb-ab" class="headerlink" title="2.2 字节操作  rb wb ab"></a>2.2 字节操作  rb wb ab</h3><h2 id="3-关闭文件"><a href="#3-关闭文件" class="headerlink" title="3 关闭文件"></a>3 关闭文件</h2><p><strong> Python打印进度条</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">count = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">101</span>):  <span class="comment">#range的范围是左开右闭  0-100</span></div><div class="line"></div><div class="line">    sys.stdout.write(<span class="string">"\r%s%%%s"</span>%(i,<span class="string">"#"</span>*i))   <span class="comment"># 字符(#)的拼接，使用乘法   %%  是百分号的转义</span></div><div class="line">                                             <span class="comment"># \r是将光标放到行首</span></div><div class="line">    <span class="comment"># sys.stdout.write("#")</span></div><div class="line">    sys.stdout.flush()   <span class="comment">#马上写入磁盘</span></div><div class="line">    time.sleep(<span class="number">0.5</span>)    <span class="comment"># 延时0.5s</span></div><div class="line">    count += <span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>结果：<br>100%####################################################################################################</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/04/05/Python文件读写/" data-title="Python文件读写" data-url="https://github.com/ythzx/ythzx.github.io/2017/04/05/Python文件读写/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/05/敏捷开发/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          敏捷开发Agile
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/01/Python字符编码详细/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python字符编码补充</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-打开文件"><span class="nav-number">1.</span> <span class="nav-text">1 打开文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-操作文件"><span class="nav-number">2.</span> <span class="nav-text">2 操作文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-字符操作-r-w-a"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 字符操作 r w a</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可读"><span class="nav-number">2.1.1.</span> <span class="nav-text">可读</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可写"><span class="nav-number">2.1.2.</span> <span class="nav-text">可写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可读可写"><span class="nav-number">2.1.3.</span> <span class="nav-text">可读可写</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-字节操作-rb-wb-ab"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 字节操作  rb wb ab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-关闭文件"><span class="nav-number">3.</span> <span class="nav-text">3 关闭文件</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 小鑫 All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+</body>
+</html>
