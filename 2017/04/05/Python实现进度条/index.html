@@ -3,18 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>小鑫</title>
+  <title>python文件读写 | 小鑫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小鑫">
-<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/index.html">
+  <meta name="description" content="1 打开文件打开文件open(),对于文件来说，Python解释器想要打开磁盘上的文件，需要通过调用操作系统，让操作系统把文件读入内存
+123456f = open(&quot;d:/123&quot;,encoding=&quot;utf-8&quot;)   # 需要用字符串                                      				 # 路径是绝对路径">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python文件读写">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/05/Python实现进度条/index.html">
 <meta property="og:site_name" content="小鑫">
+<meta property="og:description" content="1 打开文件打开文件open(),对于文件来说，Python解释器想要打开磁盘上的文件，需要通过调用操作系统，让操作系统把文件读入内存
+123456f = open(&quot;d:/123&quot;,encoding=&quot;utf-8&quot;)   # 需要用字符串                                      				 # 路径是绝对路径">
+<meta property="og:updated_time" content="2017-04-05T09:07:21.220Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小鑫">
+<meta name="twitter:title" content="Python文件读写">
+<meta name="twitter:description" content="1 打开文件打开文件open(),对于文件来说，Python解释器想要打开磁盘上的文件，需要通过调用操作系统，让操作系统把文件读入内存
+123456f = open(&quot;d:/123&quot;,encoding=&quot;utf-8&quot;)   # 需要用字符串                                      				 # 路径是绝对路径">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
   
@@ -45,7 +52,7 @@
 
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   <header id="allheader" class="site-header" role="banner">
@@ -102,17 +109,15 @@
             
       <div id="content" class="outer">
         
-          <section id="main">
-  
-    <article id="post-Python实现进度条"  class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-Python实现进度条" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/05/Python实现进度条/">Python文件读写</a>
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python文件读写
     </h1>
   
 
@@ -170,467 +175,59 @@
       
       
       
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/04/05/Python实现进度条/" data-title="Python文件读写" data-url="https://github.com/ythzx/ythzx.github.io/2017/04/05/Python实现进度条/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
     </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/04/01/Python字符编码详细/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python字符编码补充</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 <!-- Table of Contents -->
 
-  
-    <article id="post-Python字符编码详细"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
     
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-打开文件"><span class="nav-number">1.</span> <span class="nav-text">1 打开文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-操作文件"><span class="nav-number">2.</span> <span class="nav-text">2 操作文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-字符操作-r-w-a"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 字符操作 r w a</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可读"><span class="nav-number">2.1.1.</span> <span class="nav-text">可读</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可写"><span class="nav-number">2.1.2.</span> <span class="nav-text">可写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可读可写"><span class="nav-number">2.1.3.</span> <span class="nav-text">可读可写</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-字节操作-rb-wb-ab"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 字节操作  rb wb ab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-关闭文件"><span class="nav-number">3.</span> <span class="nav-text">3 关闭文件</span></a></li></ol>
     
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/01/Python字符编码详细/">Python字符编码补充</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/01/Python字符编码详细/" class="article-date">
-	  <time datetime="2017-04-01T03:49:14.838Z" itemprop="datePublished">April 1, 2017</time>
-	</a>
-
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            字符编码：Python字符编码贯穿Python学习的始终，现在应用的是Python2中字符编码的问题是很多的。
-这次是要彻底解决Python字符编码的问题！！！
-1 字符编码的发展过程：1 、ASCII :256 美国需要128个字符，只需要7位   --美国
-2、扩展ASCII : 8 比特位  --拉丁
-3、GB2312 ：
-        中文扩展ASCII 两个字节都大于127   --中国
-4、GBK :
-    两个字节，第一个字节大于127
-
-5、Unicode是一种编码方式  两个字节 16
-    至少两个字节：2^16 = 65536   
-    在Unicode基础上产生utf-8，可变长字符编码
-            英文 1个字节，非英文2-6
-2 数据的...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/01/Python字符编码详细/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-作业"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/31/作业/">作业</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/31/作业/" class="article-date">
-	  <time datetime="2017-03-31T14:35:06.141Z" itemprop="datePublished">March 31, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1、    执行Python 脚本的两种方式
-在Windows中执行，通过cmd 进入相应的Python文件(如hello.py)的路径，在cmd中输入python hello.py就可以执行。通过IDE软件，如pycharm，ctrl+shift+F10执行脚本在Linux系统中：        在Python文件的开头需要添加python的路径,不清楚路径通过whichis python3 查看        执行：Python3  hello.py
-2、    简述位、字节的关系位(bit)是计算机中最小的单位，8位代表1字节(byte)
-3、    简述ascii、unicode、utf–‐8、gbk 的关系ASCII中每个字符占1个字节，unitcode通常是2个字节，但是如...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/31/作业/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-列表字典的复制"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/30/列表字典的复制/">列表list、字典dict的复制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/30/列表字典的复制/" class="article-date">
-	  <time datetime="2017-03-30T06:43:21.908Z" itemprop="datePublished">March 30, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            定义一个列表/字典，当复制这个列表/字典并定义一个新的列表/字典时，通过修改之前的列表/字典来了解这个问题
-
-1234567891011count = &#123;    "name":"hh",    "conut": 1234,    "info": [100,10]&#125;count2 = count.copy()   # 复制count内存中的地址count2["name"] = "zz"count['info'][1] += 30  # 修改info的值 后钻count 和count2 中都有变化print(count,count2)   # 类似主卡和副卡的概念
-在上面的程序中定义一个字典count，count2复制了count,此时打印count和count2 ，显示...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/30/列表字典的复制/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python条件判断 if-else  for循环 while循环 break continue"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/">Python条件判断 if-else  for循环 while循环 break continue</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/" class="article-date">
-	  <time datetime="2017-03-29T12:26:12.634Z" itemprop="datePublished">March 29, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            条件判断 if-else
-if-else语句是通过if 后面的是否为真，当为True,就执行if代码块后面的，如果为False,同时又有else语句，执行else后面的内容。没有else,什么都不执行。
-注意，python是通过冒号来进行区分代码块的，后面的需要缩进
-1234567if xxx :.....elif xxx:...else:....
-
-if语句执行有个特点，它是从上往下判断，如果在某个判断上是True，把该判断对应的语句执行后，就忽略掉剩下的elif和else
-
-if条件简写
-123x=1if x:    print('True')
-只要x是非零数值、非空字符串、非空list等，就判断为True，否则为False。
-bool为假：123456false		[]空列表		...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next</a>
-  </nav>
-
+  </aside>
 </section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-   			<li><a href="https://github.com/ythzx/ythzx.github.io" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="http://weibo.com/" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://www.twitter.com/" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://www.facebook.com/" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://:www.google.com/" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://www.instagram.com/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/04/05/Python实现进度条/">Python文件读写</a></h6>
-              <span>April 5, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/04/01/Python字符编码详细/">Python字符编码补充</a></h6>
-              <span>April 1, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/03/31/作业/">作业</a></h6>
-              <span>March 31, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/03/30/列表字典的复制/">列表list、字典dict的复制</a></h6>
-              <span>March 30, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/">Python条件判断 if-else  for循环 while循环 break continue</a></h6>
-              <span>March 29, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/03/28/Python学习list和tuple/">Python list和tuple</a></h6>
-              <span>March 28, 2017</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/2017-03-17/">2017.03.17</a><span class="category-list-count">1</span></li></ul></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Linux/" style="font-size: 10px;">Linux</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">19</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
       <footer id="footer" class="site-footer">
