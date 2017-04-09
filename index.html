@@ -104,6 +104,61 @@
         
           <section id="main">
   
+    <article id="post-文件的增删改查操作"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/09/文件的增删改查操作/">haproxy的增删改查(函数操作)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/09/文件的增删改查操作/" class="article-date">
+	  <time datetime="2017-04-09T03:42:01.310Z" itemprop="datePublished">April 9, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            在构建一个程序项目之前，首先需要设计程序的框架，从总体上构建一个项目中的一个个功能，之后对每一个功能进行补充，最终实现总体的功能。
+
+1 程序的总体框架：首先把所有的功能设计成相应的函数，用pass来实现。
+1234567891011121314151617181920212223242526272829303132333435363738394041def add(operation):    "增加"    passdef remove(operation):    "删除"    passdef change(operation):    "更改"    passif __name__ == '__main__':    msg ="""    1.查找    2.增加    3...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/04/09/文件的增删改查操作/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-敏捷开发"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -342,61 +397,6 @@ win操作系统默认的额是gbk,encoding=”utf-8”,指定操作系统的编�
 <!-- Table of Contents -->
 
   
-    <article id="post-列表字典的复制"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/30/列表字典的复制/">列表list、字典dict的复制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/30/列表字典的复制/" class="article-date">
-	  <time datetime="2017-03-30T06:43:21.908Z" itemprop="datePublished">March 30, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            定义一个列表/字典，当复制这个列表/字典并定义一个新的列表/字典时，通过修改之前的列表/字典来了解这个问题
-
-1234567891011count = &#123;    "name":"hh",    "conut": 1234,    "info": [100,10]&#125;count2 = count.copy()   # 复制count内存中的地址count2["name"] = "zz"count['info'][1] += 30  # 修改info的值 后钻count 和count2 中都有变化print(count,count2)   # 类似主卡和副卡的概念
-在上面的程序中定义一个字典count，count2复制了count,此时打印count和count2 ，显示...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/30/列表字典的复制/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -513,6 +513,18 @@ win操作系统默认的额是gbk,encoding=”utf-8”,指定操作系统的编�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/04/09/文件的增删改查操作/">haproxy的增删改查(函数操作)</a></h6>
+              <span>April 9, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/04/05/敏捷开发/">敏捷开发Agile</a></h6>
               <span>April 5, 2017</span>
             </div>
@@ -567,18 +579,6 @@ win操作系统默认的额是gbk,encoding=”utf-8”,指定操作系统的编�
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/">Python条件判断 if-else  for循环 while循环 break continue</a></h6>
-              <span>March 29, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -591,7 +591,7 @@ win操作系统默认的额是gbk,encoding=”utf-8”,指定操作系统的编�
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -601,7 +601,7 @@ win操作系统默认的额是gbk,encoding=”utf-8”,指定操作系统的编�
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/python/" style="font-size: 10px;">python</a>
+      <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/python/" style="font-size: 10px;">python</a>
     </div>
   </div>
 
@@ -611,7 +611,7 @@ win操作系统默认的额是gbk,encoding=”utf-8”,指定操作系统的编�
     <h3 class="widget-title">Archiv</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
