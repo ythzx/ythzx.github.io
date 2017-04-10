@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python装饰器 | 小鑫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Python" />
+  
+  
+  
+  
+  <meta name="description" content="开放封闭原则:不修改源代码、不修改调用方式，上线后还需要扩展，就用到了装饰器
+
+装饰器可以是任何可调用对象
+1 装饰器1.1  无参装饰器，为被装饰的函数添加统计时间功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python装饰器">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/10/Python装饰器操作/index.html">
+<meta property="og:site_name" content="小鑫">
+<meta property="og:description" content="开放封闭原则:不修改源代码、不修改调用方式，上线后还需要扩展，就用到了装饰器
+
+装饰器可以是任何可调用对象
+1 装饰器1.1  无参装饰器，为被装饰的函数添加统计时间功能">
+<meta property="og:updated_time" content="2017-04-10T08:46:35.460Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python装饰器">
+<meta name="twitter:description" content="开放封闭原则:不修改源代码、不修改调用方式，上线后还需要扩展，就用到了装饰器
+
+装饰器可以是任何可调用对象
+1 装饰器1.1  无参装饰器，为被装饰的函数添加统计时间功能">
+  
+    <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="小鑫" rel="home"> 小鑫 </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background:#fff;width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;">
+        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
+      </div>
+
+  </div>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Python装饰器操作" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python装饰器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/10/Python装饰器操作/" class="article-date">
+	  <time datetime="2017-04-10T08:46:59.455Z" itemprop="datePublished">四月 10, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>开放封闭原则:不修改源代码、不修改调用方式，上线后还需要扩展，就用到了装饰器</p>
+</blockquote>
+<p><strong>装饰器可以是任何可调用对象</strong></p>
+<h2 id="1-装饰器"><a href="#1-装饰器" class="headerlink" title="1 装饰器"></a>1 装饰器</h2><h3 id="1-1-无参装饰器，为被装饰的函数添加统计时间功能"><a href="#1-1-无参装饰器，为被装饰的函数添加统计时间功能" class="headerlink" title="1.1  无参装饰器，为被装饰的函数添加统计时间功能"></a>1.1  无参装饰器，为被装饰的函数添加统计时间功能</h3><a id="more"></a>
+<p>装饰器用到的是闭包函数，在下面的例子中是wrapper函数，我们首先需要了解程序的运行流程，下面一步步的分析：</p>
+<p>程序运行到@timmer时，会执行timmer(index) ,index是timmer下面最近的函数名，函数名index作为timmer的参数，下面运行timmer函数。timmer函数运行结束会返回wrapper，继续运行到@timmer，timmer(index)的返回值会赋值给index，也就是index=timmer(index)  。然后执行最后的index()函数，此时实际是wrapper(),然后进入到wrapper函数中执行，wrapper函数是闭包函数，内部有个func函数，执行到这里的时候，wrapper函数颞部没有定义func,就到其外部作用域寻找，在这里是timmer函数传入的参数func。wrapper中的func的地址是最初的index函数的地址，所以执行就是执行下面的index中的 time.sleep(1)  \print(“welcome index page”)着两句。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"><span class="comment"># decription:定义无参装饰器，为被装饰的函数添加统计时间功能</span></div><div class="line"><span class="comment"># author: hzx</span></div><div class="line"><span class="comment"># date: 2017.04.10</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">timmer</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">()</span>:</span>   <span class="comment"># wrapper 是闭包函数</span></div><div class="line">        time_start= time.time()</div><div class="line">        res=func()   <span class="comment"># 这里是最初的index</span></div><div class="line">        time_stop = time.time()</div><div class="line">        print(<span class="string">"run time is %s"</span>%(time_stop-time_start))</div><div class="line">        <span class="keyword">return</span> res</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@timmer</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span>  <span class="comment"># index=timmer(index)</span></div><div class="line">    time.sleep(<span class="number">1</span>)  <span class="comment"># 延时函数2秒</span></div><div class="line">    print(<span class="string">"welcome index page"</span>)</div><div class="line">index()  <span class="comment"># 相当于是wrapper()</span></div></pre></td></tr></table></figure>
+<h3 id="1-2-有参装饰器，为被装饰函数添加函数认证功能"><a href="#1-2-有参装饰器，为被装饰函数添加函数认证功能" class="headerlink" title="1.2  有参装饰器，为被装饰函数添加函数认证功能"></a>1.2  有参装饰器，为被装饰函数添加函数认证功能</h3><p>有参装饰器是在无参装饰器的的外面再添加一个函数，这个函数负责接收的参数是用于判读用户信息的来源，这里测试是从文件中读取用户信息。</p>
+<p>程序思路：<br>首先程序执行道@auth_file(auth_type=”file”)，这是auth外面的函数，它的返回值是auth，<strong>重点</strong>–&gt;，此时程序就是@auth，思路和无参装饰器是一样的，index=auth(index).</p>
+<p>程序分为3部分，装饰器定义部分，被装饰函数，函数引用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"><span class="comment"># decription:定义有参装饰器，为被装饰的函数添加函数认证功能，</span></div><div class="line"><span class="comment">#            用户信息可以来源文件或者ldap三次登录失败，锁定用户</span></div><div class="line"><span class="comment"># author: hzx</span></div><div class="line"><span class="comment"># date: 2017.04.10</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">auth_file</span><span class="params">(auth_type)</span>:</span>  <span class="comment"># 定义有参装饰器函数</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">auth</span><span class="params">(func)</span>:</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args,**kwargs)</span>:</span>  <span class="comment"># 这样就能接收任何数据类型 数据来自func</span></div><div class="line">            <span class="keyword">if</span> auth_type == <span class="string">"file"</span>:</div><div class="line">                username = input(<span class="string">"please input username:"</span>)</div><div class="line">                <span class="comment"># user_func()</span></div><div class="line">                count = <span class="number">0</span>  <span class="comment"># 记录用户输入密码的次数</span></div><div class="line">                flag = <span class="number">1</span></div><div class="line">                lock = []</div><div class="line">                user_pass = []</div><div class="line">                <span class="keyword">with</span> open(<span class="string">"locked"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> locked_file:</div><div class="line">                    <span class="keyword">for</span> i <span class="keyword">in</span> locked_file:</div><div class="line">                        <span class="keyword">if</span> i == username:</div><div class="line">                            print(<span class="string">"用户名被锁定"</span>)</div><div class="line">                            <span class="keyword">break</span></div><div class="line">                            <span class="comment"># 将黑名单文件内容作为列表元素追加到列表中</span></div><div class="line">                    <span class="keyword">for</span> line <span class="keyword">in</span> locked_file:</div><div class="line">                        line = line.strip()</div><div class="line">                        lock.append(line)</div><div class="line">                <span class="comment"># 若输入的用户名在黑名单中，打印：用户已经被锁定，</span></div><div class="line">                <span class="keyword">if</span> username <span class="keyword">in</span> lock:</div><div class="line">                    print(<span class="string">"用户%s"</span> % username)</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="comment"># 输入的用户名不在黑名单中，则提示用户输入密码信息</span></div><div class="line">                    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">                        count += <span class="number">1</span></div><div class="line">                        passwd = input(<span class="string">"please input your password:"</span>)</div><div class="line">                        <span class="keyword">with</span> open(<span class="string">"user"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> user_file:</div><div class="line">                            <span class="keyword">for</span> i <span class="keyword">in</span> user_file:</div><div class="line">                                user_pass = i.strip().split(<span class="string">"--"</span>)</div><div class="line">                                print(user_pass)</div><div class="line">                                <span class="keyword">if</span> username == user_pass[<span class="number">0</span>] <span class="keyword">and</span> passwd == user_pass[<span class="number">1</span>]:</div><div class="line">                                    print(<span class="string">'welcome user %s login !'</span> % username)</div><div class="line">                                    print(<span class="string">"认证成功！"</span>)</div><div class="line">                                    res = func(*args, **kwargs)  <span class="comment"># 这样设置然函数也能接收任何类型的数据，</span></div><div class="line">                                    <span class="keyword">return</span> res</div><div class="line"></div><div class="line">                                    <span class="comment"># flag = True</span></div><div class="line">                                    <span class="keyword">break</span></div><div class="line">                                <span class="keyword">else</span>:</div><div class="line">                                    <span class="keyword">continue</span></div><div class="line">                            <span class="keyword">if</span> flag <span class="keyword">is</span> <span class="keyword">True</span>:</div><div class="line">                                <span class="keyword">break</span></div><div class="line">                            <span class="keyword">else</span>:</div><div class="line">                                <span class="keyword">if</span> count == <span class="number">3</span>:</div><div class="line">                                    print(<span class="string">'Locked'</span>)</div><div class="line">                                    <span class="keyword">with</span> open(<span class="string">"locked"</span>, <span class="string">"w+"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f_write:</div><div class="line">                                        f_write.write(username)  <span class="comment"># 3次输入错误后将用户名写入locked文件</span></div><div class="line">                                    <span class="keyword">break</span></div><div class="line">            <span class="keyword">elif</span> auth_type == <span class="string">"ldap"</span>:</div><div class="line">                print(<span class="string">"等待使用"</span>)</div><div class="line">        <span class="keyword">return</span> wrapper</div><div class="line">    <span class="keyword">return</span> auth</div><div class="line"></div><div class="line"><span class="meta">@auth_file(auth_type="file")</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"welcome to index page!"</span>)</div><div class="line"></div><div class="line"><span class="meta">@auth_file(auth_type="ldap")</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"welcome to home page!"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 函数调用</span></div><div class="line">index()</div><div class="line">home()</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/04/10/Python装饰器操作/" data-title="Python装饰器" data-url="https://github.com/ythzx/ythzx.github.io/2017/04/10/Python装饰器操作/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/04/09/haproxy的增删改查(函数操作)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">haproxy的增删改查(函数操作)  三次登录密码错误锁定</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-装饰器"><span class="nav-number">1.</span> <span class="nav-text">1 装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-无参装饰器，为被装饰的函数添加统计时间功能"><span class="nav-number">1.1.</span> <span class="nav-text">1.1  无参装饰器，为被装饰的函数添加统计时间功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-有参装饰器，为被装饰函数添加函数认证功能"><span class="nav-number">1.2.</span> <span class="nav-text">1.2  有参装饰器，为被装饰函数添加函数认证功能</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 小鑫 All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+</body>
+</html>
