@@ -11,16 +11,16 @@
   
   
   
-  <meta name="description" content="1 生成器1.1 生成器定义生成器就是一个函数，有yield关键字，主要是针对函数的123456789from collections import Iterable,Iteratordef test():    print(&quot;test&quot;)    yield 1    yield 2g = test()print(g)print(isinstance(g,Iterator))   # 判断是否是迭">
+  <meta name="description" content="1 生成器1.1 生成器定义">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 生成器">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/11/Python生成器/index.html">
 <meta property="og:site_name" content="小鑫">
-<meta property="og:description" content="1 生成器1.1 生成器定义生成器就是一个函数，有yield关键字，主要是针对函数的123456789from collections import Iterable,Iteratordef test():    print(&quot;test&quot;)    yield 1    yield 2g = test()print(g)print(isinstance(g,Iterator))   # 判断是否是迭">
-<meta property="og:updated_time" content="2017-04-12T01:43:02.067Z">
+<meta property="og:description" content="1 生成器1.1 生成器定义">
+<meta property="og:updated_time" content="2017-04-12T01:56:28.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 生成器">
-<meta name="twitter:description" content="1 生成器1.1 生成器定义生成器就是一个函数，有yield关键字，主要是针对函数的123456789from collections import Iterable,Iteratordef test():    print(&quot;test&quot;)    yield 1    yield 2g = test()print(g)print(isinstance(g,Iterator))   # 判断是否是迭">
+<meta name="twitter:description" content="1 生成器1.1 生成器定义">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
   
@@ -131,7 +131,8 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-生成器"><a href="#1-生成器" class="headerlink" title="1 生成器"></a>1 生成器</h2><h3 id="1-1-生成器定义"><a href="#1-1-生成器定义" class="headerlink" title="1.1 生成器定义"></a>1.1 生成器定义</h3><p>生成器就是一个函数，有yield关键字，主要是针对函数的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable,Iterator</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"test"</span>)</div><div class="line">    <span class="keyword">yield</span> <span class="number">1</span></div><div class="line">    <span class="keyword">yield</span> <span class="number">2</span></div><div class="line"></div><div class="line">g = test()</div><div class="line">print(g)</div><div class="line">print(isinstance(g,Iterator))   <span class="comment"># 判断是否是迭代器对象</span></div></pre></td></tr></table></figure></p>
+        <h2 id="1-生成器"><a href="#1-生成器" class="headerlink" title="1 生成器"></a>1 生成器</h2><h3 id="1-1-生成器定义"><a href="#1-1-生成器定义" class="headerlink" title="1.1 生成器定义"></a>1.1 生成器定义</h3><a id="more"></a>
+<p>生成器就是一个函数，有yield关键字，主要是针对函数的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable,Iterator</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"test"</span>)</div><div class="line">    <span class="keyword">yield</span> <span class="number">1</span></div><div class="line">    <span class="keyword">yield</span> <span class="number">2</span></div><div class="line"></div><div class="line">g = test()</div><div class="line">print(g)</div><div class="line">print(isinstance(g,Iterator))   <span class="comment"># 判断是否是迭代器对象</span></div></pre></td></tr></table></figure></p>
 <p>结果：<br>generator object test at 0x00000000027FC780<br>True</p>
 <p>返回结果是证明<strong>生成器就是迭代器</strong></p>
 <p>证明了是迭代器，迭代器可以用next()执行，这里就是next(g)</p>
