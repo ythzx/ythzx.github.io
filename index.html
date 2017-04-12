@@ -131,14 +131,15 @@
 
           
             <div class="entry-summary" style="margin-left:0;">
-            1 生成器1.1 生成器定义
-生成器就是一个函数，有yield关键字，主要是针对函数的123456789from collections import Iterable,Iteratordef test():    print("test")    yield 1    yield 2g = test()print(g)print(isinstance(g,Iterator))   # 判断是否是迭代器对象
+            1 生成器1.1 生成器定义生成器就是一个函数，有yield关键字，主要是针对函数的
+
+123456789from collections import Iterable,Iteratordef test():    print("test")    yield 1    yield 2g = test()print(g)print(isinstance(g,Iterator))   # 判断是否是迭代器对象
 结果：generator object test at 0x00000000027FC780True
 返回结果是证明生成器就是迭代器
 证明了是迭代器，迭代器可以用next()执行，这里就是next(g)
 1print(next(g))
 结果是：test1
-结果是执行了一个test,...
+结果是执行了一个test...
           
 
         
