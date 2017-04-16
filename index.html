@@ -307,7 +307,7 @@ allall内部只有一个元素，内部是一个可迭代的对象
 12345678def eater(name):    print("%s eat food" %name)    while True:        food = yield    print("done")g = eater("gangdan")print(g)
 结果:generator object eater at 0x00000000028DC048这里就证明了g现在就是生成器函数
 1. 2 协程函数赋值过程用的是yield的表达式形式
-要先运行next()，让函数初始化并停在yield，相当于初始化函数，然后再send() ，send会给yield传一个值        next(...
+要先运行next()，让函数初始化并停在yield，相当于初始化函数，然后再send() ，send会给yield传一个值** next()和sen...
           
 
         
