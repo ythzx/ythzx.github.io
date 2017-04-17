@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="小鑫">
 <meta property="og:description" content="Python 的面向对象和其他语言不一样，python的class术语与c++有一定区别，与 Modula-3更像。
 1  设计面向对象">
-<meta property="og:updated_time" content="2017-04-17T08:15:15.765Z">
+<meta property="og:updated_time" content="2017-04-17T09:23:32.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 面向对象 二">
 <meta name="twitter:description" content="Python 的面向对象和其他语言不一样，python的class术语与c++有一定区别，与 Modula-3更像。
@@ -148,17 +148,25 @@
 <blockquote>
 <p>python 中用变量表示特征，用函数表示技能，所以类是<strong>变量和函数</strong>的结合体，对象是变量与方法（指向类的函数）的结合体</p>
 </blockquote>
-<h3 id="面向对象的使用"><a href="#面向对象的使用" class="headerlink" title="面向对象的使用"></a>面向对象的使用</h3><ul>
-<li>111111111<ul>
-<li>222222222222</li>
-</ul>
-</li>
-<li>33333333333<ul>
-<li>444444444</li>
-</ul>
-</li>
-</ul>
-
+<h2 id="2-初识类"><a href="#2-初识类" class="headerlink" title="2 初识类"></a>2 初识类</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Data</span>:</span></div><div class="line">      <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<p>Python3中的都是新式类，新式类必须继承至少一个父类</p>
+<h3 id="2-1-类的使用"><a href="#2-1-类的使用" class="headerlink" title="2.1 类的使用"></a>2.1 类的使用</h3><p>属性引用和实例化</p>
+<p>1 <strong>属性引用（类名.属性）</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>:</span></div><div class="line">    county = <span class="string">'China'</span>  <span class="comment">#　共有的特征</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,ID,NAME,SEX,PROVINCE)</span>:</span>   <span class="comment"># 一个人独有的特征</span></div><div class="line">        self.id = ID</div><div class="line">        self.name = NAME</div><div class="line">        self.sex = SEX</div><div class="line">        self.province = PROVINCE</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search_score</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">"tell score"</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">study</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'study'</span>,self)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;Student.county   <span class="comment">#引用类的数据属性，该属性与所有对象/实例共享</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="number">2</span>  **实例化（__init__与self）**</div><div class="line"></div><div class="line">类名加括号就是实例化，会自动触发__init__函数的运行，可以用它来为每个实例定制自己的特征</div><div class="line"></div><div class="line">```python</div><div class="line">&gt;&gt;&gt;s1 = Student(<span class="string">'121231'</span>,<span class="string">'aaa'</span>,<span class="string">'female'</span>,<span class="string">'beijing'</span>)  <span class="comment">#　默认的self</span></div></pre></td></tr></table></figure>
+<p><strong>self</strong>的作用是在实例化时自动将对象/实例<strong>本身</strong>传给<strong>init</strong>的第一个参数</p>
+<p><strong>实例化后就能够通过</strong>s1.<strong>的方式进行调用</strong></p>
+<h3 id="2-2-对象-（实例）"><a href="#2-2-对象-（实例）" class="headerlink" title="2.2 对象 （实例）"></a>2.2 对象 （实例）</h3><p><strong>对象</strong>是关于<strong>类而实际存在的一个例子</strong>，即<strong>实例</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(isinstance(s1,Student))  <span class="comment">#　s1 是Student的实例</span></div></pre></td></tr></table></figure>
+<h4 id="2-2-1对象（实例）只有一种作用，就是属性引用"><a href="#2-2-1对象（实例）只有一种作用，就是属性引用" class="headerlink" title="2.2.1对象（实例）只有一种作用，就是属性引用"></a>2.2.1对象（实例）只有一种作用，就是属性引用</h4><p>对象和实例本身只有数据属性<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(s1.id)</div><div class="line">print(s1.nickname)</div></pre></td></tr></table></figure></p>
+<h4 id="2-2-2绑定方法"><a href="#2-2-2绑定方法" class="headerlink" title="2.2.2绑定方法"></a>2.2.2绑定方法</h4><p>对象（实例）本身只有数据属性，但是Python的class机制会把<strong>类的函数绑定到对象上</strong>，叫做<strong>对象的方法</strong>，或者<strong>绑定方法</strong>，<br>绑定方法唯一绑定一个<strong>对象</strong>，同一个类的方法绑定到不同的对象上，属于不同的方法，内存地址不一样。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(s1.search_score)    <span class="comment">#　对象的绑定方法</span></div></pre></td></tr></table></figure>
+<p>bound method Student.search_score of &lt;<strong>main</strong>.Student object at 0x00000000028F46A0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(Student.search_score)  <span class="comment">#　对象的绑定方法search_score实际是类的函数的功能，两者是一种绑定关系</span></div></pre></td></tr></table></figure>
+<p>function Student.search_score at 0x00000000028EBBF8</p>
+<p><strong>对象的绑定方法的特别之处在于：obj.func()会把obj传给func的第一个参数。</strong></p>
+<p>就是把s1传递给了Stdent类</p>
+<h4 id="2-2-3-对象之间的交互"><a href="#2-2-3-对象之间的交互" class="headerlink" title="2.2.3 对象之间的交互"></a>2.2.3 对象之间的交互</h4>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -216,7 +224,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-设计面向对象"><span class="nav-number">1.</span> <span class="nav-text">1  设计面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-面向对象的作用"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 面向对象的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-什么是对象，什么是类"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 什么是对象，什么是类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象的使用"><span class="nav-number">1.3.</span> <span class="nav-text">面向对象的使用</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-设计面向对象"><span class="nav-number">1.</span> <span class="nav-text">1  设计面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-面向对象的作用"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 面向对象的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-什么是对象，什么是类"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 什么是对象，什么是类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-初识类"><span class="nav-number">2.</span> <span class="nav-text">2 初识类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-类的使用"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 类的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-对象-（实例）"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 对象 （实例）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1对象（实例）只有一种作用，就是属性引用"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1对象（实例）只有一种作用，就是属性引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2绑定方法"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2绑定方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-对象之间的交互"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 对象之间的交互</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>
