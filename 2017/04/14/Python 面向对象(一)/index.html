@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>python递归 | 小鑫</title>
+  <title>python 面向对象---类class(一) | 小鑫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="keywords" content="Python" />
@@ -11,19 +11,25 @@
   
   
   
-  <meta name="description" content="递归
-在函数内部，可以调用其他函数。如果一个函数在内部调用自身本身，这个函数就是递归函数。">
+  <meta name="description" content="应用场景：需求经常变化的软件，一般需求的变化都集中在用户层，互联网应用，企业内部软件，游戏等都是面向对象的程序设计大显身手的好地方
+面向对象中都是类，通过程序中的类来实现对象
+Python3已经把类型和类整合起来了 ，int 等都是类。
+现实生活中，是现有对象后有类。在程序中是先有类后有对象。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python递归">
-<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/14/Python递归/index.html">
+<meta property="og:title" content="Python 面向对象---类class(一)">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/14/Python 面向对象(一)/index.html">
 <meta property="og:site_name" content="小鑫">
-<meta property="og:description" content="递归
-在函数内部，可以调用其他函数。如果一个函数在内部调用自身本身，这个函数就是递归函数。">
-<meta property="og:updated_time" content="2017-04-14T10:55:21.965Z">
+<meta property="og:description" content="应用场景：需求经常变化的软件，一般需求的变化都集中在用户层，互联网应用，企业内部软件，游戏等都是面向对象的程序设计大显身手的好地方
+面向对象中都是类，通过程序中的类来实现对象
+Python3已经把类型和类整合起来了 ，int 等都是类。
+现实生活中，是现有对象后有类。在程序中是先有类后有对象。">
+<meta property="og:updated_time" content="2017-04-16T07:10:03.471Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python递归">
-<meta name="twitter:description" content="递归
-在函数内部，可以调用其他函数。如果一个函数在内部调用自身本身，这个函数就是递归函数。">
+<meta name="twitter:title" content="Python 面向对象---类class(一)">
+<meta name="twitter:description" content="应用场景：需求经常变化的软件，一般需求的变化都集中在用户层，互联网应用，企业内部软件，游戏等都是面向对象的程序设计大显身手的好地方
+面向对象中都是类，通过程序中的类来实现对象
+Python3已经把类型和类整合起来了 ，int 等都是类。
+现实生活中，是现有对象后有类。在程序中是先有类后有对象。">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
   
@@ -111,7 +117,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Python递归" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-Python 面向对象(一)" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -119,7 +125,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Python递归
+      Python 面向对象---类class(一)
     </h1>
   
 
@@ -127,28 +133,22 @@
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/04/14/Python递归/" class="article-date">
-	  <time datetime="2017-04-14T07:58:11.937Z" itemprop="datePublished">四月 14, 2017</time>
+	Posted on <a href="/2017/04/14/Python 面向对象(一)/" class="article-date">
+	  <time datetime="2017-04-14T10:59:43.652Z" itemprop="datePublished">四月 14, 2017</time>
 	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><blockquote>
-<p>在函数内部，可以调用其他函数。如果一个函数在内部调用自身本身，这个函数就是递归函数。</p>
-</blockquote>
+        <p>应用场景：需求经常变化的软件，一般需求的变化都集中在用户层，互联网应用，企业内部软件，游戏等都是面向对象的程序设计大显身手的好地方</p>
+<p>面向对象中都是类，通过程序中的类来实现对象</p>
+<p>Python3已经把类型和类整合起来了 ，int 等都是类。</p>
+<p>现实生活中，是现有对象后有类。在程序中是先有类后有对象。</p>
 <a id="more"></a>
-<p>``python<br>def age(n):<br>    if n == 1:<br>        return 10   #　结束条件<br>    else:<br>        return age(n-1) + 2   # 调用函数本身<br>print(age(5))<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">结果：</div><div class="line">18</div><div class="line"></div><div class="line">**递归的原理**</div><div class="line">![](http://images2015.cnblogs.com/blog/658994/201704/658994-20170414171834986-568842024.jpg)</div><div class="line"></div><div class="line"></div><div class="line">![](http://images2015.cnblogs.com/blog/658994/201704/658994-20170414161029673-2131017551.png)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">```python</div><div class="line">    print(data)</div><div class="line">    if len(data)&gt; 1: # 判断当列表的长度大于1的时候，进行二分法递归运算</div><div class="line">        mid_index=int(len(data)/2)  # 取中间的得索引位置</div><div class="line">        mid_value=data[mid_index]  # 中间位置的值</div><div class="line">        if num &lt; mid_value:   # 当输入的值比中间的值小的情况</div><div class="line">            data = data[:mid_index]    # 切片操作，把左侧到索引值的列表重新复制给data</div><div class="line">            search(num,data)   #　调用函数本身</div><div class="line"></div><div class="line">        elif num &gt; mid_value:  #　</div><div class="line">            data = data[mid_index:]</div><div class="line">            search(num,data)</div><div class="line">        else:</div><div class="line">            print(&quot;you get it&quot;)</div><div class="line">            return               #　这是结束条件</div><div class="line">    else:    #　这是当列表的长度是1的时候</div><div class="line">        if num == data[0]:  #现在只有一个元素</div><div class="line">            print(&quot;you get it&quot;)</div><div class="line">        else:</div><div class="line">            print(&quot;no exits&quot;)</div><div class="line"></div><div class="line">search(19,data)</div></pre></td></tr></table></figure></p>
-<p>结果：<br>[1, 3, 6, 7, 9, 12, 14, 16, 17, 18, 20, 21, 22, 23, 30, 32, 33, 35]<br>[18, 20, 21, 22, 23, 30, 32, 33, 35]<br>[18, 20, 21, 22]<br>[18, 20]<br>[18]<br>no exits</p>
-<p><strong>递归特性:</strong></p>
-<ol>
-<li><p>必须有一个明确的结束条件</p>
-</li>
-<li><p>每次进入更深一层递归时，问题规模相比上次递归都应有所减少</p>
-</li>
-<li><p>递归效率不高，递归层次过多会导致栈溢出（在计算机中，函数调用是通过栈（stack）这种数据结构实现的，每当进入一个函数调用，栈就会加一层栈帧，每当函数返回，栈就会减一层栈帧。由于栈的大小不是无限的，所以，递归调用的次数过多，会导致栈溢出）</p>
-</li>
-</ol>
+<p>使用类需要<strong>实例化</strong>和引用<strong>类的变量</strong>和<strong>类的函数</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Garen</span>:</span></div><div class="line">    camp=<span class="string">'Demacia'</span>    <span class="comment">#　这是类的共同特征</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">attack</span><span class="params">(self)</span>:</span>  <span class="comment">#　定义的类的方法，需要参数</span></div><div class="line">        print(<span class="string">'attack'</span>)</div><div class="line">obj = Garen()</div><div class="line"><span class="comment"># print(obj)</span></div><div class="line"><span class="comment"># print(Garen.camp)  #　打印类的特征</span></div><div class="line">Garen.attack(<span class="string">'asdf'</span>)    <span class="comment"># 在调用内部的函数的时候需要给attack函数传参数</span></div></pre></td></tr></table></figure></p>
+<p>self是对象自己本身<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Garen</span>:</span></div><div class="line">    camp = <span class="string">'Demacia'</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,nickname)</span>:</span>  <span class="comment"># 初始化的函数 self 就是实例化的g1  g2</span></div><div class="line">        self.nick=nickname</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">attack</span><span class="params">(self,enemy)</span>:</span></div><div class="line">        print(<span class="string">"%s attack %s"</span>%(self.nick,enemy))</div><div class="line"><span class="comment">#　实例化会触发类的init的调用，把g1传递给self，g1就是对象</span></div><div class="line">g1 = Garen(<span class="string">'aaaaaa'</span>)  <span class="comment"># g1 = Garen.__init__(g1,'aaaaaa')</span></div><div class="line">g2 = Garen(<span class="string">'bbbbbb'</span>)</div><div class="line">print(g1.nick)</div><div class="line">print(g2.camp)</div><div class="line">print(g1.attack(<span class="string">'abc'</span>))   <span class="comment">#这是绑定方法 g1自动把参数传递给self</span></div><div class="line">print(Garen.attack(g1,<span class="string">'aaabbb'</span>))  <span class="comment"># 调用的函数，按位置传参数</span></div><div class="line"></div><div class="line">print(g2.nick)</div><div class="line">print(g2.camp)</div></pre></td></tr></table></figure></p>
+<p>类的增删改查：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">print(Garen.camp)  <span class="comment">#　查看</span></div><div class="line">Garen.camp=<span class="string">'aa'</span></div><div class="line">print(Garen.camp)  <span class="comment"># 改</span></div><div class="line"><span class="keyword">del</span> Garen.camp</div><div class="line">print(Garen.camp)  <span class="comment"># 删除</span></div><div class="line">Garen.x = <span class="string">'1123134'</span></div><div class="line">print(Garen.x)   <span class="comment">#增</span></div></pre></td></tr></table></figure></p>
+<p>类的对象的增删改查：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">g1 = Garen(<span class="string">'abc'</span>)  <span class="comment"># 首先实例化，并传入初始化的参数</span></div><div class="line">print(g1.nick)  <span class="comment">#　查看</span></div><div class="line">g1.nick = <span class="string">'bbb'</span><span class="comment">#　改</span></div><div class="line">print(g1.nick)</div><div class="line"><span class="keyword">del</span> g1.nick  <span class="comment"># 删除</span></div><div class="line">print(g1.nick)</div><div class="line"></div><div class="line"></div><div class="line">g1.x = <span class="string">'123'</span></div><div class="line">print(g1.x)  <span class="comment">#　增加</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -163,7 +163,7 @@
 	<div id="comment">
 	
 	<!-- 多说评论框 start -->
-	 <div class="ds-thread" data-thread-key="/2017/04/14/Python递归/" data-title="Python递归" data-url="https://github.com/ythzx/ythzx.github.io/2017/04/14/Python递归/"></div>
+	 <div class="ds-thread" data-thread-key="/2017/04/14/Python 面向对象(一)/" data-title="Python 面向对象---类class(一)" data-url="https://github.com/ythzx/ythzx.github.io/2017/04/14/Python 面向对象(一)/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -190,19 +190,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/04/14/Python 面向对象(一)/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/17/面向对象 （二）/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          Python 面向对象---类class(一)
+          Python 面向对象 二
         
       </div>
     </a>
   
   
-    <a href="/2017/04/13/Python内置函数/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/04/14/Python递归/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">Python内置函数</div>
+      <div class="article-nav-title">Python递归</div>
     </a>
   
 </nav>
@@ -216,7 +216,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#递归"><span class="nav-number">1.</span> <span class="nav-text">递归</span></a></li></ol>
+      <ol class="nav">无</ol>
     
     </div>
   </aside>
