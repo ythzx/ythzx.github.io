@@ -11,22 +11,16 @@
   
   
   
-  <meta name="description" content="Python列表解析12l = [&quot;egg%s&quot; %i for i in range(100) if i &amp;gt; 50]print(l)
-1234l= [1,2,3,4]s = &apos;hello&apos;l1 = [(num,s1) for num in l for s1 in s]print(l1)
-123456l1 =[]for num in l:    for s1 in s:        t =">
+  <meta name="description" content="Python列表解析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python列表解析与生成器表达式">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/18/Python列表解析 生成器表示式/index.html">
 <meta property="og:site_name" content="小鑫">
-<meta property="og:description" content="Python列表解析12l = [&quot;egg%s&quot; %i for i in range(100) if i &amp;gt; 50]print(l)
-1234l= [1,2,3,4]s = &apos;hello&apos;l1 = [(num,s1) for num in l for s1 in s]print(l1)
-123456l1 =[]for num in l:    for s1 in s:        t =">
-<meta property="og:updated_time" content="2017-04-18T03:10:09.101Z">
+<meta property="og:description" content="Python列表解析">
+<meta property="og:updated_time" content="2017-04-18T03:14:55.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python列表解析与生成器表达式">
-<meta name="twitter:description" content="Python列表解析12l = [&quot;egg%s&quot; %i for i in range(100) if i &amp;gt; 50]print(l)
-1234l= [1,2,3,4]s = &apos;hello&apos;l1 = [(num,s1) for num in l for s1 in s]print(l1)
-123456l1 =[]for num in l:    for s1 in s:        t =">
+<meta name="twitter:description" content="Python列表解析">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
   
@@ -99,6 +93,14 @@
 </header>
 
 
+  <div style="background:#fff;width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;">
+        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
+      </div>
+
+  </div>
+
 
 
   <div id="container">
@@ -129,7 +131,8 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Python列表解析"><a href="#Python列表解析" class="headerlink" title="Python列表解析"></a>Python列表解析</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">l = [<span class="string">"egg%s"</span> %i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>) <span class="keyword">if</span> i &gt; <span class="number">50</span>]</div><div class="line">print(l)</div></pre></td></tr></table></figure>
+        <h2 id="Python列表解析"><a href="#Python列表解析" class="headerlink" title="Python列表解析"></a>Python列表解析</h2><a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">l = [<span class="string">"egg%s"</span> %i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>) <span class="keyword">if</span> i &gt; <span class="number">50</span>]</div><div class="line">print(l)</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">l= [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line">s = <span class="string">'hello'</span></div><div class="line">l1 = [(num,s1) <span class="keyword">for</span> num <span class="keyword">in</span> l <span class="keyword">for</span> s1 <span class="keyword">in</span> s]</div><div class="line">print(l1)</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">l1 =[]</div><div class="line"><span class="keyword">for</span> num <span class="keyword">in</span> l:</div><div class="line">    <span class="keyword">for</span> s1 <span class="keyword">in</span> s:</div><div class="line">        t = (num,s1)</div><div class="line">        l1.append(t)</div><div class="line">print(l1)</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line">g = os.walk(<span class="string">'D:\\test'</span>)</div><div class="line">l1 = [<span class="keyword">for</span> i <span class="keyword">in</span> g  <span class="keyword">for</span> j <span class="keyword">in</span> i]</div><div class="line">file_path =[]</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> g:</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> i[<span class="number">-1</span>]:</div><div class="line">        file_path.append(<span class="string">'%s\\%s'</span> % (i[<span class="number">0</span>],j))</div><div class="line">print(file_path)</div></pre></td></tr></table></figure>
