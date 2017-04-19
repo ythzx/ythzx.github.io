@@ -127,24 +127,21 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="类的使用：实例化、属性引用"><a href="#类的使用：实例化、属性引用" class="headerlink" title="类的使用：实例化、属性引用"></a>类的使用：实例化、属性引用</h2><h3 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h3><p>g1 = Garen(‘草丛伦1’)  # 实例化<br>g2 = Garen(‘草丛伦2’)<br>g3 = Garen(‘草丛伦3’)</p>
-<h3 id="类的属性：变量和函数"><a href="#类的属性：变量和函数" class="headerlink" title="类的属性：变量和函数"></a>类的属性：变量和函数</h3><p>print(Garen.camp)<br>print(Garen.attack)<br>print(Garen.<strong>dict</strong>)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">结果：</div><div class="line">&#123;&apos;__module__&apos;: &apos;__main__&apos;, &apos;**camp**&apos;: &apos;Demecia&apos;, &apos;n&apos;: 3, &apos;__init__&apos;: &lt;function Garen.__init__ at 0x000000000231BB70&gt;, &apos;**attack**&apos;: &lt;function Garen.attack at 0x000000000231BBF8&gt;, &apos;__dict__&apos;: &lt;attribute &apos;__dict__&apos; of &apos;Garen&apos; objects&gt;, &apos;__weakref__&apos;: &lt;attribute &apos;__weakref__&apos; of &apos;Garen&apos; objects&gt;, &apos;__doc__&apos;: None&#125;</div><div class="line"></div><div class="line">通过print(Garen.__dict__)能输出Garen类的名称空间，是一个字典，当我们进行使用的时候，实际是查找的是字典的key，通过key找相应的值</div><div class="line"></div><div class="line"></div><div class="line">对类的变量的修改就是对其字典进行的修改：</div><div class="line">```python</div><div class="line">Garen.camp = &apos;123&apos;   # 找到字典的key--camp，修改camp的值为123</div><div class="line">Garen.x  = &apos;123&apos;  #　在字典中新增一组</div></pre></td></tr></table></figure>
-<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>对象也有一个名称空间（<strong>这个名称空间中国只有变量</strong>），也是字典形式的，可以通过下面的方式进行新增：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">g1.__dict__[&quot;12&quot;]=&apos;123&apos;</div><div class="line">print(g1.__dict__)</div></pre></td></tr></table></figure></p>
-<p>结果：<br>{‘nickname’: ‘草丛伦1’, ‘aggressive’: 58, ‘life_value’: 455, ‘hobby’: [], ‘12’: ‘123’}</p>
-<h3 id="实例化的对象-对类的属性引用"><a href="#实例化的对象-对类的属性引用" class="headerlink" title="实例化的对象 对类的属性引用"></a>实例化的对象 对类的属性引用</h3><p>对象首先是引用自身的属性，对象的名称空间中只有自己的属性</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">print(g1.nickname)   <span class="comment">#引用自身的属性</span></div><div class="line">print(g1.aggressive)</div><div class="line">print(Garen.camp)  <span class="comment"># 自身没有，引用的是类的属性</span></div></pre></td></tr></table></figure>
-<p>类的属性是共享的，多个实例化的对象指向的是同一个变量的地址，是一样的内容，所以说是共享的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">print(g1.camp,id(g1.camp))  <span class="comment"># 通过id查看内存的地址</span></div><div class="line">print(g2.camp,id(g2.camp))</div><div class="line">print(g3.camp,id(g3.camp))</div></pre></td></tr></table></figure></p>
-<p>结果是：<br>Demecia 43096248<br>Demecia 43096248<br>Demecia 43096248</p>
-<p>对象修改的是在自身的下面添加的，之后查找的时候是从首先从自己的内训寻找的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">g1.camp = <span class="string">'1111'</span></div><div class="line">print(g1.camp)</div><div class="line">print(g2.camp)</div><div class="line">print(g3.camp)</div></pre></td></tr></table></figure></p>
-<p>结果：<br>1111    # 查看的是自己内部的名称空间中的变量<br>Demecia<br>Demecia</p>
-<h3 id="小练习：对实例化的计数"><a href="#小练习：对实例化的计数" class="headerlink" title="小练习：对实例化的计数"></a>小练习：对实例化的计数</h3><p><strong>关键：</strong> 每次实例化都会运行<strong>init</strong>,所以在init中写</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Garen</span>:</span>   <span class="comment"># 下面是类的属性</span></div><div class="line">    camp = <span class="string">'Demecia'</span></div><div class="line">    n = <span class="number">0</span>    <span class="comment"># 定义的Garen类的变量，用于实例化次数的计数</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,nickname,aggressive=<span class="number">58</span>,life_value=<span class="number">455</span>)</span>:</span></div><div class="line">        self.nickname = nickname</div><div class="line">        self.aggressive = aggressive</div><div class="line">        self.life_value = life_value</div><div class="line"></div><div class="line">        Garen.n += <span class="number">1</span>  <span class="comment">#　每次实例化后计数加一,Garen.n</span></div><div class="line">        self.hobby = []</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">attack</span><span class="params">(self,enemy)</span>:</span></div><div class="line">        enemy.life_value -= self.aggressive  <span class="comment">#　</span></div><div class="line"></div><div class="line"><span class="comment"># 实例化</span></div><div class="line">g1 = Garen(<span class="string">'草丛伦1'</span>)  <span class="comment"># 实例化</span></div><div class="line">g2 = Garen(<span class="string">'草丛伦2'</span>)</div><div class="line">g3 = Garen(<span class="string">'草丛伦3'</span>)</div><div class="line"></div><div class="line">print(g1.n)  <span class="comment"># 两种查看的方法</span></div><div class="line">print(Garen.n)</div></pre></td></tr></table></figure>
-<p>结果：<br>3<br>3</p>
-<h3 id="绑定方法和函数"><a href="#绑定方法和函数" class="headerlink" title="绑定方法和函数"></a>绑定方法和函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(g1.attack)  <span class="comment"># 绑定方法</span></div><div class="line">print(Garen.attack)  <span class="comment"># 函数</span></div></pre></td></tr></table></figure>
-<p>结果：<br><strong>bound method</strong> Garen.attack of <__main__.garen object="" at="" 0x00000000024546a0="">&gt;<br><strong>function </strong>Garen.attack at 0x000000000244BBF8&gt;</__main__.garen></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(g1.attack(g1))   <span class="comment"># 绑定方法使用的时候是把自己g1传递给了self</span></div><div class="line">print(Garen.attack(g1,g1))  <span class="comment"># 函数需要传递两个参数</span></div></pre></td></tr></table></figure>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+            类的使用：实例化、属性引用
+实例化g1 = Garen(‘草丛伦1’)  # 实例化g2 = Garen(‘草丛伦2’)g3 = Garen(‘草丛伦3’)
+类的属性：变量和函数print(Garen.camp)print(Garen.attack)print(Garen.dict)
+12345678910结果：&#123;&apos;__module__&apos;: &apos;__main__&apos;, &apos;**camp**&apos;: &apos;Demecia&apos;, &apos;n&apos;: 3, &apos;__init__&apos;: &lt;function Garen.__init__ at 0x000000000231BB70&gt;, ...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/04/19/Python面向对象（三）/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -288,7 +285,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/14/Python 面向对象(一)/">Python 面向对象---类class(一)</a>
+      <a class="article-title" href="/2017/04/14/Python 面向对象(一)/">Python 面向对象(一)</a>
     </h1>
   
 
@@ -545,7 +542,7 @@ Python3已经把类型和类整合起来了 ，int 等都是类。
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/04/14/Python 面向对象(一)/">Python 面向对象---类class(一)</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/04/14/Python 面向对象(一)/">Python 面向对象(一)</a></h6>
               <span>四月 14, 2017</span>
             </div>
 
