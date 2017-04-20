@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python 封装 | 小鑫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Python" />
+  
+  
+  
+  
+  <meta name="description" content="数据的封装  – 保护隐私方法的封装  – 隔离复杂度
+
+封装其实分为两个层面，但无论哪种层面的封装，都要对外界提供好访问你内部隐藏内容的接口（接口可以理解为入口，有了这个入口，使用者无需且不能够直接访问到内部隐藏的细节，只能走接口，并且我们可以在接口的实现上附加更多的处理逻辑，从而严格控制使用者的访问）
+
+第一个层面的封装（什么都不用做）：创建类和对象会分别创建二者的名称空间，我们只能用类名.或">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 封装">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/20/python封装/index.html">
+<meta property="og:site_name" content="小鑫">
+<meta property="og:description" content="数据的封装  – 保护隐私方法的封装  – 隔离复杂度
+
+封装其实分为两个层面，但无论哪种层面的封装，都要对外界提供好访问你内部隐藏内容的接口（接口可以理解为入口，有了这个入口，使用者无需且不能够直接访问到内部隐藏的细节，只能走接口，并且我们可以在接口的实现上附加更多的处理逻辑，从而严格控制使用者的访问）
+
+第一个层面的封装（什么都不用做）：创建类和对象会分别创建二者的名称空间，我们只能用类名.或">
+<meta property="og:updated_time" content="2017-04-20T11:32:23.426Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 封装">
+<meta name="twitter:description" content="数据的封装  – 保护隐私方法的封装  – 隔离复杂度
+
+封装其实分为两个层面，但无论哪种层面的封装，都要对外界提供好访问你内部隐藏内容的接口（接口可以理解为入口，有了这个入口，使用者无需且不能够直接访问到内部隐藏的细节，只能走接口，并且我们可以在接口的实现上附加更多的处理逻辑，从而严格控制使用者的访问）
+
+第一个层面的封装（什么都不用做）：创建类和对象会分别创建二者的名称空间，我们只能用类名.或">
+  
+    <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="小鑫" rel="home"> 小鑫 </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div style="background:#fff;width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;">
+        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
+      </div>
+
+  </div>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-python封装" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python 封装
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/20/python封装/" class="article-date">
+	  <time datetime="2017-04-20T08:25:56.599Z" itemprop="datePublished">四月 20, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>数据的封装  – 保护隐私<br>方法的封装  – 隔离复杂度</p>
+<blockquote>
+<p>封装其实分为两个层面，但无论哪种层面的封装，都要对外界提供好访问你内部隐藏内容的接口（接口可以理解为入口，有了这个入口，使用者无需且不能够直接访问到内部隐藏的细节，只能走接口，并且我们可以在接口的实现上附加更多的处理逻辑，从而严格控制使用者的访问）</p>
+</blockquote>
+<p><strong>第一个层面的封装</strong>（什么都不用做）：创建类和对象会分别创建二者的名称空间，我们只能用类名.或者obj.的方式去访问里面的名字，这本身就是一种封装</p>
+<p><strong>注意</strong>：对于这一层面的封装（隐藏），类名.和实例名.就是访问隐藏属性的接口</p>
+<p><strong>第二个层面的封装</strong>：类中把某些属性和方法隐藏起来(或者说定义成私有的)，只在类的内部使用、外部无法访问，或者留下少量接口（函数）供外部访问。</p>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><a id="more"></a>
+<p>在python中用双下划线的方式实现<strong>隐藏属性（</strong>设置成私有的）</p>
+<p>封装 隐藏接口<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></div><div class="line">    __x = <span class="number">1</span>   <span class="comment">#</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__test</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'from A'</span>)</div><div class="line"></div><div class="line">print(A.__dict__)</div></pre></td></tr></table></figure></p>
+<p>结果：<br>{‘<strong>module</strong>‘: ‘<strong>main</strong>‘, ‘<strong>_A__x</strong>‘: 1, ‘_A<strong>test’: &lt;function A.</strong>test at 0x000000000231BB70&gt;, ‘<strong>dict</strong>‘: <attribute '__dict__'="" of="" 'a'="" objects="">, ‘<strong>weakref</strong>‘: <attribute '__weakref__'="" of="" 'a'="" objects="">, ‘<strong>doc</strong>‘: None}</attribute></attribute></p>
+<p>从打印的字典中可以查看到<strong>__A</strong>被隐藏成了<strong>_A__X</strong>,前面加上的_类的名字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></div><div class="line">    __x = <span class="number">1</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__test</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'from A'</span>)</div><div class="line"></div><div class="line"><span class="comment"># print(A.__dict__)</span></div><div class="line"></div><div class="line"><span class="comment"># print(A._A__x)  </span></div><div class="line">a = A()</div><div class="line">A._A__test(<span class="number">123123</span>)  <span class="comment"># 直接使用类的时候用函数需要传入参数</span></div><div class="line"><span class="comment"># print(a._A__x)</span></div><div class="line"><span class="comment"># a._A__test()  # 实例化后不用传入参数self</span></div></pre></td></tr></table></figure>
+<p><strong>__名字只有在类中定义的时候才会产生变形，当类和对象已经产生了，就不会有变形的效果，可以直接拿来用，相当于普通的变量</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span>   <span class="comment"># 已经产生了类</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line">B.__x = <span class="number">1</span>  <span class="comment">#　在类的外面定义</span></div><div class="line"></div><div class="line">print(B.__dict__)</div><div class="line">print(B.__x)</div></pre></td></tr></table></figure>
+<p>结果：<br>{‘<strong>module</strong>‘: ‘<strong>main</strong>‘, ‘<strong>dict</strong>‘: <attribute '__dict__'="" of="" 'b'="" objects="">, ‘<strong>weakref</strong>‘: <attribute '__weakref__'="" of="" 'b'="" objects="">, ‘<strong>doc</strong>‘: None, <strong>‘__x’: 1</strong>}</attribute></attribute></p>
+<p>1  </p>
+<p>从字典中可以看到， <strong>‘__x’: 1</strong> 没有变形成_B__x</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class B:   # 已经产生了类</div><div class="line">    pass</div><div class="line"> </div><div class="line">b = B()  # 已经实例化了</div><div class="line">b.__x = 1</div><div class="line">print(b.__x)</div><div class="line">print(b.__dict__)</div></pre></td></tr></table></figure>
+<p>结果：</p>
+<p>1<br>{‘__x’: 1}</p>
+<p><strong>查找的顺序</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fa</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">"from A"</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        self.fa()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fa</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">"from B "</span>)</div><div class="line">b = B()</div><div class="line">b.test()  <span class="comment"># b.txt --B --A --b.fa</span></div></pre></td></tr></table></figure></p>
+<p>结果：<br>from B</p>
+<p>实例化后b.txt先从B中寻找，B中没有，从父类A中寻找，A中的test下面的执行的是self.fa(),实际的self还是传递的b,就是b.fa(),所以执行的还是B中的fa，所以运行的结果是 from B</p>
+<p><strong>把B中的注释</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fa</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">"from A"</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        self.fa()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line">b = B()</div><div class="line">b.test()  <span class="comment"># b.txt --B --A --</span></div></pre></td></tr></table></figure></p>
+<p>结果：<br>from A</p>
+<p>实际的原理就是<strong>b.test==b.fa()</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__fa</span><span class="params">(self)</span>:</span>  <span class="comment"># _A__fa</span></div><div class="line">        print(<span class="string">"from A"</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        self.__fa()   <span class="comment"># self._A__test</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line"></div><div class="line">    <span class="comment"># def __fa(self):  # _B__fa</span></div><div class="line">    <span class="comment">#     print("from B ")</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line">b = B()</div><div class="line">b.test()  <span class="comment"># b.txt --B --A</span></div></pre></td></tr></table></figure>
+<p>结果：<br>from A</p>
+<h3 id="小练习"><a href="#小练习" class="headerlink" title="小练习"></a>小练习</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__fa</span><span class="params">(self)</span>:</span>  <span class="comment"># _A__fa</span></div><div class="line">        print(<span class="string">"from A"</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        self.__fa()   <span class="comment"># self._A__test</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line"></div><div class="line">    <span class="comment"># def __fa(self):  # _B__fa</span></div><div class="line">    <span class="comment">#     print("from B ")</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line">b = B()</div><div class="line">b.test()  <span class="comment"># b.txt --B --A</span></div></pre></td></tr></table></figure>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><strong>查找的顺序</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fa</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">"from A"</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        self.fa()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fa</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">"from B "</span>)</div><div class="line">b = B()</div><div class="line">b.test()  <span class="comment"># b.txt --B --A --b.fa</span></div></pre></td></tr></table></figure></p>
+<p>结果：<br>from B</p>
+<p>实例化后b.txt先从B中寻找，B中没有，从父类A中寻找，A中的test下面的执行的是self.fa(),实际的self还是传递的b,就是b.fa(),所以执行的还是B中的fa，所以运行的结果是 from B</p>
+<p><strong>把B中的注释</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fa</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">"from A"</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        self.fa()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line">b = B()</div><div class="line">b.test()  <span class="comment"># b.txt --B --A --</span></div></pre></td></tr></table></figure></p>
+<p>结果：<br>from A</p>
+<p>实际的原理就是<strong>b.test==b.fa()</strong> </p>
+<h3 id="封装的接口函数"><a href="#封装的接口函数" class="headerlink" title="封装的接口函数"></a>封装的接口函数</h3><p><strong>在类的内部可以用__名字访问到变形的属性</strong></p>
+<blockquote>
+<p>对于这一层面的封装（隐藏），我们需要在类中定义一个函数（接口函数）在它内部访问被隐藏的属性，然后外部就可以使用了</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.__x=<span class="number">1</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tell</span><span class="params">(self)</span>:</span></div><div class="line">        print(self.__x)  <span class="comment"># 在类的内部可以直接使用__名字访问到变形的属性</span></div><div class="line"></div><div class="line"></div><div class="line">a=A()</div><div class="line">print(a.__dict__)</div><div class="line"><span class="comment"># print(a.__x)</span></div><div class="line"></div><div class="line">a.tell()  <span class="comment"># 可以通过调用内部的函数进行访问</span></div></pre></td></tr></table></figure>
+<h3 id="模拟len-，通过调用函数的接口实现"><a href="#模拟len-，通过调用函数的接口实现" class="headerlink" title="模拟len()，通过调用函数的接口实现"></a>模拟len()，通过调用函数的接口实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'hello'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>l =[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(obj)</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> obj.__len__()</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>func(a)</div><div class="line"><span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>func(l)</div><div class="line"><span class="number">4</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/04/20/python封装/" data-title="Python 封装" data-url="https://github.com/ythzx/ythzx.github.io/2017/04/20/python封装/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/04/19/Python 继承、派生、组合、接口、抽象类/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Python 继承、派生、组合、接口、抽象类</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#封装"><span class="nav-number">1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小练习"><span class="nav-number">2.</span> <span class="nav-text">小练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">3.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装的接口函数"><span class="nav-number">4.</span> <span class="nav-text">封装的接口函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟len-，通过调用函数的接口实现"><span class="nav-number">5.</span> <span class="nav-text">模拟len()，通过调用函数的接口实现</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 小鑫 All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+</body>
+</html>
