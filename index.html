@@ -127,12 +127,22 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 多态：是指一类事物有多种形态（！！！！定义角度！！！！）</p>
-<p> 多态性：在继承的基础上， （！！！！使用角度！！！！！）</p>
-<p>使用多态性，实现了利用函数统一调用一个接口</p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#多态：同一种事物的多种形态，动物分为人类，猪类（在定义角度）</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">raise</span> AttributeError(<span class="string">'子类必须实现这个方法'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span><span class="params">(Animal)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'人正在走'</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pig</span><span class="params">(Animal)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'pig is walking'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span><span class="params">(Animal)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'dog is running'</span>)</div><div class="line"></div><div class="line">peo1=People()</div><div class="line">pig1=Pig()</div><div class="line">d1=Dog()</div><div class="line"></div><div class="line">peo1.run()</div><div class="line">pig1.run()</div><div class="line">d1.run()</div></pre></td></tr></table></figure>
-<h3 id="多态性"><a href="#多态性" class="headerlink" title="多态性"></a>多态性</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#多态性：一种调用方式，不同的执行效果（多态性）</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(obj)</span>:</span></div><div class="line">    obj.run()</div><div class="line"></div><div class="line">func(peo1)</div><div class="line">func(pig1)</div><div class="line">func(d1)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># peo1.run()</span></div><div class="line"><span class="comment"># pig1.run()</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 多态性依赖于：</span></div><div class="line"><span class="comment">#     1.继承</span></div><div class="line"><span class="comment">#     2.</span></div><div class="line"><span class="comment">##多态性：定义统一的接口，</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(obj)</span>:</span> <span class="comment">#obj这个参数没有类型限制，可以传入不同类型的值</span></div><div class="line">    obj.run() <span class="comment">#调用的逻辑都一样，执行的结果却不一样</span></div><div class="line"></div><div class="line"></div><div class="line">func(peo1)</div><div class="line">func(pig1)</div><div class="line"></div><div class="line">func(d1)</div></pre></td></tr></table></figure>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+             多态：是指一类事物有多种形态（！！！！定义角度！！！！）
+ 多态性：在继承的基础上， （！！！！使用角度！！！！！）
+使用多态性，实现了利用函数统一调用一个接口
+多态
+1234567891011121314151617181920212223242526#多态：同一种事物的多种形态，动物分为人类，猪类（在定义角度）class Animal:    def run(self):        raise AttributeError('子类必须实现这个方法')class People(Animal):    def run(self):        print('人正在走')class Pig(Animal):    def run(self):        print('pig ...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/04/20/Python的多态与多态性/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -173,20 +183,30 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="继承顺序"><a href="#继承顺序" class="headerlink" title="继承顺序"></a>继承顺序</h2><p> Python3 ：<br>            新式类的查找顺序：广度优先</p>
-<pre><code>新式类的继承：
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            继承顺序
+ Python3 ：            新式类的查找顺序：广度优先
+新式类的继承：
         class A(object):  Python2 3 都是了
 
 MRO算法--生成一个列表保存继承顺序表
 
 不找到底部
-</code></pre><p>Python2 中有新式类 和 经典类<br>            Python2 默认的是经典类</p>
-<pre><code>   经典类的继承是 深度优先
+Python2 中有新式类 和 经典类            Python2 默认的是经典类
+   经典类的继承是 深度优先
 
 找到最深的，然后从头开始找
-</code></pre><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span>  <span class="comment">#定义新式类</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'frome A'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'frome B'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(A)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'frome C'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span><span class="params">(B)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'frome D'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">E</span><span class="params">(C)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'frome E'</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">F</span><span class="params">(D,E)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'frome F'</span>)</div><div class="line"></div><div class="line"></div><div class="line">f1=F()</div><div class="line">f1.test()</div><div class="line">print(F.__mro__)</div></pre></td></tr></table></figure>
-<p>结果：<br>(<class '__main__.f'="">, <class '__main__.d'="">, <class '__main__.b'="">, <class '__main__.e'="">, <class '__main__.c'="">, <class '__main__.a'="">, <class 'object'="">)</class></class></class></class></class></class></class></p>
+例子1234567891011121314151617181920212223242526272829303132class A(object):  #定义新式类    def test(self):        print('frome A')class B(A):    def test(sel...
+          
 
+        
+          <p class="article-more-link">
+            <a href="/2017/04/20/Python继承实现的原理/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
