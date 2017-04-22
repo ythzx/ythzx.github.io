@@ -3,18 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>小鑫</title>
+  <title>python 封装补充 | 小鑫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="Python" />
   
   
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小鑫">
-<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/index.html">
+  
+  <meta name="description" content="property属性123456789101112131415161718import math  # 使用的库class Circle:    def __init__(self,radius): #定义圆的半径        self.radius = radius    @property   # area = property(area)  #    def area(self):">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 封装补充">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/21/Python封装补充/index.html">
 <meta property="og:site_name" content="小鑫">
+<meta property="og:description" content="property属性123456789101112131415161718import math  # 使用的库class Circle:    def __init__(self,radius): #定义圆的半径        self.radius = radius    @property   # area = property(area)  #    def area(self):">
+<meta property="og:updated_time" content="2017-04-22T09:23:51.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小鑫">
+<meta name="twitter:title" content="Python 封装补充">
+<meta name="twitter:description" content="property属性123456789101112131415161718import math  # 使用的库class Circle:    def __init__(self,radius): #定义圆的半径        self.radius = radius    @property   # area = property(area)  #    def area(self):">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
   
@@ -45,7 +51,7 @@
 
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   <header id="allheader" class="site-header" role="banner">
@@ -102,17 +108,15 @@
             
       <div id="content" class="outer">
         
-          <section id="main">
-  
-    <article id="post-Python封装补充"  class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-Python封装补充" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/21/Python封装补充/">Python 封装补充</a>
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python 封装补充
     </h1>
   
 
@@ -158,470 +162,59 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
       
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python的多态与多态性"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/20/Python的多态与多态性/">Python 的多态与多态性</a>
-    </h1>
-  
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/04/21/Python封装补充/" data-title="Python 封装补充" data-url="https://github.com/ythzx/ythzx.github.io/2017/04/21/Python封装补充/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/20/Python的多态与多态性/" class="article-date">
-	  <time datetime="2017-04-20T15:23:28.890Z" itemprop="datePublished">四月 20, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-             多态：是指一类事物有多种形态（！！！！定义角度！！！！）
- 多态性：在继承的基础上， （！！！！使用角度！！！！！）
-使用多态性，实现了利用函数统一调用一个接口
-多态
-1234567891011121314151617181920212223242526#多态：同一种事物的多种形态，动物分为人类，猪类（在定义角度）class Animal:    def run(self):        raise AttributeError('子类必须实现这个方法')class People(Animal):    def run(self):        print('人正在走')class Pig(Animal):    def run(self):        print('pig ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/20/Python的多态与多态性/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
       
     </footer>
   </div>
   
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python继承实现的原理"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/20/Python继承实现的原理/">Python 继承实现的原理</a>
-    </h1>
   
+    <a href="/2017/04/20/Python的多态与多态性/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Python 的多态与多态性</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/20/Python继承实现的原理/" class="article-date">
-	  <time datetime="2017-04-20T15:22:04.816Z" itemprop="datePublished">四月 20, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            继承顺序
- Python3 ：            新式类的查找顺序：广度优先
-新式类的继承：
-        class A(object):  Python2 3 都是了
-
-MRO算法--生成一个列表保存继承顺序表
-
-不找到底部
-Python2 中有新式类 和 经典类            Python2 默认的是经典类
-   经典类的继承是 深度优先
-
-找到最深的，然后从头开始找
-例子1234567891011121314151617181920212223242526272829303132class A(object):  #定义新式类    def test(self):        print('frome A')class B(A):    def test(sel...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/20/Python继承实现的原理/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
   
 </article>
 
 <!-- Table of Contents -->
 
-  
-    <article id="post-python封装"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#property属性"><span class="nav-number">1.</span> <span class="nav-text">property属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要用property"><span class="nav-number">1.1.</span> <span class="nav-text">为什么要用property</span></a></li></ol></li></ol>
     
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/20/python封装/">Python 封装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/20/python封装/" class="article-date">
-	  <time datetime="2017-04-20T08:25:56.599Z" itemprop="datePublished">四月 20, 2017</time>
-	</a>
-
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            数据的封装  – 保护隐私方法的封装  – 隔离复杂度
-
-封装其实分为两个层面，但无论哪种层面的封装，都要对外界提供好访问你内部隐藏内容的接口（接口可以理解为入口，有了这个入口，使用者无需且不能够直接访问到内部隐藏的细节，只能走接口，并且我们可以在接口的实现上附加更多的处理逻辑，从而严格控制使用者的访问）
-
-第一个层面的封装（什么都不用做）：创建类和对象会分别创建二者的名称空间，我们只能用类名.或者obj.的方式去访问里面的名字，这本身就是一种封装
-注意：对于这一层面的封装（隐藏），类名.和实例名.就是访问隐藏属性的接口
-第二个层面的封装：类中把某些属性和方法隐藏起来(或者说定义成私有的)，只在类的内部使用、外部无法访问，或者留下少量接口（函数）供外部访问。
-封装
-在python中用双...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/20/python封装/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python 继承、派生、组合、接口、抽象类"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/19/Python 继承、派生、组合、接口、抽象类/">Python 继承、派生、组合、接口、抽象类</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/19/Python 继承、派生、组合、接口、抽象类/" class="article-date">
-	  <time datetime="2017-04-19T08:57:35.262Z" itemprop="datePublished">四月 19, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            继承是一种是的关系，和组合对比，组合是一种有的关系，这两者都是解决代用重用问题的
-继承
-注意：继承不是遗传，在显示角度中，是通过对象抽象成类，再把这些类抽象成一个，就是父类。是自下而上的过程，在程序中是首先由父类，然后由类，之后才有对象，是自上而下的过程。
-123456789101112131415class classparent1:  #父类    passclass classparent2:    passclass useclass1(classparent1):  # 单继承    passclass useclass2(classparent1,classparent2):  # 多继承    passprint(useclass1.__bases__)print(use...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/19/Python 继承、派生、组合、接口、抽象类/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
-  </nav>
-
+  </aside>
 </section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" 搜索…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="搜索">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">联系我们</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-   			<li><a href="https://github.com/ythzx/ythzx.github.io" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://weibo.com/" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://www.twitter.com/" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://www.facebook.com/" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://:www.google.com/" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://www.instagram.com/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>最新文章</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/04/21/Python封装补充/">Python 封装补充</a></h6>
-              <span>四月 21, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/04/20/Python的多态与多态性/">Python 的多态与多态性</a></h6>
-              <span>四月 20, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/04/20/Python继承实现的原理/">Python 继承实现的原理</a></h6>
-              <span>四月 20, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/04/20/python封装/">Python 封装</a></h6>
-              <span>四月 20, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/04/19/Python 继承、派生、组合、接口、抽象类/">Python 继承、派生、组合、接口、抽象类</a></h6>
-              <span>四月 19, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/04/19/Python面向对象（三）/">Python面向对象（三）</a></h6>
-              <span>四月 19, 2017</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/python/" style="font-size: 10px;">python</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
       <footer id="footer" class="site-footer">
