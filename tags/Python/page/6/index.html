@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>小鑫</title>
+  <title>tag: python | 小鑫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -11,7 +11,7 @@
   
   <meta property="og:type" content="website">
 <meta property="og:title" content="小鑫">
-<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/index.html">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/tags/Python/page/6/index.html">
 <meta property="og:site_name" content="小鑫">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小鑫">
@@ -104,301 +104,44 @@
         
           <section id="main">
   
-    <article id="post-Python 静态方法 类方法"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  
+  
     
     
-      <header class="article-header">
-        
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <h1><a href="/archives/2017" class="archive-year">2017</a></h1>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/03/11/Python之禅/" class="archive-article-date">
+		  <time datetime="2017-03-11T09:32:33.065Z" itemprop="datePublished">3月 11, 2017</time>
+	  </a>
+      
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/22/Python 静态方法 类方法/">Python 静态方法 类方法</a>
+      <a class="archive-article-title" href="/2017/03/11/Python之禅/">Python之禅</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/22/Python 静态方法 类方法/" class="article-date">
-	  <time datetime="2017-04-22T10:20:49.028Z" itemprop="datePublished">四月 22, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            通常情况下，类中函数中定义的所有函数,,都是对象的绑定方法，除此之外，还有专门的静态方法和类方法，这两个是专门给类使用的，但是对象非要调用也是不会报错的。
-对象在调用的时候会把自己传递给self，也就是绑定方法的第一个参数。
-1 静态方法
-这里定义spam的时候没有self,而是传入了xyz,类在使用的时候必须传入3个参数1234567class Foo:    @staticmethod  # spam = staticmethod(apam)    def spam(x,y,z):        print(x,y,z)    # spm = staticmethod(spam)Foo.spam(1,2,3)
-应用场景首相先了解下时间模块的使用1234567&gt;&gt;&gt;...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/22/Python 静态方法 类方法/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
+    </header>
   </div>
-  
 </article>
-
-<!-- Table of Contents -->
-
   
-    <article id="post-Python封装补充"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/21/Python封装补充/">Python 封装补充</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/21/Python封装补充/" class="article-date">
-	  <time datetime="2017-04-21T11:19:20.590Z" itemprop="datePublished">四月 21, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            property属性property实际是setter getter deleter是集合体，并不是一个单独的方法
-
-123456789101112131415161718import math  # 使用的库class Circle:    def __init__(self,radius): #定义圆的半径        self.radius = radius    @property   # area = property(area)  #    def area(self):        return math.pi * self.radius**2  # 在类内部的函数，返回值    @property    def peirimeter(self):        re...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/21/Python封装补充/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python的多态与多态性"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/20/Python的多态与多态性/">Python 的多态与多态性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/20/Python的多态与多态性/" class="article-date">
-	  <time datetime="2017-04-20T15:23:28.890Z" itemprop="datePublished">四月 20, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-             多态：是指一类事物有多种形态（！！！！定义角度！！！！）
- 多态性：在继承的基础上， （！！！！使用角度！！！！！）
-使用多态性，实现了利用函数统一调用一个接口
-多态
-1234567891011121314151617181920212223242526#多态：同一种事物的多种形态，动物分为人类，猪类（在定义角度）class Animal:    def run(self):        raise AttributeError('子类必须实现这个方法')class People(Animal):    def run(self):        print('人正在走')class Pig(Animal):    def run(self):        print('pig ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/20/Python的多态与多态性/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python继承实现的原理"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/20/Python继承实现的原理/">Python 继承实现的原理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/20/Python继承实现的原理/" class="article-date">
-	  <time datetime="2017-04-20T15:22:04.816Z" itemprop="datePublished">四月 20, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            继承顺序
- Python3 ：            新式类的查找顺序：广度优先
-新式类的继承：
-        class A(object):  Python2 3 都是了
-
-MRO算法--生成一个列表保存继承顺序表
-
-不找到底部
-Python2 中有新式类 和 经典类            Python2 默认的是经典类
-   经典类的继承是 深度优先
-
-找到最深的，然后从头开始找
-例子1234567891011121314151617181920212223242526272829303132class A(object):  #定义新式类    def test(self):        print('frome A')class B(A):    def test(sel...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/20/Python继承实现的原理/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-python封装"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/20/python封装/">Python 封装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/20/python封装/" class="article-date">
-	  <time datetime="2017-04-20T08:25:56.599Z" itemprop="datePublished">四月 20, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            数据的封装  – 保护隐私方法的封装  – 隔离复杂度
-
-封装其实分为两个层面，但无论哪种层面的封装，都要对外界提供好访问你内部隐藏内容的接口（接口可以理解为入口，有了这个入口，使用者无需且不能够直接访问到内部隐藏的细节，只能走接口，并且我们可以在接口的实现上附加更多的处理逻辑，从而严格控制使用者的访问）
-
-第一个层面的封装（什么都不用做）：创建类和对象会分别创建二者的名称空间，我们只能用类名.或者obj.的方式去访问里面的名字，这本身就是一种封装
-注意：对于这一层面的封装（隐藏），类名.和实例名.就是访问隐藏属性的接口
-第二个层面的封装：类中把某些属性和方法隐藏起来(或者说定义成私有的)，只在类的内部使用、外部无法访问，或者留下少量接口（函数）供外部访问。
-封装
-在python中用双...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/20/python封装/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
+    </div></section>
   
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <a class="extend prev" rel="prev" href="/tags/Python/page/5/">上一页</a><a class="page-number" href="/tags/Python/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Python/page/4/">4</a><a class="page-number" href="/tags/Python/page/5/">5</a><span class="page-number current">6</span>
   </nav>
 
 </section>
