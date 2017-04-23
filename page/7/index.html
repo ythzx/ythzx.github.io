@@ -87,14 +87,6 @@
 </header>
 
 
-  <div style="background:#fff;width: 100%;">
-
-      <div style="max-height:600px; overflow: hidden;">
-        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
-      </div>
-
-  </div>
-
 
 
   <div id="container">
@@ -103,6 +95,75 @@
       <div id="content" class="outer">
         
           <section id="main">
+  
+    <article id="post-Linux网络管理及基础设置"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/21/Linux网络管理及基础设置/">Linux网络管理及基础设置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/21/Linux网络管理及基础设置/" class="article-date">
+	  <time datetime="2017-03-21T15:37:39.529Z" itemprop="datePublished">三月 21, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            一、网络管理1 临时配置网络（ip，网关，dns）
+用ifconfig命令设定网卡的IP地址：
+ens33网卡的IP地址为192.168.16.154,1ifconfig ens33 192.168.16.33 netmask 255.255.255.0
+或者是
+1ifconfig ens33 192.168.16.33/24
+/24 代表子网掩码 255.255.255.0
+-添加dns服务器
+**servername 192.168.16.254**
+
+添加默认网关
+  route add default gw192.168.16.254 netmask 255.255.255.0
+  1route -n 查看刚刚添加的网关
+
+
+
+
+删除添加的网关
+  route del defa...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/03/21/Linux网络管理及基础设置/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
   
     <article id="post-Linux之Nginx服务 nfs文件存储 负载均衡"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
@@ -365,69 +426,6 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
 <!-- Table of Contents -->
 
   
-    <article id="post-操作系统和网络基础"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/13/操作系统和网络基础/">操作系统和网络基础</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/13/操作系统和网络基础/" class="article-date">
-	  <time datetime="2017-03-13T10:56:53.622Z" itemprop="datePublished">三月 13, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1 操作系统1.1为什么要有操作系统
-操作系统（Operating System，简称OS）是管理和控制计算机硬件与软件资源的计算机程序，是直接运行在“裸机”上的最基本的系统软件，任何其他软件都必须在操作系统的支持下才能运行。
-
-
-1.2操作系统的位置
-操作系统位于计算机硬件与应用软件之间，本质也是一个软件。 操作系统分为两部分：
-
-由操作系统的内核（运行于内核态，管理硬件资源）
-系统调用（运行于用户态，为应用程序员写的应用程序提供系统调用接口）所以，单纯的说操作系统是运行于内核态的，是不准确的
-
-1.3操作系统的功能
-系统调用接口隐藏硬件调用接口，为应用程序员提供调用硬件资源的更好，更简单，更清晰的模型（系统调用接口）。应用程序员有了这些接口后，就不用再考虑操作硬件的细节，专心开发自...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/13/操作系统和网络基础/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -642,7 +640,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">19</span></li></ul>
     </div>
   </div>
 

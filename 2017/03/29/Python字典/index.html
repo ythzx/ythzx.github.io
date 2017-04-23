@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python 字典dict、set集合 | 小鑫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="字典dictPython内置字典，通过key-value进行存储，字典是无序的，拓展hash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 字典dict、set集合">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/03/29/Python字典/index.html">
+<meta property="og:site_name" content="小鑫">
+<meta property="og:description" content="字典dictPython内置字典，通过key-value进行存储，字典是无序的，拓展hash">
+<meta property="og:updated_time" content="2017-04-07T10:35:22.043Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 字典dict、set集合">
+<meta name="twitter:description" content="字典dictPython内置字典，通过key-value进行存储，字典是无序的，拓展hash">
+  
+    <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="小鑫" rel="home"> 小鑫 </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Python字典" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python 字典dict、set集合
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/29/Python字典/" class="article-date">
+	  <time datetime="2017-03-29T15:28:15.565Z" itemprop="datePublished">三月 29, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="字典dict"><a href="#字典dict" class="headerlink" title="字典dict"></a>字典dict</h2><p>Python内置字典，通过key-value进行存储，字典是无序的，<em>拓展hash</em></p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">names = [<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</div><div class="line">scores = [<span class="number">95</span>, <span class="number">75</span>, <span class="number">85</span>]</div></pre></td></tr></table></figure>
+<p>给定一个名字，要查找对应的成绩，就先要在names中找到对应的位置，再从scores取出对应的成绩，list越长，耗时越长。</p>
+<p>用dict实现，只需要一个“名字”-“成绩”的对照表，直接根据名字查找成绩，无论这个表有多大，查找速度都不会变慢</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'aa'</span>:<span class="number">1</span>,<span class="string">'bb'</span>:<span class="number">2</span>,<span class="string">'cc'</span>:<span class="number">3</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">'aa'</span>]   <span class="comment">#  可以直接根据名字来查找</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>为什么dict查找速度这么快？因为dict的实现原理和查字典是一样的。假设字典包含了1万个汉字，我们要查某一个字，一个办法是把字典从第一页往后翻，直到找到我们想要的字为止，这种方法就是在list中查找元素的方法，<strong>list越大，查找越慢</strong>。</p>
+</blockquote>
+<p>在字典的索引表里（比如部首表）查这个字对应的页码，然后直接翻到该页，找到这个字。无论找哪个字，这种查找速度都非常快，不会随着字典大小的增加而变慢。</p>
+<p><strong>key-value的存储，是在放进去的时候必须通过key的值算出value的存放位置，这样拿的时候也是根据value的值去内存中拿</strong></p>
+<p><strong>把数据放入dict的方法，除了初始化时指定外，还可以通过key放入：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d</div><div class="line">&#123;<span class="string">'aa'</span>: <span class="number">1</span>, <span class="string">'bb'</span>: <span class="number">2</span>, <span class="string">'cc'</span>: <span class="number">3</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">'hh'</span>]= <span class="number">88</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d</div><div class="line">&#123;<span class="string">'aa'</span>: <span class="number">1</span>, <span class="string">'bb'</span>: <span class="number">2</span>, <span class="string">'cc'</span>: <span class="number">3</span>, <span class="string">'hh'</span>: <span class="number">88</span>&#125;</div></pre></td></tr></table></figure>
+<p><strong>一个key只能对应一个value，所以，多次对一个key放入value，后面的值会把前面的值冲掉：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">'lal'</span>] = <span class="number">88</span>  </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d</div><div class="line">&#123;<span class="string">'aa'</span>: <span class="number">1</span>, <span class="string">'bb'</span>: <span class="number">2</span>, <span class="string">'cc'</span>: <span class="number">3</span>, <span class="string">'hh'</span>: <span class="number">88</span>, <span class="string">'lal'</span>: <span class="number">88</span>&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>如果key不存在，dict就会报错：</strong><br>避免key不存在的错误，通过in判断key是否存在<br>1.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d</div><div class="line">&#123;<span class="string">'aa'</span>: <span class="number">1</span>, <span class="string">'bb'</span>: <span class="number">2</span>, <span class="string">'cc'</span>: <span class="number">3</span>, <span class="string">'hh'</span>: <span class="number">88</span>, <span class="string">'lal'</span>: <span class="number">88</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'in'</span> <span class="keyword">in</span> d</div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'cc'</span> <span class="keyword">in</span> d</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<p>2.<br>get()<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'hahah'</span>)     <span class="comment"># key不存在 ，返回None 在命令行中None是不显示的  </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'hahah'</span>，<span class="number">-1</span>)    <span class="comment"># 可以自定义返回值 -1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'hh'</span>)  <span class="comment">#key 存在，返回value</span></div><div class="line"><span class="number">88</span></div></pre></td></tr></table></figure></p>
+<p><strong>增加字典元素两种方法</strong><br>1.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>dict1 = &#123;<span class="number">1</span>:<span class="number">223</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dict1[<span class="number">1</span>] = <span class="string">'ahah'</span></div></pre></td></tr></table></figure></p>
+<ol>
+<li>setdefault<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>dict1.setdefault(<span class="number">2</span>,<span class="string">'hello'</span>)</div><div class="line"><span class="string">'hello'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dict1</div><div class="line">&#123;<span class="number">1</span>: <span class="string">'ahah'</span>, <span class="number">2</span>: <span class="string">'hello'</span>&#125;</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>删除Python字典</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>dict1</div><div class="line">&#123;<span class="number">1</span>: <span class="string">'ahah'</span>, <span class="string">'1'</span>: <span class="number">233234</span>, <span class="number">2</span>: <span class="string">'hello'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> dict1[<span class="number">1</span>]     <span class="comment"># 用的是方括号  删除指定的key</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dict1</div><div class="line">&#123;<span class="string">'1'</span>: <span class="number">233234</span>, <span class="number">2</span>: <span class="string">'hello'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> dict1[<span class="number">2</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dict1</div><div class="line">&#123;<span class="string">'1'</span>: <span class="number">233234</span>&#125;</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dict1.pop(<span class="string">'1'</span>)   <span class="comment"># 用的pop() </span></div><div class="line"><span class="number">233234</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dict1</div><div class="line">&#123;&#125;</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<p><strong>清空字典</strong></p>
+<p>dict1.clear()</p>
+<p><strong>删除字典对象</strong></p>
+<p>del dict1</p>
+<h3 id="集合set"><a href="#集合set" class="headerlink" title="集合set"></a>集合set</h3><p>set同字典相比，只有key，没有value.</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/03/29/Python字典/" data-title="Python 字典dict、set集合" data-url="https://github.com/ythzx/ythzx.github.io/2017/03/29/Python字典/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/30/列表字典的复制/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          列表list、字典dict的复制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Python条件判断 if-else  for循环 while循环 break continue</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字典dict"><span class="nav-number">1.</span> <span class="nav-text">字典dict</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合set"><span class="nav-number">1.1.</span> <span class="nav-text">集合set</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 小鑫 All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+</body>
+</html>
