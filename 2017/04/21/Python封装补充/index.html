@@ -11,19 +11,16 @@
   
   
   
-  <meta name="description" content="[TOC]
-property属性property实际是setter getter deleter是集合体，并不是一个单独的方法">
+  <meta name="description" content="property属性property实际是setter getter deleter是集合体，并不是一个单独的方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 封装补充">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/21/Python封装补充/index.html">
 <meta property="og:site_name" content="小鑫">
-<meta property="og:description" content="[TOC]
-property属性property实际是setter getter deleter是集合体，并不是一个单独的方法">
-<meta property="og:updated_time" content="2017-04-24T06:36:54.977Z">
+<meta property="og:description" content="property属性property实际是setter getter deleter是集合体，并不是一个单独的方法">
+<meta property="og:updated_time" content="2017-04-24T06:38:49.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 封装补充">
-<meta name="twitter:description" content="[TOC]
-property属性property实际是setter getter deleter是集合体，并不是一个单独的方法">
+<meta name="twitter:description" content="property属性property实际是setter getter deleter是集合体，并不是一个单独的方法">
   
     <link rel="alternate" href="/atom.xml" title="小鑫" type="application/atom+xml">
   
@@ -96,6 +93,14 @@ property属性property实际是setter getter deleter是集合体，并不是一�
 </header>
 
 
+  <div style="background:#fff;width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;">
+        <img width="100%" alt="Hike News" src="/css/images/pose.jpg">
+      </div>
+
+  </div>
+
 
 
   <div id="container">
@@ -126,8 +131,7 @@ property属性property实际是setter getter deleter是集合体，并不是一�
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[TOC]</p>
-<h2 id="property属性"><a href="#property属性" class="headerlink" title="property属性"></a>property属性</h2><p>property实际是setter getter deleter是集合体，并不是一个单独的方法</p>
+        <h2 id="property属性"><a href="#property属性" class="headerlink" title="property属性"></a>property属性</h2><p>property实际是setter getter deleter是集合体，并不是一个单独的方法</p>
 <a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math  <span class="comment"># 使用的库</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,radius)</span>:</span> <span class="comment">#定义圆的半径</span></div><div class="line">        self.radius = radius</div><div class="line"></div><div class="line"><span class="meta">    @property   # area = property(area)  #</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">area</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> math.pi * self.radius**<span class="number">2</span>  <span class="comment"># 在类内部的函数，返回值</span></div><div class="line"></div><div class="line"><span class="meta">    @property</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peirimeter</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="number">2</span>*math.pi*self.radius</div><div class="line"></div><div class="line">c1= Circle(<span class="number">5</span>)  <span class="comment"># 对类实例化 产生一个对象</span></div><div class="line">print(c1.radius)  <span class="comment"># 打印的是半径的值</span></div><div class="line">print(c1.area)    <span class="comment"># 这里相当于是直接使用了一个属性，并没有使用绑定方法</span></div><div class="line">print(c1.peirimeter)</div></pre></td></tr></table></figure>
 <p>结果：<br>5<br>78.53981633974483<br>31.41592653589793</p>
