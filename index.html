@@ -108,317 +108,80 @@
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/24/面向对象进阶/">Python 面向对象进阶</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
 	Posted on <a href="/2017/04/24/面向对象进阶/" class="article-date">
-	  <time datetime="2017-04-24T14:58:17.348Z" itemprop="datePublished">四月 24, 2017</time>
+	  <time datetime="2017-04-24T10:49:44.864Z" itemprop="datePublished">四月 24, 2017</time>
 	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>面向对象进阶.html</title>
-  <meta name="generator" content="Haroopad 0.13.1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>div.oembedall-githubrepos{border:1px solid #DDD;border-radius:4px;list-style-type:none;margin:0 0 10px;padding:8px 10px 0;font:13.34px/1.4 helvetica,arial,freesans,clean,sans-serif;width:452px;background-color:#fff}div.oembedall-githubrepos .oembedall-body{background:-moz-linear-gradient(center top,#FAFAFA,#EFEFEF);background:-webkit-gradient(linear,left top,left bottom,from(#FAFAFA),to(#EFEFEF));border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-top:1px solid #EEE;margin-left:-10px;margin-top:8px;padding:5px 10px;width:100%}div.oembedall-githubrepos h3{font-size:14px;margin:0;padding-left:18px;white-space:nowrap}div.oembedall-githubrepos p.oembedall-description{color:#444;font-size:12px;margin:0 0 3px}div.oembedall-githubrepos p.oembedall-updated-at{color:#888;font-size:11px;margin:0}div.oembedall-githubrepos ul.oembedall-repo-stats{border:none;float:right;font-size:11px;font-weight:700;padding-left:15px;position:relative;z-index:5;margin:0}div.oembedall-githubrepos ul.oembedall-repo-stats li{border:none;color:#666;display:inline-block;list-style-type:none;margin:0!important}div.oembedall-githubrepos ul.oembedall-repo-stats li a{background-color:transparent;border:none;color:#666!important;background-position:5px -2px;background-repeat:no-repeat;border-left:1px solid #DDD;display:inline-block;height:21px;line-height:21px;padding:0 5px 0 23px}div.oembedall-githubrepos ul.oembedall-repo-stats li:first-child a{border-left:medium none;margin-right:-3px}div.oembedall-githubrepos ul.oembedall-repo-stats li a:hover{background:5px -27px no-repeat #4183C4;color:#FFF!important;text-decoration:none}div.oembedall-githubrepos ul.oembedall-repo-stats li:first-child a:hover{border-bottom-left-radius:3px;border-top-left-radius:3px}ul.oembedall-repo-stats li:last-child a:hover{border-bottom-right-radius:3px;border-top-right-radius:3px}span.oembedall-closehide{background-color:#aaa;border-radius:2px;cursor:pointer;margin-right:3px}div.oembedall-container{margin-top:5px;text-align:left}.oembedall-ljuser{font-weight:700}.oembedall-ljuser img{vertical-align:bottom;border:0;padding-right:1px}.oembedall-stoqembed{border-bottom:1px dotted #999;float:left;overflow:hidden;width:730px;line-height:1;background:#FFF;color:#000;font-family:Arial,Liberation Sans,DejaVu Sans,sans-serif;font-size:80%;text-align:left;margin:0;padding:0}.oembedall-stoqembed a{color:#07C;text-decoration:none;margin:0;padding:0}.oembedall-stoqembed a:hover{text-decoration:underline}.oembedall-stoqembed a:visited{color:#4A6B82}.oembedall-stoqembed h3{font-family:Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;font-size:130%;font-weight:700;margin:0;padding:0}.oembedall-stoqembed .oembedall-reputation-score{color:#444;font-size:120%;font-weight:700;margin-right:2px}.oembedall-stoqembed .oembedall-user-info{height:35px;width:185px}.oembedall-stoqembed .oembedall-user-info .oembedall-user-gravatar32{float:left;height:32px;width:32px}.oembedall-stoqembed .oembedall-user-info .oembedall-user-details{float:left;margin-left:5px;overflow:hidden;white-space:nowrap;width:145px}.oembedall-stoqembed .oembedall-question-hyperlink{font-weight:700}.oembedall-stoqembed .oembedall-stats{background:#EEE;margin:0 0 0 7px;padding:4px 7px 6px;width:58px}.oembedall-stoqembed .oembedall-statscontainer{float:left;margin-right:8px;width:86px}.oembedall-stoqembed .oembedall-votes{color:#555;padding:0 0 7px;text-align:center}.oembedall-stoqembed .oembedall-vote-count-post{font-size:240%;color:#808185;display:block;font-weight:700}.oembedall-stoqembed .oembedall-views{color:#999;padding-top:4px;text-align:center}.oembedall-stoqembed .oembedall-status{margin-top:-3px;padding:4px 0;text-align:center;background:#75845C;color:#FFF}.oembedall-stoqembed .oembedall-status strong{color:#FFF;display:block;font-size:140%}.oembedall-stoqembed .oembedall-summary{float:left;width:635px}.oembedall-stoqembed .oembedall-excerpt{line-height:1.2;margin:0;padding:0 0 5px}.oembedall-stoqembed .oembedall-tags{float:left;line-height:18px}.oembedall-stoqembed .oembedall-tags a:hover{text-decoration:none}.oembedall-stoqembed .oembedall-post-tag{background-color:#E0EAF1;border-bottom:1px solid #3E6D8E;border-right:1px solid #7F9FB6;color:#3E6D8E;font-size:90%;line-height:2.4;margin:2px 2px 2px 0;padding:3px 4px;text-decoration:none;white-space:nowrap}.oembedall-stoqembed .oembedall-post-tag:hover{background-color:#3E6D8E;border-bottom:1px solid #37607D;border-right:1px solid #37607D;color:#E0EAF1}.oembedall-stoqembed .oembedall-fr{float:right}.oembedall-stoqembed .oembedall-statsarrow{background-image:url(http://cdn.sstatic.net/stackoverflow/img/sprites.png?v=3);background-repeat:no-repeat;overflow:hidden;background-position:0 -435px;float:right;height:13px;margin-top:12px;width:7px}.oembedall-facebook1{border:1px solid #1A3C6C;padding:0;font:13.34px/1.4 verdana;width:500px}.oembedall-facebook2{background-color:#627add}.oembedall-facebook2 a{color:#e8e8e8;text-decoration:none}.oembedall-facebookBody{background-color:#fff;vertical-align:top;padding:5px}.oembedall-facebookBody .contents{display:inline-block;width:100%}.oembedall-facebookBody div img{float:left;margin-right:5px}div.oembedall-lanyard{-webkit-box-shadow:none;-webkit-transition-delay:0s;-webkit-transition-duration:.4000000059604645s;-webkit-transition-property:width;-webkit-transition-timing-function:cubic-bezier(0.42,0,.58,1);background-attachment:scroll;background-clip:border-box;background-color:transparent;background-image:none;background-origin:padding-box;border-width:0;box-shadow:none;color:#112644;display:block;float:left;font-family:'Trebuchet MS',Trebuchet,sans-serif;font-size:16px;height:253px;line-height:19px;margin:0;max-width:none;min-height:0;outline:#112644 0;overflow-x:visible;overflow-y:visible;padding:0;position:relative;text-align:left;vertical-align:baseline;width:804px}div.oembedall-lanyard .tagline{font-size:1.5em}div.oembedall-lanyard .wrapper{overflow:hidden;clear:both}div.oembedall-lanyard .split{float:left;display:inline}div.oembedall-lanyard .prominent-place .flag:active,div.oembedall-lanyard .prominent-place .flag:focus,div.oembedall-lanyard .prominent-place .flag:hover,div.oembedall-lanyard .prominent-place .flag:link,div.oembedall-lanyard .prominent-place .flag:visited{float:left;display:block;width:48px;height:48px;position:relative;top:-5px;margin-right:10px}div.oembedall-lanyard .place-context{font-size:.889em}div.oembedall-lanyard .prominent-place .sub-place{display:block}div.oembedall-lanyard .prominent-place{font-size:1.125em;line-height:1.1em;font-weight:400}div.oembedall-lanyard .main-date{color:#8CB4E0;font-weight:700;line-height:1.1}div.oembedall-lanyard .first{width:48.57%;margin:0 0 0 2.857%}.mermaid .label{color:#333}.node circle,.node polygon,.node rect{fill:#cde498;stroke:#13540c;stroke-width:1px}.edgePath .path{stroke:green;stroke-width:1.5px}.cluster rect{fill:#cdffb2;rx:40;stroke:#6eaa49;stroke-width:1px}.cluster text{fill:#333}.actor{stroke:#13540c;fill:#cde498}text.actor{fill:#000;stroke:none}.actor-line{stroke:grey}.messageLine0{stroke-width:1.5;stroke-dasharray:"2 2";marker-end:"url(#arrowhead)";stroke:#333}.messageLine1{stroke-width:1.5;stroke-dasharray:"2 2";stroke:#333}#arrowhead{fill:#333}#crosshead path{fill:#333!important;stroke:#333!important}.messageText{fill:#333;stroke:none}.labelBox{stroke:#326932;fill:#cde498}.labelText,.loopText{fill:#000;stroke:none}.loopLine{stroke-width:2;stroke-dasharray:"2 2";marker-end:"url(#arrowhead)";stroke:#326932}.note{stroke:#6eaa49;fill:#fff5ad}.noteText{fill:#000;stroke:none;font-family:'trebuchet ms',verdana,arial;font-size:14px}.section{stroke:none;opacity:.2}.section0,.section2{fill:#6eaa49}.section1,.section3{fill:#fff;opacity:.2}.sectionTitle0,.sectionTitle1,.sectionTitle2,.sectionTitle3{fill:#333}.sectionTitle{text-anchor:start;font-size:11px;text-height:14px}.grid .tick{stroke:lightgrey;opacity:.3;shape-rendering:crispEdges}.grid path{stroke-width:0}.today{fill:none;stroke:red;stroke-width:2px}.task{stroke-width:2}.taskText{text-anchor:middle;font-size:11px}.taskTextOutsideRight{fill:#000;text-anchor:start;font-size:11px}.taskTextOutsideLeft{fill:#000;text-anchor:end;font-size:11px}.taskText0,.taskText1,.taskText2,.taskText3{fill:#fff}.task0,.task1,.task2,.task3{fill:#487e3a;stroke:#13540c}.taskTextOutside0,.taskTextOutside1,.taskTextOutside2,.taskTextOutside3{fill:#000}.active0,.active1,.active2,.active3{fill:#cde498;stroke:#13540c}.activeText0,.activeText1,.activeText2,.activeText3{fill:#000!important}.done0,.done1,.done2,.done3{stroke:grey;fill:lightgrey;stroke-width:2}.doneText0,.doneText1,.doneText2,.doneText3{fill:#000!important}.crit0,.crit1,.crit2,.crit3{stroke:#f88;fill:red;stroke-width:2}.activeCrit0,.activeCrit1,.activeCrit2,.activeCrit3{stroke:#f88;fill:#cde498;stroke-width:2}.doneCrit0,.doneCrit1,.doneCrit2,.doneCrit3{stroke:#f88;fill:lightgrey;stroke-width:2;cursor:pointer;shape-rendering:crispEdges}.activeCritText0,.activeCritText1,.activeCritText2,.activeCritText3,.doneCritText0,.doneCritText1,.doneCritText2,.doneCritText3{fill:#000!important}.titleText{text-anchor:middle;font-size:18px;fill:#000}text{font-family:'trebuchet ms',verdana,arial;font-size:14px}html{height:100%}body{margin:0!important;padding:5px 20px 26px!important;background-color:#fff;font-family:"Lucida Grande","Segoe UI","Apple SD Gothic Neo","Malgun Gothic","Lucida Sans Unicode",Helvetica,Arial,sans-serif;font-size:.9em;overflow-x:hidden;overflow-y:auto}br,h1,h2,h3,h4,h5,h6{clear:both}hr.page{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x;border:0;height:3px;padding:0}hr.underscore{border-top-style:dashed!important}body >:first-child{margin-top:0!important}img.plugin{box-shadow:0 1px 3px rgba(0,0,0,.1);border-radius:3px}iframe{border:0}figure{-webkit-margin-before:0;-webkit-margin-after:0;-webkit-margin-start:0;-webkit-margin-end:0}kbd{border:1px solid #aaa;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;-moz-box-shadow:1px 2px 2px #ddd;-webkit-box-shadow:1px 2px 2px #ddd;box-shadow:1px 2px 2px #ddd;background-color:#f9f9f9;background-image:-moz-linear-gradient(top,#eee,#f9f9f9,#eee);background-image:-o-linear-gradient(top,#eee,#f9f9f9,#eee);background-image:-webkit-linear-gradient(top,#eee,#f9f9f9,#eee);background-image:linear-gradient(top,#eee,#f9f9f9,#eee);padding:1px 3px;font-family:inherit;font-size:.85em}.oembeded .oembed_photo{display:inline-block}img[data-echo]{margin:25px 0;width:100px;height:100px;background:url(../img/ajax.gif) center center no-repeat #fff}.spinner{display:inline-block;width:10px;height:10px;margin-bottom:-.1em;border:2px solid rgba(0,0,0,.5);border-top-color:transparent;border-radius:100%;-webkit-animation:spin 1s infinite linear;animation:spin 1s infinite linear}.spinner:after{content:'';display:block;width:0;height:0;position:absolute;top:-6px;left:0;border:4px solid transparent;border-bottom-color:rgba(0,0,0,.5);-webkit-transform:rotate(45deg);transform:rotate(45deg)}@-webkit-keyframes spin{to{-webkit-transform:rotate(360deg)}}@keyframes spin{to{transform:rotate(360deg)}}p.toc{margin:0!important}p.toc ul{padding-left:10px}p.toc>ul{padding:10px;margin:0 10px;display:inline-block;border:1px solid #ededed;border-radius:5px}p.toc li,p.toc ul{list-style-type:none}p.toc li{width:100%;padding:0;overflow:hidden}p.toc li a::after{content:"."}p.toc li a:before{content:"• "}p.toc h5{text-transform:uppercase}p.toc .title{float:left;padding-right:3px}p.toc .number{margin:0;float:right;padding-left:3px;background:#fff;display:none}input.task-list-item{margin-left:-1.62em}.markdown{font-family:"Hiragino Sans GB","Microsoft YaHei",STHeiti,SimSun,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",'Segoe UI',AppleSDGothicNeo-Medium,'Malgun Gothic',Verdana,Tahoma,sans-serif;padding:20px}.markdown a{text-decoration:none;vertical-align:baseline}.markdown a:hover{text-decoration:underline}.markdown h1{font-size:2.2em;font-weight:700;margin:1.5em 0 1em}.markdown h2{font-size:1.8em;font-weight:700;margin:1.275em 0 .85em}.markdown h3{font-size:1.6em;font-weight:700;margin:1.125em 0 .75em}.markdown h4{font-size:1.4em;font-weight:700;margin:.99em 0 .66em}.markdown h5{font-size:1.2em;font-weight:700;margin:.855em 0 .57em}.markdown h6{font-size:1em;font-weight:700;margin:.75em 0 .5em}.markdown h1+p,.markdown h1:first-child,.markdown h2+p,.markdown h2:first-child,.markdown h3+p,.markdown h3:first-child,.markdown h4+p,.markdown h4:first-child,.markdown h5+p,.markdown h5:first-child,.markdown h6+p,.markdown h6:first-child{margin-top:0}.markdown hr{border:1px solid #ccc}.markdown p{margin:1em 0;word-wrap:break-word}.markdown ol{list-style-type:decimal}.markdown li{display:list-item;line-height:1.4em}.markdown blockquote{margin:1em 20px}.markdown blockquote>:first-child{margin-top:0}.markdown blockquote>:last-child{margin-bottom:0}.markdown blockquote cite:before{content:'\2014 \00A0'}.markdown .code{border-radius:3px;word-wrap:break-word}.markdown pre{border-radius:3px;word-wrap:break-word;border:1px solid #ccc;overflow:auto;padding:.5em}.markdown pre code{border:0;display:block}.markdown pre>code{font-family:Consolas,Inconsolata,Courier,monospace;font-weight:700;white-space:pre;margin:0}.markdown code{border-radius:3px;word-wrap:break-word;border:1px solid #ccc;padding:0 5px;margin:0 2px}.markdown img{max-width:100%}.markdown mark{color:#000;background-color:#fcf8e3}.markdown table{padding:0;border-collapse:collapse;border-spacing:0;margin-bottom:16px}.markdown table tr td,.markdown table tr th{border:1px solid #ccc;margin:0;padding:6px 13px}.markdown table tr th{font-weight:700}.markdown table tr th>:first-child{margin-top:0}.markdown table tr th>:last-child{margin-bottom:0}.markdown table tr td>:first-child{margin-top:0}.markdown table tr td>:last-child{margin-bottom:0}.github{padding:20px;font-family:"Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",STHeiti,SimSun,"Segoe UI",AppleSDGothicNeo-Medium,'Malgun Gothic',Arial,freesans,sans-serif;font-size:15px;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}.github a{color:#3269a0}.github a:hover{color:#4183c4}.github h2{border-bottom:1px solid #e6e6e6;line-height:1.6}.github h6{color:#777}.github hr{border:1px solid #e6e6e6}.github pre>code{font-size:.9em;font-family:Consolas,Inconsolata,Courier,monospace}.github blockquote>code,.github h1>code,.github h2>code,.github h3>code,.github h4>code,.github h5>code,.github h6>code,.github li>code,.github p>code,.github td>code{background-color:rgba(0,0,0,.07);font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;font-size:85%;padding:.2em .5em;border:0}.github blockquote{border-left:4px solid #e6e6e6;padding:0 15px;font-style:italic}.github table{background-color:#fafafa}.github table tr td,.github table tr th{border:1px solid #e6e6e6}.github table tr:nth-child(2n){background-color:#f2f2f2}.hljs-comment,.hljs-title{color:#9c9491}.css .hljs-class,.css .hljs-id,.css .hljs-pseudo,.hljs-attribute,.hljs-regexp,.hljs-tag,.hljs-variable,.html .hljs-doctype,.ruby .hljs-constant,.xml .hljs-doctype,.xml .hljs-pi,.xml .hljs-tag .hljs-title{color:#f22c40}.hljs-built_in,.hljs-constant,.hljs-literal,.hljs-number,.hljs-params,.hljs-pragma,.hljs-preprocessor{color:#df5320}.css .hljs-rules .hljs-attribute,.hljs-ruby .hljs-class .hljs-title{color:#d5911a}.hljs-header,.hljs-inheritance,.hljs-string,.hljs-value,.ruby .hljs-symbol,.xml .hljs-cdata{color:#5ab738}.css .hljs-hexcolor{color:#00ad9c}.coffeescript .hljs-title,.hljs-function,.javascript .hljs-title,.perl .hljs-sub,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword{color:#407ee7}.hljs-keyword,.javascript .hljs-function{color:#6666ea}.hljs{display:block;overflow-x:auto;background:#2c2421;color:#a8a19f;padding:.5em;-webkit-text-size-adjust:none}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .css,.xml .hljs-cdata,.xml .javascript,.xml .vbscript{opacity:.5}.MathJax_Hover_Frame{border-radius:.25em;-webkit-border-radius:.25em;-moz-border-radius:.25em;-khtml-border-radius:.25em;box-shadow:0 0 15px #83A;-webkit-box-shadow:0 0 15px #83A;-moz-box-shadow:0 0 15px #83A;-khtml-box-shadow:0 0 15px #83A;border:1px solid #A6D!important;display:inline-block;position:absolute}.MathJax_Hover_Arrow{position:absolute;width:15px;height:11px;cursor:pointer}#MathJax_About{position:fixed;left:50%;width:auto;text-align:center;border:3px outset;padding:1em 2em;background-color:#DDD;color:#000;cursor:default;font-family:message-box;font-size:120%;font-style:normal;text-indent:0;text-transform:none;line-height:normal;letter-spacing:normal;word-spacing:normal;word-wrap:normal;white-space:nowrap;float:none;z-index:201;border-radius:15px;-webkit-border-radius:15px;-moz-border-radius:15px;-khtml-border-radius:15px;box-shadow:0 10px 20px gray;-webkit-box-shadow:0 10px 20px gray;-moz-box-shadow:0 10px 20px gray;-khtml-box-shadow:0 10px 20px gray;filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}.MathJax_Menu{position:absolute;background-color:#fff;color:#000;width:auto;padding:2px;border:1px solid #CCC;margin:0;cursor:default;font:menu;text-align:left;text-indent:0;text-transform:none;line-height:normal;letter-spacing:normal;word-spacing:normal;word-wrap:normal;white-space:nowrap;float:none;z-index:201;box-shadow:0 10px 20px gray;-webkit-box-shadow:0 10px 20px gray;-moz-box-shadow:0 10px 20px gray;-khtml-box-shadow:0 10px 20px gray;filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}.MathJax_MenuItem{padding:2px 2em;background:0 0}.MathJax_MenuArrow{position:absolute;right:.5em;color:#666}.MathJax_MenuActive .MathJax_MenuArrow{color:#fff}.MathJax_MenuArrow.RTL{left:.5em;right:auto}.MathJax_MenuCheck{position:absolute;left:.7em}.MathJax_MenuCheck.RTL{right:.7em;left:auto}.MathJax_MenuRadioCheck{position:absolute;left:1em}.MathJax_MenuRadioCheck.RTL{right:1em;left:auto}.MathJax_MenuLabel{padding:2px 2em 4px 1.33em;font-style:italic}.MathJax_MenuRule{border-top:1px solid #CCC;margin:4px 1px 0}.MathJax_MenuDisabled{color:GrayText}.MathJax_MenuActive{background-color:Highlight;color:HighlightText}.MathJax_Menu_Close{position:absolute;width:31px;height:31px;top:-15px;left:-15px}#MathJax_Zoom{position:absolute;background-color:#F0F0F0;overflow:auto;display:block;z-index:301;padding:.5em;border:1px solid #000;margin:0;font-weight:400;font-style:normal;text-align:left;text-indent:0;text-transform:none;line-height:normal;letter-spacing:normal;word-spacing:normal;word-wrap:normal;white-space:nowrap;float:none;box-shadow:5px 5px 15px #AAA;-webkit-box-shadow:5px 5px 15px #AAA;-moz-box-shadow:5px 5px 15px #AAA;-khtml-box-shadow:5px 5px 15px #AAA;filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}#MathJax_ZoomOverlay{position:absolute;left:0;top:0;z-index:300;display:inline-block;width:100%;height:100%;border:0;padding:0;margin:0;background-color:#fff;opacity:0;filter:alpha(opacity=0)}#MathJax_ZoomFrame{position:relative;display:inline-block;height:0;width:0}#MathJax_ZoomEventTrap{position:absolute;left:0;top:0;z-index:302;display:inline-block;border:0;padding:0;margin:0;background-color:#fff;opacity:0;filter:alpha(opacity=0)}.MathJax_Preview{color:#888}#MathJax_Message{position:fixed;left:1px;bottom:2px;background-color:#E6E6E6;border:1px solid #959595;margin:0;padding:2px 8px;z-index:102;color:#000;font-size:80%;width:auto;white-space:nowrap}#MathJax_MSIE_Frame{position:absolute;top:0;left:0;width:0;z-index:101;border:0;margin:0;padding:0}.MathJax_Error{color:#C00;font-style:italic}footer{position:fixed;font-size:.8em;text-align:right;bottom:0;margin-left:-25px;height:20px;width:100%}</style>
-</head>
-<body class="markdown github">
-<hr class="section"><p>title:  Python 面向对象进阶</p><h2 id="tags:-python"><a name="tags:-python" href="#tags:-python"></a>tags: Python</h2><h2 id="1-isinstance-和issubclass"><a name="1-isinstance-和issubclass" href="#1-isinstance-和issubclass"></a>1 isinstance 和issubclass</h2><h3 id="instance:判断该对象是否是类的对象"><a name="instance:判断该对象是否是类的对象" href="#instance:判断该对象是否是类的对象"></a>instance:判断该对象是否是类的对象</h3><p><strong> isinstance（obj,Foo） </strong></p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>x = []
-print(isinstance(x,list))
-</code></pre>">x = []
-print(isinstance(x,list))
-</code></pre><p>结果：<br>True</p><h3 id="issubclass:判断是否是继承"><a name="issubclass:判断是否是继承" href="#issubclass:判断是否是继承"></a>issubclass:判断是否是继承</h3><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>
-class Foo:
-    pass
-class Bar(Foo):
-    pass
-print(issubclass(Bar,Foo))
-</code></pre>">
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>:</span>
-    <span class="hljs-keyword">pass</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bar</span><span class="hljs-params">(Foo)</span>:</span>
-    <span class="hljs-keyword">pass</span>
-print(issubclass(Bar,Foo))
-</code></pre><p>结果：<br>True</p><p>通过下面的方式也可以查看<br>print(Bar.<strong>base</strong>)   </p><h2 id="2-反射"><a name="2-反射" href="#2-反射"></a>2 反射</h2><blockquote>
+        <h2 id="1-isinstance-和issubclass"><a href="#1-isinstance-和issubclass" class="headerlink" title="1 isinstance 和issubclass"></a>1 isinstance 和issubclass</h2><h3 id="instance-判断该对象是否是类的对象"><a href="#instance-判断该对象是否是类的对象" class="headerlink" title="instance:判断该对象是否是类的对象"></a>instance:判断该对象是否是类的对象</h3><p><strong> isinstance（obj,Foo） </strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">x = []</div><div class="line">print(isinstance(x,list))</div></pre></td></tr></table></figure>
+<p>结果：<br>True</p>
+<h3 id="issubclass-判断是否是继承"><a href="#issubclass-判断是否是继承" class="headerlink" title="issubclass:判断是否是继承"></a>issubclass:判断是否是继承</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span><span class="params">(Foo)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line">print(issubclass(Bar,Foo))</div></pre></td></tr></table></figure>
+<p>结果：<br>True</p>
+<p>通过下面的方式也可以查看<br>print(Bar.<strong>base</strong>)   </p>
+<h2 id="2-反射"><a href="#2-反射" class="headerlink" title="2 反射"></a>2 反射</h2><blockquote>
 <p>反射是Smi首次提出的，主要指程序可以访问、检测和修改它本身状态行为的一种能力，也可以叫做<strong>自省</strong></p>
-</blockquote><h3 id="2.1面向对象中的反射"><a name="2.1面向对象中的反射" href="#2.1面向对象中的反射"></a>2.1面向对象中的反射</h3><p>面向对象中的反射，是通过<strong>字符串形式操作对象</strong>的属性，<strong>Python中一切都是对象</strong>，都可以使用对象</p><p>Python中通过<strong>hasattr、getattr、setattr、deltattr</strong>实现自省的函数，适用于<strong>类和对象</strong>（一切都是对象）</p><p>反射就是把字符串反射成相应的命令</p><h4 id="hasattr"><a name="hasattr" href="#hasattr"></a>hasattr</h4><p>查看类和对象中是否有name,用字符串表示，实例在找的时候首先从自身找，自身没有从类找。</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>class Foo:
-    name = 'aaa'
-f1 =Foo()
-print(hasattr(Foo,'name'))
-print(hasattr(f1,'name'))
-</code></pre>"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>:</span>
-    name = <span class="hljs-string">'aaa'</span>
-f1 =Foo()
-print(hasattr(Foo,<span class="hljs-string">'name'</span>))
-print(hasattr(f1,<span class="hljs-string">'name'</span>))
-</code></pre><p>结果：<br>True<br>True</p><h4 id="setattr"><a name="setattr" href="#setattr"></a>setattr</h4><p>setattr是设置属性，setattr(x,y,z)</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>class Foo:
-    name = 'aaa'
-f1 =Foo()
-
-setattr(Foo,'age',18)
-print(Foo,'age')
-print(f1,'age')
-</code></pre>"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>:</span>
-    name = <span class="hljs-string">'aaa'</span>
-f1 =Foo()
-
-setattr(Foo,<span class="hljs-string">'age'</span>,<span class="hljs-number">18</span>)
-print(Foo,<span class="hljs-string">'age'</span>)
-print(f1,<span class="hljs-string">'age'</span>)
-</code></pre><h4 id="deltattr"><a name="deltattr" href="#deltattr"></a>deltattr</h4><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>print(Foo.__dict__)
-delattr(Foo,'name')
-print(Foo.__dict__)   
-print(hasattr(f1,'name'))
-</code></pre>">print(Foo.__dict__)
-delattr(Foo,<span class="hljs-string">'name'</span>)
-print(Foo.__dict__)   
-print(hasattr(f1,<span class="hljs-string">'name'</span>))
-</code></pre><p>结果：<br>False<br>通过打印类的名称空间可以查看到name已经没有了</p><h4 id="getattr"><a name="getattr" href="#getattr"></a>getattr</h4><p>getattr是查找那个属性，并把命名它的值获得，实际的原理是通过获得字典中的key,然后获得value</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>class People:
-    country = 'china'
-    def __init__(self,name):
-        self.name=name
-
-p = People('aaa')
-print(hasattr(p,'name'))
-print('name' in p.__dict__)  # 执行的效果是一样的e
-
-print(hasattr(p,'country'))
-print(hasattr(People,'country'))
-
-print(getattr(p,'country'))
-print(getattr(p,'__init__'))
-print(getattr(People,'country'))
-</code></pre>"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">People</span>:</span>
-    country = <span class="hljs-string">'china'</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,name)</span>:</span>
-        self.name=name
-
-p = People(<span class="hljs-string">'aaa'</span>)
-print(hasattr(p,<span class="hljs-string">'name'</span>))
-print(<span class="hljs-string">'name'</span> <span class="hljs-keyword">in</span> p.__dict__)  <span class="hljs-comment"># 执行的效果是一样的e</span>
-
-print(hasattr(p,<span class="hljs-string">'country'</span>))
-print(hasattr(People,<span class="hljs-string">'country'</span>))
-
-print(getattr(p,<span class="hljs-string">'country'</span>))
-print(getattr(p,<span class="hljs-string">'__init__'</span>))
-print(getattr(People,<span class="hljs-string">'country'</span>))
-</code></pre><h3 id="2.3模块的反射"><a name="2.3模块的反射" href="#2.3模块的反射"></a>2.3模块的反射</h3><p>Python中一切皆对象，模块文件等都是对象</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>import sys
-
-def s1():
-    pass
-def s2():
-    pass
-this_module = sys.modules[__name__]
-print(hasattr(this_module,'s1'))
-print(getattr(this_module,'s1'))
-</code></pre>"><span class="hljs-keyword">import</span> sys
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">s1</span><span class="hljs-params">()</span>:</span>
-    <span class="hljs-keyword">pass</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">s2</span><span class="hljs-params">()</span>:</span>
-    <span class="hljs-keyword">pass</span>
-this_module = sys.modules[__name__]
-print(hasattr(this_module,<span class="hljs-string">'s1'</span>))
-print(getattr(this_module,<span class="hljs-string">'s1'</span>))
-</code></pre><ul>
-<li>结果：<br>True</li></ul><p>function s1 at 0x00000000005F3E18</p><h2 id="3-内置attr"><a name="3-内置attr" href="#3-内置attr"></a>3 内置attr</h2><h3 id="__getattr__"><a name="__getattr__" href="#__getattr__"></a><strong>getattr</strong></h3><p> <strong><strong>getattr</strong>只有在调用的属性不存在的时候才会触发</strong></p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>class Foo:
-    def __init__(self,name):
-        self.name = name
-    def __getattr__(self, item):
-        print(&quot;getattr--%s %s&quot;%(item,type(item)))
-
-f = Foo('aaa')
-print(f.xxx)
-</code></pre>"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,name)</span>:</span>
-        self.name = name
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__getattr__</span><span class="hljs-params">(self, item)</span>:</span>
-        print(<span class="hljs-string">"getattr--%s %s"</span>%(item,type(item)))
-
-f = Foo(<span class="hljs-string">'aaa'</span>)
-print(f.xxx)
-</code></pre><ul>
-<li>结果：<br><em>getattr—xxx     class ‘str’<br>None</em></li></ul><h3 id="__setattr__"><a name="__setattr__" href="#__setattr__"></a><strong>setattr</strong></h3><p><strong><strong>setattr</strong>添加/修改属性会触发它的执行</strong></p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>class Foo:
-    def __init__(self,x):
-        self.name=x
-    def __setattr__(self, key, value):  # 与上面的对应关系是self--self,name--key,x--value
-        self.__dict__[key]=value  # 真正修改的是__dict__中的内容
-f1 = Foo('aaa')
-f1.x='bbb'   # 修改属性
-f1.age=18  # 增加属性
-print(f1.__dict__) # 在名称对象的名称空间中可以显示
-</code></pre>"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,x)</span>:</span>
-        self.name=x
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__setattr__</span><span class="hljs-params">(self, key, value)</span>:</span>  <span class="hljs-comment"># 与上面的对应关系是self--self,name--key,x--value</span>
-        self.__dict__[key]=value  <span class="hljs-comment"># 真正修改的是__dict__中的内容</span>
-f1 = Foo(<span class="hljs-string">'aaa'</span>)
-f1.x=<span class="hljs-string">'bbb'</span>   <span class="hljs-comment"># 修改属性</span>
-f1.age=<span class="hljs-number">18</span>  <span class="hljs-comment"># 增加属性</span>
-print(f1.__dict__) <span class="hljs-comment"># 在名称对象的名称空间中可以显示</span>
-</code></pre><h3 id="__deltattr__"><a name="__deltattr__" href="#__deltattr__"></a><strong>deltattr</strong></h3><p>只有删除属性的时候才会触发<strong>deltatr</strong>的执行</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>class Foo:
-    def __init__(self,x):
-        self.name=x
-    def __setattr__(self, key, value):  # 与上面的对应关系是self--self,name--key,x--value
-        self.__dict__[key]=value  # 真正修改的是__dict__中的内容
-    def __delattr__(self, item):
-        self.__dict__.pop(item)
-f1=Foo('aaa')
-print(f1.__dict__)
-del f1.name
-print(f1.__dict__)
-</code></pre>"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,x)</span>:</span>
-        self.name=x
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__setattr__</span><span class="hljs-params">(self, key, value)</span>:</span>  <span class="hljs-comment"># 与上面的对应关系是self--self,name--key,x--value</span>
-        self.__dict__[key]=value  <span class="hljs-comment"># 真正修改的是__dict__中的内容</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__delattr__</span><span class="hljs-params">(self, item)</span>:</span>
-        self.__dict__.pop(item)
-f1=Foo(<span class="hljs-string">'aaa'</span>)
-print(f1.__dict__)
-<span class="hljs-keyword">del</span> f1.name
-print(f1.__dict__)
-</code></pre><p><strong>结果：<br>{‘name’: ‘aaa’}<br>{}</strong></p><h3 id="4-反射的应用"><a name="4-反射的应用" href="#4-反射的应用"></a>4 反射的应用</h3><h4 id="4.1-可插拔机制"><a name="4.1-可插拔机制" href="#4.1-可插拔机制"></a>4.1 可插拔机制</h4><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>#客户端
-class FtpClient:
-    def __init__(self,addr):
-        print('正在连接服务器[%s]'%addr)
-        self.addr = addr
-
-    def get(self):
-        print('get')
-
-    def test(self):
-        print('test')
-</code></pre>"><span class="hljs-comment">#客户端</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FtpClient</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,addr)</span>:</span>
-        print(<span class="hljs-string">'正在连接服务器[%s]'</span>%addr)
-        self.addr = addr
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get</span><span class="hljs-params">(self)</span>:</span>
-        print(<span class="hljs-string">'get'</span>)
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test</span><span class="hljs-params">(self)</span>:</span>
-        print(<span class="hljs-string">'test'</span>)
-</code></pre><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>#服务端，需要使用客户端的内容
-import ftpclient  # 导入test模块（这里是文件）
-# f1 = FtpClient('192.168.1.1')  # wrong
-f1=ftpclient.FtpClient('192.168.1.1')   #这里的对象是文件，即ftpclient,对这个对象进行实例化
-if hasattr(f1,'get'):  # 首先看是否有这个功能
-    func_get=getattr(f1,'get')  # getattr是获得相应的内存地址
-    func_get()
-else:  # else预语言中是真正的逻辑
-    print('其他逻辑')
-</code></pre>"><span class="hljs-comment">#服务端，需要使用客户端的内容</span>
-<span class="hljs-keyword">import</span> ftpclient  <span class="hljs-comment"># 导入test模块（这里是文件）</span>
-<span class="hljs-comment"># f1 = FtpClient('192.168.1.1')  # wrong</span>
-f1=ftpclient.FtpClient(<span class="hljs-string">'192.168.1.1'</span>)   <span class="hljs-comment">#这里的对象是文件，即ftpclient,对这个对象进行实例化</span>
-<span class="hljs-keyword">if</span> hasattr(f1,<span class="hljs-string">'get'</span>):  <span class="hljs-comment"># 首先看是否有这个功能</span>
-    func_get=getattr(f1,<span class="hljs-string">'get'</span>)  <span class="hljs-comment"># getattr是获得相应的内存地址</span>
-    func_get()
-<span class="hljs-keyword">else</span>:  <span class="hljs-comment"># else预语言中是真正的逻辑</span>
-    print(<span class="hljs-string">'其他逻辑'</span>)
-</code></pre><h4 id="4.2-通过字符串导入模块"><a name="4.2-通过字符串导入模块" href="#4.2-通过字符串导入模块"></a>4.2 通过字符串导入模块</h4><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>m = input(&quot;输入你要导入的模块&quot;)
-m1 = __import__(m)
-print(m1)
-</code></pre>">m = input(<span class="hljs-string">"输入你要导入的模块"</span>)
-m1 = __import__(m)
-print(m1)
-</code></pre><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>import importlib
-t = importlib.import_module('time')
-print(t.time)
-</code></pre>"><span class="hljs-keyword">import</span> importlib
-t = importlib.import_module(<span class="hljs-string">'time'</span>)
-print(t.time)
-</code></pre><h3 id="5-二次加工标准类型（包装）"><a name="5-二次加工标准类型（包装）" href="#5-二次加工标准类型（包装）"></a>5 二次加工标准类型（包装）</h3><p>Python内部已经有了标准的数据类型和内置方法，但是在很多的情况下，我们需要对数据类型进行自己定制，这几用到了继承和派生的知识</p><p><strong>对append添加限制，只能添加数字类型的</strong></p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>class List(list): # List 继承了列表list
-    def append(self, p_object):  # 仅仅对append进行修改
-        if not isinstance(p_object,int):  #　限制数据类型
-            raise TypeError('must be int')
-        super().append(p_object)  # 真正的修改,super是对父类进行修改
-l = list([1,2,3])
-print(l)
-l.append(4)   # 这里是对属性进行修改，实际是对类进行修改
-print(l)
-</code></pre>"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">List</span><span class="hljs-params">(list)</span>:</span> <span class="hljs-comment"># List 继承了列表list</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">append</span><span class="hljs-params">(self, p_object)</span>:</span>  <span class="hljs-comment"># 仅仅对append进行修改</span>
-        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> isinstance(p_object,int):  <span class="hljs-comment">#　限制数据类型</span>
-            <span class="hljs-keyword">raise</span> TypeError(<span class="hljs-string">'must be int'</span>)
-        super().append(p_object)  <span class="hljs-comment"># 真正的修改,super是对父类进行修改</span>
-l = list([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])
-print(l)
-l.append(<span class="hljs-number">4</span>)   <span class="hljs-comment"># 这里是对属性进行修改，实际是对类进行修改</span>
-print(l)
-</code></pre><p><strong>结果：<br>[1, 2, 3]<br>[1, 2, 3, 4]</strong></p><p><strong>上面的情况仅仅是对append进行了修改并添加了限制，list的其他的属性如insert是没有限制的</strong></p><h3 id="授权"><a name="授权" href="#授权"></a>授权</h3><p><strong>授权是包装的一个特性，上面的情况是通过继承来实现的，但是函数是不能继承的</strong></p><p>授权的过程是所有更新的功能都是由新类的某部分来处理，已经存在的就授权给对象的默认属性</p><p><strong>实现授权的关键点就是覆盖<strong>getattr</strong>方法</strong></p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>import time
-class Open:
-    def __init__(self,filepath,mode='r',encoding='utf-8'):
-        self.x = open(filepath,mode=mode,encoding=encoding)  # self.x是文件句柄 拿到文件中的内容
-        self.filepath=filepath
-        self.mode=mode
-        self.encoding=encoding
-    def write(self,line):  # 在类中新建write功能
-        t=time.strftime('%Y-%m-%d %X')
-        self.x.write(&quot;%s %s&quot; %(t,line))  # self.x存放的是文件句柄
-    def __getattr__(self, item):  # 通过getattr实现的叫做授权
-        # print('----&amp;gt;',item,type(item))  # 测试查看类型
-        return getattr(self.x,item)  # 从一个文件对象获得 字符串   现在获得的是self.x 相应方法的地址
-f=Open('b.txt','w') #实例化一个对象 传入相应的参数
-f.write('123\n')   #Open没有实际的writearttribute
-
-f.write('123\n')
-f.write('123\n')
-f.write('123\n')
-f.write('123\n')
-f.write('123\n')
-f.write('123\n')
-</code></pre>"><span class="hljs-keyword">import</span> time
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Open</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,filepath,mode=<span class="hljs-string">'r'</span>,encoding=<span class="hljs-string">'utf-8'</span>)</span>:</span>
-        self.x = open(filepath,mode=mode,encoding=encoding)  <span class="hljs-comment"># self.x是文件句柄 拿到文件中的内容</span>
-        self.filepath=filepath
-        self.mode=mode
-        self.encoding=encoding
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">write</span><span class="hljs-params">(self,line)</span>:</span>  <span class="hljs-comment"># 在类中新建write功能</span>
-        t=time.strftime(<span class="hljs-string">'%Y-%m-%d %X'</span>)
-        self.x.write(<span class="hljs-string">"%s %s"</span> %(t,line))  <span class="hljs-comment"># self.x存放的是文件句柄</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__getattr__</span><span class="hljs-params">(self, item)</span>:</span>  <span class="hljs-comment"># 通过getattr实现的叫做授权</span>
-        <span class="hljs-comment"># print('----&gt;',item,type(item))  # 测试查看类型</span>
-        <span class="hljs-keyword">return</span> getattr(self.x,item)  <span class="hljs-comment"># 从一个文件对象获得 字符串   现在获得的是self.x 相应方法的地址</span>
-f=Open(<span class="hljs-string">'b.txt'</span>,<span class="hljs-string">'w'</span>) <span class="hljs-comment">#实例化一个对象 传入相应的参数</span>
-f.write(<span class="hljs-string">'123\n'</span>)   <span class="hljs-comment">#Open没有实际的writearttribute</span>
-
-f.write(<span class="hljs-string">'123\n'</span>)
-f.write(<span class="hljs-string">'123\n'</span>)
-f.write(<span class="hljs-string">'123\n'</span>)
-f.write(<span class="hljs-string">'123\n'</span>)
-f.write(<span class="hljs-string">'123\n'</span>)
-f.write(<span class="hljs-string">'123\n'</span>)
-</code></pre><p>这样就能在文件中添加了带有时间的内容</p><p>对文件进行读操作：</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>f=Open('b.txt','r')  # 重新实例化
-res = f.read()# f.read实际是self.x 的方法
-print(res)
-f.seek(0)  #此时光标位于文件的最后
-print(f.read())  #这样就可以重新读文件
-</code></pre>">f=Open(<span class="hljs-string">'b.txt'</span>,<span class="hljs-string">'r'</span>)  <span class="hljs-comment"># 重新实例化</span>
-res = f.read()<span class="hljs-comment"># f.read实际是self.x 的方法</span>
-print(res)
-f.seek(<span class="hljs-number">0</span>)  <span class="hljs-comment">#此时光标位于文件的最后</span>
-print(f.read())  <span class="hljs-comment">#这样就可以重新读文件</span>
-</code></pre>
-
-<footer style="position:fixed; font-size:.8em; text-align:right; bottom:0px; margin-left:-25px; height:20px; width:100%;">generated by <a href="http://pad.haroopress.com" target="_blank">haroopad</a></footer>
-</body>
-</html>
+</blockquote>
+<h3 id="2-1面向对象中的反射"><a href="#2-1面向对象中的反射" class="headerlink" title="2.1面向对象中的反射"></a>2.1面向对象中的反射</h3><p>面向对象中的反射，是通过<strong>字符串形式操作对象</strong>的属性，<strong>Python中一切都是对象</strong>，都可以使用对象</p>
+<p>Python中通过<strong>hasattr、getattr、setattr、deltattr</strong>实现自省的函数，适用于<strong>类和对象</strong>（一切都是对象）</p>
+<p>反射就是把字符串反射成相应的命令</p>
+<h4 id="hasattr"><a href="#hasattr" class="headerlink" title="hasattr"></a>hasattr</h4><p>查看类和对象中是否有name,用字符串表示，实例在找的时候首先从自身找，自身没有从类找。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></div><div class="line">    name = <span class="string">'aaa'</span></div><div class="line">f1 =Foo()</div><div class="line">print(hasattr(Foo,<span class="string">'name'</span>))</div><div class="line">print(hasattr(f1,<span class="string">'name'</span>))</div></pre></td></tr></table></figure></p>
+<p>结果：<br>True<br>True</p>
+<h4 id="setattr"><a href="#setattr" class="headerlink" title="setattr"></a>setattr</h4><p>setattr是设置属性，setattr(x,y,z)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></div><div class="line">    name = <span class="string">'aaa'</span></div><div class="line">f1 =Foo()</div><div class="line"></div><div class="line">setattr(Foo,<span class="string">'age'</span>,<span class="number">18</span>)</div><div class="line">print(Foo,<span class="string">'age'</span>)</div><div class="line">print(f1,<span class="string">'age'</span>)</div></pre></td></tr></table></figure></p>
+<h4 id="deltattr"><a href="#deltattr" class="headerlink" title="deltattr"></a>deltattr</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">print(Foo.__dict__)</div><div class="line">delattr(Foo,<span class="string">'name'</span>)</div><div class="line">print(Foo.__dict__)   </div><div class="line">print(hasattr(f1,<span class="string">'name'</span>))</div></pre></td></tr></table></figure>
+<p>结果：<br>False<br>通过打印类的名称空间可以查看到name已经没有了</p>
+<h4 id="getattr"><a href="#getattr" class="headerlink" title="getattr"></a>getattr</h4><p>getattr是查找那个属性，并把命名它的值获得，实际的原理是通过获得字典中的key,然后获得value</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span>:</span></div><div class="line">    country = <span class="string">'china'</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name)</span>:</span></div><div class="line">        self.name=name</div><div class="line"></div><div class="line">p = People(<span class="string">'aaa'</span>)</div><div class="line">print(hasattr(p,<span class="string">'name'</span>))</div><div class="line">print(<span class="string">'name'</span> <span class="keyword">in</span> p.__dict__)  <span class="comment"># 执行的效果是一样的e</span></div><div class="line"></div><div class="line">print(hasattr(p,<span class="string">'country'</span>))</div><div class="line">print(hasattr(People,<span class="string">'country'</span>))</div><div class="line"></div><div class="line">print(getattr(p,<span class="string">'country'</span>))</div><div class="line">print(getattr(p,<span class="string">'__init__'</span>))</div><div class="line">print(getattr(People,<span class="string">'country'</span>))</div></pre></td></tr></table></figure>
+<h3 id="2-3模块的反射"><a href="#2-3模块的反射" class="headerlink" title="2.3模块的反射"></a>2.3模块的反射</h3><p>Python中一切皆对象，模块文件等都是对象<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">s1</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">s2</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line">this_module = sys.modules[__name__]</div><div class="line">print(hasattr(this_module,<span class="string">'s1'</span>))</div><div class="line">print(getattr(this_module,<span class="string">'s1'</span>))</div></pre></td></tr></table></figure></p>
+<ul>
+<li>结果：<br>True</li>
+</ul>
+<p>function s1 at 0x00000000005F3E18</p>
+<h2 id="3-内置attr"><a href="#3-内置attr" class="headerlink" title="3 内置attr"></a>3 内置attr</h2><h3 id="getattr-1"><a href="#getattr-1" class="headerlink" title="getattr"></a><strong>getattr</strong></h3><p> <strong><strong>getattr</strong>只有在调用的属性不存在的时候才会触发</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name)</span>:</span></div><div class="line">        self.name = name</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, item)</span>:</span></div><div class="line">        print(<span class="string">"getattr--%s %s"</span>%(item,type(item)))</div><div class="line"></div><div class="line">f = Foo(<span class="string">'aaa'</span>)</div><div class="line">print(f.xxx)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>结果：<br><em>getattr–xxx     class ‘str’<br>None</em></li>
+</ul>
+<h3 id="setattr-1"><a href="#setattr-1" class="headerlink" title="setattr"></a><strong>setattr</strong></h3><p><strong><strong>setattr</strong>添加/修改属性会触发它的执行</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,x)</span>:</span></div><div class="line">        self.name=x</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, key, value)</span>:</span>  <span class="comment"># 与上面的对应关系是self--self,name--key,x--value</span></div><div class="line">        self.__dict__[key]=value  <span class="comment"># 真正修改的是__dict__中的内容</span></div><div class="line">f1 = Foo(<span class="string">'aaa'</span>)</div><div class="line">f1.x=<span class="string">'bbb'</span>   <span class="comment"># 修改属性</span></div><div class="line">f1.age=<span class="number">18</span>  <span class="comment"># 增加属性</span></div><div class="line">print(f1.__dict__) <span class="comment"># 在名称对象的名称空间中可以显示</span></div></pre></td></tr></table></figure>
+<h3 id="deltattr-1"><a href="#deltattr-1" class="headerlink" title="deltattr"></a><strong>deltattr</strong></h3><p>只有删除属性的时候才会触发<strong>deltatr</strong>的执行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,x)</span>:</span></div><div class="line">        self.name=x</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, key, value)</span>:</span>  <span class="comment"># 与上面的对应关系是self--self,name--key,x--value</span></div><div class="line">        self.__dict__[key]=value  <span class="comment"># 真正修改的是__dict__中的内容</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__delattr__</span><span class="params">(self, item)</span>:</span></div><div class="line">        self.__dict__.pop(item)</div><div class="line">f1=Foo(<span class="string">'aaa'</span>)</div><div class="line">print(f1.__dict__)</div><div class="line"><span class="keyword">del</span> f1.name</div><div class="line">print(f1.__dict__)</div></pre></td></tr></table></figure></p>
+<p><strong>结果：<br>{‘name’: ‘aaa’}<br>{}</strong></p>
+<h3 id="4-反射的应用"><a href="#4-反射的应用" class="headerlink" title="4 反射的应用"></a>4 反射的应用</h3><h4 id="4-1-可插拔机制"><a href="#4-1-可插拔机制" class="headerlink" title="4.1 可插拔机制"></a>4.1 可插拔机制</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#客户端</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FtpClient</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,addr)</span>:</span></div><div class="line">        print(<span class="string">'正在连接服务器[%s]'</span>%addr)</div><div class="line">        self.addr = addr</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'get'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'test'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#服务端，需要使用客户端的内容</span></div><div class="line"><span class="keyword">import</span> ftpclient  <span class="comment"># 导入test模块（这里是文件）</span></div><div class="line"><span class="comment"># f1 = FtpClient('192.168.1.1')  # wrong</span></div><div class="line">f1=ftpclient.FtpClient(<span class="string">'192.168.1.1'</span>)   <span class="comment">#这里的对象是文件，即ftpclient,对这个对象进行实例化</span></div><div class="line"><span class="keyword">if</span> hasattr(f1,<span class="string">'get'</span>):  <span class="comment"># 首先看是否有这个功能</span></div><div class="line">    func_get=getattr(f1,<span class="string">'get'</span>)  <span class="comment"># getattr是获得相应的内存地址</span></div><div class="line">    func_get()</div><div class="line"><span class="keyword">else</span>:  <span class="comment"># else预语言中是真正的逻辑</span></div><div class="line">    print(<span class="string">'其他逻辑'</span>)</div></pre></td></tr></table></figure>
+<h4 id="4-2-通过字符串导入模块"><a href="#4-2-通过字符串导入模块" class="headerlink" title="4.2 通过字符串导入模块"></a>4.2 通过字符串导入模块</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">m = input(<span class="string">"输入你要导入的模块"</span>)</div><div class="line">m1 = __import__(m)</div><div class="line">print(m1)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> importlib</div><div class="line">t = importlib.import_module(<span class="string">'time'</span>)</div><div class="line">print(t.time)</div></pre></td></tr></table></figure>
+<h3 id="5-二次加工标准类型（包装）"><a href="#5-二次加工标准类型（包装）" class="headerlink" title="5 二次加工标准类型（包装）"></a>5 二次加工标准类型（包装）</h3><p>Python内部已经有了标准的数据类型和内置方法，但是在很多的情况下，我们需要对数据类型进行自己定制，这几用到了继承和派生的知识</p>
+<p><strong>对append添加限制，只能添加数字类型的</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">List</span><span class="params">(list)</span>:</span> <span class="comment"># List 继承了列表list</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">append</span><span class="params">(self, p_object)</span>:</span>  <span class="comment"># 仅仅对append进行修改</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(p_object,int):  <span class="comment">#　限制数据类型</span></div><div class="line">            <span class="keyword">raise</span> TypeError(<span class="string">'must be int'</span>)</div><div class="line">        super().append(p_object)  <span class="comment"># 真正的修改,super是对父类进行修改</span></div><div class="line">l = list([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</div><div class="line">print(l)</div><div class="line">l.append(<span class="number">4</span>)   <span class="comment"># 这里是对属性进行修改，实际是对类进行修改</span></div><div class="line">print(l)</div></pre></td></tr></table></figure></p>
+<p><strong>结果：<br>[1, 2, 3]<br>[1, 2, 3, 4]</strong></p>
+<p><strong>上面的情况仅仅是对append进行了修改并添加了限制，list的其他的属性如insert是没有限制的</strong></p>
+<h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><p><strong>授权是包装的一个特性，上面的情况是通过继承来实现的，但是函数是不能继承的</strong></p>
+<p>授权的过程是所有更新的功能都是由新类的某部分来处理，已经存在的就授权给对象的默认属性</p>
+<p><strong>实现授权的关键点就是覆盖<strong>getattr</strong>方法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Open</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,filepath,mode=<span class="string">'r'</span>,encoding=<span class="string">'utf-8'</span>)</span>:</span></div><div class="line">        self.x = open(filepath,mode=mode,encoding=encoding)  <span class="comment"># self.x是文件句柄 拿到文件中的内容</span></div><div class="line">        self.filepath=filepath</div><div class="line">        self.mode=mode</div><div class="line">        self.encoding=encoding</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write</span><span class="params">(self,line)</span>:</span>  <span class="comment"># 在类中新建write功能</span></div><div class="line">        t=time.strftime(<span class="string">'%Y-%m-%d %X'</span>)</div><div class="line">        self.x.write(<span class="string">"%s %s"</span> %(t,line))  <span class="comment"># self.x存放的是文件句柄</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, item)</span>:</span>  <span class="comment"># 通过getattr实现的叫做授权</span></div><div class="line">        <span class="comment"># print('----&gt;',item,type(item))  # 测试查看类型</span></div><div class="line">        <span class="keyword">return</span> getattr(self.x,item)  <span class="comment"># 从一个文件对象获得 字符串   现在获得的是self.x 相应方法的地址</span></div><div class="line">f=Open(<span class="string">'b.txt'</span>,<span class="string">'w'</span>) <span class="comment">#实例化一个对象 传入相应的参数</span></div><div class="line">f.write(<span class="string">'123\n'</span>)   <span class="comment">#Open没有实际的writearttribute</span></div><div class="line"></div><div class="line">f.write(<span class="string">'123\n'</span>)</div><div class="line">f.write(<span class="string">'123\n'</span>)</div><div class="line">f.write(<span class="string">'123\n'</span>)</div><div class="line">f.write(<span class="string">'123\n'</span>)</div><div class="line">f.write(<span class="string">'123\n'</span>)</div><div class="line">f.write(<span class="string">'123\n'</span>)</div></pre></td></tr></table></figure>
+<p>这样就能在文件中添加了带有时间的内容</p>
+<p>对文件进行读操作：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">f=Open(<span class="string">'b.txt'</span>,<span class="string">'r'</span>)  <span class="comment"># 重新实例化</span></div><div class="line">res = f.read()<span class="comment"># f.read实际是self.x 的方法</span></div><div class="line">print(res)</div><div class="line">f.seek(<span class="number">0</span>)  <span class="comment">#此时光标位于文件的最后</span></div><div class="line">print(f.read())  <span class="comment">#这样就可以重新读文件</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
       
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
       
     </footer>
   </div>
@@ -774,7 +537,7 @@ Python2 中有新式类 和 经典类            Python2 默认的是经典类
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/04/24/面向对象进阶/">(no title)</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/04/24/面向对象进阶/">Python 面向对象进阶</a></h6>
               <span>四月 24, 2017</span>
             </div>
 
@@ -852,7 +615,7 @@ Python2 中有新式类 和 经典类            Python2 默认的是经典类
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
