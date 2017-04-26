@@ -3,38 +3,31 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Peter&#39;s Blog Center</title>
+  <title>python 模块 | Peter&#39;s Blog Center</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="Python" />
   
   
   
-  <meta name="description" content="title: Python 模块tags: Python
-[TOC]
-
-模块就是py文件
+  
+  <meta name="description" content="模块就是py文件
 
 注意文件的命名不能和模块的名字相同，正则在寻找的时候首先从当前路径寻找，然后从内置查找
 1 时间模块time">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Peter's Blog Center">
+<meta property="og:title" content="Python 模块">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/26/Python模块/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
-<meta property="og:description" content="title: Python 模块tags: Python
-[TOC]
-
-模块就是py文件
+<meta property="og:description" content="模块就是py文件
 
 注意文件的命名不能和模块的名字相同，正则在寻找的时候首先从当前路径寻找，然后从内置查找
 1 时间模块time">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201704/658994-20170426183707600-175514329.png">
-<meta property="og:updated_time" content="2017-04-26T14:51:57.583Z">
+<meta property="og:updated_time" content="2017-04-26T16:08:38.341Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Peter's Blog Center">
-<meta name="twitter:description" content="title: Python 模块tags: Python
-[TOC]
-
-模块就是py文件
+<meta name="twitter:title" content="Python 模块">
+<meta name="twitter:description" content="模块就是py文件
 
 注意文件的命名不能和模块的名字相同，正则在寻找的时候首先从当前路径寻找，然后从内置查找
 1 时间模块time">
@@ -122,19 +115,26 @@
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python 模块
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
 	Posted on <a href="/2017/04/26/Python模块/" class="article-date">
-	  <time datetime="2017-04-26T14:22:19.604Z" itemprop="datePublished">四月 26, 2017</time>
+	  <time datetime="2017-04-26T15:15:57.827Z" itemprop="datePublished">四月 26, 2017</time>
 	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: Python 模块<br>tags: Python</p>
-<p>[TOC]</p>
-<blockquote>
+        <blockquote>
 <p>模块就是py文件</p>
 </blockquote>
 <p>注意文件的命名不能和模块的名字相同，正则在寻找的时候首先从当前路径寻找，然后从内置查找</p>
@@ -142,60 +142,44 @@
 <p>Python中有三种表示时间的方法：</p>
 <p>1.时间戳</p>
 <pre><code>- 时间戳timestap(浮点型数字)：（计算机）
-
 time.time()
-
 1970年1月1日的是0
 </code></pre><p>2.元组（struct time）结构化时间</p>
 <pre><code>- 结构化时间：(操作时间)
-
  &gt;&gt;&gt; time.localtime()  # 默认放的是time.time（）
-
-time.struct_time(tm_year=2017, tm_mon=4, tm_mday=26, tm_hour=9,tm_min=15,  m_se
-
+time.struct_time(tm_year=2017, tm_mon=4,                                 tm_mday=26, tm_hour=9, tm_min=15, tm_se
 c=53, tm_wday=2, tm_yday=116, tm_isdst=0)
-
 &gt;&gt;&gt;
-
  c=time.localtime()
-
  拿到时间：
-
   c.tm_year
 </code></pre><p>3.格式化的时间字符串</p>
 <pre><code>- 格式化的时间字符串：（给人看）
-
-time.strftime()                     
-
+time.strftime()
 &gt;&gt;&gt; time.strftime(&quot;%Y-%m-%d&quot;)
-
 &apos;2017-04-26&apos;
-
 &gt;&gt;&gt; time.strftime(&quot;%Y-%m-%d %X&quot;)
-
 &apos;2017-04-26 09:13:02&apos;
 </code></pre><p>字符串时间和时间戳是不能直接转换的，通过结构化时间转换</p>
 <h3 id="1-1-时间戳"><a href="#1-1-时间戳" class="headerlink" title="1.1 时间戳"></a>1.1 时间戳</h3><p>通常来说，时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量。我们运行“type(time.time())”，返回的是float类型。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">print(time.time())</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line">print(time.time())</div></pre></td></tr></table></figure>
 <h3 id="1-2-结构化时间"><a href="#1-2-结构化时间" class="headerlink" title="1.2 结构化时间"></a>1.2 结构化时间</h3><p>struct_time元组共有9个元素共九个元素:(年，月，日，时，分，秒，一年中第几周，一年中第几天等</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">print(time.localtime())</div></pre></td></tr></table></figure>
-<p>结果：</p>
-<p>time.struct_time(tm_year=2017, tm_mon=4, tm_mday=26, tm_hour=16, tm_min=0, tm_sec=5, tm_wday=2, tm_yday=116, tm_isdst=0)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(time.localtime())</div></pre></td></tr></table></figure>
+<p>结果：<br>time.struct_time(tm_year=2017, tm_mon=4, tm_mday=26, tm_hour=16, tm_min=0, tm_sec=5, tm_wday=2, tm_yday=116, tm_isdst=0)</p>
 <h3 id="1-3-格式化的时间"><a href="#1-3-格式化的时间" class="headerlink" title="1.3 格式化的时间"></a>1.3 格式化的时间</h3><p>格式化的时间需要参数，可以用help查看</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">print(time.strftime(<span class="string">'%Y-%m-%d %X'</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(time.strftime(<span class="string">'%Y-%m-%d %X'</span>))</div></pre></td></tr></table></figure>
 <p>使用help(time.strftime)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">%Y  Year with century as a decimal number.</div><div class="line"></div><div class="line">%m  Month as a decimal number [01,12].</div><div class="line"></div><div class="line">%d  Day of the month as a decimal number [01,31].</div><div class="line"></div><div class="line">%H  Hour (24-hour clock) as a decimal number [00,23].</div><div class="line"></div><div class="line">%M  Minute as a decimal number [00,59].</div><div class="line"></div><div class="line">%S  Second as a decimal number [00,61].</div><div class="line"></div><div class="line">%z  Time zone offset from UTC.</div><div class="line"></div><div class="line">%a  Locale's abbreviated weekday name.</div><div class="line"></div><div class="line">%A  Locale's full weekday name.</div><div class="line"></div><div class="line">%b  Locale's abbreviated month name.</div><div class="line"></div><div class="line">%B  Locale's full month name.</div><div class="line"></div><div class="line">%c  Locale's appropriate date and time representation.</div><div class="line"></div><div class="line">%I  Hour (12-hour clock) as a decimal number [01,12].</div><div class="line"></div><div class="line">%p  Locale's equivalent of either AM or PM.</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">%Y  Year with century as a decimal number.</div><div class="line">%m  Month as a decimal number [01,12].</div><div class="line">%d  Day of the month as a decimal number [01,31].</div><div class="line">%H  Hour (24-hour clock) as a decimal number [00,23].</div><div class="line">%M  Minute as a decimal number [00,59].</div><div class="line">%S  Second as a decimal number [00,61].</div><div class="line">%z  Time zone offset from UTC.</div><div class="line">%a  Locale's abbreviated weekday name.</div><div class="line">%A  Locale's full weekday name.</div><div class="line">%b  Locale's abbreviated month name.</div><div class="line">%B  Locale's full month name.</div><div class="line">%c  Locale's appropriate date and time representation.</div><div class="line">%I  Hour (12-hour clock) as a decimal number [01,12].</div><div class="line">%p  Locale's equivalent of either AM or PM.</div></pre></td></tr></table></figure>
 <h3 id="1-4-三种时间形式的转换"><a href="#1-4-三种时间形式的转换" class="headerlink" title="1.4 三种时间形式的转换"></a>1.4 三种时间形式的转换</h3><p><img src="http://images2015.cnblogs.com/blog/658994/201704/658994-20170426183707600-175514329.png" alt=""></p>
-<h4 id="1-4-1-时间戳转换结构化时间"><a href="#1-4-1-时间戳转换结构化时间" class="headerlink" title="1.4.1 时间戳转换结构化时间"></a>1.4.1 时间戳转换结构化时间</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">print(time.localtime(time.time())) <span class="comment"># 时间戳--》结构化时间  现在是当前时间</span></div><div class="line"></div><div class="line">print(time.localtime(time.time()+<span class="number">86400</span>))  <span class="comment"># 明天的时间</span></div><div class="line"></div><div class="line">print(time.gmtime(time.time()))  <span class="comment"># 这是标准时间</span></div></pre></td></tr></table></figure>
-<h4 id="1-4-2-结构化时间转-时间戳"><a href="#1-4-2-结构化时间转-时间戳" class="headerlink" title="1.4.2 结构化时间转 时间戳"></a>1.4.2 结构化时间转 时间戳</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">print(time.mktime(time.localtime()))</div></pre></td></tr></table></figure>
-<h4 id="1-4-2-格式化字符串时间转换成结构化时间"><a href="#1-4-2-格式化字符串时间转换成结构化时间" class="headerlink" title="1.4.2 格式化字符串时间转换成结构化时间"></a>1.4.2 格式化字符串时间转换成结构化时间</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">res=time.strftime(<span class="string">'%Y-%m-%d %X'</span>,time.localtime())</div><div class="line"></div><div class="line">print(time.strptime(res,<span class="string">'%Y-%m-%d %X'</span>))  <span class="comment"># string format</span></div></pre></td></tr></table></figure>
+<h4 id="1-4-1-时间戳转换结构化时间"><a href="#1-4-1-时间戳转换结构化时间" class="headerlink" title="1.4.1 时间戳转换结构化时间"></a>1.4.1 时间戳转换结构化时间</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line">print(time.localtime(time.time())) <span class="comment"># 时间戳--》结构化时间  现在是当前时间</span></div><div class="line">print(time.localtime(time.time()+<span class="number">86400</span>))  <span class="comment"># 明天的时间</span></div><div class="line">print(time.gmtime(time.time()))  <span class="comment"># 这是标准时间</span></div></pre></td></tr></table></figure>
+<h4 id="1-4-2-结构化时间转-时间戳"><a href="#1-4-2-结构化时间转-时间戳" class="headerlink" title="1.4.2 结构化时间转 时间戳"></a>1.4.2 结构化时间转 时间戳</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(time.mktime(time.localtime()))</div></pre></td></tr></table></figure>
+<h4 id="1-4-2-格式化字符串时间转换成结构化时间"><a href="#1-4-2-格式化字符串时间转换成结构化时间" class="headerlink" title="1.4.2 格式化字符串时间转换成结构化时间"></a>1.4.2 格式化字符串时间转换成结构化时间</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line">res=time.strftime(<span class="string">'%Y-%m-%d %X'</span>,time.localtime())</div><div class="line">print(time.strptime(res,<span class="string">'%Y-%m-%d %X'</span>))  <span class="comment"># string format</span></div></pre></td></tr></table></figure>
 <p>先获取格式化的时间，赋值给res，res作为参数  后面是格式</p>
-<h4 id="1-4-4-结构化时间转化成格式化时间"><a href="#1-4-4-结构化时间转化成格式化时间" class="headerlink" title="1.4.4 结构化时间转化成格式化时间"></a>1.4.4 结构化时间转化成格式化时间</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">print(time.strftime(<span class="string">'%Y-%m-%d %X'</span>,time.localtime()))  </div><div class="line"></div><div class="line">print(time.strftime(<span class="string">'%Y-%m-%d %X'</span>))  <span class="comment">#time.localtime() 是默认放上的</span></div></pre></td></tr></table></figure>
-<h2 id="2-random模块"><a href="#2-random模块" class="headerlink" title="2 random模块"></a>2 random模块</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">random.random()  <span class="comment"># 0-1的浮点型数字</span></div><div class="line"></div><div class="line">random.randint(<span class="number">1</span>,<span class="number">4</span>)  <span class="comment"># [1-4]  取整数</span></div><div class="line"></div><div class="line">random.randrange(<span class="number">1</span>,<span class="number">4</span>) <span class="comment">#[1-4) #没有4  顾头不顾尾</span></div><div class="line"></div><div class="line">random.choice([<span class="number">11</span>,<span class="number">44</span>,<span class="number">55</span>]) <span class="comment"># 从这里面中随机取</span></div><div class="line"></div><div class="line">random.sample([<span class="number">11</span>,<span class="number">44</span>,<span class="number">55</span>],<span class="number">2</span>) <span class="comment"># 从这里面中随机取  参数2是取两个</span></div><div class="line"></div><div class="line">random.uniform(<span class="number">1</span>,<span class="number">3</span>) <span class="comment"># 定义范围的浮点数</span></div><div class="line"></div><div class="line">random.shuffle([<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>]) <span class="comment"># 重新打乱</span></div><div class="line"></div><div class="line">item=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line"></div><div class="line">print(random.shuffle(item))</div><div class="line"></div><div class="line">print(item)</div></pre></td></tr></table></figure>
-<p><strong>生成验证码：</strong></p>
-<p>需求是生成5位的验证码，是随机的字母数字，字母有大写小写</p>
+<h4 id="1-4-4-结构化时间转化成格式化时间"><a href="#1-4-4-结构化时间转化成格式化时间" class="headerlink" title="1.4.4 结构化时间转化成格式化时间"></a>1.4.4 结构化时间转化成格式化时间</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(time.strftime(<span class="string">'%Y-%m-%d %X'</span>,time.localtime()))  </div><div class="line">print(time.strftime(<span class="string">'%Y-%m-%d %X'</span>))  <span class="comment">#time.localtime() 是默认放上的</span></div></pre></td></tr></table></figure>
+<h2 id="2-random模块"><a href="#2-random模块" class="headerlink" title="2 random模块"></a>2 random模块</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">random.random()  <span class="comment"># 0-1的浮点型数字</span></div><div class="line">random.randint(<span class="number">1</span>,<span class="number">4</span>)  <span class="comment"># [1-4]  取整数</span></div><div class="line">random.randrange(<span class="number">1</span>,<span class="number">4</span>) <span class="comment">#[1-4) #没有4  顾头不顾尾</span></div><div class="line">random.choice([<span class="number">11</span>,<span class="number">44</span>,<span class="number">55</span>]) <span class="comment"># 从这里面中随机取</span></div><div class="line">random.sample([<span class="number">11</span>,<span class="number">44</span>,<span class="number">55</span>],<span class="number">2</span>) <span class="comment"># 从这里面中随机取  参数2是取两个</span></div><div class="line">random.uniform(<span class="number">1</span>,<span class="number">3</span>) <span class="comment"># 定义范围的浮点数</span></div><div class="line">random.shuffle([<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>]) <span class="comment"># 重新打乱</span></div><div class="line">item=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line">print(random.shuffle(item))</div><div class="line">print(item)</div></pre></td></tr></table></figure>
+<p><strong>生成验证码：</strong><br>需求是生成5位的验证码，是随机的字母数字，字母有大写小写</p>
 <p>分析：关键是通过chr能够把数字转换成相应的字母，这里用的是ASCII码表的知识</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Verification</span><span class="params">()</span>:</span></div><div class="line"></div><div class="line">    s=<span class="string">''</span> <span class="comment"># 新建一个字符串用于拼接</span></div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>): <span class="comment"># 生成5位数的验证码</span></div><div class="line"></div><div class="line">        rnum = random.randint(<span class="number">0</span>,<span class="number">9</span>)  <span class="comment"># 随机生成0-9的数字</span></div><div class="line"></div><div class="line">        rL = chr(random.randint(<span class="number">65</span>,<span class="number">90</span>))  <span class="comment"># 大写字母 关键是chr能够把数字转化成ASCII</span></div><div class="line"></div><div class="line">        rl = chr(random.randint(<span class="number">97</span>,<span class="number">122</span>)) <span class="comment"># 小写字母</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        res = random.choice([rnum,rL,rl])  <span class="comment"># 从列表中随机取</span></div><div class="line"></div><div class="line">        s+=str(res)  <span class="comment">#把数字强制转换成str，循环追加字符串中</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> s</div><div class="line"></div><div class="line">print(Verification())</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Verification</span><span class="params">()</span>:</span></div><div class="line">    s=<span class="string">''</span> <span class="comment"># 新建一个字符串用于拼接</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>): <span class="comment"># 生成5位数的验证码</span></div><div class="line">        rnum = random.randint(<span class="number">0</span>,<span class="number">9</span>)  <span class="comment"># 随机生成0-9的数字</span></div><div class="line">        rL = chr(random.randint(<span class="number">65</span>,<span class="number">90</span>))  <span class="comment"># 大写字母 关键是chr能够把数字转化成ASCII</span></div><div class="line">        rl = chr(random.randint(<span class="number">97</span>,<span class="number">122</span>)) <span class="comment"># 小写字母</span></div><div class="line">        res = random.choice([rnum,rL,rl])  <span class="comment"># 从列表中随机取</span></div><div class="line">        s+=str(res)  <span class="comment">#把数字强制转换成str，循环追加字符串中</span></div><div class="line">    <span class="keyword">return</span> s</div><div class="line">print(Verification())</div></pre></td></tr></table></figure>
 <p><a href="https://zh.wikipedia.org/wiki/ASCII" target="_blank" rel="external">ASCII维基百科</a></p>
 <h2 id="3-hashlib-模块"><a href="#3-hashlib-模块" class="headerlink" title="3 hashlib 模块"></a>3 hashlib 模块</h2><blockquote>
 <p>把任意长度的数据转换成固定长度的数据(通常用16进制的字符串表示)</p>
@@ -203,84 +187,56 @@ time.strftime()
 <p>严格来说，这个并不是加密，加密的是能够解密的，hash是通过算法把数据转换，例如密码保存在数据库中是MD5，用户输入密码后，会把密码用md5转换，用转换后的和数据库中的比对</p>
 <p><strong>摘要算法：MD5 SHA…</strong></p>
 <h3 id="3-1-MD5"><a href="#3-1-MD5" class="headerlink" title="3.1 MD5"></a>3.1 MD5</h3><p>ftp传文件的时候可以通过吧文件的每一行进行update</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> hashlib <span class="comment"># 导入hashlib模块</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">a=hashlib.md5()  <span class="comment"># 拿到的是内存地址</span></div><div class="line"></div><div class="line">a.update(<span class="string">'hello'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line"></div><div class="line">print(a.hexdigest())   <span class="comment"># 打印的是hello的MD5值</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">a.update(<span class="string">'hello'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line"></div><div class="line">print(a.hexdigest())  <span class="comment"># 此时就是hellohello进行的转换</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">b=hashlib.md5() <span class="comment"># 重新定义一个对象n</span></div><div class="line"></div><div class="line">b.update(<span class="string">'hellohello'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line"></div><div class="line">print(a.hexdigest()) <span class="comment">#此时打印的值是一样的</span></div></pre></td></tr></table></figure>
-<p>结果：</p>
-<p>5d41402abc4b2a76b9719d911017c592</p>
-<p>23b431acfeb41e15d466d75de822307c</p>
-<p>23b431acfeb41e15d466d75de822307c</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> hashlib <span class="comment"># 导入hashlib模块</span></div><div class="line">a=hashlib.md5()  <span class="comment"># 拿到的是内存地址</span></div><div class="line">a.update(<span class="string">'hello'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">print(a.hexdigest())   <span class="comment"># 打印的是hello的MD5值</span></div><div class="line">a.update(<span class="string">'hello'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">print(a.hexdigest())  <span class="comment"># 此时就是hellohello进行的转换</span></div><div class="line"></div><div class="line">b=hashlib.md5() <span class="comment"># 重新定义一个对象n</span></div><div class="line">b.update(<span class="string">'hellohello'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">print(a.hexdigest()) <span class="comment">#此时打印的值是一样的</span></div></pre></td></tr></table></figure>
+<p>结果：<br>5d41402abc4b2a76b9719d911017c592<br>23b431acfeb41e15d466d75de822307c<br>23b431acfeb41e15d466d75de822307c</p>
 <h3 id="3-2-SH1、SH…"><a href="#3-2-SH1、SH…" class="headerlink" title="3.2 SH1、SH…"></a>3.2 SH1、SH…</h3><p>调用的方法是一样的，只是名字不一样</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> hashlib</div><div class="line"></div><div class="line">m=hashlib.md5()</div><div class="line"></div><div class="line">m.update(<span class="string">'hello'</span>.encode(<span class="string">'utf-8'</span>)) <span class="comment">#</span></div><div class="line"></div><div class="line">print(m.hexdigest())</div><div class="line"></div><div class="line">n=hashlib.sha1()</div><div class="line"></div><div class="line">n.update(<span class="string">'hello'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line"></div><div class="line">print(n.hexdigest())  <span class="comment"># sha1的用法</span></div></pre></td></tr></table></figure>
-<p>结果：位数不一样</p>
-<p>5d41402abc4b2a76b9719d911017c592</p>
-<p>aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d</p>
-<h3 id="3-2-加盐-slat"><a href="#3-2-加盐-slat" class="headerlink" title="3.2 加盐 slat"></a>3.2 加盐 slat</h3><p>加盐的应用，适用于系统添加固定的字符强化加密</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> hashlib</div><div class="line"></div><div class="line">a = hashlib.md5(<span class="string">'hello'</span>.encode(<span class="string">'utf-8'</span>)) <span class="comment"># 加盐slat</span></div><div class="line"></div><div class="line">a.update(<span class="string">'hello'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line"></div><div class="line">print(a.hexdigest())</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">b=hashlib.md5()  <span class="comment"># 重新定义一个b</span></div><div class="line"></div><div class="line">b.update(<span class="string">'hellohello'</span>.encode(<span class="string">'utf-8'</span>))  <span class="comment"># 测试加盐是加在了前面</span></div><div class="line"></div><div class="line">print(b.hexdigest())</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> hashlib</div><div class="line">m=hashlib.md5()</div><div class="line">m.update(<span class="string">'hello'</span>.encode(<span class="string">'utf-8'</span>)) <span class="comment">#</span></div><div class="line">print(m.hexdigest())</div><div class="line">n=hashlib.sha1()</div><div class="line">n.update(<span class="string">'hello'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">print(n.hexdigest())  <span class="comment"># sha1的用法</span></div></pre></td></tr></table></figure>
+<p>结果：位数不一样<br>5d41402abc4b2a76b9719d911017c592<br>aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d</p>
+<h3 id="3-2-加盐-slat"><a href="#3-2-加盐-slat" class="headerlink" title="3.2 加盐 slat"></a>3.2 加盐 slat</h3><p>加盐的应用，适用于系统添加固定的字符强化加密<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> hashlib</div><div class="line">a = hashlib.md5(<span class="string">'hello'</span>.encode(<span class="string">'utf-8'</span>)) <span class="comment"># 加盐slat</span></div><div class="line">a.update(<span class="string">'hello'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">print(a.hexdigest())</div><div class="line"></div><div class="line"></div><div class="line">b=hashlib.md5()  <span class="comment"># 重新定义一个b</span></div><div class="line">b.update(<span class="string">'hellohello'</span>.encode(<span class="string">'utf-8'</span>))  <span class="comment"># 测试加盐是加在了前面</span></div><div class="line">print(b.hexdigest())</div></pre></td></tr></table></figure></p>
 <h2 id="4-os模块"><a href="#4-os模块" class="headerlink" title="4 os模块"></a>4 os模块</h2><p>os模块是与<strong>操作系统</strong>交互的接口</p>
 <p>记住功能</p>
-<p>1.os.getcwd()  当前绝对路径</p>
-<p>2.os.chdir(r’绝对路径’)  切换目录</p>
-<p>3.os.curdir  返回当前目录 就是.</p>
-<p>4.os.pardir  ..</p>
-<p>5.os.makedirs(“aaa/bbb”) 在当前目录生成多层递归</p>
-<p>6.os.removedirs(‘aaa’) 如果目录为空，则删除</p>
-<p>7.os.rmdir()</p>
-<p>8.os.listdir(r””) 就是ls功能 把当前的路径下的所有的内容</p>
-<p>9.os.rename(“old,new”)</p>
-<p>10.os.stat(r””) 文件信息 返回的是文件的结构化信息（文件大小、访问时间、）</p>
-<p>11.os.sep win是\,linux是/</p>
-<p>12.os.linesep 行终止符号  win是\t\n linux – \n</p>
-<p>13.os.pathsep 文件路径拼接 win; linux</p>
-<p>14.os.name  win – nt linux– posix 可以判断平台</p>
-<p>15.os.system(“dir”)  # 类似bash  可以输入ls cd </p>
-<p>16.os.path.abspath(“test.txt”)  basepath+filename</p>
-<p>17.os.dirname(“test.txt”)  文件路径</p>
-<p>18.os.bsename(“test.txt”)  文件名</p>
-<p>19.os.path.exits()</p>
-<p>20.isabs</p>
-<p>21.isdir</p>
-<p>22.==os.path.join(s1,s2)==路径的拼接 在不同的平台的情况能够自动</p>
-<p>23.os.getatime(path) </p>
-<p>24.os.getmtime(path) </p>
-<p>25.os.getsize(path)  获取文件的大小</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line">print(os.getcwd())  获得当前的绝对路径</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">print(os.getcwd())</div><div class="line"></div><div class="line">os.chdir(<span class="string">r"D:\Python_fullstack_s4\32"</span>) <span class="comment"># 相当于cd命令</span></div><div class="line"></div><div class="line">print(os.getcwd())  <span class="comment"># 此时查看就是改变的路径</span></div></pre></td></tr></table></figure>
-<p>结果：</p>
-<p>D:\Python_fullstack_s4\33</p>
-<p>D:\Python_fullstack_s4\32</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">print(os.curdir)  <span class="comment"># 返回当前目录  就是.</span></div><div class="line"></div><div class="line">print(os.pardir)  <span class="comment"># 获取当前目录的父目录字符串  ..</span></div></pre></td></tr></table></figure>
-<p>结果：</p>
-<p>.</p>
-<p>..</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">os.makedirs(<span class="string">"aaaa/bbb"</span>)   <span class="comment"># 递归生成多层目录</span></div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">os.removedirs(<span class="string">"aaaa/bbb"</span>) <span class="comment"># 删除这个目录</span></div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">os.rename(<span class="string">'aaa'</span>,<span class="string">'bbb'</span>)  <span class="comment"># 把文件aaa重命名成bbb</span></div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">res=os.stat(<span class="string">'D:\Python_fullstack_s4\day33/bbb'</span>)</div><div class="line"></div><div class="line">print(res)</div></pre></td></tr></table></figure>
-<p>结果：</p>
-<p>os.stat_result(st_mode=33206, st_ino=1970324837071832, st_dev=374768, st_nlink=1, st_uid=0, st_gid=0, st_size=0, st_atime=1493205622, st_mtime=1493205622, st_ctime=1493205622)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">os.mkdir(<span class="string">'123'</span>)  <span class="comment"># 生成单级目录；相当于shell中mkdir dirname</span></div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">os.rmdir(<span class="string">'123'</span>) <span class="comment">#  删除单级空目录，若目录不为空则无法删除，报错；相当于shell中rmdir dirname</span></div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">os.remove(<span class="string">r'D:\Python_fullstack_s4\day33\bbb'</span>) <span class="comment"># 删除文件</span></div></pre></td></tr></table></figure>
+<p>1.os.getcwd()  当前绝对路径<br>2.os.chdir(r’绝对路径’)  切换目录<br>3.os.curdir  返回当前目录 就是.<br>4.os.pardir  ..<br>5.os.makedirs(“aaa/bbb”) 在当前目录生成多层递归<br>6.os.removedirs(‘aaa’) 如果目录为空，则删除<br>7.os.rmdir()<br>8.os.listdir(r””) 就是ls功能 把当前的路径下的所有的内容<br>9.os.rename(“old,new”)<br>10.os.stat(r””) 文件信息 返回的是文件的结构化信息（文件大小、访问时间、）<br>11.os.sep win是\,linux是/<br>12.os.linesep 行终止符号  win是\t\n linux – \n<br>13.os.pathsep 文件路径拼接 win; linux<br>14.os.name  win – nt linux– posix 可以判断平台<br>15.os.system(“dir”)  # 类似bash  可以输入ls cd<br>16.os.path.abspath(“test.txt”)  basepath+filename<br>17.os.dirname(“test.txt”)  文件路径<br>18.os.bsename(“test.txt”)  文件名<br>19.os.path.exits()<br>20.isabs<br>21.isdir<br>22.==os.path.join(s1,s2)==路径的拼接 在不同的平台的情况能够自动<br>23.os.getatime(path)<br>24.os.getmtime(path)<br>25.os.getsize(path)  获取文件的大小</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line">print(os.getcwd())  获得当前的绝对路径</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">print(os.getcwd())</div><div class="line">os.chdir(<span class="string">r"D:\Python_fullstack_s4\32"</span>) <span class="comment"># 相当于cd命令</span></div><div class="line">print(os.getcwd())  <span class="comment"># 此时查看就是改变的路径</span></div></pre></td></tr></table></figure>
+<p>结果：<br>D:\Python_fullstack_s4\33<br>D:\Python_fullstack_s4\32</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(os.curdir)  <span class="comment"># 返回当前目录  就是.</span></div><div class="line">print(os.pardir)  <span class="comment"># 获取当前目录的父目录字符串  ..</span></div></pre></td></tr></table></figure>
+<p>结果：<br>.<br>..</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">os.makedirs(<span class="string">"aaaa/bbb"</span>)   <span class="comment"># 递归生成多层目录</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">os.removedirs(<span class="string">"aaaa/bbb"</span>) <span class="comment"># 删除这个目录</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">os.rename(<span class="string">'aaa'</span>,<span class="string">'bbb'</span>)  <span class="comment"># 把文件aaa重命名成bbb</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">res=os.stat(<span class="string">'D:\Python_fullstack_s4\day33/bbb'</span>)</div><div class="line">print(res)</div></pre></td></tr></table></figure>
+<p>结果：<br>os.stat_result(st_mode=33206, st_ino=1970324837071832, st_dev=374768, st_nlink=1, st_uid=0, st_gid=0, st_size=0, st_atime=1493205622, st_mtime=1493205622, st_ctime=1493205622)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">os.mkdir(<span class="string">'123'</span>)  <span class="comment"># 生成单级目录；相当于shell中mkdir dirname</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">os.rmdir(<span class="string">'123'</span>) <span class="comment">#  删除单级空目录，若目录不为空则无法删除，报错；相当于shell中rmdir dirname</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">os.remove(<span class="string">r'D:\Python_fullstack_s4\day33\bbb'</span>) <span class="comment"># 删除文件</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">print(os.name)</div><div class="line">```结果 win---nt</div><div class="line">linux---posix</div><div class="line"></div><div class="line">```python</div><div class="line">os.system(<span class="string">'dir'</span>)  <span class="comment">#里面是命令</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(os.path.abspath(<span class="string">'test.txt'</span>)) <span class="comment">#返回path规范化的绝对路径</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">abs=os.path.abspath(<span class="string">'test.txt'</span>)</div><div class="line">print(os.path.basename(abs))</div><div class="line">print(os.path.dirname(abs))</div></pre></td></tr></table></figure>
+<p>test.txt<br>D:\Python_fullstack_s4\day33</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(os.path.exists(<span class="string">'test.txt'</span>) )  <span class="comment"># 判断文件是否存在</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(os.path.isabs(<span class="string">'test.txt'</span>))  <span class="comment">#判断是否是绝对路径</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(os.path.isdir(<span class="string">'aa'</span>))  <span class="comment"># 判断是否存在目录</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">s1=<span class="string">r"C:\Users\Administrator\PycharmProjects"</span></div><div class="line">s2=<span class="string">r"py_fullstack_s4\day33"</span></div><div class="line"><span class="comment">#print(s1+os.sep+s2)</span></div><div class="line">ret=os.path.join(s1,s2)   <span class="comment"># 推荐方式</span></div><div class="line">print(ret)</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="string">'''</span></div><div class="line">os.getcwd() 获取当前工作目录，即当前python脚本工作的目录路径</div><div class="line">os.chdir("dirname")  改变当前脚本工作目录；相当于shell下cd</div><div class="line">os.curdir  返回当前目录: ('.')</div><div class="line">os.pardir  获取当前目录的父目录字符串名：('..')</div><div class="line">os.makedirs('dirname1/dirname2')    可生成多层递归目录</div><div class="line">os.removedirs('dirname1')    若目录为空，则删除，并递归到上一级目录，如若也为空，则删除，依此类推</div><div class="line">os.mkdir('dirname')    生成单级目录；相当于shell中mkdir dirname</div><div class="line">os.rmdir('dirname')    删除单级空目录，若目录不为空则无法删除，报错；相当于shell中rmdir dirname</div><div class="line">os.listdir('dirname')    列出指定目录下的所有文件和子目录，包括隐藏文件，并以列表方式打印</div><div class="line">os.remove()  删除一个文件</div><div class="line">os.rename("oldname","newname")  重命名文件/目录</div><div class="line">os.stat('path/filename')  获取文件/目录信息</div><div class="line">os.sep    输出操作系统特定的路径分隔符，win下为"\\",Linux下为"/"</div><div class="line">os.linesep    输出当前平台使用的行终止符，win下为"\t\n",Linux下为"\n"</div><div class="line">os.pathsep    输出用于分割文件路径的字符串 win下为;,Linux下为:</div><div class="line">os.name    输出字符串指示当前使用平台。win-&gt;'nt'; Linux-&gt;'posix'</div><div class="line">os.system("bash command")  运行shell命令，直接显示</div><div class="line">os.environ  获取系统环境变量</div><div class="line">os.path.abspath(path)  返回path规范化的绝对路径</div><div class="line">os.path.split(path)  将path分割成目录和文件名二元组返回</div><div class="line">os.path.dirname(path)  返回path的目录。其实就是os.path.split(path)的第一个元素</div><div class="line">os.path.basename(path)  返回path最后的文件名。如何path以／或\结尾，那么就会返回空值。即os.path.split(path)的第二个元素</div><div class="line">os.path.exists(path)  如果path存在，返回True；如果path不存在，返回False</div><div class="line">os.path.isabs(path)  如果path是绝对路径，返回True</div><div class="line">os.path.isfile(path)  如果path是一个存在的文件，返回True。否则返回False</div><div class="line">os.path.isdir(path)  如果path是一个存在的目录，则返回True。否则返回False</div><div class="line">os.path.join(path1[, path2[, ...]])  将多个路径组合后返回，第一个绝对路径之前的参数将被忽略</div><div class="line">os.path.getatime(path)  返回path所指向的文件或者目录的最后存取时间</div><div class="line">os.path.getmtime(path)  返回path所指向的文件或者目录的最后修改时间</div><div class="line">os.path.getsize(path) 返回path的大小</div><div class="line">'''</div></pre></td></tr></table></figure>
 <h2 id="5-sys模块"><a href="#5-sys模块" class="headerlink" title="5 sys模块"></a>5 sys模块</h2><p>sys是与<strong>解释器有关的</strong></p>
-<p>1.sys.exit() 程序退出</p>
-<p>2.sys.version Python版本</p>
-<p>3.sys.platform  返回操作系统的平台</p>
-<p>4.sys.argv   程序执行前输入参数，返回值是一个列表 可以去到</p>
-<p>5.==sys.path==  sys的寻找路径的优先级 大一点的程序是在不同的目录中的、模块化</p>
+<p>1.sys.exit() 程序退出<br>2.sys.version Python版本<br>3.sys.platform  返回操作系统的平台<br>4.sys.argv   程序执行前输入参数，返回值是一个列表 可以去到<br>5.==sys.path==  sys的寻找路径的优先级 大一点的程序是在不同的目录中的、模块化<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">sys.argv           命令行参数List，第一个元素是程序本身路径</div><div class="line">sys.exit(n)        退出程序，正常退出时exit(<span class="number">0</span>)</div><div class="line">sys.version        获取Python解释程序的版本信息</div><div class="line">sys.maxint         最大的Int值</div><div class="line">sys.path           返回模块的搜索路径，初始化时使用PYTHONPATH环境变量的值</div><div class="line">sys.platform       返回操作系统平台名称</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
       
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
       
         
 	<div id="comment">
 	
 	<!-- 多说评论框 start -->
-	 <div class="ds-thread" data-thread-key="/2017/04/26/Python模块/" data-title="" data-url="https://github.com/ythzx/ythzx.github.io/2017/04/26/Python模块/"></div>
+	 <div class="ds-thread" data-thread-key="/2017/04/26/Python模块/" data-title="Python 模块" data-url="https://github.com/ythzx/ythzx.github.io/2017/04/26/Python模块/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
