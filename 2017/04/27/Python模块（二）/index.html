@@ -3,28 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Peter&#39;s Blog Center</title>
+  <title>python 模块（二） | Peter&#39;s Blog Center</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="Python" />
   
   
   
-  <meta name="description" content="title: Python 模块（二）tags: Python
-1 logging 模块logging有两种的配置的方式，configure、logger
-1.1 config方式12345678910111213141516import logging&apos;&apos;&apos;日志的配置：config模式只能选择在屏幕或者在文件输出&apos;&apos;&apos;logging.basicConfig(level=logging.DEBU">
+  
+  <meta name="description" content="1 logging 模块">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Peter's Blog Center">
+<meta property="og:title" content="Python 模块（二）">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/04/27/Python模块（二）/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
-<meta property="og:description" content="title: Python 模块（二）tags: Python
-1 logging 模块logging有两种的配置的方式，configure、logger
-1.1 config方式12345678910111213141516import logging&apos;&apos;&apos;日志的配置：config模式只能选择在屏幕或者在文件输出&apos;&apos;&apos;logging.basicConfig(level=logging.DEBU">
-<meta property="og:updated_time" content="2017-04-29T08:12:13.153Z">
+<meta property="og:description" content="1 logging 模块">
+<meta property="og:updated_time" content="2017-04-29T08:14:52.937Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Peter's Blog Center">
-<meta name="twitter:description" content="title: Python 模块（二）tags: Python
-1 logging 模块logging有两种的配置的方式，configure、logger
-1.1 config方式12345678910111213141516import logging&apos;&apos;&apos;日志的配置：config模式只能选择在屏幕或者在文件输出&apos;&apos;&apos;logging.basicConfig(level=logging.DEBU">
+<meta name="twitter:title" content="Python 模块（二）">
+<meta name="twitter:description" content="1 logging 模块">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
   
@@ -108,6 +104,16 @@
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python 模块（二）
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
 	Posted on <a href="/2017/04/27/Python模块（二）/" class="article-date">
@@ -117,9 +123,8 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: Python 模块（二）<br>tags: Python</p>
-<h2 id="1-logging-模块"><a href="#1-logging-模块" class="headerlink" title="1 logging 模块"></a>1 logging 模块</h2><p>logging有两种的配置的方式，configure、logger</p>
+        <h2 id="1-logging-模块"><a href="#1-logging-模块" class="headerlink" title="1 logging 模块"></a>1 logging 模块</h2><a id="more"></a>
+<p>logging有两种的配置的方式，configure、logger</p>
 <h3 id="1-1-config方式"><a href="#1-1-config方式" class="headerlink" title="1.1 config方式"></a>1.1 config方式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> logging</div><div class="line"><span class="string">'''</span></div><div class="line">日志的配置：config模式</div><div class="line">只能选择在屏幕或者在文件输出</div><div class="line">'''</div><div class="line">logging.basicConfig(level=logging.DEBUG,</div><div class="line">                    format=<span class="string">'%(asctime)s [%(lineno)s] %(message)s'</span> ,</div><div class="line">                    filename=<span class="string">'log.txt'</span>,</div><div class="line">                    filemode=<span class="string">'a'</span></div><div class="line">                    )</div><div class="line"><span class="comment"># logging.debug('debug message')  只有这些内容的时候是只显示在屏幕</span></div><div class="line"><span class="comment"># logging.info('info message')</span></div><div class="line"><span class="comment"># logging.warning('warning message')</span></div><div class="line"><span class="comment"># logging.error('error message')</span></div><div class="line"><span class="comment"># logging.critical('critical message')</span></div><div class="line">logging.info(<span class="string">'info message'</span>)</div></pre></td></tr></table></figure>
 <p>通过logging.basicConig可以配置输出的格式，level=DEBUG，还可以是INFO、WARNING、ERROR、DIGITAL,这个的优先级是从上往下的。设置好了哪一个就会显示他后面的。</p>
 <h3 id="1-2-logger"><a href="#1-2-logger" class="headerlink" title="1.2 logger"></a>1.2 logger</h3><p>推荐用logger</p>
@@ -156,12 +161,15 @@
     <footer class="entry-meta entry-footer">
       
       
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
       
         
 	<div id="comment">
 	
 	<!-- 多说评论框 start -->
-	 <div class="ds-thread" data-thread-key="/2017/04/27/Python模块（二）/" data-title="" data-url="https://github.com/ythzx/ythzx.github.io/2017/04/27/Python模块（二）/"></div>
+	 <div class="ds-thread" data-thread-key="/2017/04/27/Python模块（二）/" data-title="Python 模块（二）" data-url="https://github.com/ythzx/ythzx.github.io/2017/04/27/Python模块（二）/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
