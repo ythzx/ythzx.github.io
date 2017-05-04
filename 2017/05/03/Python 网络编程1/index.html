@@ -3,43 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Peter&#39;s Blog Center</title>
+  <title>python socket网络编程 | Peter&#39;s Blog Center</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="Python" />
   
   
   
-  <meta name="description" content="title: Python socket网络编程tags: Python
-1  服务器 客户端架构  C/S架构server端要求：121.力求一直提供服务2. 绑定一个地址，客户能够一直找到
-2 OSI七层123数据链路层是 以太网协议IP是通过子网查找 ARP协议 Mac地址TCP/UDP 是传输层 找对应的端口
-
-3 SOCKET层socket是把TCP/协议隐藏在Scocket后面
-
-4">
+  
+  <meta name="description" content="1  服务器 客户端架构  C/S架构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Peter's Blog Center">
+<meta property="og:title" content="Python socket网络编程">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/05/03/Python 网络编程1/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
-<meta property="og:description" content="title: Python socket网络编程tags: Python
-1  服务器 客户端架构  C/S架构server端要求：121.力求一直提供服务2. 绑定一个地址，客户能够一直找到
-2 OSI七层123数据链路层是 以太网协议IP是通过子网查找 ARP协议 Mac地址TCP/UDP 是传输层 找对应的端口
-
-3 SOCKET层socket是把TCP/协议隐藏在Scocket后面
-
-4">
+<meta property="og:description" content="1  服务器 客户端架构  C/S架构">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503164839101-1200502214.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503164845429-1592749903.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503191039726-1130712029.jpg">
-<meta property="og:updated_time" content="2017-05-03T14:33:44.716Z">
+<meta property="og:updated_time" content="2017-05-04T07:18:11.127Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Peter's Blog Center">
-<meta name="twitter:description" content="title: Python socket网络编程tags: Python
-1  服务器 客户端架构  C/S架构server端要求：121.力求一直提供服务2. 绑定一个地址，客户能够一直找到
-2 OSI七层123数据链路层是 以太网协议IP是通过子网查找 ARP协议 Mac地址TCP/UDP 是传输层 找对应的端口
-
-3 SOCKET层socket是把TCP/协议隐藏在Scocket后面
-
-4">
+<meta name="twitter:title" content="Python socket网络编程">
+<meta name="twitter:description" content="1  服务器 客户端架构  C/S架构">
 <meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503164839101-1200502214.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
@@ -124,6 +108,16 @@
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python socket网络编程
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
 	Posted on <a href="/2017/05/03/Python 网络编程1/" class="article-date">
@@ -133,9 +127,8 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: Python socket网络编程<br>tags: Python</p>
-<h2 id="1-服务器-客户端架构-C-S架构"><a href="#1-服务器-客户端架构-C-S架构" class="headerlink" title="1  服务器 客户端架构  C/S架构"></a>1  服务器 客户端架构  C/S架构</h2><p><strong>server端要求：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.力求一直提供服务</div><div class="line">2. 绑定一个地址，客户能够一直找到</div></pre></td></tr></table></figure></p>
+        <h2 id="1-服务器-客户端架构-C-S架构"><a href="#1-服务器-客户端架构-C-S架构" class="headerlink" title="1  服务器 客户端架构  C/S架构"></a>1  服务器 客户端架构  C/S架构</h2><a id="more"></a>
+<p><strong>server端要求：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.力求一直提供服务</div><div class="line">2. 绑定一个地址，客户能够一直找到</div></pre></td></tr></table></figure></p>
 <h2 id="2-OSI七层"><a href="#2-OSI七层" class="headerlink" title="2 OSI七层"></a>2 OSI七层</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">数据链路层是 以太网协议</div><div class="line">IP是通过子网查找 ARP协议 Mac地址</div><div class="line">TCP/UDP 是传输层 找对应的端口</div></pre></td></tr></table></figure>
 <p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503164839101-1200502214.jpg" alt=""></p>
 <h2 id="3-SOCKET层"><a href="#3-SOCKET层" class="headerlink" title="3 SOCKET层"></a>3 SOCKET层</h2><p>socket是把TCP/协议隐藏在Scocket后面</p>
@@ -150,12 +143,15 @@
     <footer class="entry-meta entry-footer">
       
       
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
       
         
 	<div id="comment">
 	
 	<!-- 多说评论框 start -->
-	 <div class="ds-thread" data-thread-key="/2017/05/03/Python 网络编程1/" data-title="" data-url="https://github.com/ythzx/ythzx.github.io/2017/05/03/Python 网络编程1/"></div>
+	 <div class="ds-thread" data-thread-key="/2017/05/03/Python 网络编程1/" data-title="Python socket网络编程" data-url="https://github.com/ythzx/ythzx.github.io/2017/05/03/Python 网络编程1/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

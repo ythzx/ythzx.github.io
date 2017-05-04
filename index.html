@@ -100,6 +100,16 @@
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/03/Python 网络编程1/">Python socket网络编程</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
 	Posted on <a href="/2017/05/03/Python 网络编程1/" class="article-date">
@@ -109,23 +119,32 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: Python socket网络编程<br>tags: Python</p>
-<h2 id="1-服务器-客户端架构-C-S架构"><a href="#1-服务器-客户端架构-C-S架构" class="headerlink" title="1  服务器 客户端架构  C/S架构"></a>1  服务器 客户端架构  C/S架构</h2><p><strong>server端要求：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.力求一直提供服务</div><div class="line">2. 绑定一个地址，客户能够一直找到</div></pre></td></tr></table></figure></p>
-<h2 id="2-OSI七层"><a href="#2-OSI七层" class="headerlink" title="2 OSI七层"></a>2 OSI七层</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">数据链路层是 以太网协议</div><div class="line">IP是通过子网查找 ARP协议 Mac地址</div><div class="line">TCP/UDP 是传输层 找对应的端口</div></pre></td></tr></table></figure>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503164839101-1200502214.jpg" alt=""></p>
-<h2 id="3-SOCKET层"><a href="#3-SOCKET层" class="headerlink" title="3 SOCKET层"></a>3 SOCKET层</h2><p>socket是把TCP/协议隐藏在Scocket后面</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503164845429-1592749903.jpg" alt=""></p>
-<h2 id="4-socket工作流程"><a href="#4-socket工作流程" class="headerlink" title="4 socket工作流程"></a>4 socket工作流程</h2><p>先从服务器端说起。服务器端先初始化Socket，然后与端口绑定(bind)，对端口进行监听(listen)，调用accept阻塞，等待客户端连接。在这时如果有个客户端初始化一个Socket，然后连接服务器(connect)，如果连接成功，这时客户端与服务器端的连接就建立了。客户端发送数据请求，服务器端接收请求并处理请求，然后把回应数据发送给客户端，客户端读取数据，最后关闭连接，一次交互结束</p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503191039726-1130712029.jpg" alt=""></p>
-<h3 id="打电话模拟socket通信"><a href="#打电话模拟socket通信" class="headerlink" title="打电话模拟socket通信"></a>打电话模拟socket通信</h3><p><strong>服务端</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line">phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  <span class="comment"># 买手机</span></div><div class="line"><span class="comment"># 解决这个错误 [WinError 10048] 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。</span></div><div class="line">phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)</div><div class="line">phone.bind((<span class="string">'127.0.0.1'</span>, <span class="number">8888</span>))  <span class="comment"># 手机卡                 # j加上以后就不用重新</span></div><div class="line">phone.listen(<span class="number">5</span>)  <span class="comment"># 手机待机 5相当于挂起的电话连接</span></div><div class="line"></div><div class="line">print(<span class="string">'server is starting...'</span>)</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="comment"># 	conn,addr = phone.accept()  # accept()返回的是一个元组，</span></div><div class="line">    conn, addr = phone.accept()  <span class="comment"># 等待接听电话</span></div><div class="line">    <span class="comment"># print(phone.accept())</span></div><div class="line">    print(<span class="string">"电话线路"</span> , conn)</div><div class="line">    print(<span class="string">"手机的地址"</span> , addr)  <span class="comment"># 手机号</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        <span class="keyword">try</span>:<span class="comment"># 应对Windows系统</span></div><div class="line">            data = conn.recv(<span class="number">1024</span>)  <span class="comment"># 从自己的缓存中寻找数据</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">not</span> data:</div><div class="line">                <span class="keyword">continue</span>  <span class="comment"># 应对Linux系统</span></div><div class="line">            print(<span class="string">"客户发来消息%s"</span> % data)</div><div class="line">            conn.send(data)</div><div class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">            <span class="keyword">break</span></div><div class="line">    conn.close() <span class="comment">#挂电话</span></div><div class="line">phone.close()<span class="comment"># 关闭手机</span></div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line">server is starting...</div><div class="line">电话线路 &lt;socket.socket fd=288, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 1676)&gt;</div><div class="line">手机的地址 ('127.0.0.1', 1676)</div><div class="line">客户发来消息b'hello'</div><div class="line">客户发来消息b'world'</div><div class="line">'''</div></pre></td></tr></table></figure></p>
-<p><strong>客户端</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line">phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line">phone.connect((<span class="string">'127.0.0.1'</span>, <span class="number">8888</span>))  <span class="comment"># 直接连接</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    msg = input(<span class="string">"&gt;&gt;&gt;:"</span>).strip()</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> msg:</div><div class="line">        <span class="keyword">continue</span>  <span class="comment"># 输入为空的时候 等待</span></div><div class="line">    phone.send(msg.encode(<span class="string">'utf-8'</span>))  <span class="comment"># 发送的是bytes数据</span></div><div class="line">    data = phone.recv(<span class="number">1024</span>)</div><div class="line">    print(data)</div><div class="line">phone.close()</div><div class="line"><span class="string">'''</span></div><div class="line">&gt;&gt;&gt;:hello</div><div class="line">b'hello'</div><div class="line">&gt;&gt;&gt;:world</div><div class="line">b'world'</div><div class="line">&gt;&gt;&gt;:</div><div class="line">'''</div></pre></td></tr></table></figure></p>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+            1  服务器 客户端架构  C/S架构
+server端要求：121.力求一直提供服务2. 绑定一个地址，客户能够一直找到
+2 OSI七层123数据链路层是 以太网协议IP是通过子网查找 ARP协议 Mac地址TCP/UDP 是传输层 找对应的端口
+
+3 SOCKET层socket是把TCP/协议隐藏在Scocket后面
+
+4 socket工作流程先从服务器端说起。服务器端先初始化Socket，然后与端口绑定(bind)，对端口进行监听(listen)，调用accept阻塞，等待客户端连接。在这时如果有个客户端初始化一个Socket，然后连接服务器(connect)，如果连接成功，这时客户端与服务器端的连接就建立了。客户端发送数据请求，服务器端接收请求并处理请求，然后把回应数据发送给客户...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/05/03/Python 网络编程1/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
       
       
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
       
     </footer>
   </div>
@@ -482,7 +501,7 @@ time.struct_time(tm_year=2017, tm_mon=4,                                 tm_mday
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/05/03/Python 网络编程1/">(no title)</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/05/03/Python 网络编程1/">Python socket网络编程</a></h6>
               <span>五月 3, 2017</span>
             </div>
 
@@ -560,7 +579,7 @@ time.struct_time(tm_year=2017, tm_mon=4,                                 tm_mday
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">33</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
