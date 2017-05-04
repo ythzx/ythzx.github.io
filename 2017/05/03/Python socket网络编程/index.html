@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python socket网络编程 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Python" />
+  
+  
+  
+  
+  <meta name="description" content="1  服务器 客户端架构  C/S架构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python socket网络编程">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/05/03/Python socket网络编程/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="1  服务器 客户端架构  C/S架构">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503164839101-1200502214.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503164845429-1592749903.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503191039726-1130712029.jpg">
+<meta property="og:updated_time" content="2017-05-04T07:20:46.566Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python socket网络编程">
+<meta name="twitter:description" content="1  服务器 客户端架构  C/S架构">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503164839101-1200502214.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-Python socket网络编程" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python socket网络编程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/05/03/Python socket网络编程/" class="article-date">
+	  <time datetime="2017-05-03T00:39:37.579Z" itemprop="datePublished">五月 3, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-服务器-客户端架构-C-S架构"><a href="#1-服务器-客户端架构-C-S架构" class="headerlink" title="1  服务器 客户端架构  C/S架构"></a>1  服务器 客户端架构  C/S架构</h2><a id="more"></a>
+<p><strong>server端要求：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1.力求一直提供服务</div><div class="line">2. 绑定一个地址，客户能够一直找到</div></pre></td></tr></table></figure></p>
+<h2 id="2-OSI七层"><a href="#2-OSI七层" class="headerlink" title="2 OSI七层"></a>2 OSI七层</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">数据链路层是 以太网协议</div><div class="line">IP是通过子网查找 ARP协议 Mac地址</div><div class="line">TCP/UDP 是传输层 找对应的端口</div></pre></td></tr></table></figure>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503164839101-1200502214.jpg" alt=""></p>
+<h2 id="3-SOCKET层"><a href="#3-SOCKET层" class="headerlink" title="3 SOCKET层"></a>3 SOCKET层</h2><p>socket是把TCP/协议隐藏在Scocket后面</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503164845429-1592749903.jpg" alt=""></p>
+<h2 id="4-socket工作流程"><a href="#4-socket工作流程" class="headerlink" title="4 socket工作流程"></a>4 socket工作流程</h2><p>先从服务器端说起。服务器端先初始化Socket，然后与端口绑定(bind)，对端口进行监听(listen)，调用accept阻塞，等待客户端连接。在这时如果有个客户端初始化一个Socket，然后连接服务器(connect)，如果连接成功，这时客户端与服务器端的连接就建立了。客户端发送数据请求，服务器端接收请求并处理请求，然后把回应数据发送给客户端，客户端读取数据，最后关闭连接，一次交互结束</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170503191039726-1130712029.jpg" alt=""></p>
+<h3 id="打电话模拟socket通信"><a href="#打电话模拟socket通信" class="headerlink" title="打电话模拟socket通信"></a>打电话模拟socket通信</h3><p><strong>服务端</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line">phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  <span class="comment"># 买手机</span></div><div class="line"><span class="comment"># 解决这个错误 [WinError 10048] 通常每个套接字地址(协议/网络地址/端口)只允许使用一次。</span></div><div class="line">phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)</div><div class="line">phone.bind((<span class="string">'127.0.0.1'</span>, <span class="number">8888</span>))  <span class="comment"># 手机卡                 # j加上以后就不用重新</span></div><div class="line">phone.listen(<span class="number">5</span>)  <span class="comment"># 手机待机 5相当于挂起的电话连接</span></div><div class="line"></div><div class="line">print(<span class="string">'server is starting...'</span>)</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="comment"># 	conn,addr = phone.accept()  # accept()返回的是一个元组，</span></div><div class="line">    conn, addr = phone.accept()  <span class="comment"># 等待接听电话</span></div><div class="line">    <span class="comment"># print(phone.accept())</span></div><div class="line">    print(<span class="string">"电话线路"</span> , conn)</div><div class="line">    print(<span class="string">"手机的地址"</span> , addr)  <span class="comment"># 手机号</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        <span class="keyword">try</span>:<span class="comment"># 应对Windows系统</span></div><div class="line">            data = conn.recv(<span class="number">1024</span>)  <span class="comment"># 从自己的缓存中寻找数据</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">not</span> data:</div><div class="line">                <span class="keyword">continue</span>  <span class="comment"># 应对Linux系统</span></div><div class="line">            print(<span class="string">"客户发来消息%s"</span> % data)</div><div class="line">            conn.send(data)</div><div class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">            <span class="keyword">break</span></div><div class="line">    conn.close() <span class="comment">#挂电话</span></div><div class="line">phone.close()<span class="comment"># 关闭手机</span></div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line">server is starting...</div><div class="line">电话线路 &lt;socket.socket fd=288, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 1676)&gt;</div><div class="line">手机的地址 ('127.0.0.1', 1676)</div><div class="line">客户发来消息b'hello'</div><div class="line">客户发来消息b'world'</div><div class="line">'''</div></pre></td></tr></table></figure></p>
+<p><strong>客户端</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line">phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line">phone.connect((<span class="string">'127.0.0.1'</span>, <span class="number">8888</span>))  <span class="comment"># 直接连接</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    msg = input(<span class="string">"&gt;&gt;&gt;:"</span>).strip()</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> msg:</div><div class="line">        <span class="keyword">continue</span>  <span class="comment"># 输入为空的时候 等待</span></div><div class="line">    phone.send(msg.encode(<span class="string">'utf-8'</span>))  <span class="comment"># 发送的是bytes数据</span></div><div class="line">    data = phone.recv(<span class="number">1024</span>)</div><div class="line">    print(data)</div><div class="line">phone.close()</div><div class="line"><span class="string">'''</span></div><div class="line">&gt;&gt;&gt;:hello</div><div class="line">b'hello'</div><div class="line">&gt;&gt;&gt;:world</div><div class="line">b'world'</div><div class="line">&gt;&gt;&gt;:</div><div class="line">'''</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/05/03/Python socket网络编程/" data-title="Python socket网络编程" data-url="https://github.com/ythzx/ythzx.github.io/2017/05/03/Python socket网络编程/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/05/02/Python模块调用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Python模块调用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-服务器-客户端架构-C-S架构"><span class="nav-number">1.</span> <span class="nav-text">1  服务器 客户端架构  C/S架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-OSI七层"><span class="nav-number">2.</span> <span class="nav-text">2 OSI七层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-SOCKET层"><span class="nav-number">3.</span> <span class="nav-text">3 SOCKET层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-socket工作流程"><span class="nav-number">4.</span> <span class="nav-text">4 socket工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打电话模拟socket通信"><span class="nav-number">4.1.</span> <span class="nav-text">打电话模拟socket通信</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
