@@ -3,26 +3,66 @@
 <head>
   <meta charset="utf-8">
   
-  <title>python socket 粘包 | Peter&#39;s Blog Center</title>
+  <title>Peter&#39;s Blog Center</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Python" />
   
   
   
-  
-  <meta name="description" content="1  TCP的三次握手四次挥手">
+  <meta name="description" content="Python socket 粘包tags: Python
+[TOC]
+1  TCP的三次握手四次挥手
+1.1 三次握手
+1 客户端向服务端发起SYN请求，请求建立连接，
+
+2 服务端同意建立连接，回应ACK,同时服务端向客户端发起SYN请求
+
+3 客户端回应ACK 
+
+
+1.2 四次挥手挥手是任意的，客户端和服务端都可以首先断开连接
+下面是以客户端发起的挥手
+
+1  客户端发送完数据后发起FIN">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python socket 粘包">
+<meta property="og:title" content="Peter's Blog Center">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/05/05/Python socket 粘包/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
-<meta property="og:description" content="1  TCP的三次握手四次挥手">
+<meta property="og:description" content="Python socket 粘包tags: Python
+[TOC]
+1  TCP的三次握手四次挥手
+1.1 三次握手
+1 客户端向服务端发起SYN请求，请求建立连接，
+
+2 服务端同意建立连接，回应ACK,同时服务端向客户端发起SYN请求
+
+3 客户端回应ACK 
+
+
+1.2 四次挥手挥手是任意的，客户端和服务端都可以首先断开连接
+下面是以客户端发起的挥手
+
+1  客户端发送完数据后发起FIN">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170504152500742-1506351222.png">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170505110045695-154202635.png">
-<meta property="og:updated_time" content="2017-05-05T07:49:25.182Z">
+<meta property="og:updated_time" content="2017-05-05T12:29:31.507Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python socket 粘包">
-<meta name="twitter:description" content="1  TCP的三次握手四次挥手">
+<meta name="twitter:title" content="Peter's Blog Center">
+<meta name="twitter:description" content="Python socket 粘包tags: Python
+[TOC]
+1  TCP的三次握手四次挥手
+1.1 三次握手
+1 客户端向服务端发起SYN请求，请求建立连接，
+
+2 服务端同意建立连接，回应ACK,同时服务端向客户端发起SYN请求
+
+3 客户端回应ACK 
+
+
+1.2 四次挥手挥手是任意的，客户端和服务端都可以首先断开连接
+下面是以客户端发起的挥手
+
+1  客户端发送完数据后发起FIN">
 <meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170504152500742-1506351222.png">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
@@ -107,16 +147,6 @@
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" class="article-title" itemprop="name">
-      Python socket 粘包
-    </h1>
-  
-
-      </header>
-    
     <div class="article-meta">
       
 	Posted on <a href="/2017/05/05/Python socket 粘包/" class="article-date">
@@ -126,8 +156,9 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-TCP的三次握手四次挥手"><a href="#1-TCP的三次握手四次挥手" class="headerlink" title="1  TCP的三次握手四次挥手"></a>1  TCP的三次握手四次挥手</h2><a id="more"></a>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170504152500742-1506351222.png" alt=""></p>
+        <h2 id="Python-socket-粘包"><a href="#Python-socket-粘包" class="headerlink" title="Python socket 粘包"></a>Python socket 粘包</h2><p>tags: Python</p>
+<p>[TOC]</p>
+<h2 id="1-TCP的三次握手四次挥手"><a href="#1-TCP的三次握手四次挥手" class="headerlink" title="1  TCP的三次握手四次挥手"></a>1  TCP的三次握手四次挥手</h2><p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170504152500742-1506351222.png" alt=""></p>
 <h3 id="1-1-三次握手"><a href="#1-1-三次握手" class="headerlink" title="1.1 三次握手"></a>1.1 三次握手</h3><ul>
 <li><p>1 客户端向服务端发起SYN请求，请求建立连接，</p>
 </li>
@@ -155,19 +186,242 @@
 <p>[TCP资料](<a href="http://blog.csdn.net/u011726984/article/details/50781212" target="_blank" rel="external">http://blog.csdn.net/u011726984/article/details/50781212</a></p>
 <h2 id="2-粘包现象"><a href="#2-粘包现象" class="headerlink" title="2 粘包现象"></a>2 粘包现象</h2><p>粘包存在两个方面，一个是服务端，一个是客户端</p>
 <h3 id="2-1-基于TCP制作远程执行命令操作-win服务端"><a href="#2-1-基于TCP制作远程执行命令操作-win服务端" class="headerlink" title="2.1 基于TCP制作远程执行命令操作(win服务端)"></a>2.1 基于TCP制作远程执行命令操作(win服务端)</h3><p><strong>下面是服务端放在本地win平台，用127.0.0.1自己测试的代码</strong></p>
-<p><strong>服务端</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding:utf-8</span></div><div class="line"><span class="comment"># 基于TCP制作的远程执行命令的操作</span></div><div class="line"><span class="comment"># version；版本1</span></div><div class="line"><span class="comment"># 问题：有粘包现象</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">import</span> socket</div><div class="line"><span class="keyword">import</span> subprocess</div><div class="line"></div><div class="line">phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line"><span class="comment"># family=AF_INET, type=SOCK_STREAM, proto=0, _sock=None)   # 买手机</span></div><div class="line"><span class="comment"># phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 就是它，在bind前加</span></div><div class="line">phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)</div><div class="line"></div><div class="line"></div><div class="line">phone.bind((<span class="string">'127.0.0.1'</span>, <span class="number">8888</span>))   <span class="comment"># 绑定手机卡</span></div><div class="line">phone.listen(<span class="number">5</span>)  <span class="comment"># 开机 相当于挂起的电话连接</span></div><div class="line"></div><div class="line">print(<span class="string">"starting..."</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:   <span class="comment"># 通信循环</span></div><div class="line">    conn, addr = phone.accept()  <span class="comment"># 等待电话连接</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:  <span class="comment">#</span></div><div class="line">        <span class="keyword">try</span>:  <span class="comment"># 应对Windows系统 从缓存中读取空的情况</span></div><div class="line">            data = conn.recv(<span class="number">1024</span>)  <span class="comment"># 收消息  从自己的缓存中找数据是最大的值</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">not</span> data:</div><div class="line">                <span class="keyword">continue</span>  <span class="comment"># 应对Linux系统从缓存中读取空的情况</span></div><div class="line">            res = subprocess.Popen(</div><div class="line">                data.decode(<span class="string">"utf-8"</span>), shell=<span class="keyword">True</span>, stdout=subprocess.PIPE,</div><div class="line">                stderr=subprocess.PIPE)   <span class="comment"># 把读取的信息存放在管道中            </span></div><div class="line">            <span class="string">'''</span></div><div class="line">            # 这是判断错误的方式</div><div class="line">            err = res.stderr.read()  # 首先判断错误信息</div><div class="line">            if not err:   # 这是读取到的正常信息</div><div class="line">                res_cmd = res.stdout.read()</div><div class="line">            else:</div><div class="line">                res_cmd = err      # 这是读取道的错误信息</div><div class="line">            conn.send(res_cmd)   # 最后把接收到的数据发送到客户端</div><div class="line">            '''</div><div class="line">            <span class="comment"># 这是直接发送的数据</span></div><div class="line">            res_err = res.stderr.read()</div><div class="line">            res_out = res.stdout.read()</div><div class="line">            conn.send(res_err)</div><div class="line">            conn.send(res_out)</div><div class="line">        <span class="keyword">except</span> Exception:</div><div class="line">            <span class="keyword">break</span></div><div class="line">    conn.close()   <span class="comment"># 断开连接</span></div><div class="line">phone.close()  <span class="comment"># 关闭服务器连接</span></div></pre></td></tr></table></figure></p>
+<p><strong>服务端</strong></p>
+<pre><code class="python"><span class="comment"># coding:utf-8</span>
+<span class="comment"># 基于TCP制作的远程执行命令的操作</span>
+<span class="comment"># version；版本1</span>
+<span class="comment"># 问题：有粘包现象</span>
+
+
+<span class="keyword">import</span> socket
+<span class="keyword">import</span> subprocess
+
+phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+<span class="comment"># family=AF_INET, type=SOCK_STREAM, proto=0, _sock=None)   # 买手机</span>
+<span class="comment"># phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 就是它，在bind前加</span>
+phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)
+
+
+phone.bind((<span class="string">'127.0.0.1'</span>, <span class="number">8888</span>))   <span class="comment"># 绑定手机卡</span>
+phone.listen(<span class="number">5</span>)  <span class="comment"># 开机 相当于挂起的电话连接</span>
+
+print(<span class="string">"starting..."</span>)
+
+<span class="keyword">while</span> <span class="keyword">True</span>:   <span class="comment"># 通信循环</span>
+    conn, addr = phone.accept()  <span class="comment"># 等待电话连接</span>
+    <span class="keyword">while</span> <span class="keyword">True</span>:  <span class="comment">#</span>
+        <span class="keyword">try</span>:  <span class="comment"># 应对Windows系统 从缓存中读取空的情况</span>
+            data = conn.recv(<span class="number">1024</span>)  <span class="comment"># 收消息  从自己的缓存中找数据是最大的值</span>
+            <span class="keyword">if</span> <span class="keyword">not</span> data:
+                <span class="keyword">continue</span>  <span class="comment"># 应对Linux系统从缓存中读取空的情况</span>
+            res = subprocess.Popen(
+                data.decode(<span class="string">"utf-8"</span>), shell=<span class="keyword">True</span>, stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE)   <span class="comment"># 把读取的信息存放在管道中            </span>
+            <span class="string">'''
+            # 这是判断错误的方式
+            err = res.stderr.read()  # 首先判断错误信息
+            if not err:   # 这是读取到的正常信息
+                res_cmd = res.stdout.read()
+            else:
+                res_cmd = err      # 这是读取道的错误信息
+            conn.send(res_cmd)   # 最后把接收到的数据发送到客户端
+            '''</span>
+            <span class="comment"># 这是直接发送的数据</span>
+            res_err = res.stderr.read()
+            res_out = res.stdout.read()
+            conn.send(res_err)
+            conn.send(res_out)
+        <span class="keyword">except</span> Exception:
+            <span class="keyword">break</span>
+    conn.close()   <span class="comment"># 断开连接</span>
+phone.close()  <span class="comment"># 关闭服务器连接</span>
+</code></pre>
 <p><strong>客户端</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line">phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line">phone.connect((<span class="string">"127.0.0.1"</span>, <span class="number">8888</span>))  <span class="comment"># 直接进行连接</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    cmd = input(<span class="string">"&gt;&gt;:"</span>).strip()  <span class="comment"># 输入去除空格 换行</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> cmd:</div><div class="line">        <span class="keyword">continue</span>  <span class="comment"># 没有输入内容 继续输入</span></div><div class="line">    <span class="comment"># phone.send(cmd.encode("utf-8"))  # </span></div><div class="line">    phone.send(bytes(cmd.encode(<span class="string">"utf-8"</span>)))  <span class="comment"># 默认发送的是字节bytes</span></div><div class="line">    data = phone.recv(<span class="number">1024</span>)    <span class="comment"># 从客户端自己的缓存中寻找</span></div><div class="line">    print(data.decode(<span class="string">'gbk'</span>))  <span class="comment"># win 平台的默认编码是gbk 在Linux中用uft-8</span></div><div class="line">phone.close()  <span class="comment"># 关闭客户端</span></div></pre></td></tr></table></figure>
+<pre><code class="python"><span class="keyword">import</span> socket
+
+phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+phone.connect((<span class="string">"127.0.0.1"</span>, <span class="number">8888</span>))  <span class="comment"># 直接进行连接</span>
+
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    cmd = input(<span class="string">"&gt;&gt;:"</span>).strip()  <span class="comment"># 输入去除空格 换行</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> cmd:
+        <span class="keyword">continue</span>  <span class="comment"># 没有输入内容 继续输入</span>
+    <span class="comment"># phone.send(cmd.encode("utf-8"))  # </span>
+    phone.send(bytes(cmd.encode(<span class="string">"utf-8"</span>)))  <span class="comment"># 默认发送的是字节bytes</span>
+    data = phone.recv(<span class="number">1024</span>)    <span class="comment"># 从客户端自己的缓存中寻找</span>
+    print(data.decode(<span class="string">'gbk'</span>))  <span class="comment"># win 平台的默认编码是gbk 在Linux中用uft-8</span>
+phone.close()  <span class="comment"># 关闭客户端</span>
+</code></pre>
 <p><strong>实验的时候首先开启服务端，然后开启客户端</strong></p>
 <p>执行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;:cd </div><div class="line">D:\Python\...\....</div><div class="line"></div><div class="line">&gt;&gt;:listen</div><div class="line">&apos;listen&apos; 不是内部或外部命令，也不是可运行的程序</div><div class="line">或批处理文件。</div><div class="line"></div><div class="line">&gt;&gt;:ls </div><div class="line">&apos;ls&apos; 不是内部或外部命令，也不是可运行的程序</div><div class="line">或批处理文件。</div><div class="line"></div><div class="line">&gt;&gt;:tree</div><div class="line">卷 我的小D 的文件夹 PATH 列表</div><div class="line">卷序列号为 0005-B7F0</div><div class="line">D:.</div><div class="line">没有子文件夹 </div><div class="line">&gt;&gt;:hello</div><div class="line">&apos;hello&apos; 不是内部或外部命令，也不是可运行的程序</div><div class="line">或批处理文件。</div><div class="line">&gt;&gt;:</div></pre></td></tr></table></figure>
+<pre><code class="language">&gt;&gt;:cd 
+D:\Python\...\....
+
+&gt;&gt;:listen
+&apos;listen&apos; 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+&gt;&gt;:ls 
+&apos;ls&apos; 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+&gt;&gt;:tree
+卷 我的小D 的文件夹 PATH 列表
+卷序列号为 0005-B7F0
+D:.
+没有子文件夹 
+&gt;&gt;:hello
+&apos;hello&apos; 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+&gt;&gt;:
+</code></pre>
 <h3 id="2-1-基于TCP制作远程执行命令操作（Linux服务端"><a href="#2-1-基于TCP制作远程执行命令操作（Linux服务端" class="headerlink" title="2.1 基于TCP制作远程执行命令操作（Linux服务端)"></a>2.1 基于TCP制作远程执行命令操作（Linux服务端)</h3><p>在Linux上需要修改IP地址位服务端的地址，客户端的解码方式修改成utf-8</p>
 <p><strong>服务端</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding:utf-8</span></div><div class="line"><span class="comment"># 基于TCP制作的远程执行命令的操作</span></div><div class="line"><span class="comment"># version；版本1</span></div><div class="line"><span class="comment"># 问题：有粘包现象  具体看执行的结果</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> socket</div><div class="line"><span class="keyword">import</span> subprocess</div><div class="line"></div><div class="line">phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line"><span class="comment"># family=AF_INET, type=SOCK_STREAM, proto=0, _sock=None)   # 买手机</span></div><div class="line"><span class="comment"># phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 就是它，在bind前加</span></div><div class="line">phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)</div><div class="line"></div><div class="line"></div><div class="line">phone.bind((<span class="string">'192.168.16.200'</span>, <span class="number">8800</span>))   <span class="comment">#  修改成Linux自己的IP地址</span></div><div class="line">phone.listen(<span class="number">5</span>)  <span class="comment"># 开机 相当于挂起的电话连接</span></div><div class="line"></div><div class="line">print(<span class="string">"starting..."</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:   <span class="comment"># 通信循环</span></div><div class="line">    conn, addr = phone.accept()  <span class="comment"># 等待电话连接</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:  <span class="comment">#</span></div><div class="line">        <span class="keyword">try</span>:  <span class="comment"># 应对Windows系统 从缓存中读取空的情况</span></div><div class="line">            data = conn.recv(<span class="number">1024</span>)  <span class="comment"># 收消息  从自己的缓存中找数据是最大的值</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">not</span> data:</div><div class="line">                <span class="keyword">continue</span>  <span class="comment"># 应对Linux系统从缓存中读取空的情况</span></div><div class="line">            res = subprocess.Popen(</div><div class="line">                data.decode(<span class="string">"utf-8"</span>), shell=<span class="keyword">True</span>, stdout=subprocess.PIPE,</div><div class="line">                stderr=subprocess.PIPE)   <span class="comment"># 把读取的信息存放在管道中            </span></div><div class="line">            <span class="string">'''</span></div><div class="line">            # 这是判断错误的方式</div><div class="line">            err = res.stderr.read()  # 首先判断错误信息</div><div class="line">            if not err:   # 这是读取到的正常信息</div><div class="line">                res_cmd = res.stdout.read()</div><div class="line">            else:</div><div class="line">                res_cmd = err      # 这是读取道的错误信息</div><div class="line">            conn.send(res_cmd)   # 最后把接收到的数据发送到客户端</div><div class="line">            '''</div><div class="line">            <span class="comment"># 这是直接发送的数据</span></div><div class="line">            res_err = res.stderr.read()</div><div class="line">            res_out = res.stdout.read()</div><div class="line">            conn.send(res_err)</div><div class="line">            conn.send(res_out)</div><div class="line">        <span class="keyword">except</span> Exception:</div><div class="line">            <span class="keyword">break</span></div><div class="line">    conn.close()   <span class="comment"># 断开连接</span></div><div class="line">phone.close()  <span class="comment"># 关闭服务器连接</span></div></pre></td></tr></table></figure>
+<pre><code class="python"><span class="comment"># coding:utf-8</span>
+<span class="comment"># 基于TCP制作的远程执行命令的操作</span>
+<span class="comment"># version；版本1</span>
+<span class="comment"># 问题：有粘包现象  具体看执行的结果</span>
+
+<span class="keyword">import</span> socket
+<span class="keyword">import</span> subprocess
+
+phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+<span class="comment"># family=AF_INET, type=SOCK_STREAM, proto=0, _sock=None)   # 买手机</span>
+<span class="comment"># phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 就是它，在bind前加</span>
+phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)
+
+
+phone.bind((<span class="string">'192.168.16.200'</span>, <span class="number">8800</span>))   <span class="comment">#  修改成Linux自己的IP地址</span>
+phone.listen(<span class="number">5</span>)  <span class="comment"># 开机 相当于挂起的电话连接</span>
+
+print(<span class="string">"starting..."</span>)
+
+<span class="keyword">while</span> <span class="keyword">True</span>:   <span class="comment"># 通信循环</span>
+    conn, addr = phone.accept()  <span class="comment"># 等待电话连接</span>
+    <span class="keyword">while</span> <span class="keyword">True</span>:  <span class="comment">#</span>
+        <span class="keyword">try</span>:  <span class="comment"># 应对Windows系统 从缓存中读取空的情况</span>
+            data = conn.recv(<span class="number">1024</span>)  <span class="comment"># 收消息  从自己的缓存中找数据是最大的值</span>
+            <span class="keyword">if</span> <span class="keyword">not</span> data:
+                <span class="keyword">continue</span>  <span class="comment"># 应对Linux系统从缓存中读取空的情况</span>
+            res = subprocess.Popen(
+                data.decode(<span class="string">"utf-8"</span>), shell=<span class="keyword">True</span>, stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE)   <span class="comment"># 把读取的信息存放在管道中            </span>
+            <span class="string">'''
+            # 这是判断错误的方式
+            err = res.stderr.read()  # 首先判断错误信息
+            if not err:   # 这是读取到的正常信息
+                res_cmd = res.stdout.read()
+            else:
+                res_cmd = err      # 这是读取道的错误信息
+            conn.send(res_cmd)   # 最后把接收到的数据发送到客户端
+            '''</span>
+            <span class="comment"># 这是直接发送的数据</span>
+            res_err = res.stderr.read()
+            res_out = res.stdout.read()
+            conn.send(res_err)
+            conn.send(res_out)
+        <span class="keyword">except</span> Exception:
+            <span class="keyword">break</span>
+    conn.close()   <span class="comment"># 断开连接</span>
+phone.close()  <span class="comment"># 关闭服务器连接</span>
+</code></pre>
 <p><strong>客户端</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding:utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line">phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line"><span class="comment"># phone.connect(("127.0.0.1", 8888))  # 直接进行连接</span></div><div class="line">phone.connect((<span class="string">"192.168.16.200"</span>, <span class="number">8800</span>))  <span class="comment"># Linux测试</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    cmd = input(<span class="string">"&gt;&gt;:"</span>).strip()  <span class="comment"># 输入去除空格 换行</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> cmd:</div><div class="line">        <span class="keyword">continue</span>  <span class="comment"># 没有输入内容 继续输入</span></div><div class="line">    <span class="comment"># phone.send(cmd.encode("utf-8"))  #</span></div><div class="line">    phone.send(bytes(cmd.encode(<span class="string">"utf-8"</span>)))  <span class="comment"># 默认发送的是字节bytes</span></div><div class="line">    data = phone.recv(<span class="number">1024</span>)    <span class="comment"># 从客户端自己的缓存中寻找</span></div><div class="line">    <span class="comment"># print(data.decode('gbk'))  # win 平台的默认编码是gbk 在Linux中用uft-8</span></div><div class="line">    print(data.decode(<span class="string">'utf-8'</span>))  <span class="comment"># win 平台的默认编码是gbk 在Linux中用uft-8</span></div><div class="line">phone.close()  <span class="comment"># 关闭客户端</span></div></pre></td></tr></table></figure>
+<pre><code class="python"><span class="comment"># coding:utf-8</span>
+
+<span class="keyword">import</span> socket
+
+phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+<span class="comment"># phone.connect(("127.0.0.1", 8888))  # 直接进行连接</span>
+phone.connect((<span class="string">"192.168.16.200"</span>, <span class="number">8800</span>))  <span class="comment"># Linux测试</span>
+
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    cmd = input(<span class="string">"&gt;&gt;:"</span>).strip()  <span class="comment"># 输入去除空格 换行</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> cmd:
+        <span class="keyword">continue</span>  <span class="comment"># 没有输入内容 继续输入</span>
+    <span class="comment"># phone.send(cmd.encode("utf-8"))  #</span>
+    phone.send(bytes(cmd.encode(<span class="string">"utf-8"</span>)))  <span class="comment"># 默认发送的是字节bytes</span>
+    data = phone.recv(<span class="number">1024</span>)    <span class="comment"># 从客户端自己的缓存中寻找</span>
+    <span class="comment"># print(data.decode('gbk'))  # win 平台的默认编码是gbk 在Linux中用uft-8</span>
+    print(data.decode(<span class="string">'utf-8'</span>))  <span class="comment"># win 平台的默认编码是gbk 在Linux中用uft-8</span>
+phone.close()  <span class="comment"># 关闭客户端</span>
+</code></pre>
 <p><strong>执行结果</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;:pwd </div><div class="line">/</div><div class="line"></div><div class="line">&gt;&gt;:cat /etc/passwd</div><div class="line">root:x:0:0:root:/root:/bin/bash</div><div class="line">bin:x:1:1:bin:/bin:/sbin/nologin</div><div class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</div><div class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</div><div class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</div><div class="line">sync:x:5:0:sync:/sbin:/bin/sync</div><div class="line">shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</div><div class="line">halt:x:7:0:halt:/sbin:/sbin/halt</div><div class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</div><div class="line">operator:x:11:0:operator:/root:/sbin/nologin</div><div class="line">games:x:12:100:games:/usr/games:/sbin/nologin</div><div class="line">ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin</div><div class="line">nobody:x:99:99:Nobody:/:/sbin/nologin</div><div class="line">systemd-bus-proxy:x:999:998:systemd Bus Proxy:/:/sbin/nologin</div><div class="line">systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin</div><div class="line">dbus:x:81:81:System message bus:/:/sbin/nologin</div><div class="line">polkitd:x:998:997:User for polkitd:/:/sbin/nologin</div><div class="line">tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin</div><div class="line">sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin</div><div class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</div><div class="line">hzx:x:1000:1000::/home/hzx:/bin/bash</div><div class="line">help:x:1001:1001::/home/hel</div><div class="line">&gt;&gt;:ls                # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!看下面的就是粘包</div><div class="line">p:/bin/bash</div><div class="line">egon:x:1002:1002::/home/egon:/bin/bash</div><div class="line">tom:x:1004:1004::/home/tom:/bin/bash</div><div class="line">jake:x:1005:1006::/home/jake:/bin/bash</div><div class="line">rose:x:1006:1007::/home/rose:/bin/bash</div><div class="line">nginx:x:997:995:Nginx web server:/var/lib/nginx:/sbin/nologin</div><div class="line">rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin</div><div class="line">rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin</div><div class="line">nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin</div><div class="line"></div><div class="line">&gt;&gt;:ls   # 现在才是正常执行的结果</div><div class="line">bin</div><div class="line">boot</div><div class="line">dev</div><div class="line">etc</div><div class="line">FtpServer</div><div class="line">hello.py</div><div class="line">home</div><div class="line">lib</div><div class="line">lib64</div><div class="line">media</div><div class="line">mnt</div><div class="line">opt</div><div class="line">proc</div><div class="line">Python-3.6.0</div><div class="line">Python-3.6.0.tgz</div><div class="line">root</div><div class="line">run</div><div class="line">sbin</div><div class="line">sdb1</div><div class="line">sdb2</div><div class="line">sdb3</div><div class="line">server.py</div><div class="line">share</div><div class="line">srv</div><div class="line">sys</div><div class="line">tail_new.py</div><div class="line">tail.py</div><div class="line">tartmp</div><div class="line">test</div><div class="line">test3</div><div class="line">tmp</div><div class="line">tmux</div><div class="line">tmux-2.3</div><div class="line">tmux-2.3.tar.gz</div><div class="line">usr</div><div class="line">var</div><div class="line">&gt;&gt;:</div></pre></td></tr></table></figure>
+<pre><code class="language">&gt;&gt;:pwd 
+/
+
+&gt;&gt;:cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-bus-proxy:x:999:998:systemd Bus Proxy:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:998:997:User for polkitd:/:/sbin/nologin
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+hzx:x:1000:1000::/home/hzx:/bin/bash
+help:x:1001:1001::/home/hel
+&gt;&gt;:ls                # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!看下面的就是粘包
+p:/bin/bash
+egon:x:1002:1002::/home/egon:/bin/bash
+tom:x:1004:1004::/home/tom:/bin/bash
+jake:x:1005:1006::/home/jake:/bin/bash
+rose:x:1006:1007::/home/rose:/bin/bash
+nginx:x:997:995:Nginx web server:/var/lib/nginx:/sbin/nologin
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
+
+&gt;&gt;:ls   # 现在才是正常执行的结果
+bin
+boot
+dev
+etc
+FtpServer
+hello.py
+home
+lib
+lib64
+media
+mnt
+opt
+proc
+Python-3.6.0
+Python-3.6.0.tgz
+root
+run
+sbin
+sdb1
+sdb2
+sdb3
+server.py
+share
+srv
+sys
+tail_new.py
+tail.py
+tartmp
+test
+test3
+tmp
+tmux
+tmux-2.3
+tmux-2.3.tar.gz
+usr
+var
+&gt;&gt;:
+</code></pre>
 <h3 id="2-2-粘包产生的原因："><a href="#2-2-粘包产生的原因：" class="headerlink" title="2.2 粘包产生的原因："></a>2.2 粘包产生的原因：</h3><p>客户端都是从自己的缓存中找，send后就是由操作系统取发送，不知道数据有多长</p>
 <p>上面出现了粘包的问题，粘包产生的主要原因是TCP协议是<strong>面向流</strong>（socket.SOCK_STREAM)），意思就是说发送端可以一个字节一个字节的发送， 软件的速度是大于网络的速度（网络有延迟），TCP把数据量小，时间间隔小的进行封包，一块发送，这就无法区分包的边界</p>
 <p>接收端从自己的缓存中是有多少取多少，发送过来的是字节是没有边界的，所以收的时候是通过修改recv（1024）中的参数来增加一次性接收的值，但是这个如果是一个大文件的时候是有问题的，会全部去取到内存中，内存会爆。</p>
@@ -178,10 +432,229 @@
 <p>类似以太网协议，在数据的前面加上固定长度的报头，报头中包含字节流的长度，然后一次send到对端。</p>
 <p>对端在接收时，先从自己的缓存中取出定长的报头，然后再获取真实的数据</p>
 <h3 id="3-1-struck模块"><a href="#3-1-struck模块" class="headerlink" title="3.1 struck模块"></a>3.1 struck模块</h3><p>struck可以把一个类型，如数字转换成bytes</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">struct.pact(<span class="string">'i'</span>,<span class="number">1234567890</span>)  <span class="comment"># 把数字转换成4个字节</span></div><div class="line"><span class="string">'''</span></div><div class="line">结果：</div><div class="line">b'\xd2\x02\x96I'</div><div class="line">'''</div></pre></td></tr></table></figure>
+<pre><code class="Python">struct.pact(<span class="string">'i'</span>,<span class="number">1234567890</span>)  <span class="comment"># 把数字转换成4个字节</span>
+<span class="string">'''
+结果：
+b'\xd2\x02\x96I'
+'''</span>
+</code></pre>
+<pre><code class="python"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> struct
+<span class="meta">&gt;&gt;&gt; </span>struct.pack(<span class="string">'i'</span>,<span class="number">1231</span>)
+<span class="string">b'\xcf\x04\x00\x00'</span>
+<span class="meta">&gt;&gt;&gt; </span>res = struct.pack(<span class="string">'i'</span>,<span class="number">1231</span>)
+<span class="meta">&gt;&gt;&gt; </span>res2 = struct.unpack(<span class="string">'i'</span>,res)
+<span class="meta">&gt;&gt;&gt; </span>print(res2)
+(<span class="number">1231</span>,)   <span class="comment"># 返回的是一个元组的值</span>
+<span class="meta">&gt;&gt;&gt; </span>res2 = struct.unpack(<span class="string">'i'</span>,res)[<span class="number">0</span>]  <span class="comment"># 取出元组的第一个值</span>
+<span class="meta">&gt;&gt;&gt; </span>print(res2)
+<span class="number">1231</span>
+</code></pre>
 <p>准换数字的范围是：<strong> -2147483648 &lt;= number &lt;= 2147483647</strong></p>
 <p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170505110045695-154202635.png" alt=""></p>
-<h3 id="制作报头"><a href="#制作报头" class="headerlink" title="制作报头"></a>制作报头</h3><p>可以把报头制作成字典，字典中包含将要发送的数据的真实信息，然后把字典json序列化，然后用struct把序列化后数据打包成4个字节。</p>
+<h3 id="3-2制作报头"><a href="#3-2制作报头" class="headerlink" title="3.2制作报头"></a>3.2制作报头</h3><p>模拟以太网协议的报头</p>
+<p><strong>固定长度</strong><br><strong>描述信息</strong></p>
+<h4 id="3-2-1-win版本"><a href="#3-2-1-win版本" class="headerlink" title="3.2.1 win版本"></a>3.2.1 win版本</h4><p><strong>服务端</strong></p>
+<pre><code class="python"><span class="comment"># coding:utf-8</span>
+<span class="comment"># 基于TCP制作的远程执行命令的操作</span>
+<span class="comment"># version；版本2</span>
+<span class="comment"># 解决粘包的问题</span>
+
+
+<span class="keyword">import</span> socket
+<span class="keyword">import</span> subprocess
+<span class="keyword">import</span> struct   <span class="comment"># 把数 据转换成固定的长度</span>
+<span class="keyword">import</span> json
+
+phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+<span class="comment"># family=AF_INET, type=SOCK_STREAM, proto=0, _sock=None)   # 买手机</span>
+<span class="comment"># phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 就是它，在bind前加</span>
+phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)
+phone.bind((<span class="string">'127.0.0.1'</span>, <span class="number">8800</span>))   <span class="comment"># 绑定手机卡</span>
+phone.listen(<span class="number">5</span>)  <span class="comment"># 开机 相当于挂起的电话连接</span>
+
+print(<span class="string">"starting..."</span>)
+
+<span class="keyword">while</span> <span class="keyword">True</span>:   <span class="comment"># 通信循环</span>
+    conn, addr = phone.accept()  <span class="comment"># 等待电话连接</span>
+    <span class="keyword">while</span> <span class="keyword">True</span>:  <span class="comment">#</span>
+        <span class="keyword">try</span>:  <span class="comment"># 应对Windows系统 从缓存中读取空的情况</span>
+            data = conn.recv(<span class="number">1024</span>)  <span class="comment"># 收消息  从自己的缓存中找数据是最大的值</span>
+            <span class="keyword">if</span> <span class="keyword">not</span> data:
+                <span class="keyword">continue</span>  <span class="comment"># 应对Linux系统从缓存中读取空的情况</span>
+            res = subprocess.Popen(
+                data.decode(<span class="string">"utf-8"</span>), shell=<span class="keyword">True</span>, stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE)   <span class="comment"># 把读取的信息存放在管道中</span>
+
+            <span class="string">'''
+            # 这是判断错误输出的方式
+            err = res.stderr.read()  # 首先判断错误信息
+            if not err:   # 这是读取到的正常信息
+                res_cmd = res.stdout.read()
+            else:
+                res_cmd = err      # 这是读取道的错误信息
+            conn.send(res_cmd)   # 最后把接收到的数据发送到客户端
+            '''</span>
+            <span class="comment"># 这是直接发送的数据</span>
+            res_err = res.stderr.read()
+            res_out = res.stdout.read()
+            <span class="comment"># print(type(res_err))   # 通过判判断 从管道中取的是bytes数据</span>
+
+            data_size = len(res_err) + len(res_out)  <span class="comment"># 拼接数据的长度</span>
+            <span class="string">'''
+               data_size = str(len(res_err) + len(res_out))  # 统计数据的长度
+               这种情况仍然是不行的 传输的还是没有分界
+            '''</span>
+            <span class="comment"># 制作报头.</span>
+            conn.send(struct.pack(<span class="string">'i'</span>, data_size))  <span class="comment"># 把报头的数据发送 自己定义的数据格式</span>
+
+            conn.send(res_err)
+            conn.send(res_out)
+        <span class="keyword">except</span> Exception:
+            <span class="keyword">break</span>
+    conn.close()   <span class="comment"># 断开连接</span>
+
+phone.close()  <span class="comment"># 关闭服务器连接</span>
+</code></pre>
+<p><strong>客户端</strong></p>
+<pre><code class="python"><span class="comment"># coding:utf-8</span>
+<span class="comment"># 远程执行命令</span>
+<span class="comment"># 解决粘包的问题</span>
+<span class="comment">#</span>
+<span class="keyword">import</span> socket
+<span class="keyword">import</span> struct  <span class="comment"># 客户需要解包</span>
+
+
+phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+<span class="comment"># phone.connect(("127.0.0.1", 8888))  # 直接进行连接</span>
+phone.connect((<span class="string">"127.0.0.1"</span>, <span class="number">8800</span>))  <span class="comment"># Linux测试</span>
+
+
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    cmd = input(<span class="string">"&gt;&gt;:"</span>).strip()  <span class="comment"># 输入去除空格 换行</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> cmd:
+        <span class="keyword">continue</span>  <span class="comment"># 没有输入内容 继续输入</span>
+    <span class="comment"># phone.send(cmd.encode("utf-8"))  #</span>
+    phone.send(bytes(cmd.encode(<span class="string">"utf-8"</span>)))  <span class="comment"># 默认发送的是字节bytes</span>
+
+    <span class="comment"># 首先接收报头 自己固定的4个字节</span>
+    gram_head = phone.recv(<span class="number">4</span>)
+
+    <span class="comment"># 取出数据长度</span>
+    data_size = struct.unpack(<span class="string">'i'</span>, gram_head)[<span class="number">0</span>]  <span class="comment"># 现在是标注的数据大小 是元组的第一个值</span>
+
+    <span class="comment"># 接收数据 循环接收 直到接收完数据</span>
+    recv_size = <span class="number">0</span>  <span class="comment"># 设置接收到的数据初始值为0</span>
+    recv_data = <span class="string">b''</span>  <span class="comment"># 用于拼接接收到的数据</span>
+    <span class="keyword">while</span> recv_size &lt; data_size:  <span class="comment"># 当接收到的数据小于真实数据的时候 循环接收</span>
+        data = phone.recv(<span class="number">1024</span>)    <span class="comment"># 从客户端自己的缓存中寻找</span>
+        recv_size += len(data)  <span class="comment"># 把接收到的数据的长度重新赋值给recv_size  data 是真实的数据</span>
+        recv_data += data  <span class="comment"># 把接收到的data循环拼接到recv_data,接收完后recv_data就是最终的数据</span>
+    print(recv_data.decode(<span class="string">'gbk'</span>))  <span class="comment"># win 平台的默认编码是gbk 在Linux中用uft-8</span>
+    <span class="comment"># print(data.decode('utf-8'))  # win 平台的默认编码是gbk 在Linux中用uft-8</span>
+phone.close()  <span class="comment"># 关闭客户端</span>
+</code></pre>
+<h4 id="3-2-2-Linux-版本"><a href="#3-2-2-Linux-版本" class="headerlink" title="3.2.2 Linux 版本"></a>3.2.2 Linux 版本</h4><p><strong>服务端</strong></p>
+<pre><code class="python"><span class="comment"># coding:utf-8</span>
+<span class="comment"># 基于TCP制作的远程执行命令的操作</span>
+<span class="comment"># version；版本2</span>
+<span class="comment"># 解决粘包的问题</span>
+
+
+<span class="keyword">import</span> socket
+<span class="keyword">import</span> subprocess
+<span class="keyword">import</span> struct   <span class="comment"># 把数 据转换成固定的长度</span>
+<span class="keyword">import</span> json
+
+phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+<span class="comment"># family=AF_INET, type=SOCK_STREAM, proto=0, _sock=None)   # 买手机</span>
+<span class="comment"># phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 就是它，在bind前加</span>
+phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)
+phone.bind((<span class="string">'192.168.16.200'</span>, <span class="number">8880</span>))   <span class="comment"># 绑定手机卡</span>
+phone.listen(<span class="number">5</span>)  <span class="comment"># 开机 相当于挂起的电话连接</span>
+
+print(<span class="string">"starting..."</span>)
+
+<span class="keyword">while</span> <span class="keyword">True</span>:   <span class="comment"># 通信循环</span>
+    conn, addr = phone.accept()  <span class="comment"># 等待电话连接</span>
+    <span class="keyword">while</span> <span class="keyword">True</span>:  <span class="comment">#</span>
+        <span class="keyword">try</span>:  <span class="comment"># 应对Windows系统 从缓存中读取空的情况</span>
+            data = conn.recv(<span class="number">1024</span>)  <span class="comment"># 收消息  从自己的缓存中找数据是最大的值</span>
+            <span class="keyword">if</span> <span class="keyword">not</span> data:
+                <span class="keyword">continue</span>  <span class="comment"># 应对Linux系统从缓存中读取空的情况</span>
+            res = subprocess.Popen(
+                data.decode(<span class="string">"utf-8"</span>), shell=<span class="keyword">True</span>, stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE)   <span class="comment"># 把读取的信息存放在管道中</span>
+
+            <span class="string">'''
+            # 这是判断错误输出的方式
+            err = res.stderr.read()  # 首先判断错误信息
+            if not err:   # 这是读取到的正常信息
+                res_cmd = res.stdout.read()
+            else:
+                res_cmd = err      # 这是读取道的错误信息
+            conn.send(res_cmd)   # 最后把接收到的数据发送到客户端
+            '''</span>
+            <span class="comment"># 这是直接发送的数据</span>
+            res_err = res.stderr.read()
+            res_out = res.stdout.read()
+            <span class="comment"># print(type(res_err))   # 通过判判断 从管道中取的是bytes数据</span>
+
+            data_size = len(res_err) + len(res_out)  <span class="comment"># 拼接数据的长度</span>
+            <span class="string">'''
+               data_size = str(len(res_err) + len(res_out))  # 统计数据的长度
+               这种情况仍然是不行的 传输的还是没有分界
+            '''</span>
+            <span class="comment"># 制作报头.</span>
+            conn.send(struct.pack(<span class="string">'i'</span>, data_size))  <span class="comment"># 把报头的数据发送 自己定义的数据格式</span>
+
+            conn.send(res_err)
+            conn.send(res_out)
+        <span class="keyword">except</span> Exception:
+            <span class="keyword">break</span>
+    conn.close()   <span class="comment"># 断开连接</span>
+
+phone.close()  <span class="comment"># 关闭服务器连接</span>
+</code></pre>
+<p><strong>客户端</strong></p>
+<pre><code class="python"><span class="comment"># coding:utf-8</span>
+<span class="comment"># 远程执行命令</span>
+<span class="comment"># 解决粘包的问题</span>
+<span class="comment">#</span>
+<span class="keyword">import</span> socket
+<span class="keyword">import</span> struct  <span class="comment"># 客户需要解包</span>
+
+
+phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+<span class="comment"># phone.connect(("127.0.0.1", 8888))  # 直接进行连接</span>
+phone.connect((<span class="string">"192.168.16.200"</span>, <span class="number">8880</span>))  <span class="comment"># Linux测试</span>
+
+
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    cmd = input(<span class="string">"&gt;&gt;:"</span>).strip()  <span class="comment"># 输入去除空格 换行</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> cmd:
+        <span class="keyword">continue</span>  <span class="comment"># 没有输入内容 继续输入</span>
+    <span class="comment"># phone.send(cmd.encode("utf-8"))  #</span>
+    phone.send(bytes(cmd.encode(<span class="string">"utf-8"</span>)))  <span class="comment"># 默认发送的是字节bytes</span>
+
+    <span class="comment"># 首先接收报头 自己固定的4个字节</span>
+    gram_head = phone.recv(<span class="number">4</span>)
+
+    <span class="comment"># 取出数据长度</span>
+    data_size = struct.unpack(<span class="string">'i'</span>, gram_head)[<span class="number">0</span>]  <span class="comment"># 现在是标注的数据大小 是元组的第一个值</span>
+
+    <span class="comment"># 接收数据 循环接收 直到接收完数据</span>
+    recv_size = <span class="number">0</span>  <span class="comment"># 设置接收到的数据初始值为0</span>
+    recv_data = <span class="string">b''</span>  <span class="comment"># 用于拼接接收到的数据</span>
+    <span class="keyword">while</span> recv_size &lt; data_size:  <span class="comment"># 当接收到的数据小于真实数据的时候 循环接收</span>
+        data = phone.recv(<span class="number">1024</span>)    <span class="comment"># 从客户端自己的缓存中寻找</span>
+        recv_size += len(data)  <span class="comment"># 把接收到的数据的长度重新赋值给recv_size  data 是真实的数据</span>
+        recv_data += data  <span class="comment"># 把接收到的data循环拼接到recv_data,接收完后recv_data就是最终的数据</span>
+    <span class="comment"># print(recv_data.decode('gbk'))  # win 平台的默认编码是gbk 在Linux中用uft-8</span>
+    print(data.decode(<span class="string">'utf-8'</span>))  <span class="comment"># win 平台的默认编码是gbk 在Linux中用uft-8</span>
+phone.close()  <span class="comment"># 关闭客户端</span>
+</code></pre>
+<h3 id="3-3-上面的问题"><a href="#3-3-上面的问题" class="headerlink" title="3.3 上面的问题"></a>3.3 上面的问题</h3><p>上面虽然解决了粘包的问题，但是在在后期传输大的文件的时候，报头的数据就会很大，也就是全部读入内存，会让内存爆。</p>
+<h4 id="3-3-1-通过序列化解决问题"><a href="#3-3-1-通过序列化解决问题" class="headerlink" title="3.3.1 通过序列化解决问题"></a>3.3.1 通过序列化解决问题</h4><p>可以把报头制作成字典，字典中包含将要发送的数据的真实信息，然后把字典json序列化，然后用struct把序列化后数据打包成4个字节。</p>
 <p><strong>发送过程</strong></p>
 <p>1 先发送报头长度</p>
 <p>2 编码报头内容然后再发送</p>
@@ -197,15 +670,12 @@
     <footer class="entry-meta entry-footer">
       
       
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
       
         
 	<div id="comment">
 	
 	<!-- 多说评论框 start -->
-	 <div class="ds-thread" data-thread-key="/2017/05/05/Python socket 粘包/" data-title="Python socket 粘包" data-url="https://github.com/ythzx/ythzx.github.io/2017/05/05/Python socket 粘包/"></div>
+	 <div class="ds-thread" data-thread-key="/2017/05/05/Python socket 粘包/" data-title="" data-url="https://github.com/ythzx/ythzx.github.io/2017/05/05/Python socket 粘包/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -249,7 +719,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-TCP的三次握手四次挥手"><span class="nav-number">1.</span> <span class="nav-text">1  TCP的三次握手四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-三次握手"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-四次挥手"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 四次挥手</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-粘包现象"><span class="nav-number">2.</span> <span class="nav-text">2 粘包现象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-基于TCP制作远程执行命令操作-win服务端"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 基于TCP制作远程执行命令操作(win服务端)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-基于TCP制作远程执行命令操作（Linux服务端"><span class="nav-number">2.2.</span> <span class="nav-text">2.1 基于TCP制作远程执行命令操作（Linux服务端)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-粘包产生的原因："><span class="nav-number">2.3.</span> <span class="nav-text">2.2 粘包产生的原因：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-解决粘包"><span class="nav-number">3.</span> <span class="nav-text">3 解决粘包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-struck模块"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 struck模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#制作报头"><span class="nav-number">3.2.</span> <span class="nav-text">制作报头</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP协议"><span class="nav-number">4.</span> <span class="nav-text">UDP协议</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-socket-粘包"><span class="nav-number">1.</span> <span class="nav-text">Python socket 粘包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-TCP的三次握手四次挥手"><span class="nav-number">2.</span> <span class="nav-text">1  TCP的三次握手四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-三次握手"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-四次挥手"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 四次挥手</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-粘包现象"><span class="nav-number">3.</span> <span class="nav-text">2 粘包现象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-基于TCP制作远程执行命令操作-win服务端"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 基于TCP制作远程执行命令操作(win服务端)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-基于TCP制作远程执行命令操作（Linux服务端"><span class="nav-number">3.2.</span> <span class="nav-text">2.1 基于TCP制作远程执行命令操作（Linux服务端)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-粘包产生的原因："><span class="nav-number">3.3.</span> <span class="nav-text">2.2 粘包产生的原因：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-解决粘包"><span class="nav-number">4.</span> <span class="nav-text">3 解决粘包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-struck模块"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 struck模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2制作报头"><span class="nav-number">4.2.</span> <span class="nav-text">3.2制作报头</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-win版本"><span class="nav-number">4.2.1.</span> <span class="nav-text">3.2.1 win版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-Linux-版本"><span class="nav-number">4.2.2.</span> <span class="nav-text">3.2.2 Linux 版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-上面的问题"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 上面的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-1-通过序列化解决问题"><span class="nav-number">4.3.1.</span> <span class="nav-text">3.3.1 通过序列化解决问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP协议"><span class="nav-number">5.</span> <span class="nav-text">UDP协议</span></a></li></ol>
     
     </div>
   </aside>
