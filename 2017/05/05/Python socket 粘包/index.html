@@ -9,12 +9,61 @@
   
   
   
-  <meta property="og:type" content="website">
+  <meta name="description" content="Python socket 粘包tags: Python
+[TOC]
+1  TCP的三次握手四次挥手
+1.1 三次握手
+1 客户端向服务端发起SYN请求，请求建立连接，
+
+2 服务端同意建立连接，回应ACK,同时服务端向客户端发起SYN请求
+
+3 客户端回应ACK 
+
+
+1.2 四次挥手挥手是任意的，客户端和服务端都可以首先断开连接
+下面是以客户端发起的挥手
+
+1  客户端发送完数据后发起FIN">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Peter's Blog Center">
-<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/index.html">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/05/05/Python socket 粘包/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="Python socket 粘包tags: Python
+[TOC]
+1  TCP的三次握手四次挥手
+1.1 三次握手
+1 客户端向服务端发起SYN请求，请求建立连接，
+
+2 服务端同意建立连接，回应ACK,同时服务端向客户端发起SYN请求
+
+3 客户端回应ACK 
+
+
+1.2 四次挥手挥手是任意的，客户端和服务端都可以首先断开连接
+下面是以客户端发起的挥手
+
+1  客户端发送完数据后发起FIN">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170504152500742-1506351222.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170505110045695-154202635.png">
+<meta property="og:updated_time" content="2017-05-05T07:45:07.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Peter's Blog Center">
+<meta name="twitter:description" content="Python socket 粘包tags: Python
+[TOC]
+1  TCP的三次握手四次挥手
+1.1 三次握手
+1 客户端向服务端发起SYN请求，请求建立连接，
+
+2 服务端同意建立连接，回应ACK,同时服务端向客户端发起SYN请求
+
+3 客户端回应ACK 
+
+
+1.2 四次挥手挥手是任意的，客户端和服务端都可以首先断开连接
+下面是以客户端发起的挥手
+
+1  客户端发送完数据后发起FIN">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170504152500742-1506351222.png">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
   
@@ -45,7 +94,7 @@
 
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   <header id="allheader" class="site-header" role="banner">
@@ -94,9 +143,7 @@
             
       <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
         
-          <section id="main">
-  
-    <article id="post-Python socket 粘包"  class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-Python socket 粘包" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -182,458 +229,59 @@
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python软件开发规范"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/04/Python软件开发规范/">Python 软件开发规范</a>
-    </h1>
-  
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/05/05/Python socket 粘包/" data-title="" data-url="https://github.com/ythzx/ythzx.github.io/2017/05/05/Python socket 粘包/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/05/04/Python软件开发规范/" class="article-date">
-	  <time datetime="2017-05-04T07:23:34.874Z" itemprop="datePublished">五月 4, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            Python的软件开发规范主要是文件的目录结构是规范化的
-
-123456789101112131415161718192021222324252627282930├─bin├─conf│  └─__pycache__├─core│  └─__pycache__├─db├─docs├─lib│  └─__pycache__└─log&apos;&apos;&apos;&apos;bin 存放的是可执行文件conf 配置文件core 存放的是源码文件db 数据库文件docs文档lib 用到的模块，第三方的，自己写的包log 日志文件在根目录下面还应该有README描述项目信息的文件它需要说明以下几个事项:软件定位，软件的基本功能。运行代码的方法: 安装环境、启动命令等。简要的使用说明。代码...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/05/04/Python软件开发规范/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
       
     </footer>
   </div>
   
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python socket网络编程"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/03/Python socket网络编程/">Python socket网络编程</a>
-    </h1>
   
+    <a href="/2017/05/04/Python软件开发规范/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Python 软件开发规范</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/05/03/Python socket网络编程/" class="article-date">
-	  <time datetime="2017-05-03T00:39:37.579Z" itemprop="datePublished">五月 3, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1  服务器 客户端架构  C/S架构
-server端要求：121.力求一直提供服务2. 绑定一个地址，客户能够一直找到
-2 OSI七层123数据链路层是 以太网协议IP是通过子网查找 ARP协议 Mac地址TCP/UDP 是传输层 找对应的端口
-
-3 SOCKET层socket是把TCP/协议隐藏在Scocket后面
-
-4 socket工作流程先从服务器端说起。服务器端先初始化Socket，然后与端口绑定(bind)，对端口进行监听(listen)，调用accept阻塞，等待客户端连接。在这时如果有个客户端初始化一个Socket，然后连接服务器(connect)，如果连接成功，这时客户端与服务器端的连接就建立了。客户端发送数据请求，服务器端接收请求并处理请求，然后把回应数据发送给客户...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/05/03/Python socket网络编程/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
   
 </article>
 
 <!-- Table of Contents -->
 
-  
-    <article id="post-Python模块调用"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-socket-粘包"><span class="nav-number">1.</span> <span class="nav-text">Python socket 粘包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-TCP的三次握手四次挥手"><span class="nav-number">2.</span> <span class="nav-text">1  TCP的三次握手四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-三次握手"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-四次挥手"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 四次挥手</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-粘包现象"><span class="nav-number">3.</span> <span class="nav-text">2 粘包现象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-基于TCP制作远程执行命令操作-win服务端"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 基于TCP制作远程执行命令操作(win服务端)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-基于TCP制作远程执行命令操作（Linux服务端"><span class="nav-number">3.2.</span> <span class="nav-text">2.1 基于TCP制作远程执行命令操作（Linux服务端)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-粘包产生的原因："><span class="nav-number">3.3.</span> <span class="nav-text">2.2 粘包产生的原因：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-解决粘包"><span class="nav-number">4.</span> <span class="nav-text">3 解决粘包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-struck模块"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 struck模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#制作报头"><span class="nav-number">4.2.</span> <span class="nav-text">制作报头</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP协议"><span class="nav-number">5.</span> <span class="nav-text">UDP协议</span></a></li></ol>
     
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/02/Python模块调用/">Python模块调用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/05/02/Python模块调用/" class="article-date">
-	  <time datetime="2017-05-02T09:43:32.712Z" itemprop="datePublished">五月 2, 2017</time>
-	</a>
-
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1 模块
-一个模块是包含了Python定义和声明的文件，文件名，就是模块名字加上py 后缀把定义的函数、变量保存到文件中，通过Python test.py的方式执行，test.py就是脚本文件。程序功能越来越多，这些监本文件还可以当做模块导入其他的模块中，实现了重利用。
-import使用import的时候，想要使用spam下面的方法，必须使用spam.的方式12345import spamprint(spam.money)spam.read1()spam.read2()spam.change()
-from… import …对比import spam，会将源文件的名称空间’spam’带到当前名称空间中，使用时必须是spam.名字的方式而from 语句相当于import，也会创建新的名称...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/05/02/Python模块调用/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python错误和异常"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/02/Python错误和异常/">Python 错误和异常</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/05/02/Python错误和异常/" class="article-date">
-	  <time datetime="2017-05-02T09:22:18.321Z" itemprop="datePublished">五月 2, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1 错误和异常
-1.1 错误python 中的错误有两种，语法错误和逻辑错误
-这种错误是我们应该避免的
-1.2 异常python中的异常是程序运行过程中产生的，有异常不一定要把程序停止，只要把异常抛出，然后查看异常产生的原因即可。
-1.2.1  python中的异常种类123456789101112131415161718192021222324252627AttributeError 试图访问一个对象没有的属性，比如foo.x，但是foo没有属性xIOError 输入/输出异常；基本上是无法打开文件ImportError 无法引入模块或包；基本上是路径问题或名称错误IndentationError 语法错误（的子类） ；代码没有正确对齐IndexError 下标索引超出序列边界，比如...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/05/02/Python错误和异常/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
-  </nav>
-
+  </aside>
 </section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" 搜索…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="搜索">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">联系我们</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-   			<li><a href="https://github.com/ythzx/ythzx.github.io" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://weibo.com/" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://www.twitter.com/" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://www.facebook.com/" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://:www.google.com/" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://www.instagram.com/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>最新文章</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/05/05/Python socket 粘包/">(no title)</a></h6>
-              <span>五月 5, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/05/04/Python软件开发规范/">Python 软件开发规范</a></h6>
-              <span>五月 4, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/05/03/Python socket网络编程/">Python socket网络编程</a></h6>
-              <span>五月 3, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/05/02/Python模块调用/">Python模块调用</a></h6>
-              <span>五月 2, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/05/02/Python错误和异常/">Python 错误和异常</a></h6>
-              <span>五月 2, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/04/27/Python模块（二）/">Python 模块（二）</a></h6>
-              <span>四月 27, 2017</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">34</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/python/" style="font-size: 10px;">python</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
       <footer id="footer" class="site-footer">

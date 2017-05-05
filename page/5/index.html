@@ -96,6 +96,64 @@
         
           <section id="main">
   
+    <article id="post-Python内置函数"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/13/Python内置函数/">Python内置函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/13/Python内置函数/" class="article-date">
+	  <time datetime="2017-04-13T03:13:29.543Z" itemprop="datePublished">四月 13, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            python的内置函数：
+
+
+abs12print(abs(-1))  # 取绝对值print(abs(0))  # 取绝对值
+allall内部只有一个元素，内部是一个可迭代的对象
+元组 列表形式的1234print(all([]))  # 里面是可迭代对象  空返回trueprint(all((1,'')))  # 里面是可迭代对象 依次取内部的x进行bool运算，只有所有的全部为True  这里字符串为空，返回falseprint(all((1,[])))  # 里面是可迭代对象 依次取内部的 空是falseprint(all((1,2,' ',None)))  #字符串的空格是True  None是false
+生成器方式：12(for i in range(100))  # 这是...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/04/13/Python内置函数/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python协程函数"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -328,61 +386,6 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-haproxy的增删改查(函数操作)"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/09/haproxy的增删改查(函数操作)/">haproxy的增删改查(函数操作)  三次登录密码错误锁定</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/09/haproxy的增删改查(函数操作)/" class="article-date">
-	  <time datetime="2017-04-09T03:42:01.310Z" itemprop="datePublished">四月 9, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            在构建一个程序项目之前，首先需要设计程序的框架，从总体上构建一个项目中的一个个功能，之后对每一个功能进行补充，最终实现总体的功能。
-
-1 程序的总体框架：首先把所有的功能设计成相应的函数，用pass来实现。
-1234567891011121314151617181920212223242526272829303132333435363738394041def add(operation):    "增加"    passdef remove(operation):    "删除"    passdef change(operation):    "更改"    passif __name__ == '__main__':    msg ="""    1.查找    2.增加    3...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/09/haproxy的增删改查(函数操作)/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -499,6 +502,18 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/05/05/Python socket 粘包/">(no title)</a></h6>
+              <span>五月 5, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/05/04/Python软件开发规范/">Python 软件开发规范</a></h6>
               <span>五月 4, 2017</span>
             </div>
@@ -553,18 +568,6 @@
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/04/26/Python模块/">Python 模块</a></h6>
-              <span>四月 26, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -597,7 +600,7 @@
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
