@@ -100,6 +100,16 @@
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/05/Python socket 粘包/">Python socket 粘包</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
 	Posted on <a href="/2017/05/05/Python socket 粘包/" class="article-date">
@@ -109,520 +119,47 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Python-socket-粘包"><a href="#Python-socket-粘包" class="headerlink" title="Python socket 粘包"></a>Python socket 粘包</h2><p>tags: Python</p>
-<p>[TOC]</p>
-<h2 id="1-TCP的三次握手四次挥手"><a href="#1-TCP的三次握手四次挥手" class="headerlink" title="1  TCP的三次握手四次挥手"></a>1  TCP的三次握手四次挥手</h2><p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170504152500742-1506351222.png" alt=""></p>
-<h3 id="1-1-三次握手"><a href="#1-1-三次握手" class="headerlink" title="1.1 三次握手"></a>1.1 三次握手</h3><ul>
-<li><p>1 客户端向服务端发起SYN请求，请求建立连接，</p>
-</li>
-<li><p>2 服务端同意建立连接，回应ACK,同时服务端向客户端发起SYN请求</p>
-</li>
-<li><p>3 客户端回应ACK </p>
-</li>
-</ul>
-<h3 id="1-2-四次挥手"><a href="#1-2-四次挥手" class="headerlink" title="1.2 四次挥手"></a>1.2 四次挥手</h3><p>挥手是任意的，客户端和服务端都可以首先断开连接</p>
-<p>下面是以客户端发起的挥手</p>
-<ul>
-<li>1  客户端发送完数据后发起FIN    请求，之后直接断开，</li>
-<li>2 服务端返回一个ACK</li>
-<li>3此时服务端还没有接收完数据，所以没有断开连接，接收完后，服务端想要断开，发送FIN</li>
-<li>4 客户端返回ACK，结束</li>
-</ul>
-<p><strong>现实中的是TIME WAIT大量存在于服务端，是服务端主动断开连接，它在等待客户端发送ACK</strong></p>
-<p><strong>总结</strong></p>
-<p><strong>1 为什么建立连接协议是三次握手，而关闭连接却是四次握手呢？</strong></p>
-<p>这是因为服务端的LISTEN状态下的SOCKET当收到SYN报文的建连请求后，它可以把ACK和SYN（ACK起应答作用，而SYN起同步作用）放在一个报文里来发送。但关闭连接时，当收到对方的FIN报文通知时，它仅仅表示对方没有数据发送给你了；但未必你所有的数据都全部发送给对方了，所以你可以未必会马上会关闭SOCKET,也即你可能还需要发送一些数据给对方之后，再发送FIN报文给对方来表示你同意现在可以关闭连接了，所以它这里的ACK报文和FIN报文多数情况下都是分开发送的.</p>
-<p><strong>2</strong> <strong>为什么TIME_WAIT状态还需要等2MSL后才能返回到CLOSED状态</strong>？</p>
-<p>这是因为虽然双方都同意关闭连接了，而且握手的4个报文也都协调和发送完毕，按理可以直接回到CLOSED状态（就好比从SYN_SEND状态到ESTABLISH状态那样）；但是因为我们必须要假想网络是不可靠的，你无法保证你最后发送的ACK报文会一定被对方收到，因此对方处于LAST_ACK状态下的SOCKET可能会因为超时未收到ACK报文，而重发FIN报文，所以这个TIME_WAIT状态的作用就是用来重发可能丢失的ACK报文。</p>
-<p><strong>3 TIMEWAIT的作用？</strong></p>
-<p>主动关闭的Socket端会进入TIME_WAIT状态，并且持续2MSL时间长度，MSL就是maximum segment lifetime(最大分节生命期），这是一个IP数据包能在互联网上生存的最长时间，超过这个时间将在网络中消失。MSL在RFC 1122上建议是2分钟，而源自berkeley的TCP实现传统上使用30秒，因而，TIME_WAIT状态一般维持在1-4分钟。</p>
-<p>[TCP资料](<a href="http://blog.csdn.net/u011726984/article/details/50781212" target="_blank" rel="external">http://blog.csdn.net/u011726984/article/details/50781212</a></p>
-<h2 id="2-粘包现象"><a href="#2-粘包现象" class="headerlink" title="2 粘包现象"></a>2 粘包现象</h2><p>粘包存在两个方面，一个是服务端，一个是客户端</p>
-<h3 id="2-1-基于TCP制作远程执行命令操作-win服务端"><a href="#2-1-基于TCP制作远程执行命令操作-win服务端" class="headerlink" title="2.1 基于TCP制作远程执行命令操作(win服务端)"></a>2.1 基于TCP制作远程执行命令操作(win服务端)</h3><p><strong>下面是服务端放在本地win平台，用127.0.0.1自己测试的代码</strong></p>
-<p><strong>服务端</strong></p>
-<pre><code class="python"><span class="comment"># coding:utf-8</span>
-<span class="comment"># 基于TCP制作的远程执行命令的操作</span>
-<span class="comment"># version；版本1</span>
-<span class="comment"># 问题：有粘包现象</span>
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            1  TCP的三次握手四次挥手
+
+1.1 三次握手
+1 客户端向服务端发起SYN请求，请求建立连接，
+
+2 服务端同意建立连接，回应ACK,同时服务端向客户端发起SYN请求
+
+3 客户端回应ACK 
 
 
-<span class="keyword">import</span> socket
-<span class="keyword">import</span> subprocess
+1.2 四次挥手挥手是任意的，客户端和服务端都可以首先断开连接
+下面是以客户端发起的挥手
 
-phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-<span class="comment"># family=AF_INET, type=SOCK_STREAM, proto=0, _sock=None)   # 买手机</span>
-<span class="comment"># phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 就是它，在bind前加</span>
-phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)
+1  客户端发送完数据后发起FIN    请求，之后直接断开，
+2 服务端返回一个ACK
+3此时服务端还没有接收完数据，所以没有断开连接，接收完后，服务端想要断开，发送FIN
+4 客户端返回ACK，结束
 
+现实中的是TIME WAIT大量存在于服务端，是服务端主动断开连接，它在等待客户端发送ACK
+总结
+1 为什么建立连接协议是三次握手，而关闭连接却是四次握手呢？
+这是因为服务端的LISTEN状...
+          
 
-phone.bind((<span class="string">'127.0.0.1'</span>, <span class="number">8888</span>))   <span class="comment"># 绑定手机卡</span>
-phone.listen(<span class="number">5</span>)  <span class="comment"># 开机 相当于挂起的电话连接</span>
-
-print(<span class="string">"starting..."</span>)
-
-<span class="keyword">while</span> <span class="keyword">True</span>:   <span class="comment"># 通信循环</span>
-    conn, addr = phone.accept()  <span class="comment"># 等待电话连接</span>
-    <span class="keyword">while</span> <span class="keyword">True</span>:  <span class="comment">#</span>
-        <span class="keyword">try</span>:  <span class="comment"># 应对Windows系统 从缓存中读取空的情况</span>
-            data = conn.recv(<span class="number">1024</span>)  <span class="comment"># 收消息  从自己的缓存中找数据是最大的值</span>
-            <span class="keyword">if</span> <span class="keyword">not</span> data:
-                <span class="keyword">continue</span>  <span class="comment"># 应对Linux系统从缓存中读取空的情况</span>
-            res = subprocess.Popen(
-                data.decode(<span class="string">"utf-8"</span>), shell=<span class="keyword">True</span>, stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE)   <span class="comment"># 把读取的信息存放在管道中            </span>
-            <span class="string">'''
-            # 这是判断错误的方式
-            err = res.stderr.read()  # 首先判断错误信息
-            if not err:   # 这是读取到的正常信息
-                res_cmd = res.stdout.read()
-            else:
-                res_cmd = err      # 这是读取道的错误信息
-            conn.send(res_cmd)   # 最后把接收到的数据发送到客户端
-            '''</span>
-            <span class="comment"># 这是直接发送的数据</span>
-            res_err = res.stderr.read()
-            res_out = res.stdout.read()
-            conn.send(res_err)
-            conn.send(res_out)
-        <span class="keyword">except</span> Exception:
-            <span class="keyword">break</span>
-    conn.close()   <span class="comment"># 断开连接</span>
-phone.close()  <span class="comment"># 关闭服务器连接</span>
-</code></pre>
-<p><strong>客户端</strong></p>
-<pre><code class="python"><span class="keyword">import</span> socket
-
-phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-phone.connect((<span class="string">"127.0.0.1"</span>, <span class="number">8888</span>))  <span class="comment"># 直接进行连接</span>
-
-<span class="keyword">while</span> <span class="keyword">True</span>:
-    cmd = input(<span class="string">"&gt;&gt;:"</span>).strip()  <span class="comment"># 输入去除空格 换行</span>
-    <span class="keyword">if</span> <span class="keyword">not</span> cmd:
-        <span class="keyword">continue</span>  <span class="comment"># 没有输入内容 继续输入</span>
-    <span class="comment"># phone.send(cmd.encode("utf-8"))  # </span>
-    phone.send(bytes(cmd.encode(<span class="string">"utf-8"</span>)))  <span class="comment"># 默认发送的是字节bytes</span>
-    data = phone.recv(<span class="number">1024</span>)    <span class="comment"># 从客户端自己的缓存中寻找</span>
-    print(data.decode(<span class="string">'gbk'</span>))  <span class="comment"># win 平台的默认编码是gbk 在Linux中用uft-8</span>
-phone.close()  <span class="comment"># 关闭客户端</span>
-</code></pre>
-<p><strong>实验的时候首先开启服务端，然后开启客户端</strong></p>
-<p>执行结果：</p>
-<pre><code class="language">&gt;&gt;:cd 
-D:\Python\...\....
-
-&gt;&gt;:listen
-&apos;listen&apos; 不是内部或外部命令，也不是可运行的程序
-或批处理文件。
-
-&gt;&gt;:ls 
-&apos;ls&apos; 不是内部或外部命令，也不是可运行的程序
-或批处理文件。
-
-&gt;&gt;:tree
-卷 我的小D 的文件夹 PATH 列表
-卷序列号为 0005-B7F0
-D:.
-没有子文件夹 
-&gt;&gt;:hello
-&apos;hello&apos; 不是内部或外部命令，也不是可运行的程序
-或批处理文件。
-&gt;&gt;:
-</code></pre>
-<h3 id="2-1-基于TCP制作远程执行命令操作（Linux服务端"><a href="#2-1-基于TCP制作远程执行命令操作（Linux服务端" class="headerlink" title="2.1 基于TCP制作远程执行命令操作（Linux服务端)"></a>2.1 基于TCP制作远程执行命令操作（Linux服务端)</h3><p>在Linux上需要修改IP地址位服务端的地址，客户端的解码方式修改成utf-8</p>
-<p><strong>服务端</strong></p>
-<pre><code class="python"><span class="comment"># coding:utf-8</span>
-<span class="comment"># 基于TCP制作的远程执行命令的操作</span>
-<span class="comment"># version；版本1</span>
-<span class="comment"># 问题：有粘包现象  具体看执行的结果</span>
-
-<span class="keyword">import</span> socket
-<span class="keyword">import</span> subprocess
-
-phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-<span class="comment"># family=AF_INET, type=SOCK_STREAM, proto=0, _sock=None)   # 买手机</span>
-<span class="comment"># phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 就是它，在bind前加</span>
-phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)
-
-
-phone.bind((<span class="string">'192.168.16.200'</span>, <span class="number">8800</span>))   <span class="comment">#  修改成Linux自己的IP地址</span>
-phone.listen(<span class="number">5</span>)  <span class="comment"># 开机 相当于挂起的电话连接</span>
-
-print(<span class="string">"starting..."</span>)
-
-<span class="keyword">while</span> <span class="keyword">True</span>:   <span class="comment"># 通信循环</span>
-    conn, addr = phone.accept()  <span class="comment"># 等待电话连接</span>
-    <span class="keyword">while</span> <span class="keyword">True</span>:  <span class="comment">#</span>
-        <span class="keyword">try</span>:  <span class="comment"># 应对Windows系统 从缓存中读取空的情况</span>
-            data = conn.recv(<span class="number">1024</span>)  <span class="comment"># 收消息  从自己的缓存中找数据是最大的值</span>
-            <span class="keyword">if</span> <span class="keyword">not</span> data:
-                <span class="keyword">continue</span>  <span class="comment"># 应对Linux系统从缓存中读取空的情况</span>
-            res = subprocess.Popen(
-                data.decode(<span class="string">"utf-8"</span>), shell=<span class="keyword">True</span>, stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE)   <span class="comment"># 把读取的信息存放在管道中            </span>
-            <span class="string">'''
-            # 这是判断错误的方式
-            err = res.stderr.read()  # 首先判断错误信息
-            if not err:   # 这是读取到的正常信息
-                res_cmd = res.stdout.read()
-            else:
-                res_cmd = err      # 这是读取道的错误信息
-            conn.send(res_cmd)   # 最后把接收到的数据发送到客户端
-            '''</span>
-            <span class="comment"># 这是直接发送的数据</span>
-            res_err = res.stderr.read()
-            res_out = res.stdout.read()
-            conn.send(res_err)
-            conn.send(res_out)
-        <span class="keyword">except</span> Exception:
-            <span class="keyword">break</span>
-    conn.close()   <span class="comment"># 断开连接</span>
-phone.close()  <span class="comment"># 关闭服务器连接</span>
-</code></pre>
-<p><strong>客户端</strong></p>
-<pre><code class="python"><span class="comment"># coding:utf-8</span>
-
-<span class="keyword">import</span> socket
-
-phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-<span class="comment"># phone.connect(("127.0.0.1", 8888))  # 直接进行连接</span>
-phone.connect((<span class="string">"192.168.16.200"</span>, <span class="number">8800</span>))  <span class="comment"># Linux测试</span>
-
-<span class="keyword">while</span> <span class="keyword">True</span>:
-    cmd = input(<span class="string">"&gt;&gt;:"</span>).strip()  <span class="comment"># 输入去除空格 换行</span>
-    <span class="keyword">if</span> <span class="keyword">not</span> cmd:
-        <span class="keyword">continue</span>  <span class="comment"># 没有输入内容 继续输入</span>
-    <span class="comment"># phone.send(cmd.encode("utf-8"))  #</span>
-    phone.send(bytes(cmd.encode(<span class="string">"utf-8"</span>)))  <span class="comment"># 默认发送的是字节bytes</span>
-    data = phone.recv(<span class="number">1024</span>)    <span class="comment"># 从客户端自己的缓存中寻找</span>
-    <span class="comment"># print(data.decode('gbk'))  # win 平台的默认编码是gbk 在Linux中用uft-8</span>
-    print(data.decode(<span class="string">'utf-8'</span>))  <span class="comment"># win 平台的默认编码是gbk 在Linux中用uft-8</span>
-phone.close()  <span class="comment"># 关闭客户端</span>
-</code></pre>
-<p><strong>执行结果</strong></p>
-<pre><code class="language">&gt;&gt;:pwd 
-/
-
-&gt;&gt;:cat /etc/passwd
-root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/bin:/sbin/nologin
-daemon:x:2:2:daemon:/sbin:/sbin/nologin
-adm:x:3:4:adm:/var/adm:/sbin/nologin
-lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
-sync:x:5:0:sync:/sbin:/bin/sync
-shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
-halt:x:7:0:halt:/sbin:/sbin/halt
-mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
-operator:x:11:0:operator:/root:/sbin/nologin
-games:x:12:100:games:/usr/games:/sbin/nologin
-ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
-nobody:x:99:99:Nobody:/:/sbin/nologin
-systemd-bus-proxy:x:999:998:systemd Bus Proxy:/:/sbin/nologin
-systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
-dbus:x:81:81:System message bus:/:/sbin/nologin
-polkitd:x:998:997:User for polkitd:/:/sbin/nologin
-tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
-sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
-postfix:x:89:89::/var/spool/postfix:/sbin/nologin
-hzx:x:1000:1000::/home/hzx:/bin/bash
-help:x:1001:1001::/home/hel
-&gt;&gt;:ls                # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!看下面的就是粘包
-p:/bin/bash
-egon:x:1002:1002::/home/egon:/bin/bash
-tom:x:1004:1004::/home/tom:/bin/bash
-jake:x:1005:1006::/home/jake:/bin/bash
-rose:x:1006:1007::/home/rose:/bin/bash
-nginx:x:997:995:Nginx web server:/var/lib/nginx:/sbin/nologin
-rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
-rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
-nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
-
-&gt;&gt;:ls   # 现在才是正常执行的结果
-bin
-boot
-dev
-etc
-FtpServer
-hello.py
-home
-lib
-lib64
-media
-mnt
-opt
-proc
-Python-3.6.0
-Python-3.6.0.tgz
-root
-run
-sbin
-sdb1
-sdb2
-sdb3
-server.py
-share
-srv
-sys
-tail_new.py
-tail.py
-tartmp
-test
-test3
-tmp
-tmux
-tmux-2.3
-tmux-2.3.tar.gz
-usr
-var
-&gt;&gt;:
-</code></pre>
-<h3 id="2-2-粘包产生的原因："><a href="#2-2-粘包产生的原因：" class="headerlink" title="2.2 粘包产生的原因："></a>2.2 粘包产生的原因：</h3><p>客户端都是从自己的缓存中找，send后就是由操作系统取发送，不知道数据有多长</p>
-<p>上面出现了粘包的问题，粘包产生的主要原因是TCP协议是<strong>面向流</strong>（socket.SOCK_STREAM)），意思就是说发送端可以一个字节一个字节的发送， 软件的速度是大于网络的速度（网络有延迟），TCP把数据量小，时间间隔小的进行封包，一块发送，这就无法区分包的边界</p>
-<p>接收端从自己的缓存中是有多少取多少，发送过来的是字节是没有边界的，所以收的时候是通过修改recv（1024）中的参数来增加一次性接收的值，但是这个如果是一个大文件的时候是有问题的，会全部去取到内存中，内存会爆。</p>
-<blockquote>
-<p>所谓粘包问题主要还是因为接收方不知道消息之间的界限，不知道一次性提取多少字节的数据所造成的。</p>
-</blockquote>
-<h2 id="3-解决粘包"><a href="#3-解决粘包" class="headerlink" title="3 解决粘包"></a>3 解决粘包</h2><p>粘包是不知道数据长度，就是没有关于数据的描述信息。1</p>
-<p>类似以太网协议，在数据的前面加上固定长度的报头，报头中包含字节流的长度，然后一次send到对端。</p>
-<p>对端在接收时，先从自己的缓存中取出定长的报头，然后再获取真实的数据</p>
-<h3 id="3-1-struck模块"><a href="#3-1-struck模块" class="headerlink" title="3.1 struck模块"></a>3.1 struck模块</h3><p>struck可以把一个类型，如数字转换成bytes</p>
-<pre><code class="Python">struct.pact(<span class="string">'i'</span>,<span class="number">1234567890</span>)  <span class="comment"># 把数字转换成4个字节</span>
-<span class="string">'''
-结果：
-b'\xd2\x02\x96I'
-'''</span>
-</code></pre>
-<pre><code class="python"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> struct
-<span class="meta">&gt;&gt;&gt; </span>struct.pack(<span class="string">'i'</span>,<span class="number">1231</span>)
-<span class="string">b'\xcf\x04\x00\x00'</span>
-<span class="meta">&gt;&gt;&gt; </span>res = struct.pack(<span class="string">'i'</span>,<span class="number">1231</span>)
-<span class="meta">&gt;&gt;&gt; </span>res2 = struct.unpack(<span class="string">'i'</span>,res)
-<span class="meta">&gt;&gt;&gt; </span>print(res2)
-(<span class="number">1231</span>,)   <span class="comment"># 返回的是一个元组的值</span>
-<span class="meta">&gt;&gt;&gt; </span>res2 = struct.unpack(<span class="string">'i'</span>,res)[<span class="number">0</span>]  <span class="comment"># 取出元组的第一个值</span>
-<span class="meta">&gt;&gt;&gt; </span>print(res2)
-<span class="number">1231</span>
-</code></pre>
-<p>准换数字的范围是：<strong> -2147483648 &lt;= number &lt;= 2147483647</strong></p>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170505110045695-154202635.png" alt=""></p>
-<h3 id="3-2制作报头"><a href="#3-2制作报头" class="headerlink" title="3.2制作报头"></a>3.2制作报头</h3><p>模拟以太网协议的报头</p>
-<p><strong>固定长度</strong><br><strong>描述信息</strong></p>
-<h4 id="3-2-1-win版本"><a href="#3-2-1-win版本" class="headerlink" title="3.2.1 win版本"></a>3.2.1 win版本</h4><p><strong>服务端</strong></p>
-<pre><code class="python"><span class="comment"># coding:utf-8</span>
-<span class="comment"># 基于TCP制作的远程执行命令的操作</span>
-<span class="comment"># version；版本2</span>
-<span class="comment"># 解决粘包的问题</span>
-
-
-<span class="keyword">import</span> socket
-<span class="keyword">import</span> subprocess
-<span class="keyword">import</span> struct   <span class="comment"># 把数 据转换成固定的长度</span>
-<span class="keyword">import</span> json
-
-phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-<span class="comment"># family=AF_INET, type=SOCK_STREAM, proto=0, _sock=None)   # 买手机</span>
-<span class="comment"># phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 就是它，在bind前加</span>
-phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)
-phone.bind((<span class="string">'127.0.0.1'</span>, <span class="number">8800</span>))   <span class="comment"># 绑定手机卡</span>
-phone.listen(<span class="number">5</span>)  <span class="comment"># 开机 相当于挂起的电话连接</span>
-
-print(<span class="string">"starting..."</span>)
-
-<span class="keyword">while</span> <span class="keyword">True</span>:   <span class="comment"># 通信循环</span>
-    conn, addr = phone.accept()  <span class="comment"># 等待电话连接</span>
-    <span class="keyword">while</span> <span class="keyword">True</span>:  <span class="comment">#</span>
-        <span class="keyword">try</span>:  <span class="comment"># 应对Windows系统 从缓存中读取空的情况</span>
-            data = conn.recv(<span class="number">1024</span>)  <span class="comment"># 收消息  从自己的缓存中找数据是最大的值</span>
-            <span class="keyword">if</span> <span class="keyword">not</span> data:
-                <span class="keyword">continue</span>  <span class="comment"># 应对Linux系统从缓存中读取空的情况</span>
-            res = subprocess.Popen(
-                data.decode(<span class="string">"utf-8"</span>), shell=<span class="keyword">True</span>, stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE)   <span class="comment"># 把读取的信息存放在管道中</span>
-
-            <span class="string">'''
-            # 这是判断错误输出的方式
-            err = res.stderr.read()  # 首先判断错误信息
-            if not err:   # 这是读取到的正常信息
-                res_cmd = res.stdout.read()
-            else:
-                res_cmd = err      # 这是读取道的错误信息
-            conn.send(res_cmd)   # 最后把接收到的数据发送到客户端
-            '''</span>
-            <span class="comment"># 这是直接发送的数据</span>
-            res_err = res.stderr.read()
-            res_out = res.stdout.read()
-            <span class="comment"># print(type(res_err))   # 通过判判断 从管道中取的是bytes数据</span>
-
-            data_size = len(res_err) + len(res_out)  <span class="comment"># 拼接数据的长度</span>
-            <span class="string">'''
-               data_size = str(len(res_err) + len(res_out))  # 统计数据的长度
-               这种情况仍然是不行的 传输的还是没有分界
-            '''</span>
-            <span class="comment"># 制作报头.</span>
-            conn.send(struct.pack(<span class="string">'i'</span>, data_size))  <span class="comment"># 把报头的数据发送 自己定义的数据格式</span>
-
-            conn.send(res_err)
-            conn.send(res_out)
-        <span class="keyword">except</span> Exception:
-            <span class="keyword">break</span>
-    conn.close()   <span class="comment"># 断开连接</span>
-
-phone.close()  <span class="comment"># 关闭服务器连接</span>
-</code></pre>
-<p><strong>客户端</strong></p>
-<pre><code class="python"><span class="comment"># coding:utf-8</span>
-<span class="comment"># 远程执行命令</span>
-<span class="comment"># 解决粘包的问题</span>
-<span class="comment">#</span>
-<span class="keyword">import</span> socket
-<span class="keyword">import</span> struct  <span class="comment"># 客户需要解包</span>
-
-
-phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-<span class="comment"># phone.connect(("127.0.0.1", 8888))  # 直接进行连接</span>
-phone.connect((<span class="string">"127.0.0.1"</span>, <span class="number">8800</span>))  <span class="comment"># Linux测试</span>
-
-
-<span class="keyword">while</span> <span class="keyword">True</span>:
-    cmd = input(<span class="string">"&gt;&gt;:"</span>).strip()  <span class="comment"># 输入去除空格 换行</span>
-    <span class="keyword">if</span> <span class="keyword">not</span> cmd:
-        <span class="keyword">continue</span>  <span class="comment"># 没有输入内容 继续输入</span>
-    <span class="comment"># phone.send(cmd.encode("utf-8"))  #</span>
-    phone.send(bytes(cmd.encode(<span class="string">"utf-8"</span>)))  <span class="comment"># 默认发送的是字节bytes</span>
-
-    <span class="comment"># 首先接收报头 自己固定的4个字节</span>
-    gram_head = phone.recv(<span class="number">4</span>)
-
-    <span class="comment"># 取出数据长度</span>
-    data_size = struct.unpack(<span class="string">'i'</span>, gram_head)[<span class="number">0</span>]  <span class="comment"># 现在是标注的数据大小 是元组的第一个值</span>
-
-    <span class="comment"># 接收数据 循环接收 直到接收完数据</span>
-    recv_size = <span class="number">0</span>  <span class="comment"># 设置接收到的数据初始值为0</span>
-    recv_data = <span class="string">b''</span>  <span class="comment"># 用于拼接接收到的数据</span>
-    <span class="keyword">while</span> recv_size &lt; data_size:  <span class="comment"># 当接收到的数据小于真实数据的时候 循环接收</span>
-        data = phone.recv(<span class="number">1024</span>)    <span class="comment"># 从客户端自己的缓存中寻找</span>
-        recv_size += len(data)  <span class="comment"># 把接收到的数据的长度重新赋值给recv_size  data 是真实的数据</span>
-        recv_data += data  <span class="comment"># 把接收到的data循环拼接到recv_data,接收完后recv_data就是最终的数据</span>
-    print(recv_data.decode(<span class="string">'gbk'</span>))  <span class="comment"># win 平台的默认编码是gbk 在Linux中用uft-8</span>
-    <span class="comment"># print(data.decode('utf-8'))  # win 平台的默认编码是gbk 在Linux中用uft-8</span>
-phone.close()  <span class="comment"># 关闭客户端</span>
-</code></pre>
-<h4 id="3-2-2-Linux-版本"><a href="#3-2-2-Linux-版本" class="headerlink" title="3.2.2 Linux 版本"></a>3.2.2 Linux 版本</h4><p><strong>服务端</strong></p>
-<pre><code class="python"><span class="comment"># coding:utf-8</span>
-<span class="comment"># 基于TCP制作的远程执行命令的操作</span>
-<span class="comment"># version；版本2</span>
-<span class="comment"># 解决粘包的问题</span>
-
-
-<span class="keyword">import</span> socket
-<span class="keyword">import</span> subprocess
-<span class="keyword">import</span> struct   <span class="comment"># 把数 据转换成固定的长度</span>
-<span class="keyword">import</span> json
-
-phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-<span class="comment"># family=AF_INET, type=SOCK_STREAM, proto=0, _sock=None)   # 买手机</span>
-<span class="comment"># phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # 就是它，在bind前加</span>
-phone.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)
-phone.bind((<span class="string">'192.168.16.200'</span>, <span class="number">8880</span>))   <span class="comment"># 绑定手机卡</span>
-phone.listen(<span class="number">5</span>)  <span class="comment"># 开机 相当于挂起的电话连接</span>
-
-print(<span class="string">"starting..."</span>)
-
-<span class="keyword">while</span> <span class="keyword">True</span>:   <span class="comment"># 通信循环</span>
-    conn, addr = phone.accept()  <span class="comment"># 等待电话连接</span>
-    <span class="keyword">while</span> <span class="keyword">True</span>:  <span class="comment">#</span>
-        <span class="keyword">try</span>:  <span class="comment"># 应对Windows系统 从缓存中读取空的情况</span>
-            data = conn.recv(<span class="number">1024</span>)  <span class="comment"># 收消息  从自己的缓存中找数据是最大的值</span>
-            <span class="keyword">if</span> <span class="keyword">not</span> data:
-                <span class="keyword">continue</span>  <span class="comment"># 应对Linux系统从缓存中读取空的情况</span>
-            res = subprocess.Popen(
-                data.decode(<span class="string">"utf-8"</span>), shell=<span class="keyword">True</span>, stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE)   <span class="comment"># 把读取的信息存放在管道中</span>
-
-            <span class="string">'''
-            # 这是判断错误输出的方式
-            err = res.stderr.read()  # 首先判断错误信息
-            if not err:   # 这是读取到的正常信息
-                res_cmd = res.stdout.read()
-            else:
-                res_cmd = err      # 这是读取道的错误信息
-            conn.send(res_cmd)   # 最后把接收到的数据发送到客户端
-            '''</span>
-            <span class="comment"># 这是直接发送的数据</span>
-            res_err = res.stderr.read()
-            res_out = res.stdout.read()
-            <span class="comment"># print(type(res_err))   # 通过判判断 从管道中取的是bytes数据</span>
-
-            data_size = len(res_err) + len(res_out)  <span class="comment"># 拼接数据的长度</span>
-            <span class="string">'''
-               data_size = str(len(res_err) + len(res_out))  # 统计数据的长度
-               这种情况仍然是不行的 传输的还是没有分界
-            '''</span>
-            <span class="comment"># 制作报头.</span>
-            conn.send(struct.pack(<span class="string">'i'</span>, data_size))  <span class="comment"># 把报头的数据发送 自己定义的数据格式</span>
-
-            conn.send(res_err)
-            conn.send(res_out)
-        <span class="keyword">except</span> Exception:
-            <span class="keyword">break</span>
-    conn.close()   <span class="comment"># 断开连接</span>
-
-phone.close()  <span class="comment"># 关闭服务器连接</span>
-</code></pre>
-<p><strong>客户端</strong></p>
-<pre><code class="python"><span class="comment"># coding:utf-8</span>
-<span class="comment"># 远程执行命令</span>
-<span class="comment"># 解决粘包的问题</span>
-<span class="comment">#</span>
-<span class="keyword">import</span> socket
-<span class="keyword">import</span> struct  <span class="comment"># 客户需要解包</span>
-
-
-phone = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-<span class="comment"># phone.connect(("127.0.0.1", 8888))  # 直接进行连接</span>
-phone.connect((<span class="string">"192.168.16.200"</span>, <span class="number">8880</span>))  <span class="comment"># Linux测试</span>
-
-
-<span class="keyword">while</span> <span class="keyword">True</span>:
-    cmd = input(<span class="string">"&gt;&gt;:"</span>).strip()  <span class="comment"># 输入去除空格 换行</span>
-    <span class="keyword">if</span> <span class="keyword">not</span> cmd:
-        <span class="keyword">continue</span>  <span class="comment"># 没有输入内容 继续输入</span>
-    <span class="comment"># phone.send(cmd.encode("utf-8"))  #</span>
-    phone.send(bytes(cmd.encode(<span class="string">"utf-8"</span>)))  <span class="comment"># 默认发送的是字节bytes</span>
-
-    <span class="comment"># 首先接收报头 自己固定的4个字节</span>
-    gram_head = phone.recv(<span class="number">4</span>)
-
-    <span class="comment"># 取出数据长度</span>
-    data_size = struct.unpack(<span class="string">'i'</span>, gram_head)[<span class="number">0</span>]  <span class="comment"># 现在是标注的数据大小 是元组的第一个值</span>
-
-    <span class="comment"># 接收数据 循环接收 直到接收完数据</span>
-    recv_size = <span class="number">0</span>  <span class="comment"># 设置接收到的数据初始值为0</span>
-    recv_data = <span class="string">b''</span>  <span class="comment"># 用于拼接接收到的数据</span>
-    <span class="keyword">while</span> recv_size &lt; data_size:  <span class="comment"># 当接收到的数据小于真实数据的时候 循环接收</span>
-        data = phone.recv(<span class="number">1024</span>)    <span class="comment"># 从客户端自己的缓存中寻找</span>
-        recv_size += len(data)  <span class="comment"># 把接收到的数据的长度重新赋值给recv_size  data 是真实的数据</span>
-        recv_data += data  <span class="comment"># 把接收到的data循环拼接到recv_data,接收完后recv_data就是最终的数据</span>
-    <span class="comment"># print(recv_data.decode('gbk'))  # win 平台的默认编码是gbk 在Linux中用uft-8</span>
-    print(data.decode(<span class="string">'utf-8'</span>))  <span class="comment"># win 平台的默认编码是gbk 在Linux中用uft-8</span>
-phone.close()  <span class="comment"># 关闭客户端</span>
-</code></pre>
-<h3 id="3-3-上面的问题"><a href="#3-3-上面的问题" class="headerlink" title="3.3 上面的问题"></a>3.3 上面的问题</h3><p>上面虽然解决了粘包的问题，但是在在后期传输大的文件的时候，报头的数据就会很大，也就是全部读入内存，会让内存爆。</p>
-<h4 id="3-3-1-通过序列化解决问题"><a href="#3-3-1-通过序列化解决问题" class="headerlink" title="3.3.1 通过序列化解决问题"></a>3.3.1 通过序列化解决问题</h4><p>可以把报头制作成字典，字典中包含将要发送的数据的真实信息，然后把字典json序列化，然后用struct把序列化后数据打包成4个字节。</p>
-<p><strong>发送过程</strong></p>
-<p>1 先发送报头长度</p>
-<p>2 编码报头内容然后再发送</p>
-<p>3 最后发送真实内容</p>
-<p><strong>接收过程</strong></p>
-<p>1 接收报头的长度，用struct.unpack获得</p>
-<p>2 取固定长度的报头（4个字节），然后解码，反序列化</p>
-<p>3 从反序列化的字典中的寻找数据的内容，然后获取数据的真实信息</p>
-<p><strong>Linux注意上传文件目录的权限777</strong></p>
-<h2 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h2>
+        
+          <p class="article-more-link">
+            <a href="/2017/05/05/Python socket 粘包/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
       
       
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
       
     </footer>
   </div>
@@ -971,7 +508,7 @@ from… import …对比import spam，会将源文件的名称空间’spam’�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/05/05/Python socket 粘包/">(no title)</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/05/05/Python socket 粘包/">Python socket 粘包</a></h6>
               <span>五月 5, 2017</span>
             </div>
 
@@ -1049,7 +586,7 @@ from… import …对比import spam，会将源文件的名称空间’spam’�
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">34</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">35</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
