@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Python" />
+  
+  
+  
+  
+  <meta name="description" content="1 为什么有操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Peter's Blog Center">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/05/08/Python 并发编程/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="1 为什么有操作系统">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170508143930785-7197656.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170508152741176-1233513702.png">
+<meta property="og:updated_time" content="2017-05-08T07:43:41.749Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Peter's Blog Center">
+<meta name="twitter:description" content="1 为什么有操作系统">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170508143930785-7197656.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-Python 并发编程" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/05/08/Python 并发编程/" class="article-date">
+	  <time datetime="2017-05-08T07:43:24.990Z" itemprop="datePublished">五月 8, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-为什么有操作系统"><a href="#1-为什么有操作系统" class="headerlink" title="1 为什么有操作系统"></a>1 为什么有操作系统</h2><a id="more"></a>
+<ul>
+<li>操作系统： 位于底层和应用软件之间</li>
+<li>工作方式： 向下管理硬件 向上提供接口</li>
+</ul>
+<h3 id="1-1-操作系统进程切换："><a href="#1-1-操作系统进程切换：" class="headerlink" title="1.1 操作系统进程切换："></a>1.1 操作系统进程切换：</h3><ul>
+<li>出现IO操作（像time.sleep之类的）</li>
+<li>固定时间（是操作系统控制的切换时间）</li>
+</ul>
+<h3 id="1-2进程的定义："><a href="#1-2进程的定义：" class="headerlink" title="1.2进程的定义："></a>1.2进程的定义：</h3><p>进程是<strong>一个程序</strong>在<strong>一个数据集</strong>谁给你的<strong>动态执行过程</strong>。<br><strong>程序</strong>、<strong>数据集（</strong>程序过程中使用的资源）、<strong>进程控制块</strong>（切换的时候 保存状态）</p>
+<p>进程并发的时候，如果是一个应用程序，会把资源进行传递</p>
+<p>进程是通过进程切换，是共享的资源，保存的的时候保存的是进程的资源集</p>
+<ul>
+<li>进程：<br>  资源管理单位（容器）</li>
+<li>线程：<br>  最小执行单位</li>
+</ul>
+<h3 id="1-3-并行和并发的区别："><a href="#1-3-并行和并发的区别：" class="headerlink" title="1.3  并行和并发的区别："></a>1.3  并行和并发的区别：</h3><p>串行是线程依次执行，运行期间独享内存<br>并行是每个线程占用一个内核<br>并发是有等待<br><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170508143930785-7197656.png" alt=""></p>
+<p><strong> python的多线程：</strong><br><strong> 由于GIL，同一时刻，同一进程只能有一个线程被运行</strong></p>
+<p>但是可以实现多进程的并发</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">s = time.time()</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">listen</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"listen"</span>)</div><div class="line">    time.sleep(<span class="number">3</span>)</div><div class="line">    print(<span class="string">"listen end"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">blog</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"blog"</span>)</div><div class="line">    time.sleep(<span class="number">5</span>)</div><div class="line">    print(<span class="string">"blog end"</span>)</div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line"></div><div class="line">	t1 = threading.Thread(target=listen)  <span class="comment"># 实例化</span></div><div class="line">	t2 = threading.Thread(target=blog)</div><div class="line"></div><div class="line">	t1.start()  <span class="comment"># 使用start方法调用</span></div><div class="line">	t2.start()</div><div class="line"></div><div class="line">	<span class="comment"># t1.join()</span></div><div class="line">	<span class="comment"># t2.join()  # t1 t2 接收后 才开始主线程</span></div><div class="line"></div><div class="line">	print(time.time()-s)  <span class="comment"># 总的时间</span></div><div class="line">	print(<span class="string">"main ending"</span>)</div><div class="line">    <span class="string">'''</span></div><div class="line">    结果：</div><div class="line">	listen</div><div class="line">    blog</div><div class="line">    0.0</div><div class="line">    main ending    # 这个是3个运行完毕</div><div class="line">    listen end</div><div class="line">    blog end</div><div class="line">    可以证明的是实现了线程的切换</div><div class="line">    '''</div></pre></td></tr></table></figure>
+<p>使用join 方法,主线程会等待其余的结束后才运行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">s = time.time()</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">listen</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"listen"</span>)</div><div class="line">    time.sleep(<span class="number">3</span>)</div><div class="line">    print(<span class="string">"listen end"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">blog</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"blog"</span>)</div><div class="line">    time.sleep(<span class="number">5</span>)</div><div class="line">    print(<span class="string">"blog end"</span>)</div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line"></div><div class="line">	t1 = threading.Thread(target=listen)  <span class="comment"># 实例化</span></div><div class="line">	t2 = threading.Thread(target=blog)</div><div class="line"></div><div class="line">	t1.start()  <span class="comment"># 使用start方法调用</span></div><div class="line">	t2.start()</div><div class="line"></div><div class="line">	t1.join()</div><div class="line">	t2.join()  <span class="comment"># t1 t2 接收后 才开始主线程</span></div><div class="line"></div><div class="line">	print(time.time()-s)  <span class="comment"># 总的时间</span></div><div class="line">	print(<span class="string">"main ending"</span>)</div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line">结果：</div><div class="line">listen</div><div class="line">blog</div><div class="line">listen end</div><div class="line">blog end</div><div class="line">5.001286029815674   # 这里是线程2运行结束的时间</div><div class="line">main ending  # 最终运行主线程</div><div class="line"></div><div class="line">'''</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 方式2  使用的是run方法</span></div><div class="line"></div><div class="line">自己定义的类取执行</div><div class="line"></div><div class="line">```python</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span><span class="params">(threading.Thread)</span>:</span>  <span class="comment"># 继承</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, num)</span>:</span></div><div class="line">        threading.Thread.__init__(self)</div><div class="line">        self.num = num</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">"the num is %s"</span> % self.num)</div><div class="line">        time.sleep(<span class="number">3</span>)</div><div class="line"></div><div class="line">t1 = MyThread(<span class="number">56</span>)  <span class="comment"># 参数</span></div><div class="line">t2 = MyThread(<span class="number">78</span>)</div><div class="line"></div><div class="line">t1.start()  </div><div class="line">t2.start()</div><div class="line">print(<span class="string">"ending"</span>)  <span class="comment"># 这是主线程</span></div><div class="line"><span class="string">'''</span></div><div class="line">结果：</div><div class="line">the num is 56</div><div class="line">the num is 78</div><div class="line">ending</div><div class="line"></div><div class="line">'''</div></pre></td></tr></table></figure>
+<h3 id="1-4-join方法"><a href="#1-4-join方法" class="headerlink" title="1.4 join方法"></a>1.4 join方法</h3><p>t.join() 主线程等待对象等待完</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">t1.start()</div><div class="line">t2.start()</div><div class="line"></div><div class="line">t1.join()</div><div class="line">t2.join()</div></pre></td></tr></table></figure>
+<p>如果是： 下面就是串行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">t1.start()</div><div class="line">t1.join()</div><div class="line"></div><div class="line">t2.start()</div><div class="line">t2.join()</div></pre></td></tr></table></figure></p>
+<h3 id="1-5-守护线程"><a href="#1-5-守护线程" class="headerlink" title="1.5 守护线程"></a>1.5 守护线程</h3><p><strong>setDaemon</strong></p>
+<p>主线程结束了，子线程就结束了</p>
+<p>线程开启之后就不能控制</p>
+<p><strong>有自他的子线程t1,t2的时候，t2是守护线程，主线程先等待t1,主线程结束后，守护线程关闭。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">from</span> time <span class="keyword">import</span> ctime, sleep</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Music</span><span class="params">(name)</span>:</span></div><div class="line"></div><div class="line">    print(<span class="string">"Begin listening to &#123;name&#125;. &#123;time&#125;"</span>.format(name=name, time=ctime()))</div><div class="line">    sleep(<span class="number">3</span>)</div><div class="line">    print(<span class="string">"end listening &#123;time&#125;"</span>.format(time=ctime()))</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Blog</span><span class="params">(title)</span>:</span></div><div class="line"></div><div class="line">    print(<span class="string">"Begin recording the &#123;title&#125;. &#123;time&#125;"</span>.format(</div><div class="line">        title=title, time=ctime()))</div><div class="line">    sleep(<span class="number">5</span>)</div><div class="line">    print(<span class="string">'end recording &#123;time&#125;'</span>.format(time=ctime()))</div><div class="line"></div><div class="line"></div><div class="line">threads = []</div><div class="line"></div><div class="line"></div><div class="line">t1 = threading.Thread(target=Music, args=(<span class="string">'music'</span>,))</div><div class="line">t2 = threading.Thread(target=Blog, args=(<span class="string">'blog'</span>,))</div><div class="line"></div><div class="line">threads.append(t1)</div><div class="line">threads.append(t2)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line"></div><div class="line">    t1.setDaemon(<span class="keyword">True</span>)  <span class="comment"># 把t2设置成守护线程</span></div><div class="line">    t2.setDaemon(<span class="keyword">True</span>)</div><div class="line">    t1.start()</div><div class="line">    t2.start()</div><div class="line">    <span class="comment"># for t in threads:</span></div><div class="line">    <span class="comment">#     t.setDaemon(True) #注意:一定在start之前设置</span></div><div class="line">    <span class="comment">#     t.start()</span></div><div class="line">    <span class="comment"># for t in threads:    </span></div><div class="line">    <span class="comment">#     t.join()</span></div><div class="line"></div><div class="line">    <span class="comment"># t1.join()</span></div><div class="line">    <span class="comment"># t2.join()    #  考虑这三种join位置下的结果？</span></div><div class="line"></div><div class="line">    print(<span class="string">"all over %s"</span> % ctime())</div></pre></td></tr></table></figure>
+<h3 id="1-6-其他的方法"><a href="#1-6-其他的方法" class="headerlink" title="1.6 其他的方法"></a>1.6 其他的方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Thread实例对象的方法</div><div class="line">  <span class="comment"># isAlive(): 返回线程是否活动的。</span></div><div class="line">  <span class="comment"># getName(): 返回线程名。</span></div><div class="line">  <span class="comment"># setName(): 设置线程名。</span></div><div class="line"></div><div class="line">threading模块提供的一些方法：</div><div class="line">  <span class="comment"># threading.currentThread(): 返回当前的线程变量。</span></div><div class="line">  <span class="comment"># threading.enumerate(): 返回一个包含正在运行的线程的list。正在运行指线程启动后、结束前，不包括启动前和终止后的线程。</span></div><div class="line">  <span class="comment"># threading.activeCount(): 返回正在运行的线程数量，与len(threading.enumerate())有相同的结果。</span></div></pre></td></tr></table></figure>
+<h2 id="GIL-全局解释器锁"><a href="#GIL-全局解释器锁" class="headerlink" title="GIL 全局解释器锁"></a>GIL 全局解释器锁</h2><p>Global Interpreter Lock</p>
+<p>加在CPython的解释器中，只有CPyhton中受到限制</p>
+<p><strong>阻止多线程并行</strong><br><strong> python的多线程：</strong><br><strong> 由于GIL，同一时刻，同一进程只能有一个线程被运行</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170508152741176-1233513702.png" alt=""></p>
+<p>使用多进程的时候就可以突破这个限制</p>
+<p><strong>提高效率，用协程</strong></p>
+<ul>
+<li><p>对于IO密集型的提高效率，不使用CPU</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">使用time.sleep的</div></pre></td></tr></table></figure>
+</li>
+<li><p>计算密集型，一直是在使用CPU，</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">s = time.time()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">counter</span><span class="params">()</span>:</span></div><div class="line">    sum = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">50000000</span>):</div><div class="line">        sum += i</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="comment"># counter()</span></div><div class="line">    <span class="comment"># counter()</span></div><div class="line">    t1 = threading.Thread(target=counter)</div><div class="line">    t2 = threading.Thread(target=counter)</div><div class="line">    t1.start()</div><div class="line">    t2.start()</div><div class="line">    t1.join()</div><div class="line">    t2.join()</div><div class="line">    print(time.time() - s)</div><div class="line"></div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line">py2.7:</div><div class="line">     串行:10.5270001888</div><div class="line">     并发:15.7999999523</div><div class="line">py3.:</div><div class="line">     串行:6.322361707687378</div><div class="line">     并发:6.371364593505859</div><div class="line">Python3 的GIL已经进行了优化</div><div class="line">'''</div></pre></td></tr></table></figure>
+<p><strong>总结：</strong><br>对于计算密集型的任务，Python多线程没有用<br>对于IO密集型的任务，Python多线程有用</p>
+<p>Python使用多核： 开多进程<br>弊端： 内存开销大切换复杂</p>
+<p><strong>解决方案：</strong></p>
+<ul>
+<li><strong>使用协程</strong>，是单线程还可以自己控制切换的此时</li>
+<li><strong>IO多路复用 </strong>　　以后大多的的应用场景</li>
+<li>终极思路：C模块实现多线程</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/05/08/Python 并发编程/" data-title="" data-url="https://github.com/ythzx/ythzx.github.io/2017/05/08/Python 并发编程/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/05/05/Python socket 粘包/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Python socket 粘包</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-为什么有操作系统"><span class="nav-number">1.</span> <span class="nav-text">1 为什么有操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-操作系统进程切换："><span class="nav-number">1.1.</span> <span class="nav-text">1.1 操作系统进程切换：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2进程的定义："><span class="nav-number">1.2.</span> <span class="nav-text">1.2进程的定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-并行和并发的区别："><span class="nav-number">1.3.</span> <span class="nav-text">1.3  并行和并发的区别：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-join方法"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 join方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-守护线程"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 守护线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-其他的方法"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 其他的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GIL-全局解释器锁"><span class="nav-number">2.</span> <span class="nav-text">GIL 全局解释器锁</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
