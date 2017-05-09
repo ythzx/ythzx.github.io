@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python 多线程应用 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Python" />
+  
+  
+  
+  
+  <meta name="description" content="同步锁">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 多线程应用">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/05/09/Python 多线程应用/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="同步锁">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170509144146660-1102280414.png">
+<meta property="og:updated_time" content="2017-05-09T07:04:51.320Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 多线程应用">
+<meta name="twitter:description" content="同步锁">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170509144146660-1102280414.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-Python 多线程应用" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python 多线程应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/05/09/Python 多线程应用/" class="article-date">
+	  <time datetime="2017-05-09T07:04:27.828Z" itemprop="datePublished">五月 9, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="同步锁"><a href="#同步锁" class="headerlink" title="同步锁"></a>同步锁</h3><a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">subNum</span><span class="params">()</span>:</span></div><div class="line"></div><div class="line">    <span class="keyword">global</span> num</div><div class="line">    <span class="comment"># print("ok")</span></div><div class="line"></div><div class="line">    lock.acquire()  <span class="comment"># 加锁</span></div><div class="line">    temp = num</div><div class="line">    time.sleep(<span class="number">1</span>)</div><div class="line">    num = temp - <span class="number">1</span>  <span class="comment"># 加在公共数据上</span></div><div class="line">    lock.release()  <span class="comment"># 解锁</span></div><div class="line"></div><div class="line"></div><div class="line">num = <span class="number">100</span></div><div class="line"></div><div class="line">thread_list = []</div><div class="line"></div><div class="line">lock = threading.Lock()</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</div><div class="line">    t = threading.Thread(target=subNum)</div><div class="line">    t.start()</div><div class="line">    thread_list.append(t)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> thread_list:</div><div class="line">    t.join()</div><div class="line">print(<span class="string">"ressult"</span>, num)</div></pre></td></tr></table></figure>
+<h3 id="死锁与递归锁"><a href="#死锁与递归锁" class="headerlink" title="死锁与递归锁"></a>死锁与递归锁</h3><p>所谓死锁： 是指两个或两个以上的进程或线程在执行过程中，因争夺资源而造成的一种互相等待的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">mutexA = threading.Lock()</div><div class="line">mutexB = threading.Lock()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span><span class="params">(threading.Thread)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        threading.Thread.__init__(self)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        self.fun1()</div><div class="line">        self.fun2()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fun1</span><span class="params">(self)</span>:</span></div><div class="line"></div><div class="line">        mutexA.acquire()  <span class="comment"># 如果锁被占用,则阻塞在这里,等待锁的释放</span></div><div class="line"></div><div class="line">        <span class="keyword">print</span> (<span class="string">"I am %s , get res: %s---%s"</span> %(self.name, <span class="string">"ResA"</span>,time.time()))</div><div class="line"></div><div class="line">        mutexB.acquire()</div><div class="line">        <span class="keyword">print</span> (<span class="string">"I am %s , get res: %s---%s"</span> %(self.name, <span class="string">"ResB"</span>,time.time()))</div><div class="line">        mutexB.release()</div><div class="line">        mutexA.release()</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fun2</span><span class="params">(self)</span>:</span></div><div class="line"></div><div class="line">        mutexB.acquire()</div><div class="line">        <span class="keyword">print</span> (<span class="string">"I am %s , get res: %s---%s"</span> %(self.name, <span class="string">"ResB"</span>,time.time()))</div><div class="line">        time.sleep(<span class="number">0.2</span>)</div><div class="line"></div><div class="line">        mutexA.acquire()</div><div class="line">        <span class="keyword">print</span> (<span class="string">"I am %s , get res: %s---%s"</span> %(self.name, <span class="string">"ResA"</span>,time.time()))</div><div class="line">        mutexA.release()</div><div class="line"></div><div class="line">        mutexB.release()</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line"></div><div class="line">    print(<span class="string">"start---------------------------%s"</span>%time.time())</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">10</span>):</div><div class="line">        my_thread = MyThread()</div><div class="line">        my_thread.start()</div></pre></td></tr></table></figure>
+<p>在Python中为了支持在同一线程中多次请求同一资源，python提供了可重入锁RLock。这个RLock内部维护着一个Lock和一个counter变量，counter记录了acquire的次数，从而使得资源可以被多次require。直到一个线程所有的acquire都被release，其他的线程才能获得资源。上面的例子如果使用RLock代替Lock，则不会发生死锁：</p>
+<h3 id="Event对象"><a href="#Event对象" class="headerlink" title="Event对象"></a>Event对象</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">event.isSet()：返回event的状态值；</div><div class="line"></div><div class="line">event.wait()：如果 event.isSet()==<span class="keyword">False</span>将阻塞线程；</div><div class="line"></div><div class="line">event.set()： 设置event的状态值为<span class="keyword">True</span>，所有阻塞池的线程激活进入就绪状态， 等待操作系统调度；</div><div class="line"></div><div class="line">event.clear()：恢复event的状态值为<span class="keyword">False</span>。</div></pre></td></tr></table></figure>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170509144146660-1102280414.png" alt=""><br>可以考虑一种应用场景（仅仅作为说明），例如，我们有多个线程从Redis队列中读取数据来处理，这些线程都要尝试去连接Redis的服务，一般情况下，如果Redis连接不成功，在各个线程的代码中，都会去尝试重新连接。如果我们想要在启动时确保Redis服务正常，才让那些工作线程去连接Redis服务器，那么我们就可以采用threading.Event机制来协调各个工作线程的连接操作：主线程中会去尝试连接Redis服务，如果正常的话，触发事件，各工作线程会尝试连接Redis服务。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> logging</div><div class="line"></div><div class="line">logging.basicConfig(level=logging.DEBUG, format=<span class="string">'(%(threadName)-10s) %(message)s'</span>,)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(event)</span>:</span></div><div class="line">    logging.debug(<span class="string">'Waiting for redis ready...'</span>)</div><div class="line">    event.wait()</div><div class="line">    logging.debug(<span class="string">'redis ready, and connect to redis server and do some work [%s]'</span>, time.ctime())</div><div class="line">    time.sleep(<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    readis_ready = threading.Event()</div><div class="line">    t1 = threading.Thread(target=worker, args=(readis_ready,), name=<span class="string">'t1'</span>)</div><div class="line">    t1.start()</div><div class="line"></div><div class="line">    t2 = threading.Thread(target=worker, args=(readis_ready,), name=<span class="string">'t2'</span>)</div><div class="line">    t2.start()</div><div class="line"></div><div class="line">    logging.debug(<span class="string">'first of all, check redis server, make sure it is OK, and then trigger the redis ready event'</span>)</div><div class="line">    time.sleep(<span class="number">3</span>) <span class="comment"># simulate the check progress</span></div><div class="line">    readis_ready.set()</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>threading.Event的wait方法还接受一个超时参数，默认情况下如果事件一致没有发生，wait方法会一直阻塞下去，而加入这个超时参数之后，如果阻塞时间超过这个参数设定的值之后，wait方法会返回。对应于上面的应用场景，如果Redis服务器一致没有启动，我们希望子线程能够打印一些日志来不断地提醒我们当前没有一个可以连接的Redis服务，我们就可以通过设置这个超时参数来达成这样的目的：</p>
+<h3 id="Semphore-信号量"><a href="#Semphore-信号量" class="headerlink" title="Semphore(信号量)"></a>Semphore(信号量)</h3><p>emaphore管理一个内置的计数器，<br>每当调用acquire()时内置计数器-1；<br>调用release() 时内置计数器+1；<br>计数器不能小于0；当计数器为0时，acquire()将阻塞线程直到其他线程调用release()。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">semaphore = threading.Semaphore(<span class="number">5</span>)  <span class="comment"># 设置最大连接数是5</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">if</span> semaphore.acquire():</div><div class="line">        <span class="keyword">print</span> (threading.currentThread().getName() + <span class="string">' get semaphore'</span>)</div><div class="line">        time.sleep(<span class="number">2</span>)</div><div class="line">        semaphore.release()</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>):</div><div class="line">  t1 = threading.Thread(target=func)</div><div class="line">  t1.start()</div></pre></td></tr></table></figure>
+<p><strong>这个的应用是连接池</strong></p>
+<h3 id="multiprocessing模块-多进程模块"><a href="#multiprocessing模块-多进程模块" class="headerlink" title="multiprocessing模块 多进程模块"></a>multiprocessing模块 多进程模块</h3><p>由于GIL的存在，python中的多线程其实并不是真正的多线程，如果想要充分地使用多核CPU的资源，在python中大部分情况需要使用多进程。</p>
+<p>multiprocessing包是Python中的多进程管理包。与threading.Thread类似，它可以利用multiprocessing.Process对象来创建一个进程。该进程可以运行在Python程序内部编写的函数。该Process对象与Thread对象的用法相同，也有start(), run(), join()的方法。此外multiprocessing包中也有Lock/Event/Semaphore/Condition类 (这些对象可以像多线程那样，通过参数传递给各个进程)，用以同步进程，其用法与threading包中的同名类一致。所以，multiprocessing的很大一部份与threading使用<strong>同一套API</strong>，只不过换到了多进程的情境。</p>
+<h3 id="python的进程调用"><a href="#python的进程调用" class="headerlink" title="python的进程调用"></a>python的进程调用</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">info</span><span class="params">(name)</span>:</span></div><div class="line"></div><div class="line"></div><div class="line">    print(<span class="string">"name:"</span>,name)</div><div class="line">    print(<span class="string">'parent process:'</span>, os.getppid())</div><div class="line">    print(<span class="string">'process id:'</span>, os.getpid())</div><div class="line">    print(<span class="string">"------------------"</span>)</div><div class="line">    time.sleep(<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(name)</span>:</span></div><div class="line"></div><div class="line">    info(name)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line"></div><div class="line">    info(<span class="string">'main process line'</span>)</div><div class="line"></div><div class="line"></div><div class="line">    p1 = Process(target=info, args=(<span class="string">'alvin'</span>,))</div><div class="line">    p2 = Process(target=foo, args=(<span class="string">'egon'</span>,))</div><div class="line">    p1.start()</div><div class="line">    p2.start()</div><div class="line"></div><div class="line">    p1.join()</div><div class="line">    p2.join()</div><div class="line"></div><div class="line">    print(<span class="string">"ending"</span>)</div></pre></td></tr></table></figure>
+<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line">传统的生产者-消费者模型是一个线程写消息，一个线程取消息，通过锁机制控制队列和等待，但一不小心就可能死锁。</div><div class="line">如果改用协程，生产者生产消息后，直接通过yield跳转到消费者开始执行，待消费者执行完毕后，切换回生产者继续生产，效率极高。</div><div class="line">"""</div><div class="line"><span class="comment"># 注意到consumer函数是一个generator（生成器）:</span></div><div class="line"><span class="comment"># 任何包含yield关键字的函数都会自动成为生成器(generator)对象</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">()</span>:</span></div><div class="line">    r = <span class="string">''</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        <span class="comment"># 3、consumer通过yield拿到消息，处理，又通过yield把结果传回；</span></div><div class="line">        <span class="comment">#    yield指令具有return关键字的作用。然后函数的堆栈会自动冻结(freeze)在这一行。</span></div><div class="line">        <span class="comment">#    当函数调用者的下一次利用next()或generator.send()或for-in来再次调用该函数时，</span></div><div class="line">        <span class="comment">#    就会从yield代码的下一行开始，继续执行，再返回下一次迭代结果。通过这种方式，迭代器可以实现无限序列和惰性求值。</span></div><div class="line">        n = <span class="keyword">yield</span> r</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> n:</div><div class="line">            <span class="keyword">return</span></div><div class="line">        print(<span class="string">'[CONSUMER] ←← Consuming %s...'</span> % n)</div><div class="line">        time.sleep(<span class="number">1</span>)</div><div class="line">        r = <span class="string">'200 OK'</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">produce</span><span class="params">(c)</span>:</span></div><div class="line">    <span class="comment"># 1、首先调用c.next()启动生成器</span></div><div class="line">    next(c)</div><div class="line">    n = <span class="number">0</span></div><div class="line">    <span class="keyword">while</span> n &lt; <span class="number">5</span>:</div><div class="line">        n = n + <span class="number">1</span></div><div class="line">        print(<span class="string">'[PRODUCER] →→ Producing %s...'</span> % n)</div><div class="line">        <span class="comment"># 2、然后，一旦生产了东西，通过c.send(n)切换到consumer执行；</span></div><div class="line">        cr = c.send(n)</div><div class="line">        <span class="comment"># 4、produce拿到consumer处理的结果，继续生产下一条消息；</span></div><div class="line">        print(<span class="string">'[PRODUCER] Consumer return: %s'</span> % cr)</div><div class="line">    <span class="comment"># 5、produce决定不生产了，通过c.close()关闭consumer，整个过程结束。</span></div><div class="line">    c.close()</div><div class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</div><div class="line">    <span class="comment"># 6、整个流程无锁，由一个线程执行，produce和consumer协作完成任务，所以称为“协程”，而非线程的抢占式多任务。</span></div><div class="line">    c = consumer()</div><div class="line">    produce(c)</div><div class="line">    </div><div class="line">    </div><div class="line"><span class="string">'''</span></div><div class="line">result:</div><div class="line"></div><div class="line">[PRODUCER] →→ Producing 1...</div><div class="line">[CONSUMER] ←← Consuming 1...</div><div class="line">[PRODUCER] Consumer return: 200 OK</div><div class="line">[PRODUCER] →→ Producing 2...</div><div class="line">[CONSUMER] ←← Consuming 2...</div><div class="line">[PRODUCER] Consumer return: 200 OK</div><div class="line">[PRODUCER] →→ Producing 3...</div><div class="line">[CONSUMER] ←← Consuming 3...</div><div class="line">[PRODUCER] Consumer return: 200 OK</div><div class="line">[PRODUCER] →→ Producing 4...</div><div class="line">[CONSUMER] ←← Consuming 4...</div><div class="line">[PRODUCER] Consumer return: 200 OK</div><div class="line">[PRODUCER] →→ Producing 5...</div><div class="line">[CONSUMER] ←← Consuming 5...</div><div class="line">[PRODUCER] Consumer return: 200 OK</div><div class="line">'''</div></pre></td></tr></table></figure>
+<h3 id="greentlet"><a href="#greentlet" class="headerlink" title="greentlet"></a>greentlet</h3><p>greelet机制的主要思想是：生成器函数或者协程函数中的yield语句挂起函数的执行，直到稍后使用next()或send()操作进行恢复为止。可以使用一个调度器循环在一组生成器函数之间协作多个任务。greentlet是python中实现我们所谓的”Coroutine(协程)”的一个基础库.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> greenlet <span class="keyword">import</span> greenlet</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test1</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">print</span> (<span class="number">12</span>)</div><div class="line">    gr2.switch()</div><div class="line">    <span class="keyword">print</span> (<span class="number">34</span>)</div><div class="line">    gr2.switch()</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test2</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">print</span> (<span class="number">56</span>)</div><div class="line">    gr1.switch()</div><div class="line">    <span class="keyword">print</span> (<span class="number">78</span>)</div><div class="line"> </div><div class="line">gr1 = greenlet(test1)</div><div class="line">gr2 = greenlet(test2)</div><div class="line">gr1.switch()</div></pre></td></tr></table></figure>
+<h3 id="基于greenlet的框架"><a href="#基于greenlet的框架" class="headerlink" title="基于greenlet的框架"></a>基于greenlet的框架</h3><p>Python通过yield提供了对协程的基本支持，但是不完全。而第三方的gevent为Python提供了比较完善的协程支持</p>
+<p>gevent是第三方库，通过greenlet实现协程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import gevent</div><div class="line">import time</div><div class="line"></div><div class="line">def foo():</div><div class="line">    print(&quot;running in foo&quot;)</div><div class="line">    gevent.sleep(2)</div><div class="line">    print(&quot;switch to foo again&quot;)</div><div class="line"></div><div class="line">def bar():</div><div class="line">    print(&quot;switch to bar&quot;)</div><div class="line">    gevent.sleep(5)</div><div class="line">    print(&quot;switch to bar again&quot;)</div><div class="line"></div><div class="line">start=time.time()</div><div class="line"></div><div class="line">gevent.joinall(</div><div class="line">    [gevent.spawn(foo),</div><div class="line">    gevent.spawn(bar)]</div><div class="line">)</div><div class="line"></div><div class="line">print(time.time()-start)</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/05/09/Python 多线程应用/" data-title="Python 多线程应用" data-url="https://github.com/ythzx/ythzx.github.io/2017/05/09/Python 多线程应用/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/05/08/Python 并发编程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Python 并发编程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#同步锁"><span class="nav-number">1.</span> <span class="nav-text">同步锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁与递归锁"><span class="nav-number">2.</span> <span class="nav-text">死锁与递归锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Event对象"><span class="nav-number">3.</span> <span class="nav-text">Event对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Semphore-信号量"><span class="nav-number">4.</span> <span class="nav-text">Semphore(信号量)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiprocessing模块-多进程模块"><span class="nav-number">5.</span> <span class="nav-text">multiprocessing模块 多进程模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python的进程调用"><span class="nav-number">6.</span> <span class="nav-text">python的进程调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协程"><span class="nav-number"></span> <span class="nav-text">协程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#greentlet"><span class="nav-number">1.</span> <span class="nav-text">greentlet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于greenlet的框架"><span class="nav-number">2.</span> <span class="nav-text">基于greenlet的框架</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
