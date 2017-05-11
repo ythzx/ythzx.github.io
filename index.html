@@ -96,6 +96,75 @@
         
           <section id="main">
   
+    <article id="post-Python 进程线程总结"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/11/Python 进程线程总结/">Python 进程 线程总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/05/11/Python 进程线程总结/" class="article-date">
+	  <time datetime="2017-05-11T03:37:21.657Z" itemprop="datePublished">五月 11, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            操作系统的底层是 进程 线程 实现的
+进程
+操作系统完成系统进程的切换，中间有状态的保存。进程有自己独立的空间，进程多，资源消耗大
+进程是最小的资源管理单位可以理解为盛放线程的容器
+线程线程是最小的执行单位
+串行、并行、 并发 、并行有多个CPU
+并发只有一个CPU
+GILCPython同一时刻只有一个线程被执行
+Threading 多线程
+实例化方法
+类的继承 还要重写run方法
+
+join  SetDemon是实例化的对象应用的
+join 是主线程等子线程4
+setDaemon 守护线程程序直到不存在非守线程的时候退出也就是需要等待非守护线程结束
+同步锁（互斥锁）由于多线程共用数据
+CPU只要有IO操作，就进行切换，但是同步锁锁住了后，切换完第一步后就还是回来处理加锁的
+死锁是两个...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/05/11/Python 进程线程总结/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python Select模型"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -340,79 +409,6 @@ IO多路复用（监听多个连接）
 <!-- Table of Contents -->
 
   
-    <article id="post-Python socket 粘包"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/05/Python socket 粘包/">Python socket 粘包</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/05/05/Python socket 粘包/" class="article-date">
-	  <time datetime="2017-05-05T07:45:18.236Z" itemprop="datePublished">五月 5, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1  TCP的三次握手四次挥手
-
-1.1 三次握手
-1 客户端向服务端发起SYN请求，请求建立连接，
-
-2 服务端同意建立连接，回应ACK,同时服务端向客户端发起SYN请求
-
-3 客户端回应ACK 
-
-
-1.2 四次挥手挥手是任意的，客户端和服务端都可以首先断开连接
-下面是以客户端发起的挥手
-
-1  客户端发送完数据后发起FIN    请求，之后直接断开，
-2 服务端返回一个ACK
-3此时服务端还没有接收完数据，所以没有断开连接，接收完后，服务端想要断开，发送FIN
-4 客户端返回ACK，结束
-
-现实中的是TIME WAIT大量存在于服务端，是服务端主动断开连接，它在等待客户端发送ACK
-总结
-1 为什么建立连接协议是三次握手，而关闭连接却是四次握手呢？
-这是因为服务端的LISTEN状...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/05/05/Python socket 粘包/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -529,6 +525,18 @@ IO多路复用（监听多个连接）
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/05/11/Python 进程线程总结/">Python 进程 线程总结</a></h6>
+              <span>五月 11, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/05/11/Python Select模型/">Python Select模型</a></h6>
               <span>五月 11, 2017</span>
             </div>
@@ -583,18 +591,6 @@ IO多路复用（监听多个连接）
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/05/04/Python软件开发规范/">Python 软件开发规范</a></h6>
-              <span>五月 4, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -607,7 +603,7 @@ IO多路复用（监听多个连接）
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">39</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">40</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -627,7 +623,7 @@ IO多路复用（监听多个连接）
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
