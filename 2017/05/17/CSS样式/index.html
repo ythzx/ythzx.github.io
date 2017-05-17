@@ -11,31 +11,16 @@
   
   
   
-  <meta name="description" content="CSS1 查找标签（选择器）
-
-引入选择
-嵌入式
-链接式 css文件中写（重点使用）
-导入式 这种最后加载css 用户体验不好,而且引用的数量有限制">
+  <meta name="description" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/05/17/CSS样式/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
-<meta property="og:description" content="CSS1 查找标签（选择器）
-
-引入选择
-嵌入式
-链接式 css文件中写（重点使用）
-导入式 这种最后加载css 用户体验不好,而且引用的数量有限制">
-<meta property="og:updated_time" content="2017-05-17T16:24:32.922Z">
+<meta property="og:description" content="CSS">
+<meta property="og:updated_time" content="2017-05-17T16:28:09.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS">
-<meta name="twitter:description" content="CSS1 查找标签（选择器）
-
-引入选择
-嵌入式
-链接式 css文件中写（重点使用）
-导入式 这种最后加载css 用户体验不好,而且引用的数量有限制">
+<meta name="twitter:description" content="CSS">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
   
@@ -138,14 +123,14 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>1 查找标签（选择器）</p>
+        <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><a id="more"></a>
+<p>1 查找标签（选择器）</p>
 <ul>
 <li>引入选择</li>
 <li>嵌入式</li>
 <li>链接式 css文件中写（重点使用）</li>
 <li>导入式 这种最后加载css 用户体验不好,而且引用的数量有限制</li>
 </ul>
-<a id="more"></a>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css_test.css"</span>&gt;</span> <span class="comment">&lt;!--导入css文件--&gt;</span></div><div class="line">    <span class="comment">&lt;!--&lt;style&gt;--&gt;</span></div><div class="line">        <span class="comment">&lt;!--@import "css_test.css";--&gt;</span></div><div class="line">    <span class="comment">&lt;!--&lt;/style&gt;--&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--&lt;p style="color: red;background-color: green"&gt;hello&lt;/p&gt;--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>DIV<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <p><strong>选择器</strong></p>
 <p>注意：一个块级标签可以嵌套块、内联标签，内联不能嵌套块级标签</p>
