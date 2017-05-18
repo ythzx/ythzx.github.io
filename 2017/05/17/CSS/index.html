@@ -29,7 +29,7 @@ tags: webCSS
 嵌入式
 链接式 css文件中写（重点使用）
 导入式 这种最后加载css 用户体验不好,而且引用的数量有限制">
-<meta property="og:updated_time" content="2017-05-17T15:57:03.064Z">
+<meta property="og:updated_time" content="2017-05-18T07:00:57.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Peter's Blog Center">
 <meta name="twitter:description" content="title: CSS样式
@@ -156,6 +156,29 @@ tags: webCSS
 </ul>
 <p><strong>子代选择器</strong></p>
 <p>2操作标签（属性选择）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">E[att]          匹配所有具有att属性的E元素，不考虑它的值。（注意：E在此处可以省略。</div><div class="line">                比如“[cheacked]”。以下同。）   p[title] &#123; color:#f00; &#125;</div><div class="line"> </div><div class="line"> </div><div class="line">E[att=val]      匹配所有att属性等于“val”的E元素   div[class=”error”] &#123; color:#f00; &#125;</div><div class="line"> </div><div class="line"> </div><div class="line">E[att~=val]     匹配所有att属性具有多个空格分隔的值、其中一个值等于“val”的E元素</div><div class="line">                td[class~=”name”] &#123; color:#f00; &#125;</div><div class="line"> </div><div class="line">E[attr^=val]    匹配属性值以指定值开头的每个元素                    </div><div class="line">                div[class^=&quot;test&quot;]&#123;background:#ffff00;&#125;</div><div class="line"> </div><div class="line">E[attr$=val]    匹配属性值以指定值结尾的每个元素    div[class$=&quot;test&quot;]&#123;background:#ffff00;&#125;</div><div class="line"> </div><div class="line">E[attr*=val]    匹配属性值中包含指定值的每个元素    div[class*=&quot;test&quot;]&#123;background:#ffff00;&#125;</div></pre></td></tr></table></figure>
+<p>[po=”p1”]   po是自己定义的属性<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">        # 这样就能共同查找了</div><div class="line">        div[po="p2"]&#123;</div><div class="line">            color: red;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>div<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"></div><div class="line">        /*div[po="p2"]&#123;*/</div><div class="line">            /*color: red;*/</div><div class="line">        /*&#125;*/</div><div class="line">		/*通过class属性寻找</div><div class="line">        .c1[po="p1"]&#123;</div><div class="line">            color: red;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">po</span>=<span class="string">"p1"</span> <span class="attr">class</span>=<span class="string">"c1"</span>&gt;</span>p1<span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="comment">&lt;!--普通的属性--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">po</span>=<span class="string">"p2"</span> <span class="attr">class</span>=<span class="string">"c1"</span>&gt;</span>p2<span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="comment">&lt;!--普通的属性--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> &gt;</span>p3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>优先级<em>**</em></p>
+<pre><code>1 内联样式表的权值最高               style=&quot;&quot;－－－－－－－－－－－－1000；
+
+2 统计选择符中的ID属性个数。       #id －－－－－－－－－－－－－－100
+
+3 统计选择符中的CLASS属性个数。 .class －－－－－－－－－－－－－10
+
+4 统计选择符中的HTML标签名个数。 p －－－－－－－－－－－－－-－1
+</code></pre><p>通过值进行计算，谁的和大，谁的优先级高</p>
+<p>css文本属性：<br>颜色<br>字体大小<br>水平对齐方式：</p>
+<p>css背景属性</p>
+<h3 id="display属性"><a href="#display属性" class="headerlink" title="display属性"></a>display属性</h3><p><strong>display:none</strong></p>
+<h4 id="页面布局"><a href="#页面布局" class="headerlink" title="页面布局"></a>页面布局</h4><p>这么把div放到一行，div是块级标签，不在一行</p>
+<p>内联标签是不能设置长宽的</p>
+<p>解决方法：<br><strong>使用inline-block</strong></p>
+<ul>
+<li>span 使用display:block变成块级标签 会独占一行</li>
+<li>inline 可以给块级标签设置成内联标签</li>
+<li>inline-block 都可以设置</li>
+</ul>
 
       
     </div>
@@ -195,9 +218,9 @@ tags: webCSS
 <nav id="article-nav">
   
   
-    <a href="/2017/05/16/HTML/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/05/17/CSS 样式/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">CSS</div>
     </a>
   
 </nav>
@@ -211,7 +234,7 @@ tags: webCSS
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-web"><span class="nav-number">1.</span> <span class="nav-text">tags: web</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-web"><span class="nav-number">1.</span> <span class="nav-text">tags: web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#display属性"><span class="nav-number">1.1.</span> <span class="nav-text">display属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#页面布局"><span class="nav-number">1.1.1.</span> <span class="nav-text">页面布局</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>

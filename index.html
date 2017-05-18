@@ -96,7 +96,57 @@
         
           <section id="main">
   
-    <article id="post-CSS样式"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-CSS"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/05/17/CSS/" class="article-date">
+	  <time datetime="2017-05-17T02:54:24.359Z" itemprop="datePublished">五月 17, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            
+title: CSS样式
+tags: webCSS
+1 查找标签（选择器）
+
+引入选择
+嵌入式
+链接式 css文件中写（重点使用）
+导入式 这种最后加载css 用户体验不好,而且引用的数量有限制
+
+
+1234567891011121314151617181920&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt;    &lt;meta charset="UTF-8"&gt;    &lt;title&gt;CSS&lt;/title&gt;    &lt;link rel="stylesheet" href="css_test.css"&gt; &lt;!--导入css文件--&gt;    &lt;!--&lt;style...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/05/17/CSS/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-CSS 样式"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -104,7 +154,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/17/CSS样式/">CSS</a>
+      <a class="article-title" href="/2017/05/17/CSS 样式/">CSS</a>
     </h1>
   
 
@@ -112,7 +162,7 @@
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/05/17/CSS样式/" class="article-date">
+	Posted on <a href="/2017/05/17/CSS 样式/" class="article-date">
 	  <time datetime="2017-05-17T02:54:24.359Z" itemprop="datePublished">五月 17, 2017</time>
 	</a>
 
@@ -136,7 +186,7 @@
 
         
           <p class="article-more-link">
-            <a href="/2017/05/17/CSS样式/#more">阅读全文</a>
+            <a href="/2017/05/17/CSS 样式/#more">阅读全文</a>
           </p>
         </div>
       
@@ -347,61 +397,6 @@ CPU只要有IO操作，就进行切换，但是同步锁锁住了后，切换完
 <!-- Table of Contents -->
 
   
-    <article id="post-Python Select模型"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/11/Python Select模型/">Python Select模型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/05/11/Python Select模型/" class="article-date">
-	  <time datetime="2017-05-11T00:43:28.983Z" itemprop="datePublished">五月 11, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            IO多路复用
-IO多路复用就是我们经常说的select epoll.select和epoll的好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。下面是流程图：
-当用户进程调用了select，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket，当任何一个socket中的数据准备好了，select就会返回。这个时候用户进程再调用read操作，将数据从kernel拷贝到用户进程。
-注意1：select函数返回结果中如果有文件可读了，那么进程就可以通过调用accept()或recv()来让kernel将位于内核中准备到的数据copy...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/05/11/Python Select模型/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -518,7 +513,19 @@ IO多路复用就是我们经常说的select epoll.select和epoll的好处是单
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/05/17/CSS样式/">CSS</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/05/17/CSS/">(no title)</a></h6>
+              <span>五月 17, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/05/17/CSS 样式/">CSS</a></h6>
               <span>五月 17, 2017</span>
             </div>
 
@@ -572,18 +579,6 @@ IO多路复用就是我们经常说的select epoll.select和epoll的好处是单
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/05/10/Python IO模型/">Python IO模型</a></h6>
-              <span>五月 10, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -616,7 +611,7 @@ IO多路复用就是我们经常说的select epoll.select和epoll的好处是单
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 

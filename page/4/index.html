@@ -96,6 +96,72 @@
         
           <section id="main">
   
+    <article id="post-Python模块"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/26/Python模块/">Python 模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/26/Python模块/" class="article-date">
+	  <time datetime="2017-04-26T15:15:57.827Z" itemprop="datePublished">四月 26, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            [TOC]
+
+模块就是py文件
+
+注意文件的命名不能和模块的名字相同，正则在寻找的时候首先从当前路径寻找，然后从内置查找
+1 时间模块time
+Python中有三种表示时间的方法：
+1.时间戳
+- 时间戳timestap(浮点型数字)：（计算机）
+time.time()
+1970年1月1日的是0
+2.元组（struct time）结构化时间
+- 结构化时间：(操作时间)
+ &gt;&gt;&gt; time.localtime()  # 默认放的是time.time（）
+time.struct_time(tm_year=2017, tm_mon=4,                                 tm_mday=26, tm_hour=9, tm_min=15, tm...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/04/26/Python模块/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python面向对象进阶2"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -322,62 +388,6 @@ issubclass:判断是否是继承123456class Foo:    passclass Bar(Foo):    passp
 <!-- Table of Contents -->
 
   
-    <article id="post-Python的多态与多态性"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/20/Python的多态与多态性/">Python 的多态与多态性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/20/Python的多态与多态性/" class="article-date">
-	  <time datetime="2017-04-20T15:23:28.890Z" itemprop="datePublished">四月 20, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-             多态：是指一类事物有多种形态（！！！！定义角度！！！！）
- 多态性：在继承的基础上， （！！！！使用角度！！！！！）
-使用多态性，实现了利用函数统一调用一个接口
-多态
-1234567891011121314151617181920212223242526#多态：同一种事物的多种形态，动物分为人类，猪类（在定义角度）class Animal:    def run(self):        raise AttributeError('子类必须实现这个方法')class People(Animal):    def run(self):        print('人正在走')class Pig(Animal):    def run(self):        print('pig ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/20/Python的多态与多态性/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -494,7 +504,19 @@ issubclass:判断是否是继承123456class Foo:    passclass Bar(Foo):    passp
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/05/17/CSS样式/">CSS</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/05/17/CSS/">(no title)</a></h6>
+              <span>五月 17, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/05/17/CSS 样式/">CSS</a></h6>
               <span>五月 17, 2017</span>
             </div>
 
@@ -548,18 +570,6 @@ issubclass:判断是否是继承123456class Foo:    passclass Bar(Foo):    passp
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/05/10/Python IO模型/">Python IO模型</a></h6>
-              <span>五月 10, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -592,7 +602,7 @@ issubclass:判断是否是继承123456class Foo:    passclass Bar(Foo):    passp
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
