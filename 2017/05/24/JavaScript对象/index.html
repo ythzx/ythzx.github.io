@@ -13,21 +13,21 @@
   
   <meta name="description" content="JavaScript中除了null和undefined以外其他的数据类型都被定义成了对象，也可以用创建对象的方法定义变量，String、Math、Array、Date、RegExp都是JavaScript中重要的内置对象，在JavaScript程序大多数功能都是基于对象实现的。
 
-字符串对象字符串对象创建">
+字符串对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 对象">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/05/24/JavaScript对象/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
 <meta property="og:description" content="JavaScript中除了null和undefined以外其他的数据类型都被定义成了对象，也可以用创建对象的方法定义变量，String、Math、Array、Date、RegExp都是JavaScript中重要的内置对象，在JavaScript程序大多数功能都是基于对象实现的。
 
-字符串对象字符串对象创建">
+字符串对象">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170524185138747-297625914.png">
-<meta property="og:updated_time" content="2017-05-24T15:06:04.624Z">
+<meta property="og:updated_time" content="2017-05-24T15:09:51.690Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 对象">
 <meta name="twitter:description" content="JavaScript中除了null和undefined以外其他的数据类型都被定义成了对象，也可以用创建对象的方法定义变量，String、Math、Array、Date、RegExp都是JavaScript中重要的内置对象，在JavaScript程序大多数功能都是基于对象实现的。
 
-字符串对象字符串对象创建">
+字符串对象">
 <meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201705/658994-20170524185138747-297625914.png">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
@@ -133,8 +133,8 @@
       
         <p>JavaScript中除了<strong>null和undefined</strong>以外其他的数据类型都被定义成了对象，也可以用创建对象的方法定义变量，<strong>String、Math、Array、Date、RegExp</strong>都是JavaScript中重要的内置对象，在JavaScript程序大多数功能都是基于对象实现的。</p>
 <p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170524185138747-297625914.png" style="width :350px"></p>
-<h2 id="字符串对象"><a href="#字符串对象" class="headerlink" title="字符串对象"></a>字符串对象</h2><h3 id="字符串对象创建"><a href="#字符串对象创建" class="headerlink" title="字符串对象创建"></a>字符串对象创建</h3><a id="more"></a>
-<p><strong>字符串创建(两种方式)</strong><br>       ① 变量 = “字符串”<br>       ② 字串对象名称 = new String (字符串)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str1=<span class="string">"hello world"</span>;</div><div class="line"><span class="keyword">var</span> str1= <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"hello word"</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="字符串对象"><a href="#字符串对象" class="headerlink" title="字符串对象"></a>字符串对象</h2><a id="more"></a>
+<h3 id="字符串对象创建"><a href="#字符串对象创建" class="headerlink" title="字符串对象创建"></a>字符串对象创建</h3><p><strong>字符串创建(两种方式)</strong><br>       ① 变量 = “字符串”<br>       ② 字串对象名称 = new String (字符串)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str1=<span class="string">"hello world"</span>;</div><div class="line"><span class="keyword">var</span> str1= <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"hello word"</span>);</div></pre></td></tr></table></figure></p>
 <p>上面创建的字符串是一个字符串<strong>对象</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String &#123;0: &quot;h&quot;, 1: &quot;e&quot;, 2: &quot;l&quot;, 3: &quot;l&quot;, 4: &quot;o&quot;, 5: &quot; &quot;, 6: &quot;w&quot;, 7: &quot;o&quot;, 8: &quot;r&quot;, 9: &quot;l&quot;, 10: &quot;d&quot;, length: 11, [[PrimitiveValue]]: &quot;hello world&quot;&#125;0: &quot;h&quot;1: &quot;e&quot;2: &quot;l&quot;3: &quot;l&quot;4: &quot;o&quot;5: &quot; &quot;6: &quot;w&quot;7: &quot;o&quot;8: &quot;r&quot;9: &quot;l&quot;10: &quot;d&quot;length: 11__proto__: String[[PrimitiveValue]]: &quot;hello world&quot;</div></pre></td></tr></table></figure></p>
 <p><strong>字符串对象的属性和函数</strong></p>
 <h3 id="字符串对象的属性和函数"><a href="#字符串对象的属性和函数" class="headerlink" title="字符串对象的属性和函数"></a>字符串对象的属性和函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">x.length         －－－－获取字符串的长度</div><div class="line">x.toLowerCase()        －－－－转为小写</div><div class="line">x.toUpperCase()        －－－－转为大写</div><div class="line">x.trim()               －－－－去除字符串两边空格</div></pre></td></tr></table></figure>
