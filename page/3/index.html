@@ -96,6 +96,75 @@
         
           <section id="main">
   
+    <article id="post-Python 并发编程"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/08/Python 并发编程/">Python 并发编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/05/08/Python 并发编程/" class="article-date">
+	  <time datetime="2017-05-08T07:43:24.990Z" itemprop="datePublished">五月 8, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            1 为什么有操作系统
+
+操作系统： 位于底层和应用软件之间
+工作方式： 向下管理硬件 向上提供接口
+
+1.1 操作系统进程切换：
+出现IO操作（像time.sleep之类的）
+固定时间（是操作系统控制的切换时间）
+
+1.2进程的定义：进程是一个程序在一个数据集谁给你的动态执行过程。程序、数据集（程序过程中使用的资源）、进程控制块（切换的时候 保存状态）
+进程并发的时候，如果是一个应用程序，会把资源进行传递
+进程是通过进程切换，是共享的资源，保存的的时候保存的是进程的资源集
+
+进程：  资源管理单位（容器）
+线程：  最小执行单位
+
+1.3  并行和并发的区别：串行是线程依次执行，运行期间独享内存并行是每个线程占用一个内核并发是有等待
+ python的多线程： 由于GIL，同一时刻，同一...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/05/08/Python 并发编程/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python socket 粘包"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -336,62 +405,6 @@ from… import …对比import spam，会将源文件的名称空间’spam’�
 <!-- Table of Contents -->
 
   
-    <article id="post-Python错误和异常"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/02/Python错误和异常/">Python 错误和异常</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/05/02/Python错误和异常/" class="article-date">
-	  <time datetime="2017-05-02T09:22:18.321Z" itemprop="datePublished">五月 2, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1 错误和异常
-1.1 错误python 中的错误有两种，语法错误和逻辑错误
-这种错误是我们应该避免的
-1.2 异常python中的异常是程序运行过程中产生的，有异常不一定要把程序停止，只要把异常抛出，然后查看异常产生的原因即可。
-1.2.1  python中的异常种类123456789101112131415161718192021222324252627AttributeError 试图访问一个对象没有的属性，比如foo.x，但是foo没有属性xIOError 输入/输出异常；基本上是无法打开文件ImportError 无法引入模块或包；基本上是路径问题或名称错误IndentationError 语法错误（的子类） ；代码没有正确对齐IndexError 下标索引超出序列边界，比如...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/05/02/Python错误和异常/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -508,6 +521,18 @@ from… import …对比import spam，会将源文件的名称空间’spam’�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/05/24/JavaScript对象/">JavaScript 对象</a></h6>
+              <span>五月 24, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/05/23/JavaScript基础/">JavaScript基础</a></h6>
               <span>五月 23, 2017</span>
             </div>
@@ -562,18 +587,6 @@ from… import …对比import spam，会将源文件的名称空间’spam’�
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/05/11/Python 进程线程总结/">Python 进程 线程总结</a></h6>
-              <span>五月 11, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -586,7 +599,7 @@ from… import …对比import spam，会将源文件的名称空间’spam’�
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">40</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">40</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -596,7 +609,7 @@ from… import …对比import spam，会将源文件的名称空间’spam’�
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Web/" style="font-size: 13.33px;">Web</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -606,7 +619,7 @@ from… import …对比import spam，会将源文件的名称空间’spam’�
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
