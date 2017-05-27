@@ -119,99 +119,30 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[TOC]</p>
-<p>browser object model<br>document onject model</p>
-<h2 id="BOM对象"><a href="#BOM对象" class="headerlink" title="BOM对象"></a>BOM对象</h2><p><strong>window对象</strong></p>
-<p>所有浏览器都支持 window 对象。<br>概念上讲.一个html文档对应一个window对象.<br>功能上讲: 控制浏览器窗口的.<br>使用上讲: window对象不需要创建对象,直接使用即可.</p>
-<h3 id="Window-对象方法"><a href="#Window-对象方法" class="headerlink" title="Window 对象方法"></a>Window 对象方法</h3><ul>
-<li>alert()            显示带有一段消息和一个确认按钮的警告框。</li>
-<li>confirm()          显示带有一段消息以及确认按钮和取消按钮的对话框。</li>
-<li><p>prompt()           显示可提示用户输入的对话框。</p>
-</li>
-<li><p>open()             打开一个新的浏览器窗口或查找一个已命名的窗口。</p>
-</li>
-<li><p>close()            关闭浏览器窗口。</p>
-</li>
-<li><p>setInterval()      按照指定的周期（以毫秒计）来调用函数或计算表达式。</p>
-</li>
-<li>clearInterval()    取消由 setInterval() 设置的 timeout。</li>
-<li>setTimeout()       在指定的毫秒数后调用函数或计算表达式。</li>
-<li>clearTimeout()     取消由 setTimeout() 方法设置的 timeout。</li>
-<li>scrollTo()         把内容滚动到指定的坐标。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//----------alert confirm prompt----------------------------</span></div><div class="line">    <span class="comment">//alert('aaa');</span></div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="comment">/* var result = confirm("您确定要删除吗?");</span></div><div class="line">    alert(result); */</div><div class="line"></div><div class="line">    <span class="comment">//prompt 参数1 : 提示信息.   参数2:输入框的默认值. 返回值是用户输入的内容.</span></div><div class="line"></div><div class="line">    <span class="comment">// var result = prompt("请输入一个数字!","haha");</span></div><div class="line">    <span class="comment">// alert(result);</span></div><div class="line"></div><div class="line"></div><div class="line">    方法讲解:    </div><div class="line">        <span class="comment">//open方法 打开和一个新的窗口 并 进入指定网址.参数1 : 网址.</span></div><div class="line">        <span class="comment">//调用方式1</span></div><div class="line">            <span class="comment">//open("http://www.baidu.com");</span></div><div class="line">        <span class="comment">//参数1 什么都不填 就是打开一个新窗口.  参数2.填入新窗口的名字(一般可以不填). 参数3: 新打开窗口的参数.</span></div><div class="line">            open(<span class="string">''</span>,<span class="string">''</span>,<span class="string">'width=200,resizable=no,height=100'</span>); <span class="comment">// 新打开一个宽为200 高为100的窗口</span></div><div class="line">        <span class="comment">//close方法  将当前文档窗口关闭.</span></div><div class="line">            <span class="comment">//close();</span></div></pre></td></tr></table></figure>
-<h3 id="setInterval，clearInterval"><a href="#setInterval，clearInterval" class="headerlink" title="setInterval，clearInterval"></a>setInterval，clearInterval</h3><p>setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。由 setInterval() <strong>返回的 ID 值</strong>可用作 clearInterval() 方法的<strong>参数</strong>。</p>
-<p>秒表练习<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">语法：&lt;br&gt;     setInterval(code,millisec)</div><div class="line">其中，code为要调用的函数或要执行的代码串。millisec周期性执行或调用 code 之间的时间间隔，以毫秒计。</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;!--onfocus 获取光标事件  绑定了一个事件--&gt;</div><div class="line">   &lt;input type=&quot;text&quot; id=&quot;timer&quot; onfocus=&quot;start()&quot;&gt;</div><div class="line">   &lt;button onclick=&quot;stop()&quot;&gt;stop&lt;/button&gt;</div><div class="line"></div><div class="line">   &lt;script&gt;</div><div class="line"></div><div class="line">       //js 是事件驱动编程  由用户的行为触发</div><div class="line">       function bar() &#123;</div><div class="line">           var current_time =new Date();</div><div class="line">           var s_time=current_time.toLocaleString();</div><div class="line">           var ele = document.getElementById(&quot;timer&quot;);//找到id=timer的标签</div><div class="line"></div><div class="line">           //现在ele是一个对象了，有标签input的属性</div><div class="line">           ele.value  = s_time;//input是通过value显示内容的额</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       var ID;</div><div class="line">       function start() &#123;</div><div class="line">           if(ID == undefined)&#123;</div><div class="line">               bar();</div><div class="line">               ID = setInterval(bar,1000);  /*注意这里的bar是函数名，不能加括号 是通过ID获得函数的运行的*/</div><div class="line">           &#125;</div><div class="line"></div><div class="line">       &#125;</div><div class="line"></div><div class="line">       function stop()&#123;</div><div class="line">           clearInterval(ID);</div><div class="line">           ID  = undefined;/*清除ID 的之后就是undefined*/</div><div class="line">       &#125;</div><div class="line">   &lt;/script&gt;</div></pre></td></tr></table></figure>
-<h2 id="DOM-对象"><a href="#DOM-对象" class="headerlink" title="DOM 对象"></a>DOM 对象</h2><ul>
-<li>HTML  Document Object Model（文档对象模型）</li>
-<li>HTML DOM 定义了<strong>访问和操作HTML文档的标准方法</strong></li>
-<li>HTML DOM 把 HTML 文档呈现为带有元素、属性和文本的树结构（节点树)</li>
-</ul>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170525200324779-15538346.png" style="width:350px"></p>
-<h3 id="DOM节点"><a href="#DOM节点" class="headerlink" title="DOM节点"></a>DOM节点</h3><h4 id="节点类型"><a href="#节点类型" class="headerlink" title="节点类型"></a>节点类型</h4><ul>
-<li>整个文档是一个文档节点 </li>
-<li>每个 HTML 标签是一个元素节点 </li>
-<li>包含在 HTML 元素中的文本是文本节点 </li>
-<li>每一个 HTML 属性是一个属性节点</li>
-</ul>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170525201150591-2125160554.png" style="width:350px"></p>
-<h4 id="节点关系"><a href="#节点关系" class="headerlink" title="节点关系"></a>节点关系</h4><p>节点树中的节点彼此拥有层级关系。<br><strong>父</strong>(parent),<strong>子</strong>(child)和同胞(sibling)等术语用于描述这些关系。父节点拥有子节点。同级的子节点被称为同胞（<strong>兄弟</strong>或姐妹）。</p>
-<ul>
-<li>在节点树中，顶端节点被称为根（root）</li>
-<li>每个节点都有父节点、除了根（它没有父节点）</li>
-<li>一个节点可拥有任意数量的子</li>
-<li>同胞是拥有相同父节点的节点</li>
-</ul>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201705/658994-20170525201812013-746527420.png" style="width:350px"></p>
-<h4 id="节点查找"><a href="#节点查找" class="headerlink" title="节点查找"></a>节点查找</h4><p>document是全局查找，是<strong>直接查找</strong>。</p>
-<p><strong>涉及到寻找元素，注意script标签的位置！</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById(“idname”)  <span class="comment">//获得是一个</span></div><div class="line"><span class="built_in">document</span>.getElementsByTagName(“tagname”)<span class="comment">//获得是一个数组</span></div><div class="line"><span class="built_in">document</span>.getElementsByName(“name”)</div><div class="line"><span class="built_in">document</span>.getElementsByClassName(“name”)</div></pre></td></tr></table></figure>
-<p><strong>应用</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;div id="div1"&gt;</div><div class="line"></div><div class="line">    &lt;div class="div2"&gt;i am div2&lt;/div&gt;</div><div class="line">    &lt;div name="yuan"&gt;i am div2&lt;/div&gt;</div><div class="line">    &lt;div id="div3"&gt;i am div2&lt;/div&gt;</div><div class="line">    &lt;p&gt;hello p&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line"></div><div class="line">   var div1=document.getElementById("div1");</div><div class="line"></div><div class="line">////支持;</div><div class="line">//   var ele= div1.getElementsByTagName("p");</div><div class="line">//   alert(ele.length);</div><div class="line">////支持</div><div class="line">//   var ele2=div1.getElementsByClassName("div2");</div><div class="line">//   alert(ele2.length);</div><div class="line">////不支持</div><div class="line">//   var ele3=div1.getElementById("div3");</div><div class="line">//   alert(ele3.length);</div><div class="line">////不支持</div><div class="line">//   var ele4=div1.getElementsByName("yuan");</div><div class="line">//   alert(ele4.length)</div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>先找到了父亲，通过父亲可以找tagname ,classname ,但是直接找name,id是找不到的</p>
-<p>所以用到了下面的导航查找</p>
-<h4 id="导航查找"><a href="#导航查找" class="headerlink" title="导航查找"></a>导航查找</h4><ul>
-<li>parentElement           // 父节点标签元素</li>
-<li>children                // 所有子标签</li>
-<li>firstElementChild       // 第一个子标签元素</li>
-<li>lastElementChild        // 最后一个子标签元素</li>
-<li>nextElementtSibling     // 下一个兄弟标签元素</li>
-<li>previousElementSibling  // 上一个兄弟标签元素</li>
-</ul>
-<p><strong>注意，js中没有办法找到所有的兄弟标签！</strong></p>
-<h5 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h5><p>节点的增删改查</p>
-<ul>
-<li><p>创建节点<br>createElement(标签名) ：创建一个指定名称的元素。</p>
-</li>
-<li><ul>
-<li>添加节点<br>追加一个子节点（作为最后的子节点）<br>somenode.appendChild(newnode)</li>
-</ul>
-</li>
-</ul>
-<p>把增加的节点放到某个节点的前边<br>somenode.insertBefore(newnode,某个节点);</p>
-<ul>
-<li>删除节点</li>
-</ul>
-<p>removeChild()：获得要删除的元素，通过父元素调用删除</p>
-<h5 id="节点属性操作"><a href="#节点属性操作" class="headerlink" title="节点属性操作"></a>节点属性操作</h5><p><strong>获取文本节点的值</strong>：innerText    innerHTML</p>
-<p><strong>attribute操作</strong></p>
-<ul>
-<li>elementNode.setAttribute(name,value) ；</li>
-<li>elementNode.getAttribute(属性名)</li>
-<li>elementNode.removeAttribute(“属性名”);</li>
-</ul>
-<p><strong>value获取当前选中的value值</strong></p>
-<p>1.input<br>2.select （selectedIndex）<br>3.textarea  </p>
-<p><strong>innerHTML 给节点添加html代码：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> tag.innerHTML = “&lt;p&gt;要显示内容&lt;/p&gt;”;</div><div class="line">``` </div><div class="line"></div><div class="line">**关于class的操作**</div><div class="line">- elementNode.className</div><div class="line">- elementNode.classList.add</div><div class="line">- elementNode.classList.remove </div><div class="line"></div><div class="line"></div><div class="line">**改变css样式：**</div><div class="line"></div><div class="line">```js</div><div class="line">&lt;p id=&quot;p2&quot;&gt;Hello world!&lt;/p&gt;</div><div class="line">document.getElementById(&quot;p2&quot;).style.color=&quot;blue&quot;;</div><div class="line">                             .style.fontSize=48px</div></pre></td></tr></table></figure>
-<p>style在这里用的时候不同于css中的有-，这里没有了</p>
-<h3 id="DOM-Event-事件"><a href="#DOM-Event-事件" class="headerlink" title="DOM Event(事件)"></a>DOM Event(事件)</h3><h4 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">onclick        当用户点击某个对象时调用的事件句柄。</div><div class="line">ondblclick     当用户双击某个对象时调用的事件句柄。</div><div class="line"></div><div class="line">onfocus        元素获得焦点。               练习：输入框</div><div class="line">onblur         元素失去焦点。               应用场景：用于表单验证,用户离开某个输入框时,代表已经输入完了,我们可以对它进行验证.</div><div class="line">onchange       域的内容被改变。             应用场景：通常用于表单元素,当元素内容被改变时触发.（三级联动）</div><div class="line"></div><div class="line">onkeydown      某个键盘按键被按下。          应用场景: 当用户在最后一个输入框按下回车按键时,表单提交.</div><div class="line">onkeypress     某个键盘按键被按下并松开。</div><div class="line">onkeyup        某个键盘按键被松开。</div><div class="line"></div><div class="line">onload         一张页面或一幅图像完成加载。</div><div class="line"></div><div class="line">onmousedown    鼠标按钮被按下。</div><div class="line">onmousemove    鼠标被移动。</div><div class="line">onmouseout     鼠标从某元素移开。</div><div class="line">onmouseover    鼠标移到某元素之上。</div><div class="line">onmouseleave   鼠标从元素离开</div><div class="line"></div><div class="line">onselect       文本被选中。</div><div class="line">onsubmit       确认按钮被点击。</div></pre></td></tr></table></figure>
-<h4 id="绑定事件方式"><a href="#绑定事件方式" class="headerlink" title="绑定事件方式"></a>绑定事件方式</h4><p>绑定方式1</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;div id="div" onclick="foo(this)"&gt;点我呀&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    function foo(self)&#123;           // 形参不能是this;</div><div class="line">        console.log("点你大爷!");</div><div class="line">        console.log(self);   </div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>绑定方式2</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//绑定方式2 标签对象 可以使用this</span></div><div class="line">    <span class="keyword">var</span> ele= <span class="built_in">document</span>.getElementsByTagName(<span class="string">"p"</span>)[<span class="number">0</span>];</div><div class="line"></div><div class="line">    <span class="comment">//标签对象  事件=function()&#123;&#125;</span></div><div class="line">    ele.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//直接就是这个标签</span></div><div class="line"><span class="comment">//        alert(12);</span></div><div class="line">       alert(<span class="keyword">this</span>.innerText);<span class="comment">//直接使用this</span></div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
-<p>3绑定多个对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">多个对象</div><div class="line">   var eles= document.getElementsByTagName(&quot;p&quot;);</div><div class="line">   for (var i=0;i&lt;eles.length;i++)&#123;</div><div class="line">       eles[i].onclick=function () &#123;</div><div class="line">           alert(34)</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;input type=<span class="string">"text"</span> onfocus=<span class="string">"enter(this)"</span> value=<span class="string">"请输入内容"</span> onblur=<span class="string">"exit(this)"</span>&gt;</div><div class="line"></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">enter</span>(<span class="params">self</span>) </span>&#123;</div><div class="line">        <span class="comment">//</span></div><div class="line">        <span class="keyword">if</span> (self.value==<span class="string">"请输入内容"</span>) &#123;</div><div class="line">            self.value = <span class="string">""</span>;<span class="comment">//进入之后把内容删除</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">exit</span>(<span class="params">self</span>) </span>&#123;</div><div class="line">        <span class="comment">//trim去除空格</span></div><div class="line">        <span class="keyword">if</span> (self.value.trim() == <span class="string">""</span>)&#123;</div><div class="line">            self.value = <span class="string">"请输入内容"</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            [TOC]
+browser object modeldocument onject model
+BOM对象
+window对象
+所有浏览器都支持 window 对象。概念上讲.一个html文档对应一个window对象.功能上讲: 控制浏览器窗口的.使用上讲: window对象不需要创建对象,直接使用即可.
+Window 对象方法
+alert()            显示带有一段消息和一个确认按钮的警告框。
+confirm()          显示带有一段消息以及确认按钮和取消按钮的对话框。
+prompt()           显示可提示用户输入的对话框。
+
+open()             打开一个新的浏览器窗口或查找一个已命名的窗口。
+
+close()            ...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/05/25/JavaScript DOM/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
