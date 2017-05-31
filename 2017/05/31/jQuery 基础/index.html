@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jquery 基础 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="JavaScript" />
+  
+  
+  
+  
+  <meta name="description" content="jQuery是一个快速的，简洁的javaScript库，使用户能更方便地处理HTMLdocuments、events
+
+jQuery对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery 基础">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/05/31/jQuery 基础/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="jQuery是一个快速的，简洁的javaScript库，使用户能更方便地处理HTMLdocuments、events
+
+jQuery对象">
+<meta property="og:updated_time" content="2017-05-31T10:47:48.060Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery 基础">
+<meta name="twitter:description" content="jQuery是一个快速的，简洁的javaScript库，使用户能更方便地处理HTMLdocuments、events
+
+jQuery对象">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-jQuery 基础" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      jQuery 基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/05/31/jQuery 基础/" class="article-date">
+	  <time datetime="2017-05-31T00:35:28.587Z" itemprop="datePublished">五月 31, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>jQuery是一个快速的，简洁的javaScript库，使用户能更方便地处理HTMLdocuments、events</p>
+</blockquote>
+<h2 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a>jQuery对象</h2><a id="more"></a>
+<p>jQuery 对象就是通过jQuery<strong>包装DOM对象</strong>后产生的对象</p>
+<p>jQuery是通过$符号进行调用，同样的支持jQuery,<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;ppp&lt;/p&gt;</div><div class="line">	&lt;script src="jquery-3.2.1.js"&gt;&lt;/script&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">		$("p").css("color","red");</div><div class="line">		var $ele=$("p");//这是jQuery对象</div><div class="line">		//var $ele=jQuery("p");//和上面的效果是一样的</div></pre></td></tr></table></figure></p>
+<h3 id="jQuery对象转换成DOM对象"><a href="#jQuery对象转换成DOM对象" class="headerlink" title="jQuery对象转换成DOM对象"></a>jQuery对象转换成DOM对象</h3><p>$variable[0]：jquery对象转为dom对象</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;ppp&lt;/p&gt;</div><div class="line">	&lt;script src="jquery-3.2.1.js"&gt;&lt;/script&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">		$("p").css("color","red");</div><div class="line">		var $ele=$("p")[0].innerText;//把jQuery对象转换成DOM对象 </div><div class="line">		console.log($ele);</div></pre></td></tr></table></figure>
+<p><strong>jquery的基础语法</strong>：$(selector).action()</p>
+<h2 id="寻找元素-选择器和筛选器"><a href="#寻找元素-选择器和筛选器" class="headerlink" title="寻找元素(选择器和筛选器)"></a>寻找元素(选择器和筛选器)</h2><h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><p><strong>小技巧：</strong> 删除ul li 的默认 有list-syle:none；<br>快速建ul li  ul&gt;li*4 就是快速建立4个</p>
+<ul>
+<li>基本选择器</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;p&lt;/p&gt;</div><div class="line">&lt;p&gt;pp&lt;/p&gt;</div><div class="line">&lt;p id="p2"&gt;ppp&lt;/p&gt;</div><div class="line">&lt;p class="p3"&gt;pppp&lt;/p&gt;</div><div class="line"></div><div class="line">	&lt;script src="jquery-3.2.1.js"&gt;&lt;/script&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">		// $("*").css("color","red");//全部的</div><div class="line">		// $("#p2").css("color","red");//找ID</div><div class="line">		// $(".p3").css("color","red");//找class</div><div class="line">		$(".p3,#p2").css("color","red");//找class ID多个用逗号分开</div><div class="line">	&lt;/script&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>层级选择器</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">".outer p"</span>).css(<span class="string">"color"</span>,<span class="string">"red"</span>);<span class="comment">//div内全部的</span></div><div class="line">$(<span class="string">".outer&gt;p"</span>).css(<span class="string">"color"</span>,<span class="string">"red"</span>);<span class="comment">//子代</span></div><div class="line">$(<span class="string">".outer+p"</span>).css(<span class="string">"color"</span>,<span class="string">"red"</span>);<span class="comment">//毗邻</span></div><div class="line">$(<span class="string">".outer~p"</span>).css(<span class="string">"color"</span>,<span class="string">"red"</span>);<span class="comment">//兄弟</span></div><div class="line">$(<span class="string">".p1~div"</span>).css(<span class="string">"color"</span>,<span class="string">"red"</span>);<span class="comment">//兄弟</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>基本筛选器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	<span class="comment">// $("li:first").css("color","red");//第一个</span></div><div class="line">	<span class="comment">// $("li:last").css("color","red");//最后一个</span></div><div class="line">	<span class="comment">// $("li:eq(2)").css("color","red");//索引是第二个</span></div><div class="line">	<span class="comment">// $("li:gt(2)").css("color","red");//大于</span></div><div class="line">	$(<span class="string">"li:lt(2)"</span>).css(<span class="string">"color"</span>,<span class="string">"red"</span>);<span class="comment">//小于</span></div><div class="line">       <span class="comment">// $("li:even").css("color","red");//偶数</span></div><div class="line">	$(<span class="string">"li:odd"</span>).css(<span class="string">"color"</span>,<span class="string">"red"</span>);<span class="comment">//奇数</span></div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>属性选择器</p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div aa="sb"&gt;aaa&lt;/div&gt;</div><div class="line">&lt;div aa="sbb"&gt;aabbba&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">		$("[aa]").css("color","red");//这种是自定义的属性</div><div class="line">		$("[aa=sb]").css("color","red");//这样就能找到唯一的一个</div><div class="line">	&lt;/script&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>表单选择器</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;input type=<span class="string">"text"</span>&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"pwd"</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">		<span class="comment">// $("[type=text]").css("border","2px solid red");</span></div><div class="line">		$(<span class="string">":text"</span>).css(<span class="string">"border"</span>,<span class="string">"2px solid red"</span>);<span class="comment">//这个仅仅适用于input</span></div><div class="line">	<span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>实 例 1：左侧菜单</strong></p>
+<p><strong>过滤 筛选器</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//$("ul li:eq(2)").css("color","red");//</span></div></pre></td></tr></table></figure></p>
+<p><strong>查找筛选器</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// $("ul li").eq(2).css("color","red");//推荐用这个</span></div><div class="line">        <span class="keyword">var</span> $ret=$(<span class="string">"ul li"</span>).eq(<span class="number">2</span>).hasClass(<span class="string">"item"</span>);<span class="comment">//有返回值是true 没有返回值是false</span></div></pre></td></tr></table></figure>
+<h3 id="筛选器"><a href="#筛选器" class="headerlink" title="筛选器"></a>筛选器</h3><p><strong>孩子组</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;div class="div1"&gt;</div><div class="line">	&lt;div class="div2"&gt;</div><div class="line">		&lt;p id="p1"&gt;222&lt;/p&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">	&lt;p id="p2"&gt;ppp&lt;/p&gt;</div><div class="line">	&lt;a href=""&gt;111&lt;/a&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">		$(".div1").children("p").css("color","red");//找子代</div><div class="line">		$(".div1").find("p").css("color","red");//找后代 儿子 孙子</div><div class="line">	&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>兄弟</strong></p>
+<p>sibilings是js中没有的<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">		&lt;li class="item active"&gt;111&lt;/li&gt;</div><div class="line">		&lt;li class="item"&gt;222&lt;/li&gt;</div><div class="line">		&lt;li class="item"&gt;333&lt;/li&gt;</div><div class="line">		&lt;li class="item items"&gt;444&lt;/li&gt;</div><div class="line">		&lt;li class="item "&gt;555&lt;/li&gt;</div><div class="line">		&lt;li class="item"&gt;666&lt;/li&gt;</div><div class="line">		&lt;li class="item "&gt;777&lt;/li&gt;</div><div class="line"></div><div class="line">	&lt;/ul&gt;</div><div class="line">&lt;script&gt;</div><div class="line">$(".active").next().css("color","red");//找下一个</div><div class="line">		$(".active").nextAll().css("color","red");//找下面的全部</div><div class="line">		$(".active").nextUntil(".items").css("color","red");//区间 但是找不到itmes的哪一个</div><div class="line">		//自己出错的点是.items没有加上点</div><div class="line">		$(".items").siblings().css("color","red");//除了这个之外的所有的兄弟</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="jQuery支持链式操作"><a href="#jQuery支持链式操作" class="headerlink" title="jQuery支持链式操作"></a>jQuery支持链式操作</h3><p><strong>这里的关键是最后操作的结果是self().next这一级别，下面还有next的话，就是下一级</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">self</span>)</span>&#123;</div><div class="line">$(self).next().removeClass(<span class="string">"hide"</span>).parent().siblings().children(<span class="string">".con"</span>).addClass(<span class="string">"hide"</span>);</div><div class="line">         &#125;</div></pre></td></tr></table></figure>
+<h2 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h2><ul>
+<li>arrt</li>
+</ul>
+<p>适合操作自定义属性，内部定义的是undefined</p>
+<ul>
+<li>prop</li>
+</ul>
+<p>选择框 选上的是时候是true,否则是false<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">":checkbox"</span>)</div><div class="line">[input, <span class="attr">prevObject</span>: jQuery.fn.init(<span class="number">1</span>)]</div><div class="line">$(<span class="string">":checkbox"</span>).prop(<span class="string">"checked"</span>)</div><div class="line"><span class="literal">true</span></div><div class="line">$(<span class="string">":checkbox"</span>).prop(<span class="string">"checked"</span>)</div><div class="line"><span class="literal">false</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/05/31/jQuery 基础/" data-title="jQuery 基础" data-url="https://github.com/ythzx/ythzx.github.io/2017/05/31/jQuery 基础/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/05/25/JavaScript DOM/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">JavaScript BOM  DOM 对象</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery对象"><span class="nav-number">1.</span> <span class="nav-text">jQuery对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery对象转换成DOM对象"><span class="nav-number">1.1.</span> <span class="nav-text">jQuery对象转换成DOM对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寻找元素-选择器和筛选器"><span class="nav-number">2.</span> <span class="nav-text">寻找元素(选择器和筛选器)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择器"><span class="nav-number">2.1.</span> <span class="nav-text">选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#筛选器"><span class="nav-number">2.2.</span> <span class="nav-text">筛选器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery支持链式操作"><span class="nav-number">2.3.</span> <span class="nav-text">jQuery支持链式操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性操作"><span class="nav-number">3.</span> <span class="nav-text">属性操作</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

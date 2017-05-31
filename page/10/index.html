@@ -96,6 +96,68 @@
         
           <section id="main">
   
+    <article id="post-Python条件判断 if-else  for循环 while循环 break continue"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/">Python条件判断 if-else  for循环 while循环 break continue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/" class="article-date">
+	  <time datetime="2017-03-29T12:26:12.634Z" itemprop="datePublished">三月 29, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            条件判断 if-else
+if-else语句是通过if 后面的是否为真，当为True,就执行if代码块后面的，如果为False,同时又有else语句，执行else后面的内容。没有else,什么都不执行。
+注意，python是通过冒号来进行区分代码块的，后面的需要缩进
+1234567if xxx :.....elif xxx:...else:....
+
+if语句执行有个特点，它是从上往下判断，如果在某个判断上是True，把该判断对应的语句执行后，就忽略掉剩下的elif和else
+
+if条件简写
+123x=1if x:    print('True')
+只要x是非零数值、非空字符串、非空list等，就判断为True，否则为False。
+bool为假：123456false		[]空列表		...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/03/29/Python条件判断 if-else  for循环 while循环 break continue/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python学习list和tuple"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -340,74 +402,11 @@ ASCII和Unicode的区别是ASCII通常是1个字节，Unicode是2个字节
 <!-- Table of Contents -->
 
   
-    <article id="post-awk文本处理 shell脚本"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/23/awk文本处理 shell脚本/">awk文本处理 shell脚本</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/23/awk文本处理 shell脚本/" class="article-date">
-	  <time datetime="2017-03-23T08:17:09.855Z" itemprop="datePublished">三月 23, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            一、awk文本处理
-awk可以处理有格式的文本，可以指定分割的符号
-提取冒号分割的第一部分
-1awk -F: &apos;&#123;print $1&#125;&apos; b.txt
-提取第一部分并输出冒号分割的有几部分
-1awk -F: &apos;&#123;print $1,NF&#125;&apos; b.txt
-输出冒号分割的第一部分和最后一部分
-1awk -F: &apos;&#123;print $1,$NF&#125;&apos; b.txt
-显示第一部分的行号
-1awk -F: &apos;&#123;print NR,$1&#125;&apos; b.txt
-定位前3行的第一部分内容内容
-1awk -F: &apos;NR&lt;=3&#123;print NR...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/23/awk文本处理 shell脚本/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/9/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/11/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/9/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/">下一页</a>
   </nav>
 
 </section>
@@ -519,6 +518,18 @@ awk可以处理有格式的文本，可以指定分割的符号
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/05/31/jQuery 基础/">jQuery 基础</a></h6>
+              <span>五月 31, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/05/25/JavaScript DOM/">JavaScript BOM  DOM 对象</a></h6>
               <span>五月 25, 2017</span>
             </div>
@@ -573,18 +584,6 @@ awk可以处理有格式的文本，可以指定分割的符号
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/05/16/HTML 标签/">HTML 标签</a></h6>
-              <span>五月 16, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -597,7 +596,7 @@ awk可以处理有格式的文本，可以指定分割的符号
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">40</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">40</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -607,7 +606,7 @@ awk可以处理有格式的文本，可以指定分割的符号
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JavaScript/" style="font-size: 13.33px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Web/" style="font-size: 13.33px;">Web</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Web/" style="font-size: 12.5px;">Web</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -617,7 +616,7 @@ awk可以处理有格式的文本，可以指定分割的符号
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
