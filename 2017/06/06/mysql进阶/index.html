@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mysql 外键 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="MySQL" />
+  
+  
+  
+  
+  <meta name="description" content="自增补充">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 外键">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/06/06/mysql进阶/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="自增补充">
+<meta property="og:updated_time" content="2017-06-06T14:57:12.865Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL 外键">
+<meta name="twitter:description" content="自增补充">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-mysql进阶" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      MySQL 外键
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/06/06/mysql进阶/" class="article-date">
+	  <time datetime="2017-06-06T14:57:54.467Z" itemprop="datePublished">六月 6, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="自增补充"><a href="#自增补充" class="headerlink" title="自增补充"></a>自增补充</h3><a id="more"></a>
+<p>这是查看怎么创建的表， \G示旋转90度显示表的内容<br>表的自增的关键是<strong> AUTO_INCREMENT=3</strong>，在表中添加数据后，这个会自动改变，通过alert可以改变这个默认值<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show create table t1 \G;</div><div class="line">*************************** 1. row ***************************</div><div class="line">       Table: t1</div><div class="line">Create Table: CREATE TABLE `t1` (</div><div class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</div><div class="line">  `name` char(10) DEFAULT NULL,</div><div class="line">  PRIMARY KEY (`id`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8</div></pre></td></tr></table></figure></p>
+<p>下一次添加的内容的id会从20处添加<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> t10 AUTO_INCREMENT=<span class="number">20</span>;</div></pre></td></tr></table></figure></p>
+<h4 id="自增步长"><a href="#自增步长" class="headerlink" title="自增步长"></a>自增步长</h4><p>mysql是的默认步长是基于会话session的，sqlserver是基于表的。<br>查看全局变量，其中默认是1<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show session variables like 'auto_inc%';</div><div class="line">+--------------------------+-------+</div><div class="line">| Variable_name            | Value |</div><div class="line">+--------------------------+-------+</div><div class="line">| auto_increment_increment | 1     |</div><div class="line">| auto_increment_offset    | 1     |</div><div class="line">+--------------------------+-------+</div><div class="line">2 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p><strong>设置步长基于会话步长，只能自该自己的会话</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">set</span> <span class="keyword">session</span> auto_increment_increment=<span class="number">2</span>; 	设置会话步长</div><div class="line"><span class="keyword">set</span> <span class="keyword">session</span> auto_increment_offset=<span class="number">10</span>; 设置开始的位置</div></pre></td></tr></table></figure></p>
+<p><strong>基于全局的级别的，可以修改全部的会话</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">show</span> <span class="keyword">global</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'auto_inc%'</span>;	    查看全局变量</div><div class="line"><span class="keyword">set</span> <span class="keyword">global</span> auto_increment_increment=<span class="number">2</span>; 	    设置会话步长</div><div class="line"><span class="keyword">set</span> <span class="keyword">global</span> auto_increment_offset=<span class="number">10</span>;</div></pre></td></tr></table></figure></p>
+<h3 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h3><p>unique</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> t1(</div><div class="line">			<span class="keyword">id</span> <span class="built_in">int</span> ....,</div><div class="line">			<span class="keyword">num</span> <span class="built_in">int</span>,</div><div class="line">			xx <span class="built_in">int</span>,</div><div class="line">			<span class="keyword">unique</span> 唯一索引名称 (列名,列名),</div><div class="line">			<span class="keyword">constraint</span> ....</div><div class="line">		)</div></pre></td></tr></table></figure>
+<p>这了唯一的意思是：</p>
+<ul>
+<li>约束不能重复（可以为空）</li>
+<li>主键不能重复（不能为空）</li>
+</ul>
+<p>作用是加速查找</p>
+<h3 id="外键的变种"><a href="#外键的变种" class="headerlink" title="外键的变种"></a>外键的变种</h3><ul>
+<li>单列</li>
+</ul>
+<ul>
+<li>联合</li>
+</ul>
+<p>关联一对多<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> userinfo(</div><div class="line">	<span class="keyword">id</span>  <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</div><div class="line">	username <span class="built_in">varchar</span>,</div><div class="line">	usertype <span class="built_in">int</span>,</div><div class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span> <span class="keyword">default</span> <span class="keyword">charset</span>=utf8;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">admin</span>(</div><div class="line">	<span class="keyword">id</span>  <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</div><div class="line">	user_id <span class="built_in">int</span>,</div><div class="line">	passwprd <span class="built_in">varchar</span>,</div><div class="line">	<span class="keyword">unique</span> <span class="keyword">index</span>(user_id),</div><div class="line">	<span class="keyword">constraint</span> fk_key1 foreign <span class="keyword">key</span> (user_id) <span class="keyword">references</span> userinfo(<span class="keyword">id</span>)</div><div class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span> <span class="keyword">default</span> <span class="keyword">charset</span>=utf8;</div></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">-- 外键关联多个列</span></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> t2(</div><div class="line">	nid <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">	pid <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</div><div class="line">	<span class="keyword">num</span> <span class="built_in">int</span>,</div><div class="line">	primary <span class="keyword">key</span>(nid,pid)<span class="comment">-- 这里的关联两个列的主键</span></div><div class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span> <span class="keyword">default</span> <span class="keyword">charset</span>=utf8;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> t3(</div><div class="line">	<span class="keyword">id</span> <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</div><div class="line">	<span class="keyword">name</span> <span class="built_in">char</span>,</div><div class="line">	id1 <span class="built_in">int</span>,</div><div class="line">	id2 <span class="built_in">int</span>,</div><div class="line">	<span class="keyword">constraint</span> fk_t3_t2 foreign <span class="keyword">key</span> (id1,id2) <span class="keyword">references</span> t2(nid,pid)</div><div class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span> <span class="keyword">default</span> <span class="keyword">charset</span>=utf8;</div></pre></td></tr></table></figure>
+<p>多对多</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">-- 多对多</span></div><div class="line"></div><div class="line"><span class="comment">-- 用户表 </span></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> userinfo(</div><div class="line">	<span class="keyword">id</span>  <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</div><div class="line">	username <span class="built_in">varchar</span>,</div><div class="line">	gender <span class="built_in">int</span>,</div><div class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span> <span class="keyword">default</span> <span class="keyword">charset</span>=utf8;</div><div class="line"></div><div class="line"><span class="comment">-- 主机表</span></div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> computer(</div><div class="line">	<span class="keyword">id</span>  <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</div><div class="line">	<span class="keyword">name</span> <span class="built_in">varchar</span>,</div><div class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span> <span class="keyword">default</span> <span class="keyword">charset</span>=utf8;</div><div class="line"></div><div class="line"><span class="comment">-- 用户主机关系表</span></div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> userandcom(</div><div class="line">	<span class="keyword">id</span>  <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</div><div class="line">	user_id <span class="built_in">int</span>,</div><div class="line">	host_id <span class="built_in">int</span>,</div><div class="line">	<span class="keyword">unique</span> <span class="keyword">index</span>(user_id,host_id),</div><div class="line">	<span class="keyword">constraint</span> fk_key2 foreign <span class="keyword">key</span> (user_id) <span class="keyword">references</span> userinfo(<span class="keyword">id</span>),</div><div class="line">	<span class="keyword">constraint</span> fk_key3 foreign <span class="keyword">key</span> (host_id) <span class="keyword">references</span> computer(<span class="keyword">id</span>)</div><div class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span> <span class="keyword">default</span> <span class="keyword">charset</span>=utf8;</div></pre></td></tr></table></figure>
+<h4 id="SQL语句数据行操作补充"><a href="#SQL语句数据行操作补充" class="headerlink" title="SQL语句数据行操作补充"></a>SQL语句数据行操作补充</h4><h5 id="增"><a href="#增" class="headerlink" title="增"></a>增</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">-- 增加单条数据</div><div class="line">insert into t1 (name) values(&apos;ddd&apos;)；</div><div class="line">增加多条数据</div><div class="line">-- insert into t1 (name) values(&apos;ddd&apos;),(&apos;eee&apos;);</div><div class="line"></div><div class="line">-- 从一个表中添加另一个内容</div><div class="line">insert into t4(name) select name from t1;</div><div class="line">+------+------+</div><div class="line">| id   | name |</div><div class="line">+------+------+</div><div class="line">| NULL | aaa  |</div><div class="line">| NULL | aaa  |</div><div class="line">| NULL | ccc  |</div><div class="line">| NULL | ddd  |</div><div class="line">| NULL | eee  |</div><div class="line">+------+------+</div><div class="line">这里出现null的原因是在创建表的时候没有添加自增和主键</div></pre></td></tr></table></figure>
+<p>在调试中发现char后面不加长度，默认的长度是1，所以要添加一个长度。这个是根据需求</p>
+<h5 id="删"><a href="#删" class="headerlink" title="删"></a>删</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb12;</div><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb12 <span class="keyword">where</span> <span class="keyword">id</span> !=<span class="number">2</span> </div><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb12 <span class="keyword">where</span> <span class="keyword">id</span> =<span class="number">2</span> </div><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb12 <span class="keyword">where</span> <span class="keyword">id</span> &gt; <span class="number">2</span> </div><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb12 <span class="keyword">where</span> <span class="keyword">id</span> &gt;=<span class="number">2</span> </div><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tb12 <span class="keyword">where</span> <span class="keyword">id</span> &gt;=<span class="number">2</span> <span class="keyword">or</span> <span class="keyword">name</span>=<span class="string">'a'</span></div></pre></td></tr></table></figure>
+<h5 id="改"><a href="#改" class="headerlink" title="改"></a>改</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">update</span> tb12 <span class="keyword">set</span> <span class="keyword">name</span>=<span class="string">'a'</span> <span class="keyword">where</span> <span class="keyword">id</span>&gt;<span class="number">12</span> <span class="keyword">and</span> <span class="keyword">name</span>=<span class="string">'xx'</span></div><div class="line"><span class="keyword">update</span> tb12 <span class="keyword">set</span> <span class="keyword">name</span>=<span class="string">'a'</span>,age=<span class="number">19</span> <span class="keyword">where</span> <span class="keyword">id</span>&gt;<span class="number">12</span> <span class="keyword">and</span> <span class="keyword">name</span>=<span class="string">'xx'</span></div></pre></td></tr></table></figure>
+<h5 id="查"><a href="#查" class="headerlink" title="查"></a>查</h5><p>select * from tb12;<br>select id,name from tb12;<br>select id,name from tb12 where id &gt; 10 or name =’xxx’;<br>select id,name as cname from tb12 where id &gt; 10 or name =’xxx’;<br>select name,age,11 from tb12;</p>
+<p>select <em> from tb12 where id != 1<br>select </em> from tb12 where id in (1,5,12);<br>select <em> from tb12 where id not in (1,5,12);<br>select </em> from tb12 where id in (select id from tb11)<br>select * from tb12 where id between 5 and 12;</p>
+<ul>
+<li>通配符<br>通配符的意识替换的意思<br>%能够替换多个字符<br>_只能替换一个字符</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tb12 <span class="keyword">where</span> <span class="keyword">name</span> <span class="keyword">like</span> <span class="string">"a%"</span></div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tb12 <span class="keyword">where</span> <span class="keyword">name</span> <span class="keyword">like</span> <span class="string">"aa_"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>分页</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">select * from tb12 limit 10;					</div><div class="line">select * from tb12 limit 0,10;</div><div class="line">select * from tb12 limit 10,10;</div><div class="line">select * from tb12 limit 20,10;</div></pre></td></tr></table></figure>
+<p>后期的Python应用<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># page = input('请输入要查看的页码')</div><div class="line"># page = int(page)</div><div class="line"># (page-1) * 10</div><div class="line"># select * from tb12 limit 0,10; 第一页1 </div><div class="line"># select * from tb12 limit 10,10;第二页2</div><div class="line">```                   </div><div class="line"></div><div class="line"></div><div class="line">- 排序</div><div class="line"></div><div class="line">```sql</div><div class="line">select * from tb12 order by id desc; 大到小</div><div class="line">select * from tb12 order by id asc;  小到大</div><div class="line">select * from tb12 order by age desc,id desc; # 这是优先级 先按照age倒序，后按照id排序（ID中有相同的）</div><div class="line"> </div><div class="line">取后10条数据：先倒序后去取</div><div class="line">select * from tb12 order by id desc limit 10;</div></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select * from t5 order by name desc,id desc;</div><div class="line">+----+------+</div><div class="line">| id | name |</div><div class="line">+----+------+</div><div class="line">|  5 | eee  |</div><div class="line">|  4 | ddd  |</div><div class="line">|  3 | ccc  |</div><div class="line">|  2 | aaa  |</div><div class="line">|  1 | aaa  |</div><div class="line">+----+------+</div><div class="line">5 rows in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; select * from t5 order by name desc,id asc;</div><div class="line">+----+------+</div><div class="line">| id | name |</div><div class="line">+----+------+</div><div class="line">|  5 | eee  |</div><div class="line">|  4 | ddd  |</div><div class="line">|  3 | ccc  |</div><div class="line">|  1 | aaa  |</div><div class="line">|  2 | aaa  |</div><div class="line">+----+------+</div></pre></td></tr></table></figure>
+<ul>
+<li>分组</li>
+</ul>
+<p>select count(id),max(id),part_id from userinfo5 group by part_id;</p>
+<pre><code>- count
+- max
+- min
+- sum
+- avg
+</code></pre><p><strong>如果对于聚合函数结果进行二次筛选时？必须使用having ,不能使用where</strong><br>select count(id),part_id from userinfo5 group by part_id having count(id) &gt; 1;</p>
+<ul>
+<li>连表操作</li>
+</ul>
+<p>连表操作主要是把两张表显示在一张表上，主要用过join</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> userinfo5,department5 <span class="comment">-- 这种是笛卡尔积的形式 即所有的乘积</span></div><div class="line"></div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> userinfo5,department5 <span class="keyword">where</span> userinfo5.part_id = department5.id;</div><div class="line"></div><div class="line">左边全部显示</div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> userinfo5 <span class="keyword">left</span> <span class="keyword">join</span> department5 <span class="keyword">on</span> userinfo5.part_id = department5.id</div><div class="line"></div><div class="line">右边全部显示</div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> userinfo5 <span class="keyword">right</span> <span class="keyword">join</span> department5 <span class="keyword">on</span> userinfo5.part_id = department5.id</div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> department5 <span class="keyword">left</span> <span class="keyword">join</span> userinfo5 <span class="keyword">on</span> userinfo5.part_id = department5.id;这种就是变相的right</div></pre></td></tr></table></figure>
+<p>如果一张表显示全部，但是另一张表还有多的内容的时候，就会出现空null</p>
+<p>inner join  将出现null时一行隐藏</p>
+<pre><code class="sql"><span class="keyword">select</span> * <span class="keyword">from</span> userinfo5 innder <span class="keyword">join</span> department5 <span class="keyword">on</span> userinfo5.part_id = department5.id
+</code></pre>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/06/06/mysql进阶/" data-title="MySQL 外键" data-url="https://github.com/ythzx/ythzx.github.io/2017/06/06/mysql进阶/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/06/05/mysql基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">MySQL基础</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#自增补充"><span class="nav-number">1.</span> <span class="nav-text">自增补充</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自增步长"><span class="nav-number">1.1.</span> <span class="nav-text">自增步长</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#唯一索引"><span class="nav-number">2.</span> <span class="nav-text">唯一索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外键的变种"><span class="nav-number">3.</span> <span class="nav-text">外键的变种</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL语句数据行操作补充"><span class="nav-number">3.1.</span> <span class="nav-text">SQL语句数据行操作补充</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#增"><span class="nav-number">3.1.1.</span> <span class="nav-text">增</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删"><span class="nav-number">3.1.2.</span> <span class="nav-text">删</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#改"><span class="nav-number">3.1.3.</span> <span class="nav-text">改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查"><span class="nav-number">3.1.4.</span> <span class="nav-text">查</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
