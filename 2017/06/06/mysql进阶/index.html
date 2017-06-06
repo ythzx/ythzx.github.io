@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>mysql 外键 | Peter&#39;s Blog Center</title>
+  <title>mysql 外键 表的查询 | Peter&#39;s Blog Center</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="keywords" content="MySQL" />
@@ -13,13 +13,13 @@
   
   <meta name="description" content="自增补充">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL 外键">
+<meta property="og:title" content="MySQL 外键 表的查询">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/06/06/mysql进阶/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
 <meta property="og:description" content="自增补充">
-<meta property="og:updated_time" content="2017-06-06T14:57:12.865Z">
+<meta property="og:updated_time" content="2017-06-06T15:02:59.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL 外键">
+<meta name="twitter:title" content="MySQL 外键 表的查询">
 <meta name="twitter:description" content="自增补充">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
@@ -108,7 +108,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      MySQL 外键
+      MySQL 外键 表的查询
     </h1>
   
 
@@ -180,8 +180,9 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> userinfo5,department5 <span class="comment">-- 这种是笛卡尔积的形式 即所有的乘积</span></div><div class="line"></div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> userinfo5,department5 <span class="keyword">where</span> userinfo5.part_id = department5.id;</div><div class="line"></div><div class="line">左边全部显示</div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> userinfo5 <span class="keyword">left</span> <span class="keyword">join</span> department5 <span class="keyword">on</span> userinfo5.part_id = department5.id</div><div class="line"></div><div class="line">右边全部显示</div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> userinfo5 <span class="keyword">right</span> <span class="keyword">join</span> department5 <span class="keyword">on</span> userinfo5.part_id = department5.id</div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> department5 <span class="keyword">left</span> <span class="keyword">join</span> userinfo5 <span class="keyword">on</span> userinfo5.part_id = department5.id;这种就是变相的right</div></pre></td></tr></table></figure>
 <p>如果一张表显示全部，但是另一张表还有多的内容的时候，就会出现空null</p>
 <p>inner join  将出现null时一行隐藏</p>
-<pre><code class="sql"><span class="keyword">select</span> * <span class="keyword">from</span> userinfo5 innder <span class="keyword">join</span> department5 <span class="keyword">on</span> userinfo5.part_id = department5.id
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> userinfo5 innder <span class="keyword">join</span> department5 <span class="keyword">on</span> userinfo5.part_id = department5.id</div><div class="line"><span class="string">``</span><span class="string">`					</span></div><div class="line"></div><div class="line">`<span class="string">``</span><span class="keyword">sql</span></div><div class="line">mysql&gt; <span class="keyword">select</span> * <span class="keyword">from</span> t1 <span class="keyword">left</span> <span class="keyword">join</span> t5 <span class="keyword">on</span> t1.id=t5.id;</div><div class="line">+<span class="comment">----+-------+------+------+</span></div><div class="line">| id | name  | id   | name |</div><div class="line">+<span class="comment">----+-------+------+------+</span></div><div class="line">|  1 | aaa   |    1 | aaa  |</div><div class="line">|  2 | aaa   |    2 | aaa  |</div><div class="line">|  3 | ccc   |    3 | ccc  |</div><div class="line">|  4 | ddd   |    4 | ddd  |</div><div class="line">|  5 | eee   |    5 | eee  |</div><div class="line">|  6 | hahah | NULL | NULL |</div><div class="line">+<span class="comment">----+-------+------+------+</span></div></pre></td></tr></table></figure>
+<p>隐藏空行<br>mysql&gt; select * from t1 inner join t5 on t1.id=t5.id;<br>+—-+——+—-+——+<br>| id | name | id | name |<br>+—-+——+—-+——+<br>|  1 | aaa  |  1 | aaa  |<br>|  2 | aaa  |  2 | aaa  |<br>|  3 | ccc  |  3 | ccc  |<br>|  4 | ddd  |  4 | ddd  |<br>|  5 | eee  |  5 | eee  |<br>+—-+——+—-+——+<br>5 rows in set (0.00 sec)</p>
+<p>```sql</p>
 
       
     </div>
@@ -196,7 +197,7 @@
 	<div id="comment">
 	
 	<!-- 多说评论框 start -->
-	 <div class="ds-thread" data-thread-key="/2017/06/06/mysql进阶/" data-title="MySQL 外键" data-url="https://github.com/ythzx/ythzx.github.io/2017/06/06/mysql进阶/"></div>
+	 <div class="ds-thread" data-thread-key="/2017/06/06/mysql进阶/" data-title="MySQL 外键 表的查询" data-url="https://github.com/ythzx/ythzx.github.io/2017/06/06/mysql进阶/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
