@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/06/06/mysql进阶/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
 <meta property="og:description" content="自增补充">
-<meta property="og:updated_time" content="2017-06-07T11:31:44.230Z">
+<meta property="og:updated_time" content="2017-06-07T11:33:50.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 外键 表的查询">
 <meta name="twitter:description" content="自增补充">
@@ -182,13 +182,14 @@
 <p>inner join  将出现null时一行隐藏</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> userinfo5 innder <span class="keyword">join</span> department5 <span class="keyword">on</span> userinfo5.part_id = department5.id</div><div class="line"><span class="string">``</span><span class="string">`					</span></div><div class="line"></div><div class="line">`<span class="string">``</span><span class="keyword">sql</span></div><div class="line">mysql&gt; <span class="keyword">select</span> * <span class="keyword">from</span> t1 <span class="keyword">left</span> <span class="keyword">join</span> t5 <span class="keyword">on</span> t1.id=t5.id;</div><div class="line">+<span class="comment">----+-------+------+------+</span></div><div class="line">| id | name  | id   | name |</div><div class="line">+<span class="comment">----+-------+------+------+</span></div><div class="line">|  1 | aaa   |    1 | aaa  |</div><div class="line">|  2 | aaa   |    2 | aaa  |</div><div class="line">|  3 | ccc   |    3 | ccc  |</div><div class="line">|  4 | ddd   |    4 | ddd  |</div><div class="line">|  5 | eee   |    5 | eee  |</div><div class="line">|  6 | hahah | NULL | NULL |</div><div class="line">+<span class="comment">----+-------+------+------+</span></div></pre></td></tr></table></figure>
 <p>隐藏空行<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select * from t1 inner join t5 on t1.id=t5.id;</div><div class="line">+----+------+----+------+</div><div class="line">| id | name | id | name |</div><div class="line">+----+------+----+------+</div><div class="line">|  1 | aaa  |  1 | aaa  |</div><div class="line">|  2 | aaa  |  2 | aaa  |</div><div class="line">|  3 | ccc  |  3 | ccc  |</div><div class="line">|  4 | ddd  |  4 | ddd  |</div><div class="line">|  5 | eee  |  5 | eee  |</div><div class="line">+----+------+----+------+</div><div class="line">5 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
-<h3 id="数据库的备份"><a href="#数据库的备份" class="headerlink" title="数据库的备份"></a>数据库的备份</h3><p>数据库导出</p>
+<h3 id="数据库的备份"><a href="#数据库的备份" class="headerlink" title="数据库的备份"></a>数据库的备份</h3><p><strong>数据库导出</strong></p>
 <ul>
 <li>mysqldump -u用户名 -p密码 数据库名称 &gt;导出文件路径           # 结构+数据（导入的时候会自动穿件表并把表的内容插入）</li>
-<li><p>mysqldump -u用户名 -p密码 -d 数据库名称 &gt;导出文件路径       # 仅仅结构<br>导入现有数据库数据：</p>
-</li>
-<li><p>mysql -uroot -p密码  数据库名称 &lt; 文件路径  </p>
-</li>
+<li>mysqldump -u用户名 -p密码 -d 数据库名称 &gt;导出文件路径       # 仅仅结构 </li>
+</ul>
+<p><strong>导入现有数据库数据：</strong></p>
+<ul>
+<li>mysql -uroot -p密码  数据库名称 &lt; 文件路径  </li>
 </ul>
 <p><strong>注意的是导入的时候不能用dump</strong></p>
 
