@@ -119,37 +119,30 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-自己开发Web框架"><a href="#1-自己开发Web框架" class="headerlink" title="1  自己开发Web框架"></a>1  自己开发Web框架</h2><p>开发Web框架涉及的内容</p>
-<ul>
-<li>socket</li>
-<li><p>http协议</p>
-<p>  无状态是指Web浏览器和Web服务器之间不需要建立持久的连接，这意味着当一个客户端向服务器端发出请求，然后Web服务器返回响应(response)，连接就被关闭了</p>
-</li>
-<li>HTML知识</li>
-<li>数据库（pymysql,SQLAlchemery）</li>
-</ul>
-<p>互联网的通信都是基于sock进行通信的<br>HTTP:无状态、短连接<br>TCP：不断开<br><strong>WEB应用（网站）：</strong></p>
-<p>HTTP协议：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">发送：</div><div class="line">				POST /index HTTP/1.1</div><div class="line">				Host: 127.0.0.1:8080</div><div class="line">				Connection: keep-alive</div><div class="line">				Cache-Control: max-age=0</div><div class="line">				Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div><div class="line">				User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36</div><div class="line">				HTTPS: 1</div><div class="line">				Accept-Encoding: gzip, deflate, sdch</div><div class="line">				Accept-Language: zh-CN,zh;q=0.8</div><div class="line">				Cookie: csrftoken=hNmu2JOtntGMN0hSRSPmMQk2newEb3o8zb6pXW5Cc3m54IaA5VlTkUvqWsFezpni</div><div class="line"></div><div class="line"></div><div class="line">				p=123</div><div class="line">			</div><div class="line">响应：</div><div class="line">				200 OK</div><div class="line">				Cache-Control:public, max-age=15</div><div class="line">				Connection:keep-alive</div><div class="line">				Content-Encoding:gzip</div><div class="line">				Content-Type:text/html; charset=utf-8</div><div class="line">				Date:Wed, 14 Jun 2017 01:21:17 GMT</div><div class="line">				Expires:Wed, 14 Jun 2017 01:21:33 GMT</div><div class="line">				Last-Modified:Wed, 14 Jun 2017 01:21:03 GMT</div><div class="line">				Transfer-Encoding:chunked</div><div class="line">				Vary:Accept-Encoding</div><div class="line">				X-Frame-Options:SAMEORIGIN</div><div class="line">				X-UA-Compatible:IE=10</div><div class="line">						</div><div class="line">				</div><div class="line">				</div><div class="line">				用户在页面看到的内容“字符串”（看到页面效果，由于浏览器解析）</div></pre></td></tr></table></figure>
-<p><strong>浏览器（socket客户端）</strong></p>
-<pre><code>2. www.cnblogs.com （42.121.252.58，80）
-    sk.socket()
-    sk.connect(（42.121.252.58，80）)
+        
 
-    sk.send(&apos;我想要xx&apos;)
-5. 接收
-6. 连接断开
-</code></pre><p><strong>博客园（socket服务端）</strong></p>
-<pre><code>1. 监听ip和端口（42.121.252.58，80）
-    while True:
-        用户 = 等待用户连接
-        3. 收到&apos;我想要xx&apos;
-        4. 响应：“好”
-        用户断开
-</code></pre><p><strong>下面的代码构成了一个简单的web框架：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line">sock = socket.socket()</div><div class="line">sock.bind((<span class="string">'127.0.0.1'</span>,<span class="number">8080</span>))</div><div class="line">sock.listen(<span class="number">5</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    conn,addr = sock.accept() <span class="comment"># hang住</span></div><div class="line">    <span class="comment"># 有人来连接了</span></div><div class="line">    <span class="comment"># 获取用户发送的数据</span></div><div class="line">    data = conn.recv(<span class="number">8096</span>)</div><div class="line">    conn.send(<span class="string">b"HTTP/1.1 200 OK\r\n\r\n"</span>)</div><div class="line">    conn.send(<span class="string">b'123123'</span>)</div><div class="line">    conn.close()</div></pre></td></tr></table></figure></p>
-<p>参考内容：</p>
-<p><a href="http://www.cnblogs.com/yin-jingyu/archive/2011/08/01/2123548.html" target="_blank" rel="external">http://www.cnblogs.com/yin-jingyu/archive/2011/08/01/2123548.html</a></p>
+          
+            <div class="entry-summary" style="margin-left:0;">
+            1  自己开发Web框架
+开发Web框架涉及的内容
 
+socket
+http协议
+  无状态是指Web浏览器和Web服务器之间不需要建立持久的连接，这意味着当一个客户端向服务器端发出请求，然后Web服务器返回响应(response)，连接就被关闭了
+
+HTML知识
+数据库（pymysql,SQLAlchemery）
+
+互联网的通信都是基于sock进行通信的HTTP:无状态、短连接TCP：不断开WEB应用（网站）：
+HTTP协议：
+1234567891011121314151617181920212223242526272829303132发送：				POST /index HTTP/1.1				Host: 127.0.0.1:8080				Connection: keep-ali...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/06/14/Django框架基础/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">

@@ -11,43 +11,18 @@
   
   
   
-  <meta name="description" content="1  自己开发Web框架开发Web框架涉及的内容
-
-socket
-http协议
-  无状态是指Web浏览器和Web服务器之间不需要建立持久的连接，这意味着当一个客户端向服务器端发出请求，然后Web服务器返回响应(response)，连接就被关闭了
-
-HTML知识
-数据库（pymysql,SQLAlchemery）
-
-互联网的通信都是基于sock进行通信的HTTP:无状态、短连接TCP：不断开WEB">
+  <meta name="description" content="1  自己开发Web框架">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django框架">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/06/14/Django框架基础/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
-<meta property="og:description" content="1  自己开发Web框架开发Web框架涉及的内容
-
-socket
-http协议
-  无状态是指Web浏览器和Web服务器之间不需要建立持久的连接，这意味着当一个客户端向服务器端发出请求，然后Web服务器返回响应(response)，连接就被关闭了
-
-HTML知识
-数据库（pymysql,SQLAlchemery）
-
-互联网的通信都是基于sock进行通信的HTTP:无状态、短连接TCP：不断开WEB">
-<meta property="og:updated_time" content="2017-06-14T08:19:54.169Z">
+<meta property="og:description" content="1  自己开发Web框架">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201706/658994-20170614173305165-604670116.jpg">
+<meta property="og:updated_time" content="2017-06-14T11:28:10.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django框架">
-<meta name="twitter:description" content="1  自己开发Web框架开发Web框架涉及的内容
-
-socket
-http协议
-  无状态是指Web浏览器和Web服务器之间不需要建立持久的连接，这意味着当一个客户端向服务器端发出请求，然后Web服务器返回响应(response)，连接就被关闭了
-
-HTML知识
-数据库（pymysql,SQLAlchemery）
-
-互联网的通信都是基于sock进行通信的HTTP:无状态、短连接TCP：不断开WEB">
+<meta name="twitter:description" content="1  自己开发Web框架">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201706/658994-20170614173305165-604670116.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
   
@@ -150,7 +125,8 @@ HTML知识
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-自己开发Web框架"><a href="#1-自己开发Web框架" class="headerlink" title="1  自己开发Web框架"></a>1  自己开发Web框架</h2><p>开发Web框架涉及的内容</p>
+        <h2 id="1-自己开发Web框架"><a href="#1-自己开发Web框架" class="headerlink" title="1  自己开发Web框架"></a>1  自己开发Web框架</h2><a id="more"></a>
+<p>开发Web框架涉及的内容</p>
 <ul>
 <li>socket</li>
 <li><p>http协议</p>
@@ -178,8 +154,22 @@ HTML知识
         4. 响应：“好”
         用户断开
 </code></pre><p><strong>下面的代码构成了一个简单的web框架：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> socket</div><div class="line"></div><div class="line">sock = socket.socket()</div><div class="line">sock.bind((<span class="string">'127.0.0.1'</span>,<span class="number">8080</span>))</div><div class="line">sock.listen(<span class="number">5</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    conn,addr = sock.accept() <span class="comment"># hang住</span></div><div class="line">    <span class="comment"># 有人来连接了</span></div><div class="line">    <span class="comment"># 获取用户发送的数据</span></div><div class="line">    data = conn.recv(<span class="number">8096</span>)</div><div class="line">    conn.send(<span class="string">b"HTTP/1.1 200 OK\r\n\r\n"</span>)</div><div class="line">    conn.send(<span class="string">b'123123'</span>)</div><div class="line">    conn.close()</div></pre></td></tr></table></figure></p>
+<h2 id="2-Django-框架"><a href="#2-Django-框架" class="headerlink" title="2 Django 框架"></a>2 Django 框架</h2><h3 id="2-1-新建Django工程"><a href="#2-1-新建Django工程" class="headerlink" title="2.1 新建Django工程"></a>2.1 新建Django工程</h3><h4 id="2-1-1-在cmd中建立工程"><a href="#2-1-1-在cmd中建立工程" class="headerlink" title="2.1.1 在cmd中建立工程"></a>2.1.1 在cmd中建立工程</h4><p>django-admin startproject 工程名<br>Python3 manage.py runserver<br><img src="http://images2015.cnblogs.com/blog/658994/201706/658994-20170614173305165-604670116.jpg" alt=""></p>
+<h3 id="2-2-设置HTML模板路径"><a href="#2-2-设置HTML模板路径" class="headerlink" title="2.2 设置HTML模板路径"></a>2.2 设置HTML模板路径</h3><p>新建HTML的模板存放的文件templates,之后在setting配置文件中添加templates的路径：</p>
+<p><strong>‘DIRS’: [os.path.join(BASE_DIR,’templates’)],</strong></p>
+<h3 id="2-3-配置静态文件路径"><a href="#2-3-配置静态文件路径" class="headerlink" title="2.3 配置静态文件路径"></a>2.3 配置静态文件路径</h3><p>静态文件包括css文件，js文件，图片等<br>新建静态文件static（可以是别的名字），在setting文件中添加</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">STATIC_URL = <span class="string">'/static/'</span></div><div class="line">STATICFILES_DIRS =(</div><div class="line">    os.path.join(BASE_DIR,<span class="string">'static'</span>), <span class="comment">#这里是拼接存放css文件的路径，修改路径的名字时，会自动修改</span></div><div class="line">)</div></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<ul>
+<li>拼接路径，最后用逗号，否则会报错</li>
+<li>这里的static代表前缀，在HTML文件中引入css文件的时候在前面添加，</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/comments.css"</span>&gt;</span> 这里的static是前缀</div></pre></td></tr></table></figure>
+<h3 id="2-4注释一句"><a href="#2-4注释一句" class="headerlink" title="2.4注释一句"></a>2.4注释一句</h3><p>这里先把setting中下面的一句话注释</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MIDDLEWARE = [</div><div class="line">    <span class="string">'django.middleware.security.SecurityMiddleware'</span>,</div><div class="line">    <span class="string">'django.contrib.sessions.middleware.SessionMiddleware'</span>,</div><div class="line">    <span class="string">'django.middleware.common.CommonMiddleware'</span>,</div><div class="line">    <span class="comment"># 'django.middleware.csrf.CsrfViewMiddleware',</span></div><div class="line">    <span class="string">'django.contrib.auth.middleware.AuthenticationMiddleware'</span>,</div><div class="line">    <span class="string">'django.contrib.messages.middleware.MessageMiddleware'</span>,</div><div class="line">    <span class="string">'django.middleware.clickjacking.XFrameOptionsMiddleware'</span>,</div><div class="line">]</div></pre></td></tr></table></figure>
 <p>参考内容：</p>
 <p><a href="http://www.cnblogs.com/yin-jingyu/archive/2011/08/01/2123548.html" target="_blank" rel="external">http://www.cnblogs.com/yin-jingyu/archive/2011/08/01/2123548.html</a></p>
+<p><a href="https://my.oschina.net/asktao/blog/894367" target="_blank" rel="external">https://my.oschina.net/asktao/blog/894367</a></p>
 
       
     </div>
@@ -238,7 +228,7 @@ HTML知识
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-自己开发Web框架"><span class="nav-number">1.</span> <span class="nav-text">1  自己开发Web框架</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-自己开发Web框架"><span class="nav-number">1.</span> <span class="nav-text">1  自己开发Web框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Django-框架"><span class="nav-number">2.</span> <span class="nav-text">2 Django 框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-新建Django工程"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 新建Django工程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-在cmd中建立工程"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 在cmd中建立工程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-设置HTML模板路径"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 设置HTML模板路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-配置静态文件路径"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 配置静态文件路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4注释一句"><span class="nav-number">2.4.</span> <span class="nav-text">2.4注释一句</span></a></li></ol></li></ol>
     
     </div>
   </aside>
