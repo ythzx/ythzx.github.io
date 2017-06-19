@@ -9,19 +9,21 @@
   
   
   
-  <meta name="description" content="title: Django框架基础
+  <meta name="description" content="title: Django框架
 tags: Django1  自己开发Web框架">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Peter's Blog Center">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/06/14/Django框架基础/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
-<meta property="og:description" content="title: Django框架基础
+<meta property="og:description" content="title: Django框架
 tags: Django1  自己开发Web框架">
-<meta property="og:updated_time" content="2017-06-15T12:28:14.784Z">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201706/658994-20170614173305165-604670116.jpg">
+<meta property="og:updated_time" content="2017-06-19T12:17:43.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Peter's Blog Center">
-<meta name="twitter:description" content="title: Django框架基础
+<meta name="twitter:description" content="title: Django框架
 tags: Django1  自己开发Web框架">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201706/658994-20170614173305165-604670116.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
   
@@ -115,7 +117,7 @@ tags: Django1  自己开发Web框架">
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<p>title: Django框架基础</p>
+<p>title: Django框架</p>
 <h2 id="tags-Django"><a href="#tags-Django" class="headerlink" title="tags: Django"></a>tags: Django</h2><h2 id="1-自己开发Web框架"><a href="#1-自己开发Web框架" class="headerlink" title="1  自己开发Web框架"></a>1  自己开发Web框架</h2><a id="more"></a>
 <p>开发Web框架涉及的内容</p>
 <ul>
@@ -192,10 +194,60 @@ sock.listen(<span class="number">5</span>)
     conn.send(<span class="string">b'123123'</span>)
     conn.close()
 </code></pre>
-<p>参考内容：</p>
-<p><a href="http://www.cnblogs.com/yin-jingyu/archive/2011/08/01/2123548.html" target="_blank" rel="external">http://www.cnblogs.com/yin-jingyu/archive/2011/08/01/2123548.html</a></p>
-<p><a href="https://my.oschina.net/asktao/blog/894367" target="_blank" rel="external">https://my.oschina.net/asktao/blog/894367</a></p>
-<p><a href="http://www.cnblogs.com/wupeiqi/articles/5237704.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5237704.html</a></p>
+<h2 id="2-Django-框架配置"><a href="#2-Django-框架配置" class="headerlink" title="2 Django 框架配置"></a>2 Django 框架配置</h2><h3 id="2-1-新建Django工程"><a href="#2-1-新建Django工程" class="headerlink" title="2.1 新建Django工程"></a>2.1 新建Django工程</h3><h4 id="2-1-1-在cmd中建立工程"><a href="#2-1-1-在cmd中建立工程" class="headerlink" title="2.1.1 在cmd中建立工程"></a>2.1.1 在cmd中建立工程</h4><p>django-admin startproject 工程名<br>Python3 manage.py runserver<br><img src="http://images2015.cnblogs.com/blog/658994/201706/658994-20170614173305165-604670116.jpg" alt=""></p>
+<h3 id="2-2-设置HTML模板路径"><a href="#2-2-设置HTML模板路径" class="headerlink" title="2.2 设置HTML模板路径"></a>2.2 设置HTML模板路径</h3><p>新建HTML的模板存放的文件templates,之后在setting配置文件中添加templates的路径：</p>
+<p><strong>‘DIRS’: [os.path.join(BASE_DIR,’templates’)],</strong></p>
+<h3 id="2-3-配置静态文件路径"><a href="#2-3-配置静态文件路径" class="headerlink" title="2.3 配置静态文件路径"></a>2.3 配置静态文件路径</h3><p>静态文件包括css文件，js文件，图片等<br>新建静态文件static（可以是别的名字），在setting文件中添加</p>
+<pre><code class="python">STATIC_URL = <span class="string">'/static/'</span>
+STATICFILES_DIRS =(
+    os.path.join(BASE_DIR,<span class="string">'static'</span>), <span class="comment">#这里是拼接存放css文件的路径，修改路径的名字时，会自动修改</span>
+)
+</code></pre>
+<p><strong>注意：</strong></p>
+<ul>
+<li>拼接路径，最后用逗号，否则会报错</li>
+<li>这里的static代表前缀，在HTML文件中引入css文件的时候在前面添加，</li>
+</ul>
+<pre><code class="html"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/static/comments.css"</span>&gt;</span> 这里的static是前缀
+</code></pre>
+<h3 id="2-4注释一句"><a href="#2-4注释一句" class="headerlink" title="2.4注释一句"></a>2.4注释一句</h3><p>这里先把setting中下面的一句话注释</p>
+<pre><code class="python">MIDDLEWARE = [
+    <span class="string">'django.middleware.security.SecurityMiddleware'</span>,
+    <span class="string">'django.contrib.sessions.middleware.SessionMiddleware'</span>,
+    <span class="string">'django.middleware.common.CommonMiddleware'</span>,
+    <span class="comment"># 'django.middleware.csrf.CsrfViewMiddleware',</span>
+    <span class="string">'django.contrib.auth.middleware.AuthenticationMiddleware'</span>,
+    <span class="string">'django.contrib.messages.middleware.MessageMiddleware'</span>,
+    <span class="string">'django.middleware.clickjacking.XFrameOptionsMiddleware'</span>,
+]
+</code></pre>
+<h3 id="2-5-django工程目录"><a href="#2-5-django工程目录" class="headerlink" title="2.5 django工程目录"></a>2.5 django工程目录</h3><pre><code class="language">mysite
+   | - mysite    ===============对整个程序进行配置
+      |  - __init__.py
+      |  - settings.py    ============配置文件
+      |  - url.py        ==============URL对应关系
+      |  - wsgi.py        ============遵循WSGI规范，上线一般使用uwsgi+nginx
+   | - manage.py    ============管理Django程序    : python manage.py
+                                                            : python manage.py startapp xxx
+                                                            : python manage.py makemigrations
+                                                            : python manage.py migrate
+</code></pre>
+<h2 id="3-Django-路由系统"><a href="#3-Django-路由系统" class="headerlink" title="3 Django 路由系统"></a>3 Django 路由系统</h2><p>路由系统是对URL进行的配置，urls.py文件中进行操作</p>
+<pre><code class="Python"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> HttpResponse,render
+
+<span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(request)</span>:</span>  
+    <span class="comment"># 需要加参数request，拿到所有的内容</span>
+    <span class="keyword">return</span> HttpResponse(<span class="string">'hello'</span>) <span class="comment"># 封装的对象  直接返回内容</span>
+
+<span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span> 
+    <span class="keyword">return</span> render(request,<span class="string">'index.html'</span>)<span class="comment"># render 加request参数和HTML文件</span>
+
+urlpatterns = [
+    <span class="comment">#url(r'^admin/', admin.site.urls),</span>
+    url(<span class="string">r'^login/'</span>, login),
+    url(<span class="string">r'^index/'</span>, index), <span class="comment"># index是函数名</span>
+]
+</code></pre>
 
       
     </div>
@@ -251,7 +303,7 @@ sock.listen(<span class="number">5</span>)
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-Django"><span class="nav-number">1.</span> <span class="nav-text">tags: Django</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-自己开发Web框架"><span class="nav-number">2.</span> <span class="nav-text">1  自己开发Web框架</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-Django"><span class="nav-number">1.</span> <span class="nav-text">tags: Django</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-自己开发Web框架"><span class="nav-number">2.</span> <span class="nav-text">1  自己开发Web框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Django-框架配置"><span class="nav-number">3.</span> <span class="nav-text">2 Django 框架配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-新建Django工程"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 新建Django工程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-在cmd中建立工程"><span class="nav-number">3.1.1.</span> <span class="nav-text">2.1.1 在cmd中建立工程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-设置HTML模板路径"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 设置HTML模板路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-配置静态文件路径"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 配置静态文件路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4注释一句"><span class="nav-number">3.4.</span> <span class="nav-text">2.4注释一句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-django工程目录"><span class="nav-number">3.5.</span> <span class="nav-text">2.5 django工程目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Django-路由系统"><span class="nav-number">4.</span> <span class="nav-text">3 Django 路由系统</span></a></li></ol>
     
     </div>
   </aside>
