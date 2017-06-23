@@ -11,16 +11,48 @@
   
   
   
-  <meta name="description" content="Django 从0开始创建一个项目">
+  <meta name="description" content="Django 从0开始创建一个项目创建Django工程及配置
+创建工程：django-admin starproject 项目名
+
+创建APP：Python3 manage.py startapp app名称
+
+可以创建多个app,每个app代表不同的业务，开发的时候互不影响
+URL通过路由分发实现跳转
+
+
+注册APP：在后面加上app的名称
+1234567891011INSTALLED_APPS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django 从0开始创建一个项目">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/06/23/django项目/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
-<meta property="og:description" content="Django 从0开始创建一个项目">
-<meta property="og:updated_time" content="2017-06-23T13:03:47.476Z">
+<meta property="og:description" content="Django 从0开始创建一个项目创建Django工程及配置
+创建工程：django-admin starproject 项目名
+
+创建APP：Python3 manage.py startapp app名称
+
+可以创建多个app,每个app代表不同的业务，开发的时候互不影响
+URL通过路由分发实现跳转
+
+
+注册APP：在后面加上app的名称
+1234567891011INSTALLED_APPS">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201706/658994-20170623180816523-1327193894.jpg">
+<meta property="og:updated_time" content="2017-06-23T13:10:41.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 从0开始创建一个项目">
-<meta name="twitter:description" content="Django 从0开始创建一个项目">
+<meta name="twitter:description" content="Django 从0开始创建一个项目创建Django工程及配置
+创建工程：django-admin starproject 项目名
+
+创建APP：Python3 manage.py startapp app名称
+
+可以创建多个app,每个app代表不同的业务，开发的时候互不影响
+URL通过路由分发实现跳转
+
+
+注册APP：在后面加上app的名称
+1234567891011INSTALLED_APPS">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201706/658994-20170623180816523-1327193894.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
   
@@ -123,7 +155,94 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Django-从0开始创建一个项目"><a href="#Django-从0开始创建一个项目" class="headerlink" title="Django 从0开始创建一个项目"></a>Django 从0开始创建一个项目</h1>
+        <h1 id="Django-从0开始创建一个项目"><a href="#Django-从0开始创建一个项目" class="headerlink" title="Django 从0开始创建一个项目"></a>Django 从0开始创建一个项目</h1><h2 id="创建Django工程及配置"><a href="#创建Django工程及配置" class="headerlink" title="创建Django工程及配置"></a>创建Django工程及配置</h2><ul>
+<li><p>创建工程：<code>django-admin starproject 项目名</code></p>
+</li>
+<li><p>创建APP：<code>Python3 manage.py startapp app名称</code></p>
+<ul>
+<li>可以创建多个app,每个app代表不同的业务，开发的时候互不影响</li>
+<li>URL通过路由分发实现跳转</li>
+</ul>
+</li>
+<li><p>注册APP：在后面加上app的名称</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">INSTALLED_APPS = [</div><div class="line">    <span class="string">'django.contrib.admin'</span>,</div><div class="line">    <span class="string">'django.contrib.auth'</span>,</div><div class="line">    <span class="string">'django.contrib.contenttypes'</span>,</div><div class="line">    <span class="string">'django.contrib.sessions'</span>,</div><div class="line">    <span class="string">'django.contrib.messages'</span>,</div><div class="line">    <span class="string">'django.contrib.staticfiles'</span>,</div><div class="line">    <span class="string">'app01'</span>,</div><div class="line">    <span class="string">'app02'</span>,</div><div class="line">    <span class="string">'app03'</span>,</div><div class="line">]</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置模板路径：<code>&#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;templates&#39;)],</code></p>
+</li>
+<li><p>配置静态文件路径：<code>STATICFILES_DIRS = (
+  os.path.join(BASE_DIR, &#39;static&#39;),
+)</code></p>
+</li>
+<li><p>注释配置文件的一行: <code>&#39;django.middleware.csrf.CsrfViewMiddleware&#39;,</code></p>
+<ul>
+<li>这个不注释POST请求拿不到数据</li>
+</ul>
+</li>
+</ul>
+<h2 id="Django的目录结构："><a href="#Django的目录结构：" class="headerlink" title="Django的目录结构："></a>Django的目录结构：</h2><p><img src="http://images2015.cnblogs.com/blog/658994/201706/658994-20170623180816523-1327193894.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">|--mysite01</div><div class="line">|---|app01</div><div class="line">    |----------|migrations</div><div class="line">    |          |admin.py</div><div class="line">    |          |apps.py</div><div class="line">    |          |models.py</div><div class="line">    |          |tests.py</div><div class="line">    |          |views.py     </div><div class="line">    |mysite01</div><div class="line">    |--------|__init__.py</div><div class="line">    |        |settings.py</div><div class="line">    |        |urls.py</div><div class="line">    |        |wsgi.py</div><div class="line">    |</div><div class="line">    |templates</div><div class="line">    |</div><div class="line">    |manage.py</div></pre></td></tr></table></figure>
+<pre><code>- migrations 存放有关数据库的文件，保存数据库的修改信息
+- admin Django自己的后台管理
+- models 通过ORM用类创建数据库和表
+- tests 单元测试
+- views 视图函数，业务处理，可以继续进行分类，此时就是views文件夹
+- apps app的配置文件
+- `/mysite01/mysite01/__init__.py` 配置数据库，默认是sqllite,这里配置成mysql,通过pymysql连接数据库
+    import pymysql
+    pymysql.install_as_MySQLdb()
+-urls 路由系统
+- wsgi web服务
+</code></pre><h2 id="路由系统："><a href="#路由系统：" class="headerlink" title="路由系统："></a>路由系统：</h2><p>URL-函数 的对应关系</p>
+<ul>
+<li><code>/login/</code>  一一对应</li>
+<li><code>/add-user/(\d+)</code>  支持正则</li>
+<li><code>/add-user/(\d+).html</code> 伪静态</li>
+</ul>
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><ul>
+<li><p>第一步是在urls中导入视图函数<code>from app01 import views</code><br>  设置URL：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^index/'</span>, views.index),</div><div class="line">    url(<span class="string">r'^edit/(\w+)'</span>, views.edit), <span class="comment"># 通过正则匹配路径</span></div><div class="line">]</div></pre></td></tr></table></figure>
+<p>  把URL变美观 ,视图函数要有参数接收</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span><span class="params">(request,arg)</span>:</span></div></pre></td></tr></table></figure>
+<p>  正则 按照位置</p>
+<pre><code>按照名称（关键字）（?P&lt;a1&gt;\w+）
+</code></pre><p>  统一用法</p>
+<p>  推荐用终止符$</p>
+<pre><code>^edit$
+</code></pre></li>
+</ul>
+<pre><code>伪静态：
+`url(r&apos;^edit/(\w+)&apos;.html$, views.edit),`
+</code></pre><h3 id="路由分发"><a href="#路由分发" class="headerlink" title="路由分发"></a>路由分发</h3><p>在处理不同业务的时候，多个app</p>
+<p>引入include</p>
+<h3 id="url-关系命名"><a href="#url-关系命名" class="headerlink" title="url 关系命名"></a>url 关系命名</h3><p><code>url(r&#39;^index,views.index,name = &#39;nn)</code></p>
+<p>根据名字反生成URL<br>name reverse</p>
+<p>URL的后缀可以自己任意定义</p>
+<p>应用：</p>
+<p>   别名是用于权限管理</p>
+<pre><code>- 前端处理
+- Python处理
+</code></pre><h2 id="视图函数-CBV-FBV"><a href="#视图函数-CBV-FBV" class="headerlink" title="视图函数 CBV FBV"></a>视图函数 CBV FBV</h2><h3 id="在cmd中创建"><a href="#在cmd中创建" class="headerlink" title="在cmd中创建"></a>在cmd中创建</h3><p>根据业务划分:<br>创建app:<br>python3 manage.py startapp app01<br>python3 manage.py startapp app02</p>
+<h2 id="Django的ORM操作"><a href="#Django的ORM操作" class="headerlink" title="Django的ORM操作"></a>Django的ORM操作</h2><p>http请求<br>    URL-视图(模板+数据)</p>
+<p>ORM利用pymysql第三方连接数据库</p>
+<p>Django默认的是MySQLDB，需要修改成pymysql<br>Django默认</p>
+<h3 id="ORM-操作表"><a href="#ORM-操作表" class="headerlink" title="ORM 操作表"></a>ORM 操作表</h3><p>Django自己有ORM框架，类-表，对象-行<br>其他的框架自己用pymysql和SqlAchemy</p>
+<ul>
+<li>创建表</li>
+<li>修改表</li>
+<li>删除表</li>
+</ul>
+<p>1 创建数据库<br>2 配置文件修改<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    &apos;default&apos;: &#123;</div><div class="line">        &apos;ENGINE&apos;: &apos;django.db.backends.mysql&apos;,</div><div class="line">        &apos;NAME&apos;:&apos;s4day70db&apos;,</div><div class="line">        &apos;USER&apos;: &apos;root&apos;,</div><div class="line">        &apos;PASSWORD&apos;: &apos;&apos;,</div><div class="line">        &apos;HOST&apos;: &apos;localhost&apos;,</div><div class="line">        &apos;PORT&apos;: 3306,</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3 init修改<br>    import pymysql<br>    pymysql.install_as_MySQLdb()</p>
+<h3 id="ORM操作数据行"><a href="#ORM操作数据行" class="headerlink" title="ORM操作数据行"></a>ORM操作数据行</h3><p>增删改查</p>
+<p>注册app setting</p>
+<p>创建表的命令<br>python3 manage.py </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">D:\mysite01&gt;python3 manage.py makemigrations</div><div class="line">Migrations <span class="keyword">for</span> <span class="string">'app01'</span>:</div><div class="line">  app01\migrations\<span class="number">0001</span>_initial.py</div><div class="line">    - Create model UserInfo</div><div class="line"></div><div class="line">D:\mysite01&gt;python3 manage.py migrate</div><div class="line">Operations to perform:</div><div class="line">  Apply all migrations: admin, app01, auth, contenttypes, sessions</div><div class="line">Running migrations:</div><div class="line">  Applying contenttypes<span class="number">.0001</span>_initial... OK</div><div class="line">  Applying auth<span class="number">.0001</span>_initial... OK</div><div class="line">  Applying admin<span class="number">.0001</span>_initial... OK</div><div class="line">  Applying admin<span class="number">.0002</span>_logentry_remove_auto_add... OK</div><div class="line">  Applying app01<span class="number">.0001</span>_initial... OK</div><div class="line">  Applying contenttypes<span class="number">.0002</span>_remove_content_type_name... OK</div><div class="line">  Applying auth<span class="number">.0002</span>_alter_permission_name_max_length... OK</div><div class="line">  Applying auth<span class="number">.0003</span>_alter_user_email_max_length... OK</div><div class="line">  Applying auth<span class="number">.0004</span>_alter_user_username_opts... OK</div><div class="line">  Applying auth<span class="number">.0005</span>_alter_user_last_login_null... OK</div><div class="line">  Applying auth<span class="number">.0006</span>_require_contenttypes_0002... OK</div><div class="line">  Applying auth<span class="number">.0007</span>_alter_validators_add_error_messages... OK</div><div class="line">  Applying auth<span class="number">.0008</span>_alter_user_username_max_length... OK</div><div class="line">  Applying sessions<span class="number">.0001</span>_initial... OK</div></pre></td></tr></table></figure>
+<p>修改表中列的名字</p>
+<p>添加一列</p>
+<p>外键</p>
+<p>会默认创建一列ud<br>ug = models.ForeignKey(‘UserGroup’,null=True)</p>
+<p>hello </p>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -181,7 +300,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Django-从0开始创建一个项目"><span class="nav-number">1.</span> <span class="nav-text">Django 从0开始创建一个项目</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Django-从0开始创建一个项目"><span class="nav-number">1.</span> <span class="nav-text">Django 从0开始创建一个项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Django工程及配置"><span class="nav-number">1.1.</span> <span class="nav-text">创建Django工程及配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django的目录结构："><span class="nav-number">1.2.</span> <span class="nav-text">Django的目录结构：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由系统："><span class="nav-number">1.3.</span> <span class="nav-text">路由系统：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#具体实现"><span class="nav-number">1.3.1.</span> <span class="nav-text">具体实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由分发"><span class="nav-number">1.3.2.</span> <span class="nav-text">路由分发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#url-关系命名"><span class="nav-number">1.3.3.</span> <span class="nav-text">url 关系命名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图函数-CBV-FBV"><span class="nav-number">1.4.</span> <span class="nav-text">视图函数 CBV FBV</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在cmd中创建"><span class="nav-number">1.4.1.</span> <span class="nav-text">在cmd中创建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django的ORM操作"><span class="nav-number">1.5.</span> <span class="nav-text">Django的ORM操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ORM-操作表"><span class="nav-number">1.5.1.</span> <span class="nav-text">ORM 操作表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORM操作数据行"><span class="nav-number">1.5.2.</span> <span class="nav-text">ORM操作数据行</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>
