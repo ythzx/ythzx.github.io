@@ -38,7 +38,7 @@ URL通过路由分发实现跳转
 注册APP：在后面加上app的名称
 1234567891011INSTALLED_APPS">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201706/658994-20170623180816523-1327193894.jpg">
-<meta property="og:updated_time" content="2017-06-23T14:02:58.751Z">
+<meta property="og:updated_time" content="2017-06-23T14:05:23.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 从0开始创建一个项目">
 <meta name="twitter:description" content="Django 从0开始创建一个项目创建Django工程及配置
@@ -192,7 +192,13 @@ URL通过路由分发实现跳转
     pymysql.install_as_MySQLdb()
 -urls 路由系统
 - wsgi web服务
-</code></pre>
+</code></pre><h2 id="路由系统："><a href="#路由系统：" class="headerlink" title="路由系统："></a>路由系统：</h2><p>URL-函数 的对应关系</p>
+<ul>
+<li><code>/login/</code>  一一对应</li>
+<li><code>/add-user/(\d+)</code>  支持正则</li>
+<li><code>/add-user/(\d+).html</code> 伪静态</li>
+</ul>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -250,7 +256,7 @@ URL通过路由分发实现跳转
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Django-从0开始创建一个项目"><span class="nav-number">1.</span> <span class="nav-text">Django 从0开始创建一个项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Django工程及配置"><span class="nav-number">1.1.</span> <span class="nav-text">创建Django工程及配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django的目录结构："><span class="nav-number">1.2.</span> <span class="nav-text">Django的目录结构：</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Django-从0开始创建一个项目"><span class="nav-number">1.</span> <span class="nav-text">Django 从0开始创建一个项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Django工程及配置"><span class="nav-number">1.1.</span> <span class="nav-text">创建Django工程及配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django的目录结构："><span class="nav-number">1.2.</span> <span class="nav-text">Django的目录结构：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由系统："><span class="nav-number">1.3.</span> <span class="nav-text">路由系统：</span></a></li></ol></li></ol>
     
     </div>
   </aside>
