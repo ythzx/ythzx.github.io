@@ -180,7 +180,14 @@
 <p>  伪静态：<br>    <code>url(r&#39;^edit/(\w+)&#39;.html$, views.edit),</code></p>
 <h3 id="路由分发"><a href="#路由分发" class="headerlink" title="路由分发"></a>路由分发</h3><p>在处理不同业务的时候，多个app</p>
 <p>引入include</p>
-
+<h3 id="url-关系命名"><a href="#url-关系命名" class="headerlink" title="url 关系命名"></a>url 关系命名</h3><p><code>url(r&#39;^index,views.index,name = &#39;nn)</code></p>
+<p>根据名字反生成URL<br>name reverse</p>
+<p>URL的后缀可以自己任意定义</p>
+<p>应用：</p>
+<p>   别名是用于权限管理</p>
+<pre><code>- 前端处理
+- Python处理
+</code></pre>
       
     </div>
     <footer class="entry-meta entry-footer">
