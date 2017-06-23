@@ -168,7 +168,14 @@
 <li>设置URL：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^index/'</span>, views.index),</div><div class="line">    url(<span class="string">r'^edit/(\w+)'</span>, views.edit), <span class="comment"># 通过正则匹配路径</span></div><div class="line">]</div></pre></td></tr></table></figure>
 </li>
 </ul>
-</li>
+<p>把URL变美观 ,视图函数要有参数接收</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span><span class="params">(request,arg)</span>:</span></div></pre></td></tr></table></figure>
+<p>  正则 按照位置</p>
+<pre><code>按照名称（关键字）（?P&lt;a1&gt;\w+）
+</code></pre><p>  统一用法</p>
+<p>  推荐用终止符$</p>
+<pre><code>^edit$
+</code></pre></li>
 </ul>
 
       
