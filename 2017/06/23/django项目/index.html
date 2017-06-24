@@ -11,7 +11,8 @@
   
   
   
-  <meta name="description" content="Django 从0开始创建一个项目创建Django工程及配置
+  <meta name="description" content="title: Django 从0开始创建一个项目
+tags: DjangoDjango 从0开始创建一个项目创建Django工程及配置
 创建工程：django-admin starproject 项目名
 
 创建APP：Python3 manage.py startapp app名称
@@ -20,13 +21,13 @@
 URL通过路由分发实现跳转
 
 
-注册APP：在后面加上app的名称
-1234567891011INSTALLED_APPS">
+注册APP：在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django 从0开始创建一个项目">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/06/23/django项目/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
-<meta property="og:description" content="Django 从0开始创建一个项目创建Django工程及配置
+<meta property="og:description" content="title: Django 从0开始创建一个项目
+tags: DjangoDjango 从0开始创建一个项目创建Django工程及配置
 创建工程：django-admin starproject 项目名
 
 创建APP：Python3 manage.py startapp app名称
@@ -35,13 +36,13 @@ URL通过路由分发实现跳转
 URL通过路由分发实现跳转
 
 
-注册APP：在后面加上app的名称
-1234567891011INSTALLED_APPS">
+注册APP：在">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201706/658994-20170623180816523-1327193894.jpg">
-<meta property="og:updated_time" content="2017-06-23T15:19:15.520Z">
+<meta property="og:updated_time" content="2017-06-24T14:37:26.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 从0开始创建一个项目">
-<meta name="twitter:description" content="Django 从0开始创建一个项目创建Django工程及配置
+<meta name="twitter:description" content="title: Django 从0开始创建一个项目
+tags: DjangoDjango 从0开始创建一个项目创建Django工程及配置
 创建工程：django-admin starproject 项目名
 
 创建APP：Python3 manage.py startapp app名称
@@ -50,8 +51,7 @@ URL通过路由分发实现跳转
 URL通过路由分发实现跳转
 
 
-注册APP：在后面加上app的名称
-1234567891011INSTALLED_APPS">
+注册APP：在">
 <meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201706/658994-20170623180816523-1327193894.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
@@ -155,7 +155,9 @@ URL通过路由分发实现跳转
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Django-从0开始创建一个项目"><a href="#Django-从0开始创建一个项目" class="headerlink" title="Django 从0开始创建一个项目"></a>Django 从0开始创建一个项目</h1><h2 id="创建Django工程及配置"><a href="#创建Django工程及配置" class="headerlink" title="创建Django工程及配置"></a>创建Django工程及配置</h2><ul>
+        <hr>
+<p>title: Django 从0开始创建一个项目</p>
+<h2 id="tags-Django"><a href="#tags-Django" class="headerlink" title="tags: Django"></a>tags: Django</h2><h1 id="Django-从0开始创建一个项目"><a href="#Django-从0开始创建一个项目" class="headerlink" title="Django 从0开始创建一个项目"></a>Django 从0开始创建一个项目</h1><h2 id="创建Django工程及配置"><a href="#创建Django工程及配置" class="headerlink" title="创建Django工程及配置"></a>创建Django工程及配置</h2><ul>
 <li><p>创建工程：<code>django-admin starproject 项目名</code></p>
 </li>
 <li><p>创建APP：<code>Python3 manage.py startapp app名称</code></p>
@@ -187,64 +189,158 @@ URL通过路由分发实现跳转
 - tests 单元测试
 - views 视图函数，业务处理，可以继续进行分类，此时就是views文件夹
 - apps app的配置文件
-- `/mysite01/mysite01/__init__.py` 配置数据库，默认是sqllite,这里配置成mysql,通过pymysql连接数据库
+- /mysite01/mysite01/__init__.py 配置数据库，默认是sqllite,这里配置成mysql,通过pymysql连接数据库
     import pymysql
     pymysql.install_as_MySQLdb()
 -urls 路由系统
 - wsgi web服务
 </code></pre><h2 id="路由系统："><a href="#路由系统：" class="headerlink" title="路由系统："></a>路由系统：</h2><p>URL-函数 的对应关系</p>
 <ul>
-<li><code>/login/</code>  一一对应</li>
-<li><code>/add-user/(\d+)</code>  支持正则</li>
-<li><code>/add-user/(\d+).html</code> 伪静态</li>
+<li><code>/login/</code>  一一对应  静态路由</li>
+<li><code>/add-user/(\d+)</code>  支持正则 动态路由</li>
+<li><code>/add-user/(\d+).html</code>  伪静态</li>
 </ul>
 <h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><ul>
-<li><p>第一步是在urls中导入视图函数<code>from app01 import views</code></p>
-<ul>
-<li>设置URL：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^index/'</span>, views.index),</div><div class="line">    url(<span class="string">r'^edit/(\w+)'</span>, views.edit), <span class="comment"># 通过正则匹配路径</span></div><div class="line">]</div></pre></td></tr></table></figure>
+<li><p>第一步是在urls中导入视图函数<code>from app01 import views</code><br>  设置URL：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^index/'</span>, views.index),</div><div class="line">    url(<span class="string">r'^edit/(\w+)/'</span>, views.edit), <span class="comment"># 通过正则匹配路径</span></div><div class="line">]</div></pre></td></tr></table></figure>
+</li>
+<li><p>编写视图函数：</p>
 </li>
 </ul>
-<p>把URL变美观 ,视图函数要有参数接收</p>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span><span class="params">(request,arg)</span>:</span></div></pre></td></tr></table></figure>
-<p>  正则 按照位置</p>
-<pre><code>按照名称（关键字）（?P&lt;a1&gt;\w+）
-</code></pre><p>  统一用法</p>
-<p>  推荐用终止符$</p>
-<pre><code>^edit$
-</code></pre></li>
+<p>把URL变美观 ,视图函数要有参数接收<code>def edit(request,arg):</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, HttpResponse, redirect</div><div class="line"></div><div class="line"><span class="comment"># Create your views here.</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></div><div class="line">    user_list = [</div><div class="line">        <span class="string">'aaa'</span>, <span class="string">'bbb'</span>, <span class="string">'ccc'</span>,</div><div class="line">    ]</div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'index.html'</span>, &#123;<span class="string">'user_list'</span>: user_list&#125;)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span><span class="params">(request, a1)</span>:</span></div><div class="line">    print(a1)   <span class="comment"># 接收函数URL的参数</span></div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"ok"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>编写index.html,关键是以<code>/</code>结尾</li>
 </ul>
-<p>  伪静态：<br>    <code>url(r&#39;^edit/(\w+)&#39;.html$, views.edit),</code></p>
-<h3 id="路由分发"><a href="#路由分发" class="headerlink" title="路由分发"></a>路由分发</h3><p>在处理不同业务的时候，多个app</p>
-<p>引入include</p>
-<h3 id="url-关系命名"><a href="#url-关系命名" class="headerlink" title="url 关系命名"></a>url 关系命名</h3><p><code>url(r&#39;^index,views.index,name = &#39;nn)</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    &#123;% for i in user_list %&#125;</div><div class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; i &#125;&#125;| <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/edit/&#123;&#123; i &#125;&#125;/"</span>&gt;</span>编辑<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    &#123;% endfor %&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>总结：</p>
+<ul>
+<li>在函数中通过参数a1接收url</li>
+<li>点击的标签上添加路径结尾要用<code>/</code></li>
+<li><code>url(r&#39;^edit/(\w+)/&#39;, views.edit),</code>通常这里是以<code>/</code>结尾的 </li>
+</ul>
+<h4 id="正则匹配"><a href="#正则匹配" class="headerlink" title="正则匹配"></a>正则匹配</h4><ul>
+<li>按照位置传值(有先后顺序)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^edit/(\w+)/(\w+)/'</span>, views.edit),</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span><span class="params">(request, a1, a2)</span>:</span></div><div class="line">    print(a1, a2)   <span class="comment"># 接收函数URL的参数</span></div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"ok"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>按照名称（关键字）（?P<a1>\w+）<ul>
+<li>注意是在正则表达式的括号里面传参数</li>
+<li>可以没有顺序，这个过程相当于找到相应的参数名进行赋值</li>
+</ul>
+</a1></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^edit/(?P&lt;a1&gt;\w+)/(?P&lt;a2&gt;\w+)/'</span>, views.edit),</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span><span class="params">(request, a1, a2)</span>:</span></div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"ok"</span>)</div><div class="line">```  </div><div class="line"></div><div class="line">**注意：**这两种是不能混合使用的，必须是统一的形式，这样才能用` *args, **kwargs`.</div><div class="line"></div><div class="line">要主要下面的情况是，*args用来接收按位置传值，**kwargs用来接收按关键字传值的</div><div class="line">```python</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span><span class="params">(request, *args, **kwargs)</span>:</span></div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"ok"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><p>规定路由的结尾</p>
+<ul>
+<li><p>推荐用终止符$<br>  ^edit$</p>
+</li>
+<li><p>伪静态(SEO)<br><code>url(r&#39;^edit/(\w+)&#39;.html$, views.edit),</code></p>
+</li>
+</ul>
+</li>
+<li><p>404页面，默认页面</p>
+<p>  用户输错的时候返回404页面，或者是默认的主页</p>
+<p>  <code>url(r&#39;^&#39;, views.index),</code><br>  前面的正则是不加内容的，后面写函数名</p>
+</li>
+</ul>
+<h3 id="路由分发-涉及多个app的时候"><a href="#路由分发-涉及多个app的时候" class="headerlink" title="路由分发(涉及多个app的时候)"></a>路由分发(涉及多个app的时候)</h3><p>在处理不同业务的时候，多个app</p>
+<p><strong>引入include</strong></p>
+<ul>
+<li>mysite下面的总的路由</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url, include  <span class="comment"># 在这里引入include</span></div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> app01 <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^app01/'</span>, include(<span class="string">'app01.urls'</span>)), <span class="comment"># 先匹配app01，然后找app01下面的url</span></div><div class="line">    url(<span class="string">r'^app02/'</span>, include(<span class="string">'app02.urls'</span>)),</div><div class="line">]</div></pre></td></tr></table></figure>
+<ul>
+<li>app01的路由</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> app01 <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^index/'</span>, views.index),</div><div class="line">]</div></pre></td></tr></table></figure>
+<ul>
+<li>app02子路由</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> app02 <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^index/'</span>, views.index),</div><div class="line">]</div></pre></td></tr></table></figure>
+<h3 id="url-关系命名"><a href="#url-关系命名" class="headerlink" title="url 关系命名"></a>url 关系命名</h3><h4 id="通过刚给URL设置别名，可以通过别名反向获取URL"><a href="#通过刚给URL设置别名，可以通过别名反向获取URL" class="headerlink" title="通过刚给URL设置别名，可以通过别名反向获取URL"></a>通过刚给URL设置别名，可以通过别名反向获取URL</h4><p><code>url(r&#39;^index,views.index,name =n1)</code></p>
+<p>在index函数中就可以通过’n1’获取路径<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> reverse</div><div class="line">v = reverse(<span class="string">'n1'</span>)</div><div class="line">    print(v)</div></pre></td></tr></table></figure></p>
+<p>还可以自己定义，返回的路径名</p>
 <p>根据名字反生成URL<br>name reverse</p>
-<p>URL的后缀可以自己任意定义</p>
-<p>应用：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% url “m1” %&#125;</div><div class="line"> &#123;% url “m1” "m2" %&#125;</div></pre></td></tr></table></figure>
-<p>   别名是用于权限管理</p>
-<pre><code>- 前端处理
-- Python处理
-</code></pre><h2 id="视图函数-CBV-FBV"><a href="#视图函数-CBV-FBV" class="headerlink" title="视图函数 CBV FBV"></a>视图函数 CBV FBV</h2><h3 id="在cmd中创建"><a href="#在cmd中创建" class="headerlink" title="在cmd中创建"></a>在cmd中创建</h3><p>根据业务划分:<br>创建app:<br>python3 manage.py startapp app01<br>python3 manage.py startapp app02</p>
-<h2 id="Django的ORM操作"><a href="#Django的ORM操作" class="headerlink" title="Django的ORM操作"></a>Django的ORM操作</h2><p>http请求<br>    URL-视图(模板+数据)</p>
+<h4 id="URL的后缀可以自己任意定义"><a href="#URL的后缀可以自己任意定义" class="headerlink" title="URL的后缀可以自己任意定义"></a>URL的后缀可以自己任意定义</h4><ul>
+<li>通过位置参数传值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^index/(\w+)/'</span>, views.index, name=<span class="string">'n1'</span>),</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request, a1)</span>:</span> <span class="comment"># 这里需要接受参数</span></div><div class="line">    user_list = [</div><div class="line">        <span class="string">'aaa'</span>, <span class="string">'bbb'</span>, <span class="string">'ccc'</span>,</div><div class="line">    ]</div><div class="line">    v = reverse(<span class="string">'n1'</span>, args=(<span class="number">1</span>,))  <span class="comment"># 这里是等号，里面的参数可以是任意值</span></div><div class="line">    print(v)</div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'index.html'</span>, &#123;<span class="string">'user_list'</span>: user_list&#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li>通过关键字</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^index/(?P&lt;a1&gt;\w+)/'</span>, views.index, name=<span class="string">'n1'</span>),</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request, a1)</span>:</span> <span class="comment"># 接收参数</span></div><div class="line">    user_list = [</div><div class="line">        <span class="string">'aaa'</span>, <span class="string">'bbb'</span>, <span class="string">'ccc'</span>,</div><div class="line">    ]</div><div class="line">    <span class="comment"># v = reverse('n1', args=(1,))</span></div><div class="line">    v = reverse(<span class="string">'n1'</span>, kwargs=&#123;<span class="string">'a1'</span>: <span class="number">123</span>&#125;) <span class="comment"># 这里是按照关键字，形式是字典</span></div><div class="line">    print(v)</div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'index.html'</span>, &#123;<span class="string">'user_list'</span>: user_list&#125;)</div></pre></td></tr></table></figure>
+<p><strong>应用：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% url “m1” %&#125;</div><div class="line">&#123;% url “m1” "m2" %&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>在模板中的form表单中不用action写具体的路径，直接获取路径<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^login/'</span>, views.login, name=<span class="string">'m1'</span>),</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'login.html'</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意的是’m1’ 要加引号<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"&#123;% url "</span><span class="attr">m1</span>" %&#125;"&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>在跳珠路径的时候</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^index/'</span>, views.index, name=<span class="string">'n1'</span>),</div><div class="line">url(<span class="string">r'^edit/(\w+)/'</span>, views.edit, name=<span class="string">'n2'</span>),</div></pre></td></tr></table></figure>
+<p>下面的<code>url &quot;n2&quot;</code>接收URL ，i是拼接的路径，后面还可以添加 用空格分割<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    &#123;% for i in user_list %&#125;</div><div class="line">            <span class="comment">&lt;!-- &lt;li&gt;&#123;&#123; i &#125;&#125;| &lt;a href="/edit/&#123;&#123; i &#125;&#125;/"&gt;编辑&lt;/a&gt;&lt;/li&gt; --&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; i &#125;&#125;| <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url "</span><span class="attr">n2</span>" <span class="attr">i</span> %&#125;/"&gt;</span>编辑<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"></div><div class="line">    &#123;% endfor %&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>别名是用于权限管理</strong></p>
+<ul>
+<li>前端处理 在模板中通过别名反向获取</li>
+<li>Python处理 </li>
+</ul>
+<h2 id="视图函数-CBV-FBV"><a href="#视图函数-CBV-FBV" class="headerlink" title="视图函数 CBV FBV"></a>视图函数 CBV FBV</h2><h2 id="Django的ORM操作"><a href="#Django的ORM操作" class="headerlink" title="Django的ORM操作"></a>Django的ORM操作</h2><p>http请求<br>    URL-视图(模板+数据)</p>
 <p>ORM利用pymysql第三方连接数据库</p>
 <p>Django默认的是MySQLDB，需要修改成pymysql<br>Django默认</p>
 <h3 id="ORM-操作表"><a href="#ORM-操作表" class="headerlink" title="ORM 操作表"></a>ORM 操作表</h3><p>Django自己有ORM框架，类-表，对象-行<br>其他的框架自己用pymysql和SqlAchemy</p>
 <ul>
 <li>创建表</li>
-<li>修改表</li>
+<li>修改表(SQLAchemery不能修改表)</li>
 <li>删除表</li>
 </ul>
-<p>1 创建数据库<br>2 配置文件修改<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    &apos;default&apos;: &#123;</div><div class="line">        &apos;ENGINE&apos;: &apos;django.db.backends.mysql&apos;,</div><div class="line">        &apos;NAME&apos;:&apos;s4day70db&apos;,</div><div class="line">        &apos;USER&apos;: &apos;root&apos;,</div><div class="line">        &apos;PASSWORD&apos;: &apos;&apos;,</div><div class="line">        &apos;HOST&apos;: &apos;localhost&apos;,</div><div class="line">        &apos;PORT&apos;: 3306,</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>3 init修改<br>    import pymysql<br>    pymysql.install_as_MySQLdb()</p>
-<h3 id="ORM操作数据行"><a href="#ORM操作数据行" class="headerlink" title="ORM操作数据行"></a>ORM操作数据行</h3><p>增删改查</p>
-<p>注册app setting</p>
-<p>创建表的命令<br>python3 manage.py </p>
+<h4 id="1-创建数据库"><a href="#1-创建数据库" class="headerlink" title="1 创建数据库"></a>1 创建数据库</h4><p>####2 django默认的数据库是SQLlite,修改配置文件,设置连接的数据库为MySQL<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    <span class="string">'default'</span>: &#123;</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</div><div class="line">        <span class="string">'NAME'</span>:<span class="string">'dataname'</span>,  <span class="comment"># 数据库名</span></div><div class="line">        <span class="string">'USER'</span>: <span class="string">'root'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">''</span>,</div><div class="line">        <span class="string">'HOST'</span>: <span class="string">'localhost'</span>,</div><div class="line">        <span class="string">'PORT'</span>: <span class="number">3306</span>,</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line">``` </div><div class="line"></div><div class="line"><span class="comment">#### 3 替换MySQLDB,通过pymysql连接数据库</span></div><div class="line"></div><div class="line">在工程的`__init__`中添加</div><div class="line">```python</div><div class="line"><span class="keyword">import</span> pymysql</div><div class="line">pymysql.install_as_MySQLdb()</div></pre></td></tr></table></figure></p>
+<h3 id="ORM操作数据行"><a href="#ORM操作数据行" class="headerlink" title="ORM操作数据行"></a>ORM操作数据行</h3><h4 id="在models中创建类"><a href="#在models中创建类" class="headerlink" title="在models中创建类"></a>在models中创建类</h4><p>创建user_info表,默认id自动生成，注意数据长度<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span><span class="params">(models.Model)</span>:</span></div><div class="line">    nid = models.BigAutoField(primary_key=<span class="keyword">True</span>)  <span class="comment"># 不写默认生成id列</span></div><div class="line">    user = models.CharField(max_length=<span class="number">32</span>)</div><div class="line">    password = models.CharField(max_length=<span class="number">64</span>)</div></pre></td></tr></table></figure></p>
+<h4 id="注册app"><a href="#注册app" class="headerlink" title="注册app"></a>注册app</h4><p>在settings中的添加</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">INSTALLED_APPS = [</div><div class="line">    <span class="string">'django.contrib.admin'</span>,</div><div class="line">    <span class="string">'django.contrib.auth'</span>,</div><div class="line">    <span class="string">'django.contrib.contenttypes'</span>,</div><div class="line">    <span class="string">'django.contrib.sessions'</span>,</div><div class="line">    <span class="string">'django.contrib.messages'</span>,</div><div class="line">    <span class="string">'django.contrib.staticfiles'</span>,</div><div class="line">    <span class="string">'app01'</span>,</div><div class="line">    <span class="string">'app02'</span>,</div><div class="line">    <span class="string">'app03'</span>,</div><div class="line">]</div></pre></td></tr></table></figure>
+<h4 id="创建表的命令"><a href="#创建表的命令" class="headerlink" title="创建表的命令"></a>创建表的命令</h4><ul>
+<li><code>python3 manage.py makemigrations</code></li>
+<li><code>python3 manage.py migrate</code></li>
+</ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">D:\mysite01&gt;python3 manage.py makemigrations</div><div class="line">Migrations <span class="keyword">for</span> <span class="string">'app01'</span>:</div><div class="line">  app01\migrations\<span class="number">0001</span>_initial.py</div><div class="line">    - Create model UserInfo</div><div class="line"></div><div class="line">D:\mysite01&gt;python3 manage.py migrate</div><div class="line">Operations to perform:</div><div class="line">  Apply all migrations: admin, app01, auth, contenttypes, sessions</div><div class="line">Running migrations:</div><div class="line">  Applying contenttypes<span class="number">.0001</span>_initial... OK</div><div class="line">  Applying auth<span class="number">.0001</span>_initial... OK</div><div class="line">  Applying admin<span class="number">.0001</span>_initial... OK</div><div class="line">  Applying admin<span class="number">.0002</span>_logentry_remove_auto_add... OK</div><div class="line">  Applying app01<span class="number">.0001</span>_initial... OK</div><div class="line">  Applying contenttypes<span class="number">.0002</span>_remove_content_type_name... OK</div><div class="line">  Applying auth<span class="number">.0002</span>_alter_permission_name_max_length... OK</div><div class="line">  Applying auth<span class="number">.0003</span>_alter_user_email_max_length... OK</div><div class="line">  Applying auth<span class="number">.0004</span>_alter_user_username_opts... OK</div><div class="line">  Applying auth<span class="number">.0005</span>_alter_user_last_login_null... OK</div><div class="line">  Applying auth<span class="number">.0006</span>_require_contenttypes_0002... OK</div><div class="line">  Applying auth<span class="number">.0007</span>_alter_validators_add_error_messages... OK</div><div class="line">  Applying auth<span class="number">.0008</span>_alter_user_username_max_length... OK</div><div class="line">  Applying sessions<span class="number">.0001</span>_initial... OK</div></pre></td></tr></table></figure>
-<p>修改表中列的名字</p>
-<p>添加一列</p>
-<p>外键</p>
-<p>会默认创建一列ud<br>ug = models.ForeignKey(‘UserGroup’,null=True)</p>
-<p>hello </p>
+<p><strong>最后生成的表的名字是app01_userifo</strong></p>
+<h4 id="修改表的列名"><a href="#修改表的列名" class="headerlink" title="修改表的列名"></a>修改表的列名</h4><p>在类中直接修改，然后执行创建表的命令。<br>数据库的修改的内容都保存在migrations文件中，修改前会先读取，然后就行修改</p>
+<p>输入y确认修改<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">D:\mysite01&gt;python3 manage.py makemigrations</div><div class="line">Did you rename userinfo.password to userinfo.pwd (a CharField)? [y/N] y</div><div class="line">Migrations for 'app01':</div><div class="line">  app01\migrations\0004_auto_20170624_2021.py</div><div class="line">    - Rename field password on userinfo to pwd</div><div class="line"></div><div class="line"></div><div class="line">D:\mysite01&gt;python3 manage.py migrate</div><div class="line">Operations to perform:</div><div class="line">  Apply all migrations: admin, app01, auth, contenttypes, sessions</div><div class="line">Running migrations:</div><div class="line">  Applying app01.0004_auto_20170624_2021... OK</div></pre></td></tr></table></figure></p>
+<h4 id="数据表增加"><a href="#数据表增加" class="headerlink" title="数据表增加"></a>数据表增加</h4><p>注意的是是否为空，有两种方案</p>
+<ul>
+<li><p>设置为空 <code>age = models.IntegerField(null=True)</code></p>
+</li>
+<li><p>设置默认值<code>age = models.IntegerField(default=1)</code></p>
+</li>
+</ul>
+<h4 id="创建外键关系"><a href="#创建外键关系" class="headerlink" title="创建外键关系"></a>创建外键关系</h4><p>新建usergroup表，然后在userinfo表中增加一列外键关系表</p>
+<p><code>ug = models.ForeignKey(&#39;UserGroup&#39;,null=True)</code></p>
+<ul>
+<li>设置默认为空</li>
+<li>最终生成的外键的名字是<code>ug_id</code></li>
+</ul>
+<h4 id="数据行增删改查操作"><a href="#数据行增删改查操作" class="headerlink" title="数据行增删改查操作"></a>数据行增删改查操作</h4><h5 id="增加一行数据"><a href="#增加一行数据" class="headerlink" title="增加一行数据"></a>增加一行数据</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> app01 <span class="keyword">import</span> models</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></div><div class="line">    models.UserGroup.objects.create(title=<span class="string">"技术部"</span>) </div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"..."</span>)</div></pre></td></tr></table></figure>
+<h5 id="导入多条数据"><a href="#导入多条数据" class="headerlink" title="导入多条数据"></a>导入多条数据</h5><p>外键用ug_id，添加前要有外键的数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">models.UserInfo.objects.create(user=<span class="string">'abc'</span>, pwd=<span class="string">'123'</span>, age=<span class="number">18</span>, ug_id=<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<h5 id="查看数据"><a href="#查看数据" class="headerlink" title="查看数据"></a>查看数据</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">group_list = models.UserGroup.objects.all()</div><div class="line">print(group_list)</div><div class="line"></div><div class="line">QuerySet [&lt;UserGroup: UserGroup object&gt;, &lt;UserGroup: UserGroup object&gt;]</div></pre></td></tr></table></figure>
+<p>得到的结果是一个QuerySet对象，可以看做一个列表，<strong>列表中的每一个对象代表一行数据</strong></p>
+<ul>
+<li>在后台查看数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></div><div class="line"></div><div class="line">    group_list = models.UserGroup.objects.all()</div><div class="line">    print(group_list)</div><div class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> group_list:</div><div class="line">        print(row.id, row.title)</div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"..."</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>在前端模板中查看数据</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">  &#123;% for row in user_list %&#125;</div><div class="line">    &lt;li&gt;&#123;&#123; row.nid &#125;&#125; | &#123;&#123;row.user &#125;&#125; | &#123;&#123; row.pwd &#125;&#125; | &#123;&#123; row.age &#125;&#125;&lt;/li&gt;</div><div class="line">  &#123;% endfor %&#125;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<p>结果：<br>1 | abc | 123 | 18<br>2 | abc | 123 | 18</p>
+<p><strong>查看数据的范围filter</strong></p>
+<p>使用了双下划线<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">user_list = models.UserInfo.objects.filter(nid=<span class="number">1</span>)</div><div class="line">user_list = models.UserInfo.objects.filter(nid__gt=<span class="number">1</span>) <span class="comment"># nid 大于1的数据</span></div><div class="line">user_list = models.UserInfo.objects.filter(nid__lt=<span class="number">2</span>) <span class="comment"># nid 小于2的数据</span></div></pre></td></tr></table></figure></p>
+<p><strong>删除数据</strong></p>
+<p>注意有外键的不能删除<br><code>models.UserInfo.objects.filter(nid=3).delete()</code></p>
+<p><strong>更新数据</strong><br><code>models.UserGroup.objects.filter(id=2).update(title=&quot;新的部门&quot;)</code></p>
 
       
     </div>
@@ -303,7 +399,7 @@ URL通过路由分发实现跳转
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Django-从0开始创建一个项目"><span class="nav-number">1.</span> <span class="nav-text">Django 从0开始创建一个项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Django工程及配置"><span class="nav-number">1.1.</span> <span class="nav-text">创建Django工程及配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django的目录结构："><span class="nav-number">1.2.</span> <span class="nav-text">Django的目录结构：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由系统："><span class="nav-number">1.3.</span> <span class="nav-text">路由系统：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#具体实现"><span class="nav-number">1.3.1.</span> <span class="nav-text">具体实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由分发"><span class="nav-number">1.3.2.</span> <span class="nav-text">路由分发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#url-关系命名"><span class="nav-number">1.3.3.</span> <span class="nav-text">url 关系命名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图函数-CBV-FBV"><span class="nav-number">1.4.</span> <span class="nav-text">视图函数 CBV FBV</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在cmd中创建"><span class="nav-number">1.4.1.</span> <span class="nav-text">在cmd中创建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django的ORM操作"><span class="nav-number">1.5.</span> <span class="nav-text">Django的ORM操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ORM-操作表"><span class="nav-number">1.5.1.</span> <span class="nav-text">ORM 操作表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORM操作数据行"><span class="nav-number">1.5.2.</span> <span class="nav-text">ORM操作数据行</span></a></li></ol></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-Django"><span class="nav-number">1.</span> <span class="nav-text">tags: Django</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django-从0开始创建一个项目"><span class="nav-number"></span> <span class="nav-text">Django 从0开始创建一个项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Django工程及配置"><span class="nav-number">1.</span> <span class="nav-text">创建Django工程及配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django的目录结构："><span class="nav-number">2.</span> <span class="nav-text">Django的目录结构：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由系统："><span class="nav-number">3.</span> <span class="nav-text">路由系统：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#具体实现"><span class="nav-number">3.1.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则匹配"><span class="nav-number">3.1.1.</span> <span class="nav-text">正则匹配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由分发-涉及多个app的时候"><span class="nav-number">3.2.</span> <span class="nav-text">路由分发(涉及多个app的时候)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#url-关系命名"><span class="nav-number">3.3.</span> <span class="nav-text">url 关系命名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过刚给URL设置别名，可以通过别名反向获取URL"><span class="nav-number">3.3.1.</span> <span class="nav-text">通过刚给URL设置别名，可以通过别名反向获取URL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#URL的后缀可以自己任意定义"><span class="nav-number">3.3.2.</span> <span class="nav-text">URL的后缀可以自己任意定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图函数-CBV-FBV"><span class="nav-number">4.</span> <span class="nav-text">视图函数 CBV FBV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django的ORM操作"><span class="nav-number">5.</span> <span class="nav-text">Django的ORM操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ORM-操作表"><span class="nav-number">5.1.</span> <span class="nav-text">ORM 操作表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-创建数据库"><span class="nav-number">5.1.1.</span> <span class="nav-text">1 创建数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORM操作数据行"><span class="nav-number">5.2.</span> <span class="nav-text">ORM操作数据行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在models中创建类"><span class="nav-number">5.2.1.</span> <span class="nav-text">在models中创建类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册app"><span class="nav-number">5.2.2.</span> <span class="nav-text">注册app</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建表的命令"><span class="nav-number">5.2.3.</span> <span class="nav-text">创建表的命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改表的列名"><span class="nav-number">5.2.4.</span> <span class="nav-text">修改表的列名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据表增加"><span class="nav-number">5.2.5.</span> <span class="nav-text">数据表增加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建外键关系"><span class="nav-number">5.2.6.</span> <span class="nav-text">创建外键关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据行增删改查操作"><span class="nav-number">5.2.7.</span> <span class="nav-text">数据行增删改查操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#增加一行数据"><span class="nav-number">5.2.7.1.</span> <span class="nav-text">增加一行数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#导入多条数据"><span class="nav-number">5.2.7.2.</span> <span class="nav-text">导入多条数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看数据"><span class="nav-number">5.2.7.3.</span> <span class="nav-text">查看数据</span></a></li></ol></li></ol></li></ol></li></ol>
     
     </div>
   </aside>
