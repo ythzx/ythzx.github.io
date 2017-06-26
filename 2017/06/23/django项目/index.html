@@ -38,7 +38,7 @@ URL通过路由分发实现跳转
 注册APP：在后面加上app的名称
 1234567891011INSTALLED_APPS">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201706/658994-20170623180816523-1327193894.jpg">
-<meta property="og:updated_time" content="2017-06-26T05:04:18.435Z">
+<meta property="og:updated_time" content="2017-06-26T10:22:22.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 从0开始创建一个项目">
 <meta name="twitter:description" content="Django 从0开始创建一个项目创建Django工程及配置
@@ -198,7 +198,8 @@ URL通过路由分发实现跳转
 <li><code>/add-user/(\d+)</code>  支持正则 动态路由</li>
 <li><code>/add-user/(\d+).html</code>  伪静态</li>
 </ul>
-<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><ul>
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><a id="more"></a>
+<ul>
 <li><p>第一步是在urls中导入视图函数<code>from app01 import views</code><br>  设置URL：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^index/'</span>, views.index),</div><div class="line">    url(<span class="string">r'^edit/(\w+)/'</span>, views.edit), <span class="comment"># 通过正则匹配路径</span></div><div class="line">]</div></pre></td></tr></table></figure>
 </li>
