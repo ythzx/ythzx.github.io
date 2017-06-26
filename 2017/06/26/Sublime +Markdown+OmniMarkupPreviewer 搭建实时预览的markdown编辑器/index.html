@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sublime 安装boxy + omnimarkuppreviewer | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Sublime" />
+  
+  
+  
+  
+  <meta name="description" content="Sublime 安装Boxy + OmniMarkupPreviewer Package Install 安装网络安装ctrl+反引号打开控制台，在控制台中输入代码1import urllib.request,os,hashlib; h = &apos;7183a2d3e96f11eeadd761d777e62404&apos; + &apos;e330c659d4bb41d3bdf022e94cab3cd0&apos;; pf = &apos;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sublime 安装Boxy + OmniMarkupPreviewer">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/06/26/Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="Sublime 安装Boxy + OmniMarkupPreviewer Package Install 安装网络安装ctrl+反引号打开控制台，在控制台中输入代码1import urllib.request,os,hashlib; h = &apos;7183a2d3e96f11eeadd761d777e62404&apos; + &apos;e330c659d4bb41d3bdf022e94cab3cd0&apos;; pf = &apos;">
+<meta property="og:updated_time" content="2017-06-26T08:26:52.353Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sublime 安装Boxy + OmniMarkupPreviewer">
+<meta name="twitter:description" content="Sublime 安装Boxy + OmniMarkupPreviewer Package Install 安装网络安装ctrl+反引号打开控制台，在控制台中输入代码1import urllib.request,os,hashlib; h = &apos;7183a2d3e96f11eeadd761d777e62404&apos; + &apos;e330c659d4bb41d3bdf022e94cab3cd0&apos;; pf = &apos;">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Sublime 安装Boxy + OmniMarkupPreviewer
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/06/26/Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器/" class="article-date">
+	  <time datetime="2017-06-26T08:27:06.881Z" itemprop="datePublished">六月 26, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Sublime-安装Boxy-OmniMarkupPreviewer"><a href="#Sublime-安装Boxy-OmniMarkupPreviewer" class="headerlink" title="Sublime 安装Boxy + OmniMarkupPreviewer "></a>Sublime 安装Boxy + OmniMarkupPreviewer </h1><h2 id="Package-Install-安装"><a href="#Package-Install-安装" class="headerlink" title="Package Install 安装"></a>Package Install 安装</h2><h2 id="网络安装"><a href="#网络安装" class="headerlink" title="网络安装"></a>网络安装</h2><p><code>ctrl+反引号</code>打开控制台，在控制台中输入代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib.request,os,hashlib; h = <span class="string">'7183a2d3e96f11eeadd761d777e62404'</span> + <span class="string">'e330c659d4bb41d3bdf022e94cab3cd0'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( <span class="string">'http://sublime.wbond.NET/'</span> + pf.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)).read(); dh = hashlib.sha256(by).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> open(os.path.join( ipp, pf), <span class="string">'wb'</span> ).write(by)</div></pre></td></tr></table></figure></p>
+<h2 id="Package-文件安装"><a href="#Package-文件安装" class="headerlink" title="Package 文件安装"></a>Package 文件安装</h2><p><code>preference-&gt;Browse Package</code>，然后进入上一个目录，进入<code>Installed Package</code>中</p>
+<p>从<code>https://sublime.wbond.Net/Package%20Control.sublime-package</code>下载文件，然后放入上面的目录中</p>
+<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>输入<code>ctrl+shift+p</code>后输入<code>install</code>,等待网络接通，输入要安装的插件</p>
+<h2 id="安装boxy"><a href="#安装boxy" class="headerlink" title="安装boxy"></a>安装boxy</h2><p>安装完会让你选择安装<code>A File Icorn</code></p>
+<p>github：<a href="https://github.com/ihodev/sublime-boxy">https://github.com/ihodev/sublime-boxy</a></p>
+<p>boxy配置文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">package setting boxy</div><div class="line"></div><div class="line">&#123;</div><div class="line">	<span class="string">"color_scheme"</span>: <span class="string">"Packages/Boxy Theme/schemes/Boxy Monokai.tmTheme"</span>,</div><div class="line">	<span class="string">"font_size"</span>: <span class="number">16</span>,</div><div class="line">	<span class="string">"theme"</span>: <span class="string">"Boxy Tomorrow.sublime-theme"</span>,</div><div class="line">	<span class="string">"theme_accent_blue"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_autocomplete_item_selected_colored"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_bar"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_bar_colored"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_dirty_accent_blue"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_find_panel_font_md"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_find_panel_materialized"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_find_panel_padding_md"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_find_panel_size_md"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_font_lg"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_grid_border_size_md"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_icons_materialized"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_popup_border_visible"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_quick_panel_border_visible"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_quick_panel_item_selected_colored"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_scrollbar_colored"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_scrollbar_line"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_sidebar_disclosure"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_sidebar_folder_materialized"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_sidebar_font_xl"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_sidebar_heading_bold"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_sidebar_highlight_text_only"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_sidebar_indent_xl"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_sidebar_size_xl"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_size_xl"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_tab_selected_overlined"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_tab_size_lg"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_tab_size_md"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="string">"theme_unified"</span>: <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="安装OminiMarkPreview"><a href="#安装OminiMarkPreview" class="headerlink" title="安装OminiMarkPreview"></a>安装OminiMarkPreview</h2><p>预览快捷键<code>ctrl+alt+o</code></p>
+<p>修改host中的<code>server_host</code>，就可以用其他的设备查看</p>
+<p>如<code>http://127.0.0.1:51004/view/87</code>这是在本地查看，端口是51004，页可以自己修改</p>
+<p>配置文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">ominipreview settings</div><div class="line"></div><div class="line">&#123; </div><div class="line">    <span class="string">"server_host"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">    <span class="comment">// "server_host": "192.168.11.59",</span></div><div class="line">    <span class="comment">// "server_host": "192.168.43.69",</span></div><div class="line">    <span class="string">"browser_command"</span>: [],</div><div class="line">    <span class="comment">// "browser_command": ["open", "-a", "Google Chrome", "&#123;url&#125;"], </span></div><div class="line">    <span class="comment">// User public static files should be placed into    //   $&#123;packages&#125;/User/OmniMarkupPreviewer/public/</span></div><div class="line">    <span class="comment">// User templates should be placed into: </span></div><div class="line">    <span class="comment">//   $&#123;packages&#125;/User/OmniMarkupPreviewer/templates/</span></div><div class="line">    <span class="comment">// Requires browser reload </span></div><div class="line">    <span class="comment">// "html_template_name": "Evolution Yellow", </span></div><div class="line">    <span class="comment">// list of renderers to be ignored, case sensitive.    // Valid renderers are: "CreoleRenderer", "MarkdownRenderer", "PodRenderer", </span></div><div class="line">    <span class="comment">//     "RDocRenderer", "RstRenderer", "TextitleRenderer"</span></div><div class="line">    <span class="comment">// for example, to disable Textile and Pod renderer: </span></div><div class="line">    <span class="comment">//   "ignored_renderers": ["TextitleRenderer", "PodRenderer"] </span></div><div class="line">    <span class="string">"ignored_renderers"</span>: [<span class="string">"CreoleRenderer"</span>, <span class="string">"PodRenderer"</span>, <span class="string">"RDocRenderer"</span>, <span class="string">"TextitleRenderer"</span>, <span class="string">"LiterateHaskellRenderer"</span>], </div><div class="line">    <span class="string">"mathjax_enabled"</span>: <span class="literal">false</span>, </div><div class="line">    <span class="comment">// MarkdownRenderer options </span></div><div class="line">    <span class="string">"renderer_options-MarkdownRenderer"</span>: &#123; </div><div class="line">        <span class="comment">// Valid extensions: </span></div><div class="line">        <span class="comment">// - OFFICIAL (Python Markdown) -  </span></div><div class="line">       <span class="comment">//   "extra": Combines ["abbr", "attr_list", "def_list", "fenced_code", "footnotes", "tables", "smart_strong"] </span></div><div class="line">        <span class="comment">//            For PHP Markdown Extra(http://michelf.ca/projects/php-markdown/extra/) </span></div><div class="line">        <span class="comment">//   "abbr": http://packages.python.org/Markdown/extensions/abbreviations.html </span></div><div class="line">        <span class="comment">//   "attr_list": http://packages.python.org/Markdown/extensions/attr_list.html </span></div><div class="line">        <span class="comment">//   "def_list": http://packages.python.org/Markdown/extensions/definition_lists.html </span></div><div class="line">        <span class="comment">//   "fenced_code": http://packages.python.org/Markdown/extensions/fenced_code_blocks.html </span></div><div class="line">        <span class="comment">//   "footnotes": http://packages.python.org/Markdown/extensions/footnotes.html </span></div><div class="line">        <span class="comment">//   "tables": http://packages.python.org/Markdown/extensions/tables.html </span></div><div class="line">        <span class="comment">//   "smart_strong": http://packages.python.org/Markdown/extensions/smart_strong.html </span></div><div class="line">        <span class="comment">//   "codehilite": http://packages.python.org/Markdown/extensions/code_hilite.html </span></div><div class="line">        <span class="comment">//   "meta": http://packages.python.org/Markdown/extensions/meta_data.html </span></div><div class="line">        <span class="comment">//   "toc": http://packages.python.org/Markdown/extensions/toc.html </span></div><div class="line">        <span class="comment">//   "nl2br": http://packages.python.org/Markdown/extensions/nl2br.html </span></div><div class="line">        <span class="comment">// - 3RD PARTY -  </span></div><div class="line">       <span class="comment">//   "strikeout": Strikeout extension syntax - `This ~~is deleted text.~~` </span></div><div class="line">        <span class="comment">//   "subscript": Subscript extension syntax - `This is water: H~2~O` </span></div><div class="line">        <span class="comment">//   "superscript": Superscript extension syntax 0 `2^10^ = 1024` </span></div><div class="line">        <span class="comment">//   "smarty" or "smartypants": Python-Markdown extension using smartypants to emit </span></div><div class="line">        <span class="comment">//                   typographically nicer ("curly") quotes, proper </span></div><div class="line">        <span class="comment">//                   ("em" and "en") dashes, etc. </span></div><div class="line">        <span class="comment">//                   See: http://daringfireball.net/projects/smartypants/</span></div><div class="line">        <span class="comment">//                   And: https://github.com/waylan/Python-Markdown/blob/master/docs/extensions/smarty.txt </span></div><div class="line">        <span class="comment">// "extensions": ["extra", "codehilite", "toc", "strikeout", "smarty", "subscript", "superscript"],</span></div><div class="line">    </div><div class="line">        <span class="string">"extensions"</span>: [<span class="string">"tables"</span>, <span class="string">"fenced_code"</span>, <span class="string">"codehilite"</span>]</div><div class="line">    </div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sublime/">Sublime</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/06/26/Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器/" data-title="Sublime 安装Boxy + OmniMarkupPreviewer" data-url="https://github.com/ythzx/ythzx.github.io/2017/06/26/Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/06/23/django项目/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Django 从0开始创建一个项目</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Sublime-安装Boxy-OmniMarkupPreviewer"><span class="nav-number">1.</span> <span class="nav-text">Sublime 安装Boxy + OmniMarkupPreviewer </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Package-Install-安装"><span class="nav-number">1.1.</span> <span class="nav-text">Package Install 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络安装"><span class="nav-number">1.2.</span> <span class="nav-text">网络安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Package-文件安装"><span class="nav-number">1.3.</span> <span class="nav-text">Package 文件安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装插件"><span class="nav-number">1.4.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装boxy"><span class="nav-number">1.5.</span> <span class="nav-text">安装boxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装OminiMarkPreview"><span class="nav-number">1.6.</span> <span class="nav-text">安装OminiMarkPreview</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
