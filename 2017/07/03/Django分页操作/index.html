@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>django分页操作 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Django" />
+  
+  
+  
+  
+  <meta name="description" content="Django分页操作分页的目的是：在数据量太大分批获取数据并在页面上进行展示
+简单的操作就是通过切片获取
+12user_list = models.UserInfo.objects.all()[1:10]user_list = models.UserInfo.objects.all()[10:20]
+Django自带分页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django分页操作">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/07/03/Django分页操作/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="Django分页操作分页的目的是：在数据量太大分批获取数据并在页面上进行展示
+简单的操作就是通过切片获取
+12user_list = models.UserInfo.objects.all()[1:10]user_list = models.UserInfo.objects.all()[10:20]
+Django自带分页">
+<meta property="og:updated_time" content="2017-07-03T01:59:48.698Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django分页操作">
+<meta name="twitter:description" content="Django分页操作分页的目的是：在数据量太大分批获取数据并在页面上进行展示
+简单的操作就是通过切片获取
+12user_list = models.UserInfo.objects.all()[1:10]user_list = models.UserInfo.objects.all()[10:20]
+Django自带分页">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-Django分页操作" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Django分页操作
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/07/03/Django分页操作/" class="article-date">
+	  <time datetime="2017-07-03T01:18:36.693Z" itemprop="datePublished">七月 3, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Django分页操作"><a href="#Django分页操作" class="headerlink" title="Django分页操作"></a>Django分页操作</h2><p>分页的目的是：在数据量太大分批获取数据并在页面上进行展示</p>
+<p>简单的操作就是通过切片获取</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">user_list = models.UserInfo.objects.all()[<span class="number">1</span>:<span class="number">10</span>]</div><div class="line">user_list = models.UserInfo.objects.all()[<span class="number">10</span>:<span class="number">20</span>]</div></pre></td></tr></table></figure>
+<h2 id="Django自带分页"><a href="#Django自带分页" class="headerlink" title="Django自带分页"></a>Django自带分页</h2><a id="more"></a>
+<p>适合做上下页，只能在Django中用</p>
+<h3 id="分页操作实现"><a href="#分页操作实现" class="headerlink" title="分页操作实现"></a>分页操作实现</h3><p>首先导入对象<code>Paginator</code></p>
+<p><code>from django.core.paginator import Paginator,Page,PageNotAnInteger,EmptyPage</code></p>
+<p>在浏览器中通过GET发送当前的页码，后面加上<code>?page=1</code></p>
+<p>如<code>http://127.0.0.1:8000/index.html?page=1</code></p>
+<p>python后台代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Djangon内置的分页，实现的功能是上下页</div><div class="line">    :param request:</div><div class="line">    :return:</div><div class="line">    """</div><div class="line">    <span class="comment"># 通过GET方式获取当前页码</span></div><div class="line">    current_page = request.GET.get(<span class="string">'page'</span>)</div><div class="line">    user_list = models.UserInfo.objects.all()  <span class="comment"># 获取全部的用户数据</span></div><div class="line">    <span class="comment"># user_list = models.UserInfo.objects.all().count() # 获取具体的数据量</span></div><div class="line">    <span class="comment"># print(user_list)</span></div><div class="line">    <span class="comment"># user_list = models.UserInfo.objects.all()[0:10]  # 通过切片的方式获取数据</span></div><div class="line">    paginator = Paginator(user_list, <span class="number">10</span>)  <span class="comment"># (第一参数object_list,第二个参数per_age)</span></div><div class="line">    <span class="comment"># 下面是paginator的方法</span></div><div class="line">    <span class="comment"># per_page: 每页显示条目数量</span></div><div class="line">    <span class="comment"># count:    数据总个数</span></div><div class="line">    <span class="comment"># num_pages:总页数</span></div><div class="line">    <span class="comment"># page_range:总页数的索引范围，如: (1,10),(1,200)</span></div><div class="line">    <span class="comment"># page:     返回值是一个对象</span></div><div class="line"></div><div class="line">    posts = paginator.page(current_page)  <span class="comment"># 传入的是页码的值</span></div><div class="line">    <span class="comment"># 下面是posts的方法</span></div><div class="line">    <span class="comment"># has_next              是否有下一页</span></div><div class="line">    <span class="comment"># next_page_number      下一页页码</span></div><div class="line">    <span class="comment"># has_previous          是否有上一页</span></div><div class="line">    <span class="comment"># previous_page_number  上一页页码</span></div><div class="line">    <span class="comment"># object_list           分页之后的数据列表</span></div><div class="line">    <span class="comment"># number                当前页</span></div><div class="line">    <span class="comment"># paginator             paginator对象</span></div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'index.html'</span>, &#123;<span class="string">'posts'</span>: posts&#125;)</div></pre></td></tr></table></figure></p>
+<p>前端代码,通过posts拿到分页后的数据，上下页之前先判断是否有上一页或者下一页，之后拼接路径。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>django内置的分页<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">        &#123;% for row in posts.object_list %&#125; &#123;# object_list是分页之后的数据列表 #&#125;</div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; row.name &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        &#123;% endfor %&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">        &#123;% if posts.has_previous %&#125;</div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/index.html?page=&#123;&#123; posts.previous_page_number &#125;&#125;"</span>&gt;</span>上一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        &#123;% endif %&#125;</div><div class="line">        &#123;% if posts.has_next %&#125; &#123;# 判断有下一页的时候 #&#125;</div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/index.html?page=&#123;&#123; posts.next_page_number &#125;&#125;"</span>&gt;</span>下一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        &#123;% endif %&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="关于URL中的问题"><a href="#关于URL中的问题" class="headerlink" title="关于URL中的问题"></a>关于URL中的问题</h3><p>在URL中只能接收的是int型的数字，如果传入的是字母，会报错<code>PageNotAnInteger at /index.html</code>,在后台进行异常处理，捕捉异常之后的操作是返回到第一页。</p>
+<p>在URL中传入的是负数的话，报错<code>EmptyPage at /index.html</code>，处理同样是返回到第一页</p>
+<p>已经在前面导入了异常处理的<br><code>from django.core.paginator import Paginator,Page,PageNotAnInteger,EmptyPage</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    posts = paginator.page(current_page)  <span class="comment"># 传入的是页码的值</span></div><div class="line">    <span class="comment"># except PageNotAnInteger as e:</span></div><div class="line">    <span class="comment">#     posts = paginator.page(1)</span></div><div class="line">    <span class="comment"># except EmptyPage as e:</span></div><div class="line">    <span class="comment">#     posts = paginator.page(1)</span></div><div class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">    posts = paginator.page(<span class="number">1</span>) <span class="comment"># 异常处理 返回第一页</span></div></pre></td></tr></table></figure>
+<h3 id="Django的页码"><a href="#Django的页码" class="headerlink" title="Django的页码"></a>Django的页码</h3><p>Django的页码在数据量很大的时候，会显示所有的分页的页码，比如有300条数据，每页显示10条数据，就会有30个页码。所以需要进行自己开发</p>
+<p>在index的上下页中间添加，<strong>post下有paginator方法，paginator下有page_range 方法</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">        &#123;% if posts.has_previous %&#125;</div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/index.html?page=&#123;&#123; posts.previous_page_number &#125;&#125;"</span>&gt;</span>上一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        &#123;% endif %&#125;</div><div class="line">   </div><div class="line">        &#123;% for num in posts.paginator.page_range %&#125; &#123;# post下有paginator，paginator下有page_range #&#125;</div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/index.html?page=&#123;&#123; num &#125;&#125;"</span>&gt;</span>&#123;&#123; num &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        &#123;% endfor %&#125;</div><div class="line">           </div><div class="line">        &#123;% if posts.has_next %&#125; &#123;# 判断有下一页的时候 #&#125;</div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/index.html?page=&#123;&#123; posts.next_page_number &#125;&#125;"</span>&gt;</span>下一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        &#123;% endif %&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>总结：<br>Django的分页适用于上下翻页的情况，不适合中间的页码</p>
+<h2 id="自定义分页"><a href="#自定义分页" class="headerlink" title="自定义分页"></a>自定义分页</h2><p>可以在任何地方使用，以后封装成一个类</p>
+<h3 id="最原始的实现"><a href="#最原始的实现" class="headerlink" title="最原始的实现"></a>最原始的实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">custom</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="comment"># 用户当前要访问的页码</span></div><div class="line">    current_page = request.GET.get(<span class="string">'page'</span>)</div><div class="line">    current_page = int(current_page)</div><div class="line"></div><div class="line">    <span class="comment"># 每页显示的个数</span></div><div class="line">    per_page = <span class="number">10</span></div><div class="line">    <span class="comment"># 1 1:10  最后一个取不到</span></div><div class="line">    <span class="comment"># 2 10:20</span></div><div class="line">    <span class="comment"># 3 20:30</span></div><div class="line">    start = (current_page - <span class="number">1</span>) * per_page</div><div class="line">    end = current_page * per_page</div><div class="line">    user_list = models.UserInfo.objects.all()[start:end]</div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'custom.html'</span>, &#123;<span class="string">"user_list"</span>: user_list&#125;)</div></pre></td></tr></table></figure>
+<h3 id="把页码的计算封装成类"><a href="#把页码的计算封装成类" class="headerlink" title="把页码的计算封装成类"></a>把页码的计算封装成类</h3><p>注意类中的参数传值的时候要一一对应</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PageInfo</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, current_page, all_count, per_page, )</span>:</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            self.current_page = int(current_page)</div><div class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">            current_page = <span class="number">1</span>  <span class="comment"># url 不是</span></div><div class="line">        self.per_page = per_page</div><div class="line">        a, b = divmod(all_count, per_page)  <span class="comment"># 通过divmod进行分页，有余数的再加一页</span></div><div class="line">        <span class="keyword">if</span> b:</div><div class="line">            a += <span class="number">1</span></div><div class="line">        self.all_page = a  <span class="comment"># all_page 是总的页码</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> (self.current_page - <span class="number">1</span>) * self.per_page</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">end</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.current_page * self.per_page</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pager</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># v = "&lt;a href='/custom.html?page=1'&gt;1&lt;/a&gt;" # 双引号中中用单引号</span></div><div class="line">        <span class="comment"># return v</span></div><div class="line"></div><div class="line">        <span class="comment"># 显示所有的页码</span></div><div class="line">        page_list = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, self.all_page + <span class="number">1</span>):</div><div class="line">            <span class="keyword">if</span> i == self.current_page:</div><div class="line">                <span class="comment"># 判断是当前页的时候，加上背景色</span></div><div class="line">                <span class="comment"># temp = "&lt;a style='padding=5px display=inl' href='/custom.html?page=%s'&gt;%s&lt;/a&gt;" %(i,i)  # 选中的加背景色</span></div><div class="line">                temp = <span class="string">"&lt;a style='display: inline-block;padding: 5px;margin: 5px;background-color: red' href='/custom.html?page=%s'&gt;%s&lt;/a&gt;"</span> % (</div><div class="line">                i, i)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                temp = <span class="string">"&lt;a style='display: inline-block;padding: 5px;margin: 5px' href='/custom.html?page=%s'&gt;%s&lt;/a&gt;"</span> % (</div><div class="line">                i, i)</div><div class="line">            page_list.append(temp)</div><div class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(page_list)  <span class="comment"># 把列表中的值取出并拼接成字符串</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 自定义分页</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">custom</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="comment"># 用户当前要访问的页码</span></div><div class="line">    <span class="comment"># current_page = request.GET.get('page')</span></div><div class="line">    <span class="comment"># page_info = PageInfo(current_page,10)</span></div><div class="line">    all_count = models.UserInfo.objects.all().count()</div><div class="line">    page_info = PageInfo(request.GET.get(<span class="string">'page'</span>), all_count, <span class="number">10</span>)</div><div class="line">    user_list = models.UserInfo.objects.all()[page_info.start():page_info.end()]  <span class="comment"># 对象继承类的方法</span></div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'custom.html'</span>, &#123;<span class="string">"user_list"</span>: user_list, <span class="string">'page_info'</span>: page_info&#125;)</div></pre></td></tr></table></figure>
+<h3 id="继续优化成页码的显示方式"><a href="#继续优化成页码的显示方式" class="headerlink" title="继续优化成页码的显示方式"></a>继续优化成页码的显示方式</h3><p>这种是定义了固定的显示页面数11(当前页和前后5页)，现在的问题是两端的极限值的问题</p>
+<p>左边必须是当前页&gt;=6<br>右边的问题是会查不到数据后还显示页码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PageInfo</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, current_page, all_count, per_page, show_page=<span class="number">11</span>)</span>:</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            self.current_page = int(current_page)</div><div class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">            current_page = <span class="number">1</span>  <span class="comment"># url 不是</span></div><div class="line">        self.per_page = per_page</div><div class="line">        a, b = divmod(all_count, per_page)  <span class="comment"># 通过divmod进行分页，有余数的再加一页</span></div><div class="line">        <span class="keyword">if</span> b:</div><div class="line">            a += <span class="number">1</span></div><div class="line">        self.all_page = a  <span class="comment"># all_page 是总的页码</span></div><div class="line">        self.show_page = show_page</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> (self.current_page - <span class="number">1</span>) * self.per_page</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">end</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.current_page * self.per_page</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pager</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># v = "&lt;a href='/custom.html?page=1'&gt;1&lt;/a&gt;" # 双引号中中用单引号</span></div><div class="line">        <span class="comment"># return v</span></div><div class="line"></div><div class="line">        half = int((self.show_page<span class="number">-1</span>)/<span class="number">2</span>)</div><div class="line">        begin = self.current_page - half</div><div class="line">        stop =self.current_page +half +<span class="number">1</span></div><div class="line">        <span class="comment"># 显示所有的页码</span></div><div class="line">        page_list = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(begin,stop):</div><div class="line">            <span class="keyword">if</span> i == self.current_page:</div><div class="line">                <span class="comment"># 判断是当前页的时候，加上背景色</span></div><div class="line">                <span class="comment"># temp = "&lt;a style='padding=5px display=inl' href='/custom.html?page=%s'&gt;%s&lt;/a&gt;" %(i,i)  # 选中的加背景色</span></div><div class="line">                temp = <span class="string">"&lt;a style='display: inline-block;padding: 5px;margin: 5px;background-color: red' href='/custom.html?page=%s'&gt;%s&lt;/a&gt;"</span> % (</div><div class="line">                i, i)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                temp = <span class="string">"&lt;a style='display: inline-block;padding: 5px;margin: 5px' href='/custom.html?page=%s'&gt;%s&lt;/a&gt;"</span> % (</div><div class="line">                i, i)</div><div class="line">            page_list.append(temp)</div><div class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(page_list)  <span class="comment"># 把列表中的值取出并拼接成字符串</span></div></pre></td></tr></table></figure>
+<h3 id="优化右边的极限"><a href="#优化右边的极限" class="headerlink" title="优化右边的极限"></a>优化右边的极限</h3>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/07/03/Django分页操作/" data-title="Django分页操作" data-url="https://github.com/ythzx/ythzx.github.io/2017/07/03/Django分页操作/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/02/Django母板及布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Django 的母板及布局(Bootstrap)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Django分页操作"><span class="nav-number">1.</span> <span class="nav-text">Django分页操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django自带分页"><span class="nav-number">2.</span> <span class="nav-text">Django自带分页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分页操作实现"><span class="nav-number">2.1.</span> <span class="nav-text">分页操作实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于URL中的问题"><span class="nav-number">2.2.</span> <span class="nav-text">关于URL中的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django的页码"><span class="nav-number">2.3.</span> <span class="nav-text">Django的页码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义分页"><span class="nav-number">3.</span> <span class="nav-text">自定义分页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最原始的实现"><span class="nav-number">3.1.</span> <span class="nav-text">最原始的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把页码的计算封装成类"><span class="nav-number">3.2.</span> <span class="nav-text">把页码的计算封装成类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继续优化成页码的显示方式"><span class="nav-number">3.3.</span> <span class="nav-text">继续优化成页码的显示方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化右边的极限"><span class="nav-number">3.4.</span> <span class="nav-text">优化右边的极限</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

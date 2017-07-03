@@ -96,6 +96,62 @@
         
           <section id="main">
   
+    <article id="post-Python错误和异常"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/05/02/Python错误和异常/">Python 错误和异常</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/05/02/Python错误和异常/" class="article-date">
+	  <time datetime="2017-05-02T09:22:18.321Z" itemprop="datePublished">五月 2, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            1 错误和异常
+1.1 错误python 中的错误有两种，语法错误和逻辑错误
+这种错误是我们应该避免的
+1.2 异常python中的异常是程序运行过程中产生的，有异常不一定要把程序停止，只要把异常抛出，然后查看异常产生的原因即可。
+1.2.1  python中的异常种类123456789101112131415161718192021222324252627AttributeError 试图访问一个对象没有的属性，比如foo.x，但是foo没有属性xIOError 输入/输出异常；基本上是无法打开文件ImportError 无法引入模块或包；基本上是路径问题或名称错误IndentationError 语法错误（的子类） ；代码没有正确对齐IndexError 下标索引超出序列边界，比如...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/05/02/Python错误和异常/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python模块（二）"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -332,62 +388,6 @@ issubclass:判断是否是继承123456class Foo:    passclass Bar(Foo):    passp
 <!-- Table of Contents -->
 
   
-    <article id="post-Python 静态方法 类方法"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/22/Python 静态方法 类方法/">Python 静态方法 类方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/22/Python 静态方法 类方法/" class="article-date">
-	  <time datetime="2017-04-22T10:20:49.028Z" itemprop="datePublished">四月 22, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            通常情况下，类中函数中定义的所有函数,,都是对象的绑定方法，除此之外，还有专门的静态方法和类方法，这两个是专门给类使用的，但是对象非要调用也是不会报错的。
-对象在调用的时候会把自己传递给self，也就是绑定方法的第一个参数。
-1 静态方法
-这里定义spam的时候没有self,而是传入了xyz,类在使用的时候必须传入3个参数1234567class Foo:    @staticmethod  # spam = staticmethod(apam)    def spam(x,y,z):        print(x,y,z)    # spm = staticmethod(spam)Foo.spam(1,2,3)
-应用场景首相先了解下时间模块的使用1234567&gt;&gt;&gt;...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/22/Python 静态方法 类方法/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -504,6 +504,18 @@ issubclass:判断是否是继承123456class Foo:    passclass Bar(Foo):    passp
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/07/03/Django分页操作/">Django分页操作</a></h6>
+              <span>七月 3, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/07/02/Django母板及布局/">Django 的母板及布局(Bootstrap)</a></h6>
               <span>七月 2, 2017</span>
             </div>
@@ -558,18 +570,6 @@ issubclass:判断是否是继承123456class Foo:    passclass Bar(Foo):    passp
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/06/06/mysql进阶/">MySQL 外键 表的查询</a></h6>
-              <span>六月 6, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -582,7 +582,7 @@ issubclass:判断是否是继承123456class Foo:    passclass Bar(Foo):    passp
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">40</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">40</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -592,7 +592,7 @@ issubclass:判断是否是继承123456class Foo:    passclass Bar(Foo):    passp
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Django/" style="font-size: 12.5px;">Django</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/Web/" style="font-size: 12.5px;">Web</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/Django/" style="font-size: 15px;">Django</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 17.5px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/Web/" style="font-size: 12.5px;">Web</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -602,7 +602,7 @@ issubclass:判断是否是继承123456class Foo:    passclass Bar(Foo):    passp
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
