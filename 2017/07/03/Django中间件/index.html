@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>django中间件 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Django中间件" />
+  
+  
+  
+  
+  <meta name="description" content="Django中间件HTTP请求周期初识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django中间件">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/07/03/Django中间件/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="Django中间件HTTP请求周期初识">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170703184843487-917535307.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170703190236081-1543968590.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170703200942909-185080115.jpg">
+<meta property="og:updated_time" content="2017-07-03T15:08:01.209Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django中间件">
+<meta name="twitter:description" content="Django中间件HTTP请求周期初识">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170703184843487-917535307.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-Django中间件" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Django中间件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/07/03/Django中间件/" class="article-date">
+	  <time datetime="2017-07-03T15:08:14.622Z" itemprop="datePublished">七月 3, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Django中间件"><a href="#Django中间件" class="headerlink" title="Django中间件"></a>Django中间件</h1><h3 id="HTTP请求周期初识"><a href="#HTTP请求周期初识" class="headerlink" title="HTTP请求周期初识"></a>HTTP请求周期初识</h3><a id="more"></a>
+<p>在HTTP请求周期中，之前的了解是：<code>用户请求-&gt;URL-&gt;view视图-&gt;url-&gt;用户</code></p>
+<p>实际在用户请求和URL之间是中间件</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201707/658994-20170703184843487-917535307.png" alt=""></p>
+<p><strong>Django 的中间件的本质是类</strong>，有几个中间件，就有经过几个类，每个类都有相应的方法。</p>
+<h3 id="Django中的中间件"><a href="#Django中的中间件" class="headerlink" title="Django中的中间件"></a>Django中的中间件</h3><p>Django的中间件在setting中MIDDLEWARE</p>
+<p>中间件是有顺序的，按照setting中的从上到下顺序执行</p>
+<p>在<code>Django1.10</code>以上的版本中，当请求从上到下执行，如到达csrf出现问题，会从同一级别的csrf返回。</p>
+<p>在之前的版本中，请求到达csrf出现问题，会从最后一个中间件返回。</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201707/658994-20170703190236081-1543968590.jpg" alt=""></p>
+<h3 id="自定义中间件"><a href="#自定义中间件" class="headerlink" title="自定义中间件"></a>自定义中间件</h3><p>可以在当前的中间件的基础上进行修改，也可以自己定制新的中间件</p>
+<p>小功能：</p>
+<ul>
+<li><p>比如，黑名单功能，请求来的时候判断用户的IP是否在黑名单中，如果在，禁止请求</p>
+</li>
+<li><p>在中间件中添加装饰器判断用户是否登录</p>
+</li>
+</ul>
+<p><strong>自定义中间件:</strong></p>
+<ul>
+<li>继承MiddlewareMixin</li>
+<li>process_request 可以没有返回值，有返回值的时候直接从同级别的位置返回</li>
+<li>process_response 有三个参数，必须有返回值</li>
+</ul>
+<p>中间件<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.utils.deprecation <span class="keyword">import</span> MiddlewareMixin</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">M1</span><span class="params">(MiddlewareMixin)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self, request)</span>:</span></div><div class="line">        print(<span class="string">"m1.request"</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_response</span><span class="params">(self, request, response)</span>:</span>  <span class="comment"># 还有一个response参数</span></div><div class="line">        print(<span class="string">"m1.response"</span>)</div><div class="line">        <span class="keyword">return</span> response</div></pre></td></tr></table></figure></p>
+<p>视图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render,redirect,HttpResponse</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(rquest)</span>:</span></div><div class="line">    print(<span class="string">'test'</span>)</div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"ok"</span>)</div></pre></td></tr></table></figure>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">m1.request</div><div class="line">test   视图函数的执行</div><div class="line">m1.response</div></pre></td></tr></table></figure></p>
+<p><strong>process_request有返回值的情况</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.utils.deprecation <span class="keyword">import</span> MiddlewareMixin</div><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render,redirect,HttpResponse</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">M1</span><span class="params">(MiddlewareMixin)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self, request)</span>:</span></div><div class="line">        print(<span class="string">"m1.request"</span>)</div><div class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">'okokoko'</span>) <span class="comment"># 这里添加了返回值</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_response</span><span class="params">(self, request, response)</span>:</span>  <span class="comment"># 还有一个response参数</span></div><div class="line">        print(<span class="string">"m1.response"</span>)</div><div class="line">        <span class="keyword">return</span> response</div></pre></td></tr></table></figure></p>
+<p>结果：没有执行视图函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">m1.request</div><div class="line">m1.response  直接从自己的方法返回</div></pre></td></tr></table></figure></p>
+<h3 id="注册中间件"><a href="#注册中间件" class="headerlink" title="注册中间件"></a>注册中间件</h3><p>按顺序执行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">MIDDLEWARE = [</div><div class="line">    <span class="string">'django.middleware.security.SecurityMiddleware'</span>,</div><div class="line">    <span class="string">'django.contrib.sessions.middleware.SessionMiddleware'</span>,</div><div class="line">    <span class="string">'django.middleware.common.CommonMiddleware'</span>,</div><div class="line">    <span class="string">'django.middleware.csrf.CsrfViewMiddleware'</span>,</div><div class="line">    <span class="string">'django.contrib.auth.middleware.AuthenticationMiddleware'</span>,</div><div class="line">    <span class="string">'django.contrib.messages.middleware.MessageMiddleware'</span>,</div><div class="line">    <span class="string">'django.middleware.clickjacking.XFrameOptionsMiddleware'</span>,</div><div class="line">    <span class="comment"># 'md.M1',</span></div><div class="line">    <span class="comment"># 'md.M2',</span></div><div class="line">    <span class="string">'m1.M1'</span>,  <span class="comment"># 自己的中间件 文件名+类名</span></div><div class="line"></div><div class="line">]</div></pre></td></tr></table></figure>
+<h3 id="深入HTTP请求周期"><a href="#深入HTTP请求周期" class="headerlink" title="深入HTTP请求周期"></a>深入HTTP请求周期</h3><p>首选要明白的是web框架的本质是socket，但是Django是没有的，默认的wsgiref,生产环境用的是<code>uwsgi</code></p>
+<p>WSGI(Web Server Gateway Interface)Web服务网关接口已经成为了一种规范</p>
+<p><strong>wsgi是Django开始的地方</strong></p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201707/658994-20170703200942909-185080115.jpg" alt=""></p>
+<h3 id="自定义中间件view"><a href="#自定义中间件view" class="headerlink" title="自定义中间件view"></a>自定义中间件view</h3><p>下面的情况是执行完m1的request后执行m2的request.</p>
+<p>执行view的时候重新返回m1的view,然后是m2的view</p>
+<p>中间执行view视图函数</p>
+<p>最后执行m2的response，m1的response</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.utils.deprecation <span class="keyword">import</span> MiddlewareMixin</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">M1</span><span class="params">(MiddlewareMixin)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self, request)</span>:</span></div><div class="line">        print(<span class="string">"m1.process_request"</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_view</span><span class="params">(self, request, callback, callback_args, callback_kwargs)</span>:</span></div><div class="line">        print(<span class="string">"m1.process_view"</span>)</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_response</span><span class="params">(self, request, response)</span>:</span></div><div class="line">        print(<span class="string">"m1.process_response"</span>)</div><div class="line">        <span class="keyword">return</span> response  <span class="comment"># response必须要有返回值</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">M2</span><span class="params">(MiddlewareMixin)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self, request)</span>:</span></div><div class="line">        print(<span class="string">'m2.process_request'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_view</span><span class="params">(self, request, callback, callback_args, callback_kwargs)</span>:</span></div><div class="line">        print(<span class="string">"m2.process_view"</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_response</span><span class="params">(self, request, response)</span>:</span></div><div class="line">        print(<span class="string">'m2.process_response'</span>)</div><div class="line">        <span class="keyword">return</span> response  <span class="comment">#</span></div></pre></td></tr></table></figure>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">m1.process_request</div><div class="line">m2.process_request</div><div class="line">m1.process_view</div><div class="line">m2.process_view</div><div class="line">test</div><div class="line">m2.process_response</div><div class="line">m1.process_response</div></pre></td></tr></table></figure></p>
+<p><strong>*在view中是用callback方法</strong></p>
+<p>通过callback找到了视图函数的名字，callback加括号就是执行视图函数一次</p>
+<p>注意的是m1的process_view没有返回值的时候是执行一次view中的test函数</p>
+<p>有返回值的时候m2的process_view不会执行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.utils.deprecation <span class="keyword">import</span> MiddlewareMixin</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">M1</span><span class="params">(MiddlewareMixin)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self, request)</span>:</span></div><div class="line">        print(<span class="string">"m1.process_request"</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_view</span><span class="params">(self, request, callback, callback_args, callback_kwargs)</span>:</span></div><div class="line">        print(<span class="string">"m1.process_view"</span>)</div><div class="line">        response = callback(request, *callback_args, **callback_kwargs)</div><div class="line">        <span class="comment"># 这里是找函数 url对应的函数名</span></div><div class="line">        <span class="comment"># return response   有response的时 从这里返回  </span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_response</span><span class="params">(self, request, response)</span>:</span></div><div class="line">        print(<span class="string">"m1.process_response"</span>)</div><div class="line">        <span class="keyword">return</span> response  <span class="comment"># response必须要有返回值</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">M2</span><span class="params">(MiddlewareMixin)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self, request)</span>:</span></div><div class="line">        print(<span class="string">'m2.process_request'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_view</span><span class="params">(self, request, callback, callback_args, callback_kwargs)</span>:</span></div><div class="line">        print(<span class="string">"m2.process_view"</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_response</span><span class="params">(self, request, response)</span>:</span></div><div class="line">        print(<span class="string">'m2.process_response'</span>)</div><div class="line">        <span class="keyword">return</span> response  <span class="comment">#</span></div></pre></td></tr></table></figure>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">m1.process_request</div><div class="line">m2.process_request</div><div class="line">m1.process_view</div><div class="line">test   # 这是callback执行的</div><div class="line">m2.process_view</div><div class="line">test</div><div class="line">m2.process_response</div><div class="line">m1.process_response</div></pre></td></tr></table></figure></p>
+<h4 id="process的方法"><a href="#process的方法" class="headerlink" title="process的方法"></a>process的方法</h4><ul>
+<li>process_request</li>
+<li>process_response  一定要有返回值</li>
+<li>process_view</li>
+<li>process_exception(错误异常)</li>
+<li>process_template<ul>
+<li>视图函数中有render方法才执行</li>
+<li>自己写类进行封装<br>返回对象有render方法</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">process_request(self,request)</div><div class="line">process_view(self, request, callback, callback_args, callback_kwargs)</div><div class="line">process_template_response(self,request,response)</div><div class="line">process_exception(self, request, exception)</div><div class="line">process_response(self, request, response)</div></pre></td></tr></table></figure>
+<h3 id="中间件应用"><a href="#中间件应用" class="headerlink" title="中间件应用"></a>中间件应用</h3><p>对所有请求或一部分请求做批量处理</p>
+<p>例如把所有的请求筛选，缓存中有，直接从缓存中拿</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django中间件/">Django中间件</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/07/03/Django中间件/" data-title="Django中间件" data-url="https://github.com/ythzx/ythzx.github.io/2017/07/03/Django中间件/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/03/Django分页操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Django分页操作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Django中间件"><span class="nav-number">1.</span> <span class="nav-text">Django中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP请求周期初识"><span class="nav-number">1.0.1.</span> <span class="nav-text">HTTP请求周期初识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django中的中间件"><span class="nav-number">1.0.2.</span> <span class="nav-text">Django中的中间件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义中间件"><span class="nav-number">1.0.3.</span> <span class="nav-text">自定义中间件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注册中间件"><span class="nav-number">1.0.4.</span> <span class="nav-text">注册中间件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深入HTTP请求周期"><span class="nav-number">1.0.5.</span> <span class="nav-text">深入HTTP请求周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义中间件view"><span class="nav-number">1.0.6.</span> <span class="nav-text">自定义中间件view</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#process的方法"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">process的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中间件应用"><span class="nav-number">1.0.7.</span> <span class="nav-text">中间件应用</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
