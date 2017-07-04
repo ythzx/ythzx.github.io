@@ -119,10 +119,27 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Form验证"><a href="#Form验证" class="headerlink" title="Form验证"></a>Form验证</h3><p>对用户的请求的数据进行验证</p>
-<p>使用类</p>
-<p>从前端获取的数据的name属性的名字要和定义的class类中的字段一致</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            From的功能实际有三个，Form验证，From添加标签，Form保留返回值
+保留返回值的功能还可用ajax发送
+一、Form验证
+对用户的请求的数据进行验证
+使用类
+从前端获取的数据的name属性的名字要和定义的class类中的字段一致
+12
+二、From添加标签1 自己在前端写标签自己在前端写input标签，在提交后在后台获取name属性的值进行验证，user要和LoginForm 中的字段名一致，之后obj.is_valid()会自动验证，验证通过(通过后正确信息是obj.cleaned_data,)，返回True，不通过返回false(错误信息obj.errors),通常在前端获取，如obj.errors.user.0
+这里的问题是提交后不能保存信息
+1234567891011...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/07/03/Django Form组件/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
