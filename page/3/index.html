@@ -96,6 +96,59 @@
         
           <section id="main">
   
+    <article id="post-mysql进阶"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/06/06/mysql进阶/">MySQL 外键 表的查询</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/06/06/mysql进阶/" class="article-date">
+	  <time datetime="2017-06-06T14:57:54.467Z" itemprop="datePublished">六月 6, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            自增补充
+这是查看怎么创建的表， \G示旋转90度显示表的内容表的自增的关键是 AUTO_INCREMENT=3，在表中添加数据后，这个会自动改变，通过alert可以改变这个默认值12345678mysql&gt; show create table t1 \G;*************************** 1. row ***************************       Table: t1Create Table: CREATE TABLE `t1` (  `id` int(11) NOT NULL AUTO_INCREMENT,  `name` char(10) DEFAULT NULL,  PRIMARY KEY (`id`)) ENGINE=InnoD...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/06/06/mysql进阶/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-mysql基础"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -355,78 +408,6 @@ close()            关闭浏览器窗...
 <!-- Table of Contents -->
 
   
-    <article id="post-JavaScript基础"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/23/JavaScript基础/">JavaScript基础</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/05/23/JavaScript基础/" class="article-date">
-	  <time datetime="2017-05-23T01:00:14.378Z" itemprop="datePublished">五月 23, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            历史 简介
-一个完整的 JavaScript 实现是由以下 3 个不同部分组成
-
-核心（ECMAScript） 
-文档对象模型（DOM） Document object model (整合js，css，html)
-浏览器对象模型（BOM） Broswer object model（整合js和浏览器）
-Javascript 在开发中绝大多数情况是基于对象的.也是面向对象的.
-
-所谓的基于对象就是直接使用，用new创建一个新的类
-ECMAScript 描述了以下内容：
-
-语法 
-类型 
-语句 
-关键字 
-保留字 
-运算符 
-对象 (封装 继承 多态) 基于对象的语言.使用对象.
-JavaScript的引入方式
-
-JS的引入方式123456&#123;#1 直接编写#&#125;    &l...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/05/23/JavaScript基础/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -543,6 +524,18 @@ JS的引入方式123456&#123;#1 直接编写#&#125;    &l...
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/07/07/JSONP 技术/">JSONP 技术</a></h6>
+              <span>七月 7, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/07/03/Django Form组件/">Django Form组件</a></h6>
               <span>七月 3, 2017</span>
             </div>
@@ -597,18 +590,6 @@ JS的引入方式123456&#123;#1 直接编写#&#125;    &l...
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/06/26/Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器/">Sublime 安装Boxy + OmniMarkupPreviewer</a></h6>
-              <span>六月 26, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -621,7 +602,7 @@ JS的引入方式123456&#123;#1 直接编写#&#125;    &l...
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">40</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">40</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -641,7 +622,7 @@ JS的引入方式123456&#123;#1 直接编写#&#125;    &l...
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
