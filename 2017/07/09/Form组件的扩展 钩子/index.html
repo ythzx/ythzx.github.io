@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>form组件的验证流程及扩展(钩子) | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Django" />
+  
+  
+  
+  
+  <meta name="description" content="Form组件的验证流程及扩展(钩子)常用的form">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Form组件的验证流程及扩展(钩子)">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/07/09/Form组件的扩展 钩子/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="Form组件的验证流程及扩展(钩子)常用的form">
+<meta property="og:updated_time" content="2017-07-09T10:43:59.230Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Form组件的验证流程及扩展(钩子)">
+<meta name="twitter:description" content="Form组件的验证流程及扩展(钩子)常用的form">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-Form组件的扩展 钩子" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Form组件的验证流程及扩展(钩子)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/07/09/Form组件的扩展 钩子/" class="article-date">
+	  <time datetime="2017-07-09T08:58:16.246Z" itemprop="datePublished">七月 9, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Form组件的验证流程及扩展-钩子"><a href="#Form组件的验证流程及扩展-钩子" class="headerlink" title="Form组件的验证流程及扩展(钩子)"></a>Form组件的验证流程及扩展(钩子)</h1><h3 id="常用的form"><a href="#常用的form" class="headerlink" title="常用的form"></a>常用的form</h3><a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestForm</span><span class="params">(Form)</span>:</span></div><div class="line">    t1 = fields.CharField(</div><div class="line">        widget=widgets.Textarea  <span class="comment"># 输入框</span></div><div class="line">    )</div><div class="line">    t2 = fields.CharField(</div><div class="line">        widget=widgets.CheckboxInput  <span class="comment"># 单选框</span></div><div class="line">    )</div><div class="line">    t3 = fields.MultipleChoiceField(</div><div class="line">        choices=[(<span class="number">1</span>, <span class="string">'篮球'</span>), (<span class="number">2</span>, <span class="string">'足球'</span>)],  <span class="comment"># 多选框的内容</span></div><div class="line">        widget=widgets.CheckboxSelectMultiple  <span class="comment"># 多选框</span></div><div class="line">    )</div><div class="line">    t4 = fields.ChoiceField(</div><div class="line">        choices=[(<span class="number">1</span>, <span class="string">'篮球'</span>), (<span class="number">2</span>, <span class="string">'足球'</span>)],</div><div class="line">        widget=widgets.RadioSelect   <span class="comment"># 单选 互斥</span></div><div class="line">    )</div><div class="line">    t5 = fields.FileField(</div><div class="line">        widget=widgets.FileInput  <span class="comment"># 文件  最终获得是文件对象</span></div><div class="line">    )</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(request)</span>:</span></div><div class="line">    obj = TestForm(initial=&#123;<span class="string">'t3'</span>: [<span class="number">2</span>, ]&#125;)  <span class="comment"># 多选的默认</span></div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'test.html'</span>, &#123;<span class="string">'obj'</span>: obj&#125;)</div></pre></td></tr></table></figure>
+<p> 前端<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    &#123;&#123; obj.t1 &#125;&#125;</div><div class="line">    &#123;&#123; obj.t2 &#125;&#125;</div><div class="line">    &#123;&#123; obj.t3 &#125;&#125;</div><div class="line">    &#123;&#123; obj.t4 &#125;&#125;</div><div class="line">    &#123;&#123; obj.t5 &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="Form组件的验证流程"><a href="#Form组件的验证流程" class="headerlink" title="Form组件的验证流程"></a>Form组件的验证流程</h3><p><strong>关键点是返回值</strong></p>
+<ul>
+<li>进行正则验证</li>
+<li>循环所有的字段，加入self.fields中并执行相应的函数clean_xxx,xxx是字段的名字</li>
+<li>自己定义的高级验证一定要有返回值，默认是自己</li>
+</ul>
+<p>源码的寻找循序：<br><code>is_valid -&gt; errors -&gt; full_clean -&gt; self._clean_fields()</code></p>
+<p>源码中的full_clean<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">self._clean_fields()  <span class="comment"># 对定义的字段函数进行验证</span></div><div class="line">self._clean_form()   <span class="comment"># clean整体验证</span></div><div class="line">self._post_clean()   <span class="comment"># 最后自定义验证 一般不适用，需要自己写错误验证</span></div></pre></td></tr></table></figure></p>
+<p><strong>1 自定义函数进行验证</strong></p>
+<p>自定义的函数是对每个字段进行验证，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.core.exceptions <span class="keyword">import</span> ValidationError</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestForm</span><span class="params">(Form)</span>:</span></div><div class="line">    user = fields.CharField()</div><div class="line">    pwd = fields.CharField()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clean_user</span><span class="params">(self)</span>:</span></div><div class="line">        v = self.cleaned_data[<span class="string">'user'</span>]</div><div class="line">        <span class="keyword">if</span> models.Students.objects.filter(name=v).count():</div><div class="line">            <span class="keyword">raise</span> ValidationError(<span class="string">'用户名已经存在'</span>, code=<span class="string">'invalid'</span>)  <span class="comment"># 默认是invalid 还可以是其他的required</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">pass</span></div><div class="line">        <span class="keyword">return</span> self.cleaned_data[<span class="string">'user'</span>]  <span class="comment"># 一定要有返回值 否则cleaned_data就是None，</span></div><div class="line">        <span class="comment"># 没有改变就把自身返回</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clean_pwd</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.cleaned_data[<span class="string">'pwd'</span>]  <span class="comment"># self代表的是obj对象</span></div></pre></td></tr></table></figure>
+<p><strong>2 整体验证</strong></p>
+<p>使用clean对整体进行验证，内部已经提供了异常处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestForm</span><span class="params">(Form)</span>:</span></div><div class="line">    user = fields.CharField()</div><div class="line">    pwd = fields.CharField()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clean_user</span><span class="params">(self)</span>:</span></div><div class="line">        v = self.cleaned_data[<span class="string">'user'</span>]</div><div class="line">        <span class="keyword">if</span> models.Students.objects.filter(name=v).count():</div><div class="line">            <span class="keyword">raise</span> ValidationError(<span class="string">'用户名已经存在'</span>, code=<span class="string">'invalid'</span>)  <span class="comment"># 默认是invalid 还可以是其他的required</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">pass</span></div><div class="line">        <span class="keyword">return</span> self.cleaned_data[<span class="string">'user'</span>]  <span class="comment"># 一定要有返回值 否则cleaned_data就是None，</span></div><div class="line">        <span class="comment"># 没有改变就把自身返回</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clean_pwd</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.cleaned_data[<span class="string">'pwd'</span>]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clean</span><span class="params">(self)</span>:</span></div><div class="line">        user = self.cleaned_data.get(<span class="string">'user'</span>)</div><div class="line">        email = self.cleaned_data.get(<span class="string">'email'</span>)</div><div class="line">        <span class="keyword">if</span> models.Students.objects.filter(user=user, email=email).count():</div><div class="line">            <span class="keyword">raise</span> ValidationError(<span class="string">'用户名和邮箱联合存在'</span>)</div><div class="line">        <span class="keyword">return</span> self.cleaned_data</div></pre></td></tr></table></figure>
+<p><strong>3 在默认正则中添加正则</strong></p>
+<p>需要导入一个模块</p>
+<p>关键在validators=[],在内部添加正则，如第一个没有通过验证，后面的也就不用进行验证了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.core.validators <span class="keyword">import</span> RegexValidator</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestForm</span><span class="params">(Form)</span>:</span></div><div class="line">    <span class="comment"># user = fields.CharField(validators=[])</span></div><div class="line">    user = fields.CharField(</div><div class="line">        validators=[RegexValidator(<span class="string">r'^[0-9]+$'</span>, <span class="string">'请输入数字'</span>), RegexValidator(<span class="string">r'^159[0-9]+$'</span>, <span class="string">'数字必须以159开头'</span>)],</div><div class="line">    )</div><div class="line">    pwd = fields.CharField()</div></pre></td></tr></table></figure>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ul>
+<li><p>字段 = 默认正则表达式</p>
+<pre><code>额外的正则
+from django.forms import Form
+from django.forms import widgets
+from django.forms import fields
+from django.core.validators import RegexValidator
+
+class MyForm(Form):
+    user = fields.CharField(
+        validators=[RegexValidator(r&apos;^[0-9]+$&apos;, &apos;请输入数字&apos;), RegexValidator(r&apos;^159[0-9]+$&apos;, &apos;数字必须以159开头&apos;)],
+    )
+</code></pre></li>
+<li><p>clean_字段，必须返回值</p>
+</li>
+<li>clean()<br>  有返回值：cleaned_data = 返回值<br>  无返回值：cleaned_data = 原来的值</li>
+</ul>
+<p>参考：<br><a href="http://www.cnblogs.com/wupeiqi/articles/6144178.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/6144178.html</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/07/09/Form组件的扩展 钩子/" data-title="Form组件的验证流程及扩展(钩子)" data-url="https://github.com/ythzx/ythzx.github.io/2017/07/09/Form组件的扩展 钩子/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/09/CORS的原理及应用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">CORS的原理及应用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Form组件的验证流程及扩展-钩子"><span class="nav-number">1.</span> <span class="nav-text">Form组件的验证流程及扩展(钩子)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的form"><span class="nav-number">1.0.1.</span> <span class="nav-text">常用的form</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Form组件的验证流程"><span class="nav-number">1.0.2.</span> <span class="nav-text">Form组件的验证流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结："><span class="nav-number">1.0.3.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
