@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>django orm models操作 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Django" />
+  
+  
+  
+  
+  <meta name="description" content="Django ORM models操作Django ORM基本操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django ORM models操作">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/07/14/Django ORM models操作/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="Django ORM models操作Django ORM基本操作">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170716161901097-1821663887.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170716161941082-257336655.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170716163416597-946412905.png">
+<meta property="og:updated_time" content="2017-07-16T15:22:04.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django ORM models操作">
+<meta name="twitter:description" content="Django ORM models操作Django ORM基本操作">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170716161901097-1821663887.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-Django ORM models操作" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Django ORM models操作
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/07/14/Django ORM models操作/" class="article-date">
+	  <time datetime="2017-07-14T11:12:14.112Z" itemprop="datePublished">七月 14, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Django-ORM-models操作"><a href="#Django-ORM-models操作" class="headerlink" title="Django ORM models操作"></a>Django ORM models操作</h1><h2 id="Django-ORM基本操作"><a href="#Django-ORM基本操作" class="headerlink" title="Django ORM基本操作"></a>Django ORM基本操作</h2><a id="more"></a>
+<h3 id="一、数据库的创建及增删改查"><a href="#一、数据库的创建及增删改查" class="headerlink" title="一、数据库的创建及增删改查"></a>一、数据库的创建及增删改查</h3><h4 id="1-使用类创建表"><a href="#1-使用类创建表" class="headerlink" title="1 使用类创建表"></a>1 使用类创建表</h4><ul>
+<li>在models.py中 <code>from django.db import models</code></li>
+<li>继承models.Model</li>
+</ul>
+<p><strong>1 写类，对应表名</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name = models.CharField(max_length=<span class="number">16</span>)</div><div class="line">    age = models.IntegerField()</div></pre></td></tr></table></figure>
+<ul>
+<li>设置外键<br>  ut = models.ForeignKey(‘UserType’)</li>
+<li>设置外键可以为空, null=True    ut = models.ForeignKey(‘UserType’,null=True) </li>
+<li><strong>生成的外键在数据库中是ut_id,自动添加了下划线+id</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserType</span><span class="params">(models.Model)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    用户组</div><div class="line">    """</div><div class="line">    title = models.CharField(max_length=<span class="number">32</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="string">"%s-%s"</span> % (self.id, self.title)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span><span class="params">(models.Model)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    用户表</div><div class="line">    """</div><div class="line">    name = models.CharField(max_length=<span class="number">16</span>)</div><div class="line">    age = models.IntegerField()</div><div class="line">    ut = models.ForeignKey(<span class="string">'UserType'</span>,null=<span class="keyword">True</span>)  <span class="comment"># 设置外键</span></div></pre></td></tr></table></figure>
+<p><strong>2 注册app</strong></p>
+<p>在setting中注册app的名字,下面的都会在数据库中生成表，都有相应的用处</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">INSTALLED_APPS = [</div><div class="line">    <span class="string">'django.contrib.admin'</span>,</div><div class="line">    <span class="string">'django.contrib.auth'</span>,</div><div class="line">    <span class="string">'django.contrib.contenttypes'</span>,</div><div class="line">    <span class="string">'django.contrib.sessions'</span>,</div><div class="line">    <span class="string">'django.contrib.messages'</span>,</div><div class="line">    <span class="string">'django.contrib.staticfiles'</span>,</div><div class="line">    <span class="string">'app01'</span>,</div><div class="line">]</div></pre></td></tr></table></figure>
+<p><strong>3 生成表</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python3 manage.py makemigratons</div><div class="line">python3 manage.py migrate</div></pre></td></tr></table></figure>
+<h4 id="2-修改数据库"><a href="#2-修改数据库" class="headerlink" title="2 修改数据库"></a>2 修改数据库</h4><p>如果数据库中有数据，想添加一列的时候，数据库会提示。。。，解决方式：</p>
+<ul>
+<li>null=True 设置默认为空</li>
+<li>default=1 设置默认值为1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name = models.CharField(max_length=<span class="number">16</span>)</div><div class="line">    age = models.IntegerField()</div><div class="line">    email = models.CharField(null=<span class="keyword">True</span>)</div><div class="line">    email = models.CharField(default=<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<h3 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 增加数据</span></div><div class="line">models.UserInfo.objects.create(name=<span class="string">'aaa'</span>,age=<span class="string">'18'</span>,ut_id=<span class="string">'1'</span>)  <span class="comment"># 注意外键是一行对象，用表中额ut_id</span></div><div class="line"></div><div class="line"><span class="comment"># 查询数据</span></div><div class="line">models.UserInfo.objects.all()</div><div class="line"></div><div class="line"><span class="comment"># 过滤</span></div><div class="line"></div><div class="line">models.UserInfo.objects.filter(name=<span class="string">'xxx'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 更新</span></div><div class="line"></div><div class="line">models.UserInfo.objects.update(name=<span class="string">'ddd'</span>)</div></pre></td></tr></table></figure>
+<h3 id="二、连表操作"><a href="#二、连表操作" class="headerlink" title="二、连表操作"></a>二、连表操作</h3><h4 id="1-外键连表"><a href="#1-外键连表" class="headerlink" title="1 外键连表"></a>1 外键连表</h4><h5 id="连一张表的情况"><a href="#连一张表的情况" class="headerlink" title="连一张表的情况"></a>连一张表的情况</h5><p>UserType表:</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201707/658994-20170716161901097-1821663887.png" alt=""></p>
+<p>UserInfo表：<br><img src="http://images2015.cnblogs.com/blog/658994/201707/658994-20170716161941082-257336655.png" alt=""></p>
+<p>下面是通过UserInfo表中的外键ut,此时的ut就代表UserType这个表的一行对象，直接用<code>item.ut.title</code>就可以进行连表查询。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(request)</span>:</span></div><div class="line">    user_list = models.UserInfo.objects.all()</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> user_list:</div><div class="line">        print(item.age,item.name,item.ut_id,item.ut.title) <span class="comment"># 通过外键进行连表</span></div></pre></td></tr></table></figure></p>
+<p><strong>查看原生SQL语句</strong></p>
+<p>使用query进行查看，可以查看models的SQL操作。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">user_list = models.UserInfo.objects.all()</div><div class="line">    print(user_list.query)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT &quot;app01_userinfo&quot;.&quot;id&quot;, &quot;app01_userinfo&quot;.&quot;name&quot;, &quot;app01_userinfo&quot;.&quot;age&quot;, &quot;app01_userinfo&quot;.&quot;ut_id&quot; FROM &quot;app01_userinfo&quot;</div></pre></td></tr></table></figure>
+<h5 id="连多张表的情况"><a href="#连多张表的情况" class="headerlink" title="连多张表的情况"></a>连多张表的情况</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserType</span><span class="params">(models.Model)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    用户类型</div><div class="line">    """</div><div class="line">    title = models.CharField(max_length=<span class="number">32</span>)</div><div class="line">    fo = models.ForeignKey(<span class="string">'Foo'</span>)</div></pre></td></tr></table></figure>
+<p>在UserType表中添加外键fo,关联Foo表</p>
+<p><img src="http://images2015.cnblogs.com/blog/658994/201707/658994-20170716163416597-946412905.png" alt=""></p>
+<p>使用<code>item.ut.fo.caption</code>可以通过外键一致<code>点</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(request)</span>:</span></div><div class="line">    user_list = models.UserInfo.objects.all()</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> user_list:</div><div class="line">        print(item.age,item.name,item.ut_id,item.ut.fo.caption)</div></pre></td></tr></table></figure>
+<h4 id="2-正向操作"><a href="#2-正向操作" class="headerlink" title="2 正向操作"></a>2 正向操作</h4><ul>
+<li>一个用户只有一个用户类型</li>
+<li>正向操作关键，含有FK,直接点的</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj = models.UserInfo.objects.all().first() <span class="comment"># 这是获取的第一个对象</span></div><div class="line">print(obj.name,obj.age,obj.ut.title)</div></pre></td></tr></table></figure>
+<h4 id="3-反向操作"><a href="#3-反向操作" class="headerlink" title="3 反向操作"></a>3 反向操作</h4><ul>
+<li><strong>一个用户类型有多个用户</strong></li>
+<li>使用的前提是获得是一个<strong>对象</strong>，然后用这个对象进行小写的表名字_set</li>
+<li>要关联的表的小写的表明加下划线set</li>
+<li>如UserType反向去取UserInfo中的内容，userinfo_set.all()</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj = models.UserType.objects.all().first()</div><div class="line">print(obj.id,obj.title,obj.userinfo_set.all())</div></pre></td></tr></table></figure>
+<p>结果：通过反向查表获得是另一个表的QuerySet对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1 技术部 &lt;QuerySet [&lt;UserInfo: UserInfo object&gt;]&gt;</div></pre></td></tr></table></figure></p>
+<p>下面可以通过UserType反向查询到UserInfo表中的内容，当然还可以用外键进行连表，就没有意义了<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">obj = models.UserType.objects.all().first()</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> obj.userinfo_set.all():</div><div class="line">        print(item.id,item.name,item.age)</div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">user_list = models.UserType.objects.all()</div><div class="line"><span class="keyword">for</span> obj <span class="keyword">in</span> user_list:</div><div class="line">    <span class="keyword">for</span> obj2 <span class="keyword">in</span> obj.userinfo_set.all():  <span class="comment"># 再进行循环</span></div><div class="line">        print(obj2.name,obj2.age)</div></pre></td></tr></table></figure></p>
+<h4 id="4-values和value-list"><a href="#4-values和value-list" class="headerlink" title="4 values和value_list"></a>4 values和value_list</h4><p><strong>values</strong></p>
+<ul>
+<li>values获得是Quseryset对象，内部的数据代表获得的列</li>
+<li>数据类型是字典类型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">result = models.UserInfo.objects.all().values(<span class="string">'id'</span>,<span class="string">'name'</span>)  <span class="comment"># 拿到的是两列数据</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> result:</div><div class="line">    print(item)</div></pre></td></tr></table></figure>
+<p>结果是字典类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;&apos;id&apos;: 1, &apos;name&apos;: &apos;aaa&apos;&#125;</div><div class="line">&#123;&apos;id&apos;: 2, &apos;name&apos;: &apos;bbb&apos;&#125;</div></pre></td></tr></table></figure></p>
+<p>用values进行跨表：</p>
+<ul>
+<li>这种不是在for循环的时候跨表了，是在查询的时候进行的跨表，然后对获取的数据进行的遍历，效率高</li>
+<li>使用外键+双下划线+字段名</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">result = models.UserInfo.objects.all().values(<span class="string">'id'</span>, <span class="string">'name'</span>,<span class="string">'ut__title'</span>)  <span class="comment"># 拿到的是两列数据</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> result:</div><div class="line">    print(item[<span class="string">'id'</span>],item[<span class="string">'name'</span>],item[<span class="string">'ut__title'</span>])</div></pre></td></tr></table></figure>
+<p><strong>value_list</strong></p>
+<ul>
+<li>value_list的数据是元组类型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">result = models.UserInfo.objects.all().values_list(<span class="string">'id'</span>, <span class="string">'name'</span>)  </div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> result:</div><div class="line">    print(item)</div></pre></td></tr></table></figure>
+<p>结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(1, &apos;aaa&apos;)</div><div class="line">(2, &apos;bbb&apos;)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>使用values_list进行跨表，也是在查询的时候获取</li>
+<li>数据是元组，通过双下划线</li>
+<li>是通过索引进行取值的</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">result = models.UserInfo.objects.all().values_list(<span class="string">'id'</span>, <span class="string">'name'</span>,<span class="string">'ut__title'</span>)  <span class="comment"># 拿到的是两列数据</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> result:</div><div class="line">    print(item[<span class="number">0</span>],item[<span class="number">1</span>],item[<span class="number">2</span>])</div></pre></td></tr></table></figure>
+<h4 id="5-values和value-list-反向操作"><a href="#5-values和value-list-反向操作" class="headerlink" title="5 values和value_list 反向操作"></a>5 values和value_list 反向操作</h4><p><strong>使用小写的表名+双下划线</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">v = models.UserGroup.objects.values(<span class="string">'id'</span>,<span class="string">'title'</span>,<span class="string">'userinfo__age'</span>)  <span class="comment"># userinfo__age        </span></div><div class="line">  </div><div class="line">v = models.UserGroup.objects.values_list(<span class="string">'id'</span>,<span class="string">'title'</span>,<span class="string">'userinfo__age'</span>)</div></pre></td></tr></table></figure>
+<h3 id="跨表操作大总结"><a href="#跨表操作大总结" class="headerlink" title="跨表操作大总结"></a>跨表操作大总结</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserGroup</span><span class="params">(models.Model)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    部门 </div><div class="line">    """</div><div class="line">    title = models.CharField(max_length=<span class="number">32</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span><span class="params">(models.Model)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    员工</div><div class="line">    """</div><div class="line">    nid = models.BigAutoField(primary_key=<span class="keyword">True</span>)</div><div class="line">    user = models.CharField(max_length=<span class="number">32</span>)</div><div class="line">    password = models.CharField(max_length=<span class="number">64</span>)</div><div class="line">    age = models.IntegerField(default=<span class="number">1</span>)</div><div class="line">    ug = models.ForeignKey(<span class="string">"UserGroup"</span>,null=<span class="keyword">True</span>)</div><div class="line">- 跨表</div><div class="line">    正：</div><div class="line">        </div><div class="line">        <span class="number">1.</span> q = UserInfo.objects.all().first()</div><div class="line">            q.ug.title 使用外键点</div><div class="line">            </div><div class="line">        <span class="number">2.</span> </div><div class="line">            models.UserInfo.objects.values(<span class="string">'nid'</span>,<span class="string">'ug_id'</span>)              </div><div class="line">            models.UserInfo.objects.values(<span class="string">'nid'</span>,<span class="string">'ug_id'</span>,<span class="string">'ug__title'</span>)  <span class="comment"># 使用外键__+字段</span></div><div class="line">        </div><div class="line">        <span class="number">3.</span> models.UserInfo.objects.values_list(<span class="string">'nid'</span>,<span class="string">'ug_id'</span>,<span class="string">'ug__title'</span>)</div><div class="line">    反：</div><div class="line">        <span class="number">1.</span> 小写的表名_set</div><div class="line">            obj = UserGroup.objects.all().first()</div><div class="line">            result = obj.userinfo_set.all() [userinfo对象,userinfo对象,]</div><div class="line">            </div><div class="line">        <span class="number">2.</span> 小写的表名</div><div class="line">            v = models.UserGroup.objects.values(<span class="string">'id'</span>,<span class="string">'title'</span>)          </div><div class="line">            v = models.UserGroup.objects.values(<span class="string">'id'</span>,<span class="string">'title'</span>,<span class="string">'小写的表名称'</span>)    <span class="comment"># userinfo      </span></div><div class="line">            v = models.UserGroup.objects.values(<span class="string">'id'</span>,<span class="string">'title'</span>,<span class="string">'小写的表名称__age'</span>)  <span class="comment"># userinfo__age        </span></div><div class="line">            </div><div class="line">        <span class="number">3.</span> 小写的表名</div><div class="line">            v = models.UserGroup.objects.values_list(<span class="string">'id'</span>,<span class="string">'title'</span>)          </div><div class="line">            v = models.UserGroup.objects.values_list(<span class="string">'id'</span>,<span class="string">'title'</span>,<span class="string">'小写的表名称'</span>)          </div><div class="line">            v = models.UserGroup.objects.values_list(<span class="string">'id'</span>,<span class="string">'title'</span>,<span class="string">'小写的表名称__age'</span>)</div></pre></td></tr></table></figure>
+<h2 id="进阶操作"><a href="#进阶操作" class="headerlink" title="进阶操作"></a>进阶操作</h2><h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><ul>
+<li>order_by进行排序</li>
+<li>如有order_by(‘-id’,’name’) 先排id,id有相同的再拍name</li>
+<li>加减号是反向排序</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">user_list = models.UserInfo.objects.all().order_by(<span class="string">'-id'</span>)</div><div class="line">print(user_list)</div></pre></td></tr></table></figure>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;QuerySet [&lt;UserInfo: 2-bbb&gt;, &lt;UserInfo: 1-aaa&gt;]&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><ul>
+<li>分组用values和annotate</li>
+<li>values是获取一列数据</li>
+<li>annotate是加聚合函数的</li>
+<li>内部用Count</li>
+<li>c是别名</li>
+<li>导入from django.db.models.aggregates import Count,Sum,Max,Min</li>
+<li>设置了自动导入模块 快捷键是alt+M</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj = models.UserInfo.objects.all().values_list(<span class="string">'ut__id'</span>).annotate(c=Count(<span class="string">'id'</span>))</div><div class="line">print(obj.query)</div></pre></td></tr></table></figure>
+<p>原生的SQL语句：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="string">"app01_userinfo"</span>.<span class="string">"ut_id"</span>, <span class="keyword">COUNT</span>(<span class="string">"app01_userinfo"</span>.<span class="string">"id"</span>) <span class="keyword">AS</span> <span class="string">"c"</span> <span class="keyword">FROM</span> <span class="string">"app01_userinfo"</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="string">"app01_userinfo"</span>.<span class="string">"ut_id"</span></div></pre></td></tr></table></figure></p>
+<h4 id="分组后筛选"><a href="#分组后筛选" class="headerlink" title="分组后筛选"></a>分组后筛选</h4><ul>
+<li>SQL中是Having</li>
+<li>这里用filter，而且是在后面</li>
+<li>filter在前面是Where</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj = models.UserInfo.objects.all().values_list(<span class="string">'ut__id'</span>).annotate(c=Count(<span class="string">'id'</span>)).filter(c__gt=<span class="number">1</span>)</div><div class="line">print(obj.query)</div></pre></td></tr></table></figure>
+<p>SQL:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="string">"app01_userinfo"</span>.<span class="string">"ut_id"</span>, <span class="keyword">COUNT</span>(<span class="string">"app01_userinfo"</span>.<span class="string">"id"</span>) <span class="keyword">AS</span> <span class="string">"c"</span> <span class="keyword">FROM</span> <span class="string">"app01_userinfo"</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="string">"app01_userinfo"</span>.<span class="string">"ut_id"</span> <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(<span class="string">"app01_userinfo"</span>.<span class="string">"id"</span>) &gt; <span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>filter放在前面的时候<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj = models.UserInfo.objects.filter(id__gt=<span class="number">2</span>).values_list(<span class="string">'ut__id'</span>).annotate(c=Count(<span class="string">'id'</span>)).filter(c__gt=<span class="number">1</span>)</div><div class="line">print(obj.query)</div></pre></td></tr></table></figure></p>
+<p>sql<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="string">"app01_userinfo"</span>.<span class="string">"ut_id"</span>, <span class="keyword">COUNT</span>(<span class="string">"app01_userinfo"</span>.<span class="string">"id"</span>) <span class="keyword">AS</span> <span class="string">"c"</span> <span class="keyword">FROM</span> <span class="string">"app01_userinfo"</span> <span class="keyword">WHERE</span> <span class="string">"app01_userinfo"</span>.<span class="string">"id"</span> &gt; <span class="number">2</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="string">"app01_userinfo"</span>.<span class="string">"ut_id"</span> <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(<span class="string">"app01_userinfo"</span>.<span class="string">"id"</span>) &gt; <span class="number">1</span></div></pre></td></tr></table></figure></p>
+<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><ul>
+<li>__gt大于</li>
+<li>__lt小于</li>
+<li>in是范围，后面是列表</li>
+<li>range就是between and</li>
+<li>__startswith 以xxxx开头</li>
+<li>__conains 包含xxxx</li>
+<li>exclude(id=1) 处id=1的之外</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">models.UserInfo.objects.filter(id__gt=<span class="number">1</span>)</div><div class="line">models.UserInfo.objects.filter(id__lt=<span class="number">1</span>)</div><div class="line">models.UserInfo.objects.filter(id__lte=<span class="number">1</span>)</div><div class="line">models.UserInfo.objects.filter(id__gte=<span class="number">1</span>)</div><div class="line">models.UserInfo.objects.filter(id__in=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</div><div class="line">models.UserInfo.objects.filter(id__range=[<span class="number">1</span>,<span class="number">2</span>])</div><div class="line">models.UserInfo.objects.filter(name__startswith=<span class="string">'xxxx'</span>)</div><div class="line">models.UserInfo.objects.filter(name__contains=<span class="string">'xxxx'</span>)</div><div class="line">models.UserInfo.objects.exclude(id=<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<h2 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h2><h3 id="F"><a href="#F" class="headerlink" title="F"></a>F</h3><ul>
+<li>F是在原来的基础上进行的操作，下面是对所有用户的age+1</li>
+<li>在sql中是 age = age + 1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.db.models.expressions <span class="keyword">import</span> F</div><div class="line"></div><div class="line">models.UserInfo.objects.all().update(age=F(<span class="string">'age'</span>)+<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<h3 id="Q"><a href="#Q" class="headerlink" title="Q"></a>Q</h3><h4 id="Q的应用1"><a href="#Q的应用1" class="headerlink" title="Q的应用1"></a>Q的应用1</h4><ul>
+<li>在这里Q的作用是filter中的条件</li>
+<li>解决了或的问题</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">obj = models.UserInfo.objects.filter(Q(id=<span class="number">1</span>))</div><div class="line">obj = models.UserInfo.objects.filter(Q(id=<span class="number">1</span>)|Q(id=<span class="number">2</span>))</div><div class="line">obj = models.UserInfo.objects.filter(Q(id=<span class="number">1</span>)&amp;Q(id=<span class="number">2</span>))</div></pre></td></tr></table></figure>
+<h4 id="Q的应用2"><a href="#Q的应用2" class="headerlink" title="Q的应用2"></a>Q的应用2</h4><ul>
+<li>应用于AutoCMDB中的资产管理的组合搜索</li>
+<li>多个条件可以写成字典类型，然后filter(**字典) 进行接收</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">q1 = Q()  <span class="comment"># 建立一个Q对象</span></div><div class="line">q1.connector = <span class="string">'OR'</span> <span class="comment"># q1内部是OR的关系</span></div><div class="line">q1.children.append((<span class="string">'id'</span>, <span class="number">1</span>))</div><div class="line">q1.children.append((<span class="string">'id'</span>, <span class="number">10</span>))</div><div class="line">q1.children.append((<span class="string">'id'</span>, <span class="number">9</span>))</div><div class="line"></div><div class="line"></div><div class="line">q2 = Q()</div><div class="line">q2.connector = <span class="string">'OR'</span></div><div class="line">q2.children.append((<span class="string">'c1'</span>, <span class="number">1</span>))</div><div class="line">q2.children.append((<span class="string">'c1'</span>, <span class="number">10</span>))</div><div class="line">q2.children.append((<span class="string">'c1'</span>, <span class="number">9</span>))</div><div class="line"></div><div class="line">q3 = Q()</div><div class="line">q3.connector = <span class="string">'AND'</span></div><div class="line">q3.children.append((<span class="string">'id'</span>, <span class="number">1</span>))</div><div class="line">q3.children.append((<span class="string">'id'</span>, <span class="number">2</span>))</div><div class="line">q1.add(q3,<span class="string">'OR'</span>) <span class="comment"># 在q1中添加新的关系q3</span></div><div class="line"></div><div class="line">con = Q()  <span class="comment"># 这是总的Q</span></div><div class="line">con.add(q1, <span class="string">'AND'</span>)</div><div class="line">con.add(q2, <span class="string">'AND'</span>)</div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line">(id=1 or id = 10 or id=9 or (id=1 and id=2)) and (c1=1 or c1=10 or c1=9)</div><div class="line">"""</div></pre></td></tr></table></figure>
+<p>实际应用中的代码</p>
+<ul>
+<li>对于同一种类别，q内部的都是or的关系</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">condition_dict = &#123;</div><div class="line">        <span class="string">'k1'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</div><div class="line">        <span class="string">'k2'</span>:[<span class="number">1</span>,],</div><div class="line">&#125;</div><div class="line">con = Q() <span class="comment"># 总的条件</span></div><div class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> condition_dict.items():</div><div class="line">    q = Q()</div><div class="line">    q.connector = <span class="string">'OR'</span> <span class="comment"># q内部的都是or的关系</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> v:</div><div class="line">        q.children.append((<span class="string">'id'</span>, i))</div><div class="line">    con.add(q,<span class="string">'AND'</span>) <span class="comment"># 总的条件用and</span></div><div class="line">models.UserInfo.objects.filter(con)</div></pre></td></tr></table></figure>
+<h3 id="extra"><a href="#extra" class="headerlink" title="extra"></a>extra</h3><p>extra内部的有：</p>
+<ul>
+<li>select  select_params</li>
+<li>where  params</li>
+<li>tables</li>
+<li>order_by</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">models.UserInfo.objects.extra(self, <span class="keyword">select</span>=<span class="keyword">None</span>, <span class="keyword">where</span>=<span class="keyword">None</span>, params=<span class="keyword">None</span>, <span class="keyword">tables</span>=<span class="keyword">None</span>, order_by=<span class="keyword">None</span>, select_params=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
+<p>extra是针对复杂的SQL语句 </p>
+<h4 id="select-select-params"><a href="#select-select-params" class="headerlink" title="select  select_params"></a>select  select_params</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">v = models.UserInfo.objects.all().extra(select=&#123;</div><div class="line">    <span class="string">'n'</span>: <span class="string">"select count(1) from app01_userinfo WHERE id&gt;%s"</span></div><div class="line">&#125;,</div><div class="line">select_params=[<span class="number">1</span>,] <span class="comment"># 有多个% 内部就有多个参数</span></div><div class="line">)</div><div class="line">print(v)</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> v:</div><div class="line">    print(item.id,item.name,item.n)<span class="comment"># 这里使用n</span></div></pre></td></tr></table></figure>
+<h4 id="where-params"><a href="#where-params" class="headerlink" title="where  params"></a>where  params</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">models.UserInfo.objects.extra(</div><div class="line">    where=[<span class="string">"id=1"</span>,<span class="string">"name='aaa'"</span>]</div><div class="line">)</div><div class="line">models.UserInfo.objects.extra(</div><div class="line">    where=[<span class="string">"id=1 or id=%s "</span>,<span class="string">"name=%s"</span>],</div><div class="line">    params=[<span class="number">1</span>,<span class="string">"aaa"</span>]</div><div class="line">)</div></pre></td></tr></table></figure>
+<h4 id="tables"><a href="#tables" class="headerlink" title="tables"></a>tables</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">models.UserInfo.objects.extra(</div><div class="line">        tables=[<span class="string">'app01_usertype'</span>],</div><div class="line">    )</div><div class="line"><span class="comment"># """select * from app01_userinfo,app01_usertype"""</span></div></pre></td></tr></table></figure>
+<p>总结：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># a. 映射</span></div><div class="line">    <span class="comment"># select </span></div><div class="line">    <span class="comment"># select_params=None</span></div><div class="line">    <span class="comment"># select 此处 from 表</span></div><div class="line"></div><div class="line"><span class="comment"># b. 条件</span></div><div class="line">    <span class="comment"># where=None</span></div><div class="line">    <span class="comment"># params=None,</span></div><div class="line">    <span class="comment"># select * from 表 where 此处</span></div><div class="line"></div><div class="line"><span class="comment"># c. 表</span></div><div class="line">    <span class="comment"># tables</span></div><div class="line">    <span class="comment"># select * from 表,此处</span></div><div class="line">    </div><div class="line"><span class="comment"># c. 排序</span></div><div class="line">    <span class="comment"># order_by=None</span></div><div class="line">    <span class="comment"># select * from 表 order by 此处</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">models.UserInfo.objects.extra(</div><div class="line">					select=&#123;<span class="string">'newid'</span>:<span class="string">'select count(1) from app01_usertype where id&gt;%s'</span>&#125;,</div><div class="line">					select_params=[<span class="number">1</span>,],</div><div class="line">					where = [<span class="string">'age&gt;%s'</span>],</div><div class="line">					params=[<span class="number">18</span>,],</div><div class="line">					order_by=[<span class="string">'-age'</span>],</div><div class="line">					tables=[<span class="string">'app01_usertype'</span>]</div><div class="line">				)</div></pre></td></tr></table></figure>
+<p>最终的SQL：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> </div><div class="line">    app01_userinfo.id,</div><div class="line">    (<span class="keyword">select</span> <span class="keyword">count</span>(<span class="number">1</span>) <span class="keyword">from</span> app01_usertype <span class="keyword">where</span> <span class="keyword">id</span>&gt;<span class="number">1</span>) <span class="keyword">as</span> newid</div><div class="line"><span class="keyword">from</span> app01_userinfo,app01_usertype</div><div class="line"><span class="keyword">where</span> </div><div class="line">    app01_userinfo.age &gt; <span class="number">18</span></div><div class="line"><span class="keyword">order</span> <span class="keyword">by</span> </div><div class="line">    app01_userinfo.age <span class="keyword">desc</span></div><div class="line"><span class="string">``</span><span class="string">`     </span></div><div class="line"></div><div class="line"></div><div class="line">### 原生SQL</div><div class="line"></div><div class="line">Django内部提供了写原生SQL的方法</div><div class="line"></div><div class="line">- 在setting中配置</div><div class="line">- connection.cursor()默认是default数据库</div><div class="line">- cursor = connections['db2'].cursor() 可以定义自己的数据库</div><div class="line"></div><div class="line"></div><div class="line">`<span class="string">``</span>python</div><div class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> <span class="keyword">connection</span>, connections</div><div class="line"></div><div class="line"><span class="keyword">cursor</span> = connection.cursor() #默认 <span class="keyword">connection</span>=<span class="keyword">default</span>数据库</div><div class="line"><span class="keyword">cursor</span> = connections[<span class="string">'db2'</span>].cursor()</div><div class="line"></div><div class="line">cursor.execute(<span class="string">"""SELECT * from auth_user where id = %s"""</span>, [<span class="number">1</span>])# 写原生<span class="keyword">SQL</span></div><div class="line"></div><div class="line"><span class="keyword">row</span> = cursor.fetchone()</div><div class="line"><span class="keyword">row</span> = cursor.fetchall()</div></pre></td></tr></table></figure></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>时间相关，时间格式化<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dates</span><span class="params">(self, field_name, kind, order=<span class="string">'ASC'</span>)</span>:</span></div><div class="line">    <span class="comment"># 根据时间进行某一部分进行去重查找并截取指定内容</span></div><div class="line">    <span class="comment"># kind只能是："year"（年）, "month"（年-月）, "day"（年-月-日）</span></div><div class="line">    <span class="comment"># order只能是："ASC"  "DESC"</span></div><div class="line">    <span class="comment"># 并获取转换后的时间</span></div><div class="line">        - year : 年<span class="number">-01</span><span class="number">-01</span> <span class="comment"># 截取到年，后面默认是01-01</span></div><div class="line">        - month: 年-月<span class="number">-01</span> <span class="comment"># 截取到月，后面默认是01</span></div><div class="line">        - day  : 年-月-日</div><div class="line"></div><div class="line">    models.DatePlus.objects.dates(<span class="string">'ctime'</span>,<span class="string">'day'</span>,<span class="string">'DESC'</span>)  <span class="comment"># ctime是时间列 day,代表截取到day DESC对截取后的时间进行排序</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">datetimes</span><span class="params">(self, field_name, kind, order=<span class="string">'ASC'</span>, tzinfo=None)</span>:</span></div><div class="line">    <span class="comment"># 根据时间进行某一部分进行去重查找并截取指定内容，将时间转换为指定时区时间</span></div><div class="line">    <span class="comment"># kind只能是 "year", "month", "day", "hour", "minute", "second"</span></div><div class="line">    <span class="comment"># order只能是："ASC"  "DESC"</span></div><div class="line">    <span class="comment"># tzinfo时区对象</span></div><div class="line">    models.DDD.objects.datetimes(<span class="string">'ctime'</span>,<span class="string">'hour'</span>,tzinfo=pytz.UTC)</div><div class="line">    models.DDD.objects.datetimes(<span class="string">'ctime'</span>,<span class="string">'hour'</span>,tzinfo=pytz.timezone(<span class="string">'Asia/Shanghai'</span>))</div><div class="line"></div><div class="line">    <span class="string">"""</span></div><div class="line">    pip3 install pytz</div><div class="line">    import pytz</div><div class="line">    pytz.all_timezones</div><div class="line">    pytz.timezone(‘Asia/Shanghai’)</div><div class="line">    """</div></pre></td></tr></table></figure></p>
+<ul>
+<li>更新数据后，create有返回值，是添加的数据的id</li>
+<li>使用**字典进行接收 </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">obj = models.UserType.objects.create(title=<span class="string">'xxx'</span>)</div><div class="line">obj = models.UserType.objects.create(**&#123;<span class="string">'title'</span>: <span class="string">'xxx'</span>&#125;)</div><div class="line">print(obj.id)  <span class="comment"># 返回值</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">v = models.UserInfo.objects.all().first()  <span class="comment"># 推荐使用first</span></div><div class="line">models.UserInfo.objects.get(id=<span class="number">1</span>) <span class="comment"># get没有获取到会报错</span></div></pre></td></tr></table></figure>
+<ul>
+<li>批量操作</li>
+<li>odels.Userinfo(name=’r11’),  # 注意这是对象 没有用objects</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">bulk_create(self, objs, batch_size=<span class="keyword">None</span>):</div><div class="line">    <span class="comment"># 批量插入</span></div><div class="line">    <span class="comment"># batch_size表示一次插入的个数</span></div><div class="line">    objs = [</div><div class="line">        models.Userinfo(name=<span class="string">'r11'</span>),  <span class="comment"># 注意这是对象 没有用objects</span></div><div class="line">        models.Userinfo(name=<span class="string">'r22'</span>)</div><div class="line">    ]</div><div class="line">    models.Userinfo.objects.bulk_create(objs, <span class="number">10</span>)  <span class="comment"># 一次性提交的数据10个，100条数据会没10条提交</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_or_create</span><span class="params">(self, defaults=None, **kwargs)</span>:</span></div><div class="line">    <span class="comment"># 如果存在，则获取，否则，创建</span></div><div class="line">    <span class="comment"># defaults 指定创建时，其他字段的值</span></div><div class="line">    obj, created = models.UserInfo.objects.get_or_create(username=<span class="string">'root1'</span>, defaults=&#123;<span class="string">'email'</span>: <span class="string">'1111111'</span>,<span class="string">'u_id'</span>: <span class="number">2</span>, <span class="string">'t_id'</span>: <span class="number">2</span>&#125;)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_or_create</span><span class="params">(self, defaults=None, **kwargs)</span>:</span></div><div class="line">    <span class="comment"># 如果存在，则更新，否则，创建</span></div><div class="line">    <span class="comment"># defaults 指定创建时或更新时的其他字段</span></div><div class="line">    obj, created = models.UserInfo.objects.update_or_create(username=<span class="string">'root1'</span>, defaults=&#123;<span class="string">'email'</span>: <span class="string">'1111111'</span>,<span class="string">'u_id'</span>: <span class="number">2</span>, <span class="string">'t_id'</span>: <span class="number">1</span>&#125;)</div></pre></td></tr></table></figure>
+<h2 id="性能相关"><a href="#性能相关" class="headerlink" title="性能相关"></a>性能相关</h2><p>下面的这种情况每次for循环都会到数据库查询，性能低。使用values,values_list是一次查询，但是查询的不是对象，是字典列表类型<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">user_list = models.UserInfo.objects.all()</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> user_list:</div><div class="line">        print(item.age,item.name,item.ut.title)</div></pre></td></tr></table></figure></p>
+<h3 id="select-related-查询主动做连表"><a href="#select-related-查询主动做连表" class="headerlink" title="select_related 查询主动做连表"></a>select_related 查询主动做连表</h3><ul>
+<li>使用select_related(‘ut’) 里面是外键，可以加多个</li>
+<li>在查询的时候进行连表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">user_list = models.UserInfo.objects.all().select_related(<span class="string">'ut'</span>)</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> user_list:</div><div class="line">    print(item.age,item.name,item.ut.title)</div></pre></td></tr></table></figure>
+<h3 id="prefetch-related-不做连表-做多次查询"><a href="#prefetch-related-不做连表-做多次查询" class="headerlink" title="prefetch_related 不做连表 做多次查询"></a>prefetch_related 不做连表 做多次查询</h3><ul>
+<li>实际上连表对性能有影响,连表是约束和节省内存</li>
+<li>这里做了两次查询，先查UserInfo,之后查UserType，这种查询非常快<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">user_list = models.UserInfo.objects.all().prefetch_related(<span class="string">'ut'</span>)</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> user_list:</div><div class="line">    print(item.age,item.name,item.ut.title)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/07/14/Django ORM models操作/" data-title="Django ORM models操作" data-url="https://github.com/ythzx/ythzx.github.io/2017/07/14/Django ORM models操作/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/10/多表操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Django models多表操作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Django-ORM-models操作"><span class="nav-number">1.</span> <span class="nav-text">Django ORM models操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-ORM基本操作"><span class="nav-number">1.1.</span> <span class="nav-text">Django ORM基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、数据库的创建及增删改查"><span class="nav-number">1.1.1.</span> <span class="nav-text">一、数据库的创建及增删改查</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-使用类创建表"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1 使用类创建表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-修改数据库"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2 修改数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增删改查"><span class="nav-number">1.1.2.</span> <span class="nav-text">增删改查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、连表操作"><span class="nav-number">1.1.3.</span> <span class="nav-text">二、连表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-外键连表"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">1 外键连表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#连一张表的情况"><span class="nav-number">1.1.3.1.1.</span> <span class="nav-text">连一张表的情况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#连多张表的情况"><span class="nav-number">1.1.3.1.2.</span> <span class="nav-text">连多张表的情况</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-正向操作"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">2 正向操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-反向操作"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">3 反向操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-values和value-list"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">4 values和value_list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-values和value-list-反向操作"><span class="nav-number">1.1.3.5.</span> <span class="nav-text">5 values和value_list 反向操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨表操作大总结"><span class="nav-number">1.1.4.</span> <span class="nav-text">跨表操作大总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶操作"><span class="nav-number">1.2.</span> <span class="nav-text">进阶操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#排序"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">分组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组后筛选"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">分组后筛选</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">过滤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级操作"><span class="nav-number">1.3.</span> <span class="nav-text">高级操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#F"><span class="nav-number">1.3.1.</span> <span class="nav-text">F</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q"><span class="nav-number">1.3.2.</span> <span class="nav-text">Q</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Q的应用1"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Q的应用1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q的应用2"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">Q的应用2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extra"><span class="nav-number">1.3.3.</span> <span class="nav-text">extra</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#select-select-params"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">select  select_params</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#where-params"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">where  params</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tables"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">tables</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">1.3.4.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能相关"><span class="nav-number">1.4.</span> <span class="nav-text">性能相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#select-related-查询主动做连表"><span class="nav-number">1.4.1.</span> <span class="nav-text">select_related 查询主动做连表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prefetch-related-不做连表-做多次查询"><span class="nav-number">1.4.2.</span> <span class="nav-text">prefetch_related 不做连表 做多次查询</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
