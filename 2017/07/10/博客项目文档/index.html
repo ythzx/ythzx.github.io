@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170718155631208-2117733180.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170718155031521-882545890.jpg">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170718165552365-358696163.jpg">
-<meta property="og:updated_time" content="2017-07-19T14:49:18.054Z">
+<meta property="og:updated_time" content="2017-07-19T15:06:24.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django博客项目">
 <meta name="twitter:description" content="Django博客项目配置静态文件">
@@ -371,11 +371,13 @@
 <li>article_type_id 是Article中的字段</li>
 <li>tags是article中的M2M字段，而且有自己定义的第三张表 </li>
 <li>有tags字段的时候，是自关联，tags<strong>nid  已经连到了第三张表Tag  使用tags</strong>nid即可</li>
+<li>nid 是Tag表中的字段</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^articlemanage-(?P&lt;article_type_id&gt;\d+)-(?P&lt;category_id&gt;\d+)-(?P&lt;tags__nid&gt;\d+).html$'</span>, views.articlemanage), <span class="comment"># 后台管理筛选页面</span></div></pre></td></tr></table></figure>
 <ul>
 <li>如果Aticle中没有tags字段，就是使用反向关联，这个字段是声明自己创建的第三张表(M2M混合使用的时候) article2tag__tag_id</li>
 <li><strong>用小写的表名就跨到了第三张表Article2Tag</strong>，Article2Tag中用字段tag_id,使用双下划线进行关联</li>
+<li><strong>明确是从Aticle反向跨表到Article2Tag</strong></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^articlemanage-(?P&lt;article_type_id&gt;\d+)-(?P&lt;category_id&gt;\d+)-(?P&lt;article2tag__tag_id&gt;\d+).html$'</span>, views.articlemanage), <span class="comment"># 后台管理筛选页面</span></div></pre></td></tr></table></figure>
 <h3 id="文章编辑页面"><a href="#文章编辑页面" class="headerlink" title="文章编辑页面"></a>文章编辑页面</h3><p>KindEditor</p>
