@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>django 模板函数 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Django" />
+  
+  
+  
+  
+  <meta name="description" content="Django 模板函数在模板中的函数是只需要函数名，不用加括号，自动执行
+在前端中的函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django 模板函数">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/07/23/Django 模板函数/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="Django 模板函数在模板中的函数是只需要函数名，不用加括号，自动执行
+在前端中的函数">
+<meta property="og:updated_time" content="2017-07-23T10:10:02.024Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django 模板函数">
+<meta name="twitter:description" content="Django 模板函数在模板中的函数是只需要函数名，不用加括号，自动执行
+在前端中的函数">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-Django 模板函数" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Django 模板函数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/07/23/Django 模板函数/" class="article-date">
+	  <time datetime="2017-07-23T09:08:44.724Z" itemprop="datePublished">七月 23, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Django-模板函数"><a href="#Django-模板函数" class="headerlink" title="Django 模板函数"></a>Django 模板函数</h1><p>在模板中的函数是只需要函数名，不用加括号，自动执行</p>
+<h3 id="在前端中的函数"><a href="#在前端中的函数" class="headerlink" title="在前端中的函数"></a>在前端中的函数</h3><a id="more"></a>
+<p>不用加括号，函数自动执行</p>
+<p>前端<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;% for item in userinfo.keys %&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;&#123; item &#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div><div class="line">&#123;% endfor %&#125;</div><div class="line"></div><div class="line">&#123;% for item in userinfo.values %&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;&#123; item &#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div><div class="line">&#123;% endfor %&#125;</div><div class="line"></div><div class="line">&#123;% for k,v in userinfo.items %&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;&#123; k &#125;&#125;-&#123;&#123; v &#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div><div class="line">&#123;% endfor %&#125;</div></pre></td></tr></table></figure></p>
+<p>后台,<br>后台发送的是字典<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="keyword">return</span> render(request,<span class="string">'test.html'</span>,&#123;</div><div class="line">        <span class="string">'userinfo'</span>:&#123;<span class="string">'k1'</span>:<span class="string">'v1'</span>,<span class="string">'k2'</span>:<span class="string">'v2'</span>&#125;</div><div class="line">    &#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="转换大写"><a href="#转换大写" class="headerlink" title="转换大写"></a>转换大写</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; name|upper &#125;&#125;  &#123;# 大写 #&#125;</div></pre></td></tr></table></figure>
+<p>本质是调用的Python的函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@register.filter(is_safe=False)</span></div><div class="line"><span class="meta">@stringfilter</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">upper</span><span class="params">(value)</span>:</span></div><div class="line">    <span class="string">"""Converts a string into all uppercase."""</span></div><div class="line">    <span class="keyword">return</span> value.upper()</div></pre></td></tr></table></figure></p>
+<h3 id="模板中自定义函数"><a href="#模板中自定义函数" class="headerlink" title="模板中自定义函数"></a>模板中自定义函数</h3><p>实现步骤：</p>
+<ul>
+<li><p>1、在任意APP中创建templatetags模块</p>
+</li>
+<li><p>2、在模块中穿件任意的py文件，如xx.py</p>
+</li>
+<li><p>3、一定要写register = template.Library()</p>
+</li>
+<li><p>4、在html中写load xx</p>
+</li>
+</ul>
+<h4 id="simple-filter"><a href="#simple-filter" class="headerlink" title="simple_filter"></a>simple_filter</h4><p>filter只能传递2个参数</p>
+<p>可以用作条件判断，复杂的条件判断直接在simple_tag的函数中写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django <span class="keyword">import</span> template</div><div class="line"></div><div class="line">register = template.Library()</div><div class="line"></div><div class="line"><span class="meta">@register.filter()  # 使用这个装饰器</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_upper</span><span class="params">(value)</span>:</span></div><div class="line">    <span class="keyword">return</span> value.upper()</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;% load xx %&#125;  </div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    &#123;&#123; name|my_upper &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="接收多个参数"><a href="#接收多个参数" class="headerlink" title="接收多个参数"></a>接收多个参数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@register.filter()</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_upper</span><span class="params">(value,arg)</span>:</span></div><div class="line">    <span class="keyword">return</span> value+arg</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; name|my_upper:"12456" &#125;&#125; 后面用冒号传递，不能用空格</div></pre></td></tr></table></figure>
+<h4 id="simple-tag"><a href="#simple-tag" class="headerlink" title="simple_tag"></a>simple_tag</h4><ul>
+<li>反向生成URL就是用的simple_tag</li>
+</ul>
+<p>simple_tag能传递多个参数,<br>引入的方式是和filter不同的e</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django <span class="keyword">import</span> template</div><div class="line"></div><div class="line">register = template.Library()</div><div class="line"></div><div class="line"><span class="meta">@register.simple_tag()</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_lower</span><span class="params">(value)</span>:</span></div><div class="line">    <span class="keyword">return</span> value.lower()</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;% load xx %&#125;</div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    &#123;% my_lower "aABDJ" %&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="多个参数"><a href="#多个参数" class="headerlink" title="多个参数"></a>多个参数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@register.simple_tag()</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_add</span><span class="params">(value,a1,a2,a3)</span>:</span></div><div class="line">    <span class="keyword">return</span> value+a1+a2+a3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% my_add &quot;he&quot; &quot;llo&quot; &quot;wo&quot; &quot;rld&quot; %&#125;</div></pre></td></tr></table></figure>
+<p>总结：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- simple_filter</div><div class="line">    - 最多两个参数,方式： &#123;&#123;第一个参数|函数名称:&quot;第二个参数&quot;&#125;&#125;</div><div class="line">    - 可以做条件判断</div><div class="line">- simple_tag</div><div class="line">    - 无限制: &#123;% 函数名 参数 参数%&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="include-组件"><a href="#include-组件" class="headerlink" title="include 组件"></a>include 组件</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% include 'pub.html' %&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/07/23/Django 模板函数/" data-title="Django 模板函数" data-url="https://github.com/ythzx/ythzx.github.io/2017/07/23/Django 模板函数/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/14/Django ORM models操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Django ORM models操作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Django-模板函数"><span class="nav-number">1.</span> <span class="nav-text">Django 模板函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在前端中的函数"><span class="nav-number">1.0.1.</span> <span class="nav-text">在前端中的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换大写"><span class="nav-number">1.0.2.</span> <span class="nav-text">转换大写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板中自定义函数"><span class="nav-number">1.0.3.</span> <span class="nav-text">模板中自定义函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#simple-filter"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">simple_filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收多个参数"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">接收多个参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#simple-tag"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">simple_tag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多个参数"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">多个参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#include-组件"><span class="nav-number">1.0.4.</span> <span class="nav-text">include 组件</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
