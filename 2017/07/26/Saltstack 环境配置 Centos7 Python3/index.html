@@ -3,26 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>django权限管理 | Peter&#39;s Blog Center</title>
+  <title>saltstack 环境配置 centos7 python3 | Peter&#39;s Blog Center</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Django" />
+  <meta name="keywords" content="Linux" />
   
   
   
   
-  <meta name="description" content="Django权限管理权限管理数据库表的设计–基于用户角色">
+  <meta name="description" content="Python安装完毕后，提示找不到ssl模块">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django权限管理">
-<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/07/24/Django权限管理/index.html">
+<meta property="og:title" content="Saltstack 环境配置 Centos7 Python3">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/07/26/Saltstack 环境配置 Centos7 Python3/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
-<meta property="og:description" content="Django权限管理权限管理数据库表的设计–基于用户角色">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170724234051918-147006567.png">
-<meta property="og:updated_time" content="2017-07-24T15:41:14.087Z">
+<meta property="og:description" content="Python安装完毕后，提示找不到ssl模块">
+<meta property="og:updated_time" content="2017-07-26T05:02:27.891Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django权限管理">
-<meta name="twitter:description" content="Django权限管理权限管理数据库表的设计–基于用户角色">
-<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/658994/201707/658994-20170724234051918-147006567.png">
+<meta name="twitter:title" content="Saltstack 环境配置 Centos7 Python3">
+<meta name="twitter:description" content="Python安装完毕后，提示找不到ssl模块">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
   
@@ -102,7 +100,7 @@
             
       <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
         
-          <section id="main" style="float:none;"><article id="post-Django权限管理" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-Saltstack 环境配置 Centos7 Python3" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -110,7 +108,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Django权限管理
+      Saltstack 环境配置 Centos7 Python3
     </h1>
   
 
@@ -118,15 +116,40 @@
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/07/24/Django权限管理/" class="article-date">
-	  <time datetime="2017-07-24T15:34:47.795Z" itemprop="datePublished">七月 24, 2017</time>
+	Posted on <a href="/2017/07/26/Saltstack 环境配置 Centos7 Python3/" class="article-date">
+	  <time datetime="2017-07-26T05:01:06.523Z" itemprop="datePublished">七月 26, 2017</time>
 	</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Django权限管理"><a href="#Django权限管理" class="headerlink" title="Django权限管理"></a>Django权限管理</h1><h2 id="权限管理数据库表的设计–基于用户角色"><a href="#权限管理数据库表的设计–基于用户角色" class="headerlink" title="权限管理数据库表的设计–基于用户角色"></a>权限管理数据库表的设计–基于用户角色</h2><a id="more"></a>
-<p><img src="http://images2015.cnblogs.com/blog/658994/201707/658994-20170724234051918-147006567.png" alt=""></p>
+        <h2 id="Python安装完毕后，提示找不到ssl模块"><a href="#Python安装完毕后，提示找不到ssl模块" class="headerlink" title="Python安装完毕后，提示找不到ssl模块"></a>Python安装完毕后，提示找不到ssl模块</h2><a id="more"></a>
+<p>pip is configured with locations that require TLS/SSL, however the ssl module in python is not available. </p>
+<p>缺少OpenSSL，</p>
+<p><strong>1 yum 安装*</strong></p>
+<p><code>yum install openssl-devel -y</code></p>
+<p><strong>2 重新编译Python3</strong></p>
+<p>进入Python的源码路径</p>
+<p><code>make&amp;&amp;make install</code></p>
+<h2 id="subprocess"><a href="#subprocess" class="headerlink" title="subprocess"></a>subprocess</h2><p>pip3 安装subprocess 出现下面的问题,实际上Python3 内置了，不需要重新安装</p>
+<p>  Could not find a version that satisfies the requirement subprocess (from versions: ) No matching d</p>
+<h2 id="安装saltstack"><a href="#安装saltstack" class="headerlink" title="安装saltstack"></a>安装saltstack</h2><p>查看Centos版本 <code>cat /etc/redhat-release</code></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>参考： <a href="http://repo.saltstack.com/#rhel" target="_blank" rel="external">http://repo.saltstack.com/#rhel</a></p>
+<p><strong>Master</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">1. 安装salt-master</div><div class="line">    yum install salt-master</div><div class="line">2. 修改配置文件：/etc/salt/master</div><div class="line">    interface: 0.0.0.0    # 表示Master的IP </div><div class="line">3. 启动</div><div class="line">    service salt-master start</div></pre></td></tr></table></figure>
+<p><strong>Minion</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">1. 安装salt-minion</div><div class="line">    yum install salt-minion</div><div class="line"></div><div class="line">2. 修改配置文件 /etc/salt/minion</div><div class="line">    master: 10.211.55.4           # master的地址</div><div class="line">    或</div><div class="line">    master:</div><div class="line">        - 10.211.55.4</div><div class="line">        - 10.211.55.5</div><div class="line">    random_master: True</div><div class="line"></div><div class="line">    id: c2.salt.com                    # 客户端在salt-master中显示的唯一ID</div><div class="line">3. 启动</div><div class="line">    service salt-minion start</div></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<p>在修改配置文件的时候，interface master 冒号后面要有空格</p>
+<p>查看启动状态</p>
+<p><code>systemctl status salt-master</code>  <code>systemctl status salt-minion</code></p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>配置主要是/etc/salt/master  和  /etc/salt/minion</p>
+<p>minion要指定指定的IP是主的IP</p>
+<h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">salt-key -L                    # 查看已授权和未授权的slave</div><div class="line">salt-key -A     全部授权   </div><div class="line">salt-key -a  salve_id      # 接受指定id的salve</div><div class="line">salt-key -r  salve_id      # 拒绝指定id的salve</div><div class="line">salt-key -d  salve_id      # 删除指定id的salve</div></pre></td></tr></table></figure>
+<p>参考：</p>
+<p><a href="http://blog.csdn.net/qq_25560423/article/details/62055497" target="_blank" rel="external">http://blog.csdn.net/qq_25560423/article/details/62055497</a></p>
+<p><a href="http://www.cnblogs.com/wupeiqi/articles/6415436.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/6415436.html</a></p>
+<p><a href="http://www.cnblogs.com/Python666/articles/7239096.html" target="_blank" rel="external">http://www.cnblogs.com/Python666/articles/7239096.html</a></p>
 
       
     </div>
@@ -134,14 +157,14 @@
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
 
       
         
 	<div id="comment">
 	
 	<!-- 多说评论框 start -->
-	 <div class="ds-thread" data-thread-key="/2017/07/24/Django权限管理/" data-title="Django权限管理" data-url="https://github.com/ythzx/ythzx.github.io/2017/07/24/Django权限管理/"></div>
+	 <div class="ds-thread" data-thread-key="/2017/07/26/Saltstack 环境配置 Centos7 Python3/" data-title="Saltstack 环境配置 Centos7 Python3" data-url="https://github.com/ythzx/ythzx.github.io/2017/07/26/Saltstack 环境配置 Centos7 Python3/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -168,19 +191,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/07/26/Saltstack 环境配置 Centos7 Python3/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          Saltstack 环境配置 Centos7 Python3
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/07/23/Django 模板函数/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/07/24/Django权限管理/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">Django 模板函数</div>
+      <div class="article-nav-title">Django权限管理</div>
     </a>
   
 </nav>
@@ -194,7 +208,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Django权限管理"><span class="nav-number">1.</span> <span class="nav-text">Django权限管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#权限管理数据库表的设计–基于用户角色"><span class="nav-number">1.1.</span> <span class="nav-text">权限管理数据库表的设计–基于用户角色</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python安装完毕后，提示找不到ssl模块"><span class="nav-number">1.</span> <span class="nav-text">Python安装完毕后，提示找不到ssl模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#subprocess"><span class="nav-number">2.</span> <span class="nav-text">subprocess</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装saltstack"><span class="nav-number">3.</span> <span class="nav-text">安装saltstack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">3.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权"><span class="nav-number">3.3.</span> <span class="nav-text">授权</span></a></li></ol></li></ol>
     
     </div>
   </aside>
