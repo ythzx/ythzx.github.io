@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>cmdb api验证 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Django" />
+  
+  
+  
+  
+  <meta name="description" content="CMDB API验证为什么做API验证API验证是防止数据在传输的过程中,保证数据不被篡改
+如何设计的API验证灵感来源于Torando中加密Cookie的源码，主要是生成加密的随机字符串。
+MD5（key+time）|time 就是把秘钥和客户端的当前时间通过MD5进行加密，同时把当前时间发送到API
+然后自己在服务端设计了三关验证的设计：
+
+时间，
+算法规则，验证密文
+已访问的记录
+
+想API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMDB API验证">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/08/05/CMDB之API验证/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="CMDB API验证为什么做API验证API验证是防止数据在传输的过程中,保证数据不被篡改
+如何设计的API验证灵感来源于Torando中加密Cookie的源码，主要是生成加密的随机字符串。
+MD5（key+time）|time 就是把秘钥和客户端的当前时间通过MD5进行加密，同时把当前时间发送到API
+然后自己在服务端设计了三关验证的设计：
+
+时间，
+算法规则，验证密文
+已访问的记录
+
+想API">
+<meta property="og:updated_time" content="2017-08-06T03:34:44.678Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CMDB API验证">
+<meta name="twitter:description" content="CMDB API验证为什么做API验证API验证是防止数据在传输的过程中,保证数据不被篡改
+如何设计的API验证灵感来源于Torando中加密Cookie的源码，主要是生成加密的随机字符串。
+MD5（key+time）|time 就是把秘钥和客户端的当前时间通过MD5进行加密，同时把当前时间发送到API
+然后自己在服务端设计了三关验证的设计：
+
+时间，
+算法规则，验证密文
+已访问的记录
+
+想API">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-CMDB之API验证" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      CMDB API验证
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/08/05/CMDB之API验证/" class="article-date">
+	  <time datetime="2017-08-05T11:21:11.184Z" itemprop="datePublished">八月 5, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CMDB-API验证"><a href="#CMDB-API验证" class="headerlink" title="CMDB API验证"></a>CMDB API验证</h1><h2 id="为什么做API验证"><a href="#为什么做API验证" class="headerlink" title="为什么做API验证"></a>为什么做API验证</h2><p>API验证是防止数据在传输的过程中,保证数据不被篡改</p>
+<h2 id="如何设计的API验证"><a href="#如何设计的API验证" class="headerlink" title="如何设计的API验证"></a>如何设计的API验证</h2><p>灵感来源于Torando中加密Cookie的源码，主要是生成加密的随机字符串。</p>
+<p><code>MD5（key+time）|time</code> 就是把秘钥和客户端的当前时间通过MD5进行加密，同时把当前时间发送到API</p>
+<p>然后自己在服务端设计了三关验证的设计：</p>
+<ul>
+<li>时间，</li>
+<li>算法规则，验证密文</li>
+<li>已访问的记录</li>
+</ul>
+<p>想API获取数据的时候，需要进行验证是否是合法的请求，为了达到这一目的，采用的基础方案是在装机的时候在服务器中和客户端中都保存一份秘钥，客户端想要获取数据的时候需要携带秘钥过来，GET请求的时候通过请求头发送。</p>
+<h2 id="API验证之字符串-请求头"><a href="#API验证之字符串-请求头" class="headerlink" title="API验证之字符串+请求头"></a>API验证之字符串+请求头</h2><a id="more"></a>
+<p>客户端向API发送GET请求的时候可以在请求有中加数据，是字典的格式headers={},在Django中，自己定义的请求头发送过去后，会转换成大写，并在前面加上HTTP_。</p>
+<p>客户端，header中的OpenKey中间不能有下划线，否则后台接收不到<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line">key = <span class="string">'sdflajskldf9asfdalsdf9sdgsdgs55523asdf'</span></div><div class="line">response = requests.get(<span class="string">"http://127.0.0.1:8000/api/asset.html"</span>, headers=&#123;<span class="string">'OpenKey'</span>: key&#125;)</div><div class="line">print(response.text)</div></pre></td></tr></table></figure></p>
+<p>服务端接收数据中获取请求头的中的内容，通过<code>request.MEAT</code>可以获取全部的请求信息，是一个字典类型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">asset</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> request.META.items():</div><div class="line">        print(k, v)</div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">"GET"</span>:</div><div class="line">        aaa = <span class="string">"重要的数据"</span></div><div class="line">        <span class="keyword">return</span> HttpResponse(aaa)</div></pre></td></tr></table></figure>
+<p><code>HTTP_OPENKEY sdflajskldf9asfdalsdf9sdgsdgs55523asdf</code></p>
+<p>当客户端发送数据的请求头中没有和服务端的key匹配的时候，不通过验证<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">key = request.META.get(<span class="string">'HTTP_OPENKEY'</span>)</div><div class="line"><span class="keyword">if</span> settings.AUTH_KEY != key:</div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">'不能通过验证'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> request.method == <span class="string">"GET"</span>:</div><div class="line">    aaa = <span class="string">"重要的数据"</span></div><div class="line">    <span class="keyword">return</span> HttpResponse(aaa)</div></pre></td></tr></table></figure></p>
+<h2 id="动态令牌"><a href="#动态令牌" class="headerlink" title="动态令牌"></a>动态令牌</h2><p>上面的是静态的，当网络请求被截获后，别人就可以可以利用这个漏洞。需要改良成动态的令牌，每次访问的时候客户端发送不同的随机字符串并进行加密。要动态用当前时间，或者是UUID</p>
+<ul>
+<li>利用当前时间和key形成动态的随机字符串</li>
+<li>通过MD5进行加密</li>
+<li>把当前时间发送到API，API利用这个时间进行MD5加密，然后比较密文</li>
+</ul>
+<p><strong>客户端</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> hashlib</div><div class="line"></div><div class="line">ctime = time.time()</div><div class="line">key = <span class="string">'sdflajskldf9asfdalsdf9sdgsdgs55523asdf'</span></div><div class="line">new_key= <span class="string">'%s|%s'</span>%(key,ctime)</div><div class="line"></div><div class="line">m = hashlib.md5()</div><div class="line">m.update(bytes(new_key,encoding=<span class="string">'utf8'</span>)) <span class="comment"># python3中是字节</span></div><div class="line">md5_key = m.hexdigest() <span class="comment"># 加密后是字符串</span></div><div class="line"></div><div class="line">md5_key_time = <span class="string">'%s|%s'</span>%(md5_key,ctime) <span class="comment"># 把当前时间发送后API，API利用时间进行加密，最后比较的是密文</span></div><div class="line"></div><div class="line">response = requests.get(<span class="string">"http://127.0.0.1:8000/api/asset.html"</span>, headers=&#123;<span class="string">'OpenKey'</span>: md5_key_time&#125;)</div><div class="line">print(response.text)</div></pre></td></tr></table></figure>
+<p><strong>服务端</strong></p>
+<ul>
+<li>服务端接收到客户端发送的数据中包含MD5和客户端用于加密的时间</li>
+<li>服务端利用客户端发送过来的时间进行MD5加密 </li>
+<li>客户端和服务端进行密文的验证</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">asset</span><span class="params">(request)</span>:</span></div><div class="line"></div><div class="line">    client_md5_citme = request.META.get(<span class="string">'HTTP_OPENKEY'</span>) <span class="comment"># 客户端发送过来的MD5和用于加密的时间</span></div><div class="line">    <span class="comment"># print(client_md5_citme)</span></div><div class="line">    client_md5_key,client_time = client_md5_citme.split(<span class="string">'|'</span>) <span class="comment"># 进行分割</span></div><div class="line"></div><div class="line">    temp = <span class="string">'%s|%s'</span>%(settings.AUTH_KEY,client_time)</div><div class="line">    m = hashlib.md5()</div><div class="line">    m.update(bytes(temp, encoding=<span class="string">'utf8'</span>))</div><div class="line">    server_md5_key = m.hexdigest()  <span class="comment"># 服务端利用客户端发送的时间进行MD5加密的数据</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> server_md5_key!= client_md5_key: </div><div class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">'不能通过验证'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">"GET"</span>:</div><div class="line">        aaa = <span class="string">"重要的数据"</span></div><div class="line">        <span class="keyword">return</span> HttpResponse(aaa)</div></pre></td></tr></table></figure>
+<h2 id="API三关验证"><a href="#API三关验证" class="headerlink" title="API三关验证"></a>API三关验证</h2><p>上面存在的问题，当被加密的md5_key_time别截获任意一个后(有成千上万个)，别人在任何时候都能发送请求，服务端都能返回真实数据，这是一个很大的问题。</p>
+<p>解决方案：</p>
+<ul>
+<li>时间,服务端时间和客户端发送过来的时间进行比较，超过10s后，认为失效</li>
+<li>在服务端维护一个已访问列表，仅仅是10s内的，超过后删除，如果有同样的再次访问的话，认为是被被人获取的，不通过验证</li>
+</ul>
+<h3 id="第一关：时间"><a href="#第一关：时间" class="headerlink" title="第一关：时间"></a>第一关：时间</h3><ul>
+<li>在服务端进行判断，如果发送过来的客户端的时间和当前时间比，超过10s后，排除</li>
+</ul>
+<p><strong>服务端</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">asset</span><span class="params">(request)</span>:</span></div><div class="line"></div><div class="line">    client_md5_citme = request.META.get(<span class="string">'HTTP_OPENKEY'</span>) <span class="comment"># 客户端发送过来的MD5和用于加密的时间</span></div><div class="line">    <span class="comment"># print(client_md5_citme)</span></div><div class="line">    client_md5_key,client_time = client_md5_citme.split(<span class="string">'|'</span>) <span class="comment"># 进行分割</span></div><div class="line"></div><div class="line">    temp = <span class="string">'%s|%s'</span>%(settings.AUTH_KEY,client_time)</div><div class="line">    m = hashlib.md5()</div><div class="line">    m.update(bytes(temp, encoding=<span class="string">'utf8'</span>))</div><div class="line">    server_md5_key = m.hexdigest()  <span class="comment"># 服务端利用客户端发送的时间进行MD5加密的数据</span></div><div class="line">    client_time = float(client_time) <span class="comment"># 把字符串类型的转化成数字</span></div><div class="line">    server_time = time.time()</div><div class="line"></div><div class="line">    <span class="keyword">if</span> server_time - client_time &gt; <span class="number">10</span>:</div><div class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">"小伙子，超时了"</span>)</div></pre></td></tr></table></figure>
+<p><strong>客户端</strong></p>
+<p>客户端能正常发送，如果在10s内，客户端发送的秘钥被获取，并在10s内被请求，也是可以通过的</p>
+<p>下面的key是黑客获取的秘钥，并在10s中内向API发送请求，同样是可以获取到数据的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line">key = <span class="string">'582d3d4bd95997954f70ae6906732de3|1501941968.090018'</span></div><div class="line">response = requests.get(<span class="string">"http://127.0.0.1:8000/api/asset.html"</span>, headers=&#123;<span class="string">'OpenKey'</span>: key&#125;)</div><div class="line">print(response.text)</div></pre></td></tr></table></figure></p>
+<h3 id="第二关：验证规则"><a href="#第二关：验证规则" class="headerlink" title="第二关：验证规则"></a>第二关：验证规则</h3><p>这里就是在服务端进行MD5的验证</p>
+<h3 id="第三关-建立已经访问的列表"><a href="#第三关-建立已经访问的列表" class="headerlink" title="第三关: 建立已经访问的列表"></a>第三关: 建立已经访问的列表</h3><p>如果是只采用时间的话，是有缺陷的，所以通过建立一个已经访问的列表进行进一步限制。即便是黑客获取了秘钥，当黑客发送请求的时候就能阻止黑客的请求</p>
+<ul>
+<li>在全局建立已经访问过的列表，这里采用字典的形式，key是客户端发送过来的密钥，value是超时时间</li>
+<li>后期使用redis memcache可以直接设置超时时间后自动回删除，这里是存在内存中，自己通过判断进行删除</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在全局(存在内存中)建立已访问列表，格式是&#123;'key秘钥|时间':超时时间&#125; 后期可以用redis memcache等直接设置超时时间</span></div><div class="line">api_key_record = &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在进入第三关之前删除api_key_record中的超时的值</span></div><div class="line">    <span class="comment"># 字典不能通过for循环中删除</span></div><div class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> list(api_key_record.keys()): <span class="comment"># 需要把字典的keys()转换成列表</span></div><div class="line">        v = api_key_record[k]</div><div class="line">        <span class="keyword">if</span> server_time &gt; v:</div><div class="line">            <span class="keyword">del</span> api_key_record[k] <span class="comment"># 如果超时，则删除api_key_record中相应的记录</span></div><div class="line">    </div><div class="line">    <span class="comment"># 第三关：建立访问列表（全局）</span></div><div class="line">    <span class="keyword">if</span> client_md5_citme <span class="keyword">in</span> api_key_record:</div><div class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">'第三关没有通过验证'</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        api_key_record[client_md5_citme] = client_time + <span class="number">10</span> <span class="comment"># 设置超时时间 10s后超时</span></div></pre></td></tr></table></figure>
+<h4 id="关于字典删除的补充"><a href="#关于字典删除的补充" class="headerlink" title="关于字典删除的补充"></a>关于字典删除的补充</h4><p>字典、列表在for循环的过程中是不同删除的，在for循环的时候，就已经建立了需要遍历的数据，在循环中删除，就没法迭代了</p>
+<p>例如：</p>
+<p>下面的程序会报错：<code>RuntimeError: dictionary changed size during iteration</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 字典 列表等在循环的时候不能删除</span></div><div class="line">api_dict = &#123;<span class="string">'k1'</span>:<span class="string">'v1'</span>,<span class="string">'k2'</span>:<span class="string">'v2'</span>,<span class="string">'k3'</span>:<span class="string">'v3'</span>&#125;</div><div class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> api_dict.items():</div><div class="line">    <span class="keyword">if</span> v == <span class="string">'v2'</span>:</div><div class="line">        <span class="keyword">del</span> api_dict[k] <span class="comment"># RuntimeError: dictionary changed size during iteration</span></div></pre></td></tr></table></figure></p>
+<p>解决方法：</p>
+<ul>
+<li>deepcopy</li>
+<li>list(api_dict.keys())</li>
+<li>看下面的输出结果可知字典的keys()得到的是字典一个一种列表，通过list转换成列表</li>
+<li>循环获取字典中的value进行比较，然后进行删除</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">api_dict = &#123;<span class="string">'k1'</span>: <span class="string">'v1'</span>, <span class="string">'k2'</span>: <span class="string">'v2'</span>, <span class="string">'k3'</span>: <span class="string">'v3'</span>&#125;</div><div class="line">print(api_dict.keys())  <span class="comment"># dict_keys(['k1', 'k2', 'k3'])</span></div><div class="line">print(list(api_dict.keys()))  <span class="comment"># 通过list转换成列表</span></div><div class="line"><span class="keyword">for</span> k <span class="keyword">in</span> list(api_dict.keys()):</div><div class="line">    v = api_dict[k]  <span class="comment"># 获取字典中所有的值value</span></div><div class="line">    <span class="keyword">if</span> v == <span class="string">'v2'</span>:</div><div class="line">        <span class="keyword">del</span> api_dict[k]</div><div class="line">print(api_dict)</div></pre></td></tr></table></figure>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dict_keys([&apos;k1&apos;, &apos;k2&apos;, &apos;k3&apos;])</div><div class="line">[&apos;k1&apos;, &apos;k2&apos;, &apos;k3&apos;]</div><div class="line">&#123;&apos;k1&apos;: &apos;v1&apos;, &apos;k3&apos;: &apos;v3&apos;&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="API三关验证总结"><a href="#API三关验证总结" class="headerlink" title="API三关验证总结"></a>API三关验证总结</h3><p>流程：<br>客户端和服务端中都存放一份相同的随机字符串，客户端发请求的时候把随机字符串和当前时间进行MD5加密，同时带着当前时间通过请求头发送到API，进入三关验证。</p>
+<ul>
+<li>第一关是时间验证 (验证服务器当前时间和客户端发送过来的时间，超过10s后，验证不通过)</li>
+<li>第二关是MD5规则验证(服务端把自己的密钥同客户端发送过来的时间进行MD5加密，进行密文的比较)</li>
+<li>第三关是访问列表验证(从访问列表中查询是否存在，如果存在，验证不通过，否则把当前值存到列表中，并设置超时时间)，这里的时间可以设置成2S</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在全局(存在内存中)建立已访问列表，格式是&#123;'key秘钥|时间':超时时间&#125; 后期可以用redis memcache等直接设置超时时间</span></div><div class="line">api_key_record = &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">asset</span><span class="params">(request)</span>:</span></div><div class="line"></div><div class="line">    client_md5_citme = request.META.get(<span class="string">'HTTP_OPENKEY'</span>) <span class="comment"># 客户端发送过来的MD5和用于加密的时间</span></div><div class="line">    <span class="comment"># print(client_md5_citme)</span></div><div class="line">    client_md5_key,client_time = client_md5_citme.split(<span class="string">'|'</span>) <span class="comment"># 进行分割</span></div><div class="line"></div><div class="line">    <span class="comment"># 第一关：时间验证</span></div><div class="line">    client_time = float(client_time) <span class="comment"># 把字符串类型的转化成数字</span></div><div class="line">    server_time = time.time()</div><div class="line"></div><div class="line">    <span class="keyword">if</span> server_time - client_time &gt; <span class="number">10</span>:</div><div class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">"小伙子，超时了，第一关没有通过验证"</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 第二关：规则验证</span></div><div class="line">    temp = <span class="string">'%s|%s'</span>%(settings.AUTH_KEY,client_time)</div><div class="line">    m = hashlib.md5()</div><div class="line">    m.update(bytes(temp, encoding=<span class="string">'utf8'</span>))</div><div class="line">    server_md5_key = m.hexdigest()  <span class="comment"># 服务端利用客户端发送的时间进行MD5加密的数据</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> server_md5_key!= client_md5_key:</div><div class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">'第二关没有通过验证'</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 在进入第三关之前删除api_key_record中的超时的值</span></div><div class="line">    <span class="comment"># 字典不能通过for循环中删除</span></div><div class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> list(api_key_record.keys()): <span class="comment"># 需要把字典的keys()转换成列表</span></div><div class="line">        v = api_key_record[k]</div><div class="line">        <span class="keyword">if</span> server_time &gt; v:</div><div class="line">            <span class="keyword">del</span> api_key_record[k] <span class="comment"># 如果超时，则删除api_key_record中相应的记录</span></div><div class="line"></div><div class="line">    <span class="comment"># 第三关：建立访问列表（全局）</span></div><div class="line">    <span class="keyword">if</span> client_md5_citme <span class="keyword">in</span> api_key_record:</div><div class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">'第三关没有通过验证'</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        api_key_record[client_md5_citme] = client_time + <span class="number">10</span> <span class="comment"># 设置超时时间 10s后超时，然后从列表中删除</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">"GET"</span>:</div><div class="line">        aaa = <span class="string">"重要的数据"</span></div><div class="line">        <span class="keyword">return</span> HttpResponse(aaa)</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/08/05/CMDB之API验证/" data-title="CMDB API验证" data-url="https://github.com/ythzx/ythzx.github.io/2017/08/05/CMDB之API验证/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/06/CMDB 数据加密/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          CMDB 数据加密
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/04/使用Python生成ASCII字符画/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">使用Python生成ASCII字符画</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CMDB-API验证"><span class="nav-number">1.</span> <span class="nav-text">CMDB API验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么做API验证"><span class="nav-number">1.1.</span> <span class="nav-text">为什么做API验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何设计的API验证"><span class="nav-number">1.2.</span> <span class="nav-text">如何设计的API验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API验证之字符串-请求头"><span class="nav-number">1.3.</span> <span class="nav-text">API验证之字符串+请求头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态令牌"><span class="nav-number">1.4.</span> <span class="nav-text">动态令牌</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API三关验证"><span class="nav-number">1.5.</span> <span class="nav-text">API三关验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一关：时间"><span class="nav-number">1.5.1.</span> <span class="nav-text">第一关：时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二关：验证规则"><span class="nav-number">1.5.2.</span> <span class="nav-text">第二关：验证规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三关-建立已经访问的列表"><span class="nav-number">1.5.3.</span> <span class="nav-text">第三关: 建立已经访问的列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于字典删除的补充"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">关于字典删除的补充</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API三关验证总结"><span class="nav-number">1.5.4.</span> <span class="nav-text">API三关验证总结</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

@@ -96,7 +96,7 @@
         
           <section id="main">
   
-    <article id="post-CMDB之API验证"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-CMDB 数据加密"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -104,7 +104,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/08/06/CMDB之API验证/">CMDB API验证</a>
+      <a class="article-title" href="/2017/08/06/CMDB 数据加密/">CMDB 数据加密</a>
     </h1>
   
 
@@ -112,8 +112,8 @@
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/08/06/CMDB之API验证/" class="article-date">
-	  <time datetime="2017-08-05T16:11:36.185Z" itemprop="datePublished">八月 6, 2017</time>
+	Posted on <a href="/2017/08/06/CMDB 数据加密/" class="article-date">
+	  <time datetime="2017-08-06T03:38:40.031Z" itemprop="datePublished">八月 6, 2017</time>
 	</a>
 
     </div>
@@ -123,15 +123,82 @@
 
           
             <div class="entry-summary" style="margin-left:0;">
-            CMDB API验证想API获取数据的时候，需要进行验证是否是合法的请求，为了达到这一目的，采用的基础方案是在装机的时候在服务器中和客户端中都保存一份秘钥，客户端想要获取数据的时候需要携带秘钥过来，GET请求的时候通过请求头发送。
-API验证之字符串+请求头
-客户端向API发送GET请求的时候可以在请求有中加数据，是字典的格式headers={},在Django中，自己定义的请求头发送过去后，会转换成大写，并在前面加上HTTP_。
-客户端，header中的OpenKey中间不能有下划线，否则后台接收不到12345import requestskey = 'sdflajskldf9asfdalsdf9sdgsdgs55523asdf'response = requests.get("ht...
+            当CMDB运行在内网的时候，经过API验证的三关是没有问题的，但是如果运行在外网，有一个问题是，黑客截取后的访问速度比客户端快的时候还会造成数据泄露。为了解决这个问题，就要对数据进行加密
+RSA加密
+RSA是一种非对称加密，但是对加密的字符串的长度需要设置。但是字符串的长度是不固定的，而且这种方式的加密，加密的字符串越长，加密的时间越长。
+
+pip install rsa
+rsa.newkeys(256) 256代表加密的位数 256/8=32 就是32个字节，但是源码中32-11=21 也就是最多加密21个字节
+
+123456789101112131415161718192021222324252627282930313233343536373839import rsaimport ...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/08/06/CMDB之API验证/#more">阅读全文</a>
+            <a href="/2017/08/06/CMDB 数据加密/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-CMDB之API验证"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/08/05/CMDB之API验证/">CMDB API验证</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/08/05/CMDB之API验证/" class="article-date">
+	  <time datetime="2017-08-05T11:21:11.184Z" itemprop="datePublished">八月 5, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            CMDB API验证为什么做API验证API验证是防止数据在传输的过程中,保证数据不被篡改
+如何设计的API验证灵感来源于Torando中加密Cookie的源码，主要是生成加密的随机字符串。
+MD5（key+time）|time 就是把秘钥和客户端的当前时间通过MD5进行加密，同时把当前时间发送到API
+然后自己在服务端设计了三关验证的设计：
+
+时间，
+算法规则，验证密文
+已访问的记录
+
+想API获取数据的时候，需要进行验证是否是合法的请求，为了达到这一目的，采用的基础方案是在装机的时候在服务器中和客户端中都保存一份秘钥，客户端想要获取数据的时候需要携带秘钥过来，GET请求的时候通过请求头发送。
+API验证之字符串+请求头
+客户端向API发送GET请求的时候可以在请求有中加数据，是字典...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/08/05/CMDB之API验证/#more">阅读全文</a>
           </p>
         </div>
       
@@ -322,67 +389,6 @@ IDC机房
 <!-- Table of Contents -->
 
   
-    <article id="post-Saltstack 环境配置 Centos7 Python3"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/07/26/Saltstack 环境配置 Centos7 Python3/">Saltstack 环境配置 Centos7 Python3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/07/26/Saltstack 环境配置 Centos7 Python3/" class="article-date">
-	  <time datetime="2017-07-26T05:01:06.523Z" itemprop="datePublished">七月 26, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            Python安装完毕后，提示找不到ssl模块
-pip is configured with locations that require TLS/SSL, however the ssl module in python is not available. 
-缺少OpenSSL，
-1 yum 安装*
-yum install openssl-devel -y
-2 重新编译Python3
-进入Python的源码路径
-make&amp;&amp;make install
-subprocesspip3 安装subprocess 出现下面的问题,实际上Python3 内置了，不需要重新安装
-  Could not find a version that satisfies the require...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/07/26/Saltstack 环境配置 Centos7 Python3/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -499,8 +505,20 @@ subprocesspip3 安装subprocess 出现下面的问题,实际上Python3 内置了
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/08/06/CMDB之API验证/">CMDB API验证</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/08/06/CMDB 数据加密/">CMDB 数据加密</a></h6>
               <span>八月 6, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/08/05/CMDB之API验证/">CMDB API验证</a></h6>
+              <span>八月 5, 2017</span>
             </div>
 
           </li>
@@ -553,18 +571,6 @@ subprocesspip3 安装subprocess 出现下面的问题,实际上Python3 内置了
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/07/26/CMDB采集方案/">CMDB资产采集方案</a></h6>
-              <span>七月 26, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -577,7 +583,7 @@ subprocesspip3 安装subprocess 出现下面的问题,实际上Python3 内置了
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">41</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">41</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -597,7 +603,7 @@ subprocesspip3 安装subprocess 出现下面的问题,实际上Python3 内置了
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>cmdb 数据加密 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Django" />
+  
+  
+  
+  
+  <meta name="description" content="当CMDB运行在内网的时候，经过API验证的三关是没有问题的，但是如果运行在外网，有一个问题是，黑客截取后的访问速度比客户端快的时候还会造成数据泄露。为了解决这个问题，就要对数据进行加密
+RSA加密">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMDB 数据加密">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/08/06/CMDB 数据加密/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="当CMDB运行在内网的时候，经过API验证的三关是没有问题的，但是如果运行在外网，有一个问题是，黑客截取后的访问速度比客户端快的时候还会造成数据泄露。为了解决这个问题，就要对数据进行加密
+RSA加密">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170806145139240-1254991246.jpg">
+<meta property="og:updated_time" content="2017-08-06T09:28:46.582Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CMDB 数据加密">
+<meta name="twitter:description" content="当CMDB运行在内网的时候，经过API验证的三关是没有问题的，但是如果运行在外网，有一个问题是，黑客截取后的访问速度比客户端快的时候还会造成数据泄露。为了解决这个问题，就要对数据进行加密
+RSA加密">
+<meta name="twitter:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170806145139240-1254991246.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-CMDB 数据加密" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      CMDB 数据加密
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/08/06/CMDB 数据加密/" class="article-date">
+	  <time datetime="2017-08-06T03:38:40.031Z" itemprop="datePublished">八月 6, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当CMDB运行在内网的时候，经过API验证的三关是没有问题的，但是如果运行在外网，有一个问题是，黑客截取后的访问速度比客户端快的时候还会造成数据泄露。为了解决这个问题，就要对数据进行加密</p>
+<h2 id="RSA加密"><a href="#RSA加密" class="headerlink" title="RSA加密"></a>RSA加密</h2><a id="more"></a>
+<p>RSA是一种非对称加密，但是对加密的字符串的长度需要设置。但是字符串的长度是不固定的，而且这种方式的加密，加密的字符串越长，加密的时间越长。</p>
+<ul>
+<li>pip install rsa</li>
+<li>rsa.newkeys(256) 256代表加密的位数 256/8=32 就是32个字节，但是源码中32-11=21 也就是最多加密21个字节</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> rsa</div><div class="line"><span class="keyword">import</span> base64</div><div class="line"></div><div class="line"><span class="comment"># ######### 1. 生成公钥私钥 #########</span></div><div class="line">pub_key_obj, priv_key_obj = rsa.newkeys(<span class="number">256</span>)</div><div class="line"></div><div class="line">pub_key_str = pub_key_obj.save_pkcs1()</div><div class="line">pub_key_code = base64.standard_b64encode(pub_key_str)</div><div class="line"></div><div class="line">priv_key_str = priv_key_obj.save_pkcs1()</div><div class="line">priv_key_code = base64.standard_b64encode(priv_key_str)</div><div class="line"></div><div class="line">print(pub_key_code)</div><div class="line">print(priv_key_code)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># ######### 2. 加密 #########</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(value)</span>:</span></div><div class="line">    key_str = base64.standard_b64decode(pub_key_code)</div><div class="line">    pk = rsa.PublicKey.load_pkcs1(key_str)</div><div class="line">    val = rsa.encrypt(value.encode(<span class="string">'utf-8'</span>), pk)</div><div class="line">    <span class="keyword">return</span> val</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># ######### 3. 解密 #########</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt</span><span class="params">(value)</span>:</span></div><div class="line">    key_str = base64.standard_b64decode(priv_key_code)</div><div class="line">    pk = rsa.PrivateKey.load_pkcs1(key_str)</div><div class="line">    val = rsa.decrypt(value, pk)</div><div class="line">    <span class="keyword">return</span> val</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># ######### 基本使用 #########</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    v = <span class="string">'Django'</span></div><div class="line">    v1 = encrypt(v)</div><div class="line">    print(v1)</div><div class="line">    v2 = decrypt(v1)</div><div class="line">    print(v2.decode(<span class="string">'utf8'</span>))</div></pre></td></tr></table></figure>
+<h2 id="AES-加密"><a href="#AES-加密" class="headerlink" title="AES 加密"></a>AES 加密</h2><p>微信公众号的加密方式，而且对字符串的长度没有限制</p>
+<p><code>但是要加密的字符串必须是16个字节或者是16个字节的倍数</code></p>
+<h3 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h3><p>由于用到了Crypto,通过pip安装后Python3.6中仍然不能运行。自己是用的Anconda中的自带的，可以使用。<br>在GitHub找到了已经编译好的Python3.5的pycrypto.</p>
+<h3 id="加密过程"><a href="#加密过程" class="headerlink" title="加密过程"></a>加密过程</h3><ul>
+<li>加密用到的key 必须是16个字节或16字节的倍数</li>
+<li>被加密的字符串同样也必须是16个字节或16字节的倍数</li>
+<li>通过bytearray能对字节的长度进行修改</li>
+<li>用空格补足的算法 对bytearray用16取余，16-余数+原来的长度就补到了32</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ############## 加密 ##############</span></div><div class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</div><div class="line"></div><div class="line">key = <span class="string">b'jlaksdflj77asdfh'</span>  <span class="comment"># 16个字节或16字节的倍数</span></div><div class="line">cipher = AES.new(key, AES.MODE_CBC, key)</div><div class="line"></div><div class="line">data = <span class="string">'要加密的字符串'</span>  <span class="comment"># 一个中文是3个字节</span></div><div class="line">byte_data = bytearray(data, encoding=<span class="string">'utf8'</span>)  <span class="comment"># 想要动态修改字节，用bytearray 相当于把字节转换成一个数组</span></div><div class="line"><span class="comment"># print(len(byte_data))</span></div><div class="line">v1 = len(byte_data)  <span class="comment"># 这是要加密的数据的长度 21</span></div><div class="line">v2 = v1 % <span class="number">16</span>  <span class="comment"># 取余 5</span></div><div class="line">v3 = <span class="number">16</span> - v2  <span class="comment"># 这是要补足的数 11 : 21+11=32 是16的倍数</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(v3):</div><div class="line">    byte_data.append(<span class="number">32</span>)  <span class="comment"># 32代表ASCII中的空格 chr(32) 可以查看</span></div><div class="line"><span class="comment"># print(len(byte_data))</span></div><div class="line">final_data = byte_data.decode(<span class="string">'utf8'</span>) <span class="comment"># 把字节解码成字符串</span></div><div class="line">print(final_data) <span class="comment"># 加密的内容并加上了补足的空格</span></div><div class="line">msg = cipher.encrypt(final_data)  <span class="comment"># 进行加密  final_data必须是16个字节或16字节的倍数</span></div><div class="line"></div><div class="line">print(msg) <span class="comment"># 加密后是字节</span></div></pre></td></tr></table></figure>
+<h3 id="解密过程"><a href="#解密过程" class="headerlink" title="解密过程"></a>解密过程</h3><ul>
+<li>下面是直接利用了加密后的字节msg</li>
+<li>解密后删除空格</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ############## 解密 ##############</span></div><div class="line"></div><div class="line">msg = <span class="string">b'G\xf47P\xf4X\xbf\x88\xba^;\xbcA\xde(\xb0)\xafA\xb8\xd8\t\xca\xef\xd7\xcdZhw\x98?N'</span></div><div class="line">key = <span class="string">b'jlaksdflj77asdfh'</span> <span class="comment"># 需要同样的key</span></div><div class="line">cipher_jm = AES.new(key, AES.MODE_CBC, key)</div><div class="line">result = cipher_jm.decrypt(msg) <span class="comment"># 对字节进行解密</span></div><div class="line">print(result.decode(<span class="string">'utf8'</span>).strip()) <span class="comment"># 解密后删除空格</span></div></pre></td></tr></table></figure>
+<p><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170806145139240-1254991246.jpg" alt=""></p>
+<h3 id="不用空格进行补足–机智的加密解密"><a href="#不用空格进行补足–机智的加密解密" class="headerlink" title="不用空格进行补足–机智的加密解密"></a>不用空格进行补足–机智的加密解密</h3><p>如果原来要加密的字符串中存在空格，机密后会删除空格，这是一个问题</p>
+<p><strong>机智的加密方式</strong></p>
+<ul>
+<li>当需要补几个字节的时候，就补上几个。如需要11个字节，就补11个11(ascii)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(v3):</div><div class="line">    byte_data.append(v3)  <span class="comment"># 当需要补几个字节的时候，就补上几个。如需要11个字节，就补11个11(ascii)</span></div></pre></td></tr></table></figure>
+<p><strong>机智的解密取值</strong></p>
+<ul>
+<li>result[-1] 是取到了最后一个值，而我们加密的时候，补足的值和个数是相同的</li>
+<li>result[0:result[-1]] 就代表真正的数据 牛逼！！！</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">result = cipher_jm.decrypt(msg)</div><div class="line">result_data = result[<span class="number">0</span>:-result[<span class="number">-1</span>]]</div></pre></td></tr></table></figure>
+<p>例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">result = <span class="string">b'\xe8\xa6\x81\xe5\x8a\xa0\xe5\xaf\x86\xe7\x9a\x84\xe5\xad\x97\xe7\xac\xa6\xe4\xb8\xb2\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b'</span> <span class="comment"># result 是解密后的数据</span></div><div class="line"></div><div class="line">print(<span class="string">'最后一个字节'</span>,result[<span class="number">-1</span>]) <span class="comment"># 取最后一个值</span></div><div class="line">print(<span class="string">'真实的数据'</span>,result[<span class="number">0</span>:-result[<span class="number">-1</span>]])  <span class="comment"># 获取真实的数据 result[0:-11]</span></div></pre></td></tr></table></figure></p>
+<h4 id="还有一个问题是-v2取余是0的情况"><a href="#还有一个问题是-v2取余是0的情况" class="headerlink" title="还有一个问题是 v2取余是0的情况"></a>还有一个问题是 v2取余是0的情况</h4><p>v2取余是0的情况，加密的字符串正好就是16的倍数，那么解密的时候就出问题了，解决问题还得从加密的地方入手。思路是主动设置一个值，如16</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">v1 = len(byte_data)</div><div class="line">v2 = v1 % <span class="number">16</span>  <span class="comment"># 取余 5</span></div><div class="line"><span class="keyword">if</span> v2 == <span class="number">0</span>:</div><div class="line">    v3 = <span class="number">16</span> <span class="comment"># 字符串正好是16的倍数 余数是0 主动设置成16 </span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    v3 = <span class="number">16</span> - v2  <span class="comment"># 这是要补足的数 11 : 21+11=32 是16的倍数</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(v3):</div><div class="line">    byte_data.append(v3)</div></pre></td></tr></table></figure>
+<h3 id="最终封装成函数"><a href="#最终封装成函数" class="headerlink" title="最终封装成函数"></a>最终封装成函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(message)</span>:</span></div><div class="line">    key = <span class="string">b'jlaksdflj77asdfh'</span>  <span class="comment"># 16个字节或16字节的倍数</span></div><div class="line">    cipher = AES.new(key, AES.MODE_CBC, key)</div><div class="line">    byte_data = bytearray(message, encoding=<span class="string">'utf8'</span>)  <span class="comment"># 想要动态修改字节，用bytearray 相当于把字节转换成一个数组</span></div><div class="line">    v1 = len(byte_data)  <span class="comment"># 这是要加密的数据的长度 21</span></div><div class="line">    v2 = v1 % <span class="number">16</span>  <span class="comment"># 取余 5</span></div><div class="line">    <span class="keyword">if</span> v2 == <span class="number">0</span>:</div><div class="line">        v3 = <span class="number">16</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        v3 = <span class="number">16</span> - v2  <span class="comment"># 这是要补足的数 11 : 21+11=32 是16的倍数</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(v3):</div><div class="line">        byte_data.append(v3)</div><div class="line">    final_data = byte_data.decode(<span class="string">'utf8'</span>)  <span class="comment"># 把字节解码成字符串</span></div><div class="line">    msg = cipher.encrypt(final_data)  <span class="comment"># 进行加密  final_data必须是16个字节或16字节的倍数</span></div><div class="line">    <span class="keyword">return</span> msg</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># ############## 解密 ##############</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt</span><span class="params">(msg)</span>:</span></div><div class="line">    key = <span class="string">b'jlaksdflj77asdfh'</span>  <span class="comment"># 需要同样的key</span></div><div class="line">    cipher = AES.new(key, AES.MODE_CBC, key)</div><div class="line">    result = cipher.decrypt(msg)  <span class="comment"># 对字节进行解密</span></div><div class="line">    data = result[<span class="number">0</span>:-result[<span class="number">-1</span>]]</div><div class="line">    <span class="keyword">return</span> data.decode(<span class="string">'utf8'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line"></div><div class="line">    msg = encrypt(<span class="string">"我要加密了"</span>)</div><div class="line">    data = decrypt(msg)</div><div class="line">    print(data)</div></pre></td></tr></table></figure>
+<h2 id="API-加密和AES数据加密结合"><a href="#API-加密和AES数据加密结合" class="headerlink" title="API 加密和AES数据加密结合"></a>API 加密和AES数据加密结合</h2><h3 id="客户端发送数据的形式"><a href="#客户端发送数据的形式" class="headerlink" title="客户端发送数据的形式"></a>客户端发送数据的形式</h3><p>当客户端把采集的信心向API发送的时候，request.post(url,data,json) ,使用json的的时候默认在请求头中添加<code>&#39;content_type&#39;: &#39;application/json&#39;</code>,会把字典类型的数据json序列化成字符串发送到API。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 源码中</span></div><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> data <span class="keyword">and</span> json <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">    <span class="comment"># urllib3 requires a bytes-like body. Python 2's json.dumps</span></div><div class="line">    <span class="comment"># provides this natively, but Python 3 gives a Unicode string.</span></div><div class="line">    content_type = <span class="string">'application/json'</span></div><div class="line">    body = complexjson.dumps(json)</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> isinstance(body, bytes):</div><div class="line">        body = body.encode(<span class="string">'utf-8'</span>)</div></pre></td></tr></table></figure>
+<p>request就是相当于socket，在传输的过程中会把字符串转换成字节发送，所以后台接收的数据实际字节数据。在这里可以自己把数据用json序列化然后转换成字节，用data发送。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">import</span> json</div><div class="line"></div><div class="line">data = &#123;<span class="string">'k1'</span>: <span class="string">'v1'</span>&#125;</div><div class="line">data = bytes(json.dumps(data),encoding=<span class="string">'utf8'</span>)</div><div class="line"><span class="comment"># response = requests.post("http://127.0.0.1:8000/api/asset.html", headers=&#123;'OpenKey': auth()&#125;,json=&#123;'k1':'v1'&#125;)</span></div><div class="line">response = requests.post(</div><div class="line">    <span class="string">"http://127.0.0.1:8000/api/asset.html"</span>,</div><div class="line">     headers=&#123;<span class="string">'OpenKey'</span>: auth(), <span class="string">'content_type'</span>: <span class="string">'application/json'</span>&#125;,</div><div class="line">    data=data</div><div class="line">)</div><div class="line">print(response.text)</div></pre></td></tr></table></figure>
+<h3 id="服务端接收数据并解密"><a href="#服务端接收数据并解密" class="headerlink" title="服务端接收数据并解密"></a>服务端接收数据并解密</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">elif</span> request.method == <span class="string">'POST'</span>:</div><div class="line">    server_info= decrypt(request.body)  <span class="comment"># 对数据进行解密</span></div><div class="line">    server_info = json.loads(server_info) <span class="comment"># 对字符串反序列化成字典类型的数据</span></div><div class="line">    print(server_info)</div></pre></td></tr></table></figure>
+<p><strong>结合后的客户端</strong></p>
+<ul>
+<li>把加密和验证制作成插件 lib/utils</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> hashlib</div><div class="line"><span class="keyword">from</span> config <span class="keyword">import</span> settings</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(message)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    数据加密函数</div><div class="line">    :param message:</div><div class="line">    :return:</div><div class="line">    """</div><div class="line">    key = <span class="string">b'jlaksdflj77asdfh'</span>  <span class="comment"># 16个字节或16字节的倍数</span></div><div class="line">    cipher = AES.new(key, AES.MODE_CBC, key)</div><div class="line">    byte_data = bytearray(message, encoding=<span class="string">'utf8'</span>)  <span class="comment"># 想要动态修改字节，用bytearray 相当于把字节转换成一个数组</span></div><div class="line">    v1 = len(byte_data)  <span class="comment"># 这是要加密的数据的长度 21</span></div><div class="line">    v2 = v1 % <span class="number">16</span>  <span class="comment"># 取余 5</span></div><div class="line">    <span class="keyword">if</span> v2 == <span class="number">0</span>:</div><div class="line">        v3 = <span class="number">16</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        v3 = <span class="number">16</span> - v2  <span class="comment"># 这是要补足的数 11 : 21+11=32 是16的倍数</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(v3):</div><div class="line">        byte_data.append(v3)</div><div class="line">    final_data = byte_data.decode(<span class="string">'utf8'</span>)  <span class="comment"># 把字节解码成字符串</span></div><div class="line">    msg = cipher.encrypt(final_data)  <span class="comment"># 进行加密  final_data必须是16个字节或16字节的倍数</span></div><div class="line">    <span class="keyword">return</span> msg</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt</span><span class="params">(msg)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    数据解密函数</div><div class="line">    :param msg:</div><div class="line">    :return:</div><div class="line">    """</div><div class="line">    key = <span class="string">b'jlaksdflj77asdfh'</span>  <span class="comment"># 需要同样的key</span></div><div class="line">    cipher = AES.new(key, AES.MODE_CBC, key)</div><div class="line">    result = cipher.decrypt(msg)  <span class="comment"># 对字节进行解密</span></div><div class="line">    data = result[<span class="number">0</span>:-result[<span class="number">-1</span>]]</div><div class="line">    <span class="keyword">return</span> data.decode(<span class="string">'utf8'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">auth</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    API验证</div><div class="line">    :return:</div><div class="line">    """</div><div class="line">    ctime = time.time()</div><div class="line">    key = settings.AUTH_KEY</div><div class="line">    new_key = <span class="string">'%s|%s'</span> % (key, ctime)</div><div class="line"></div><div class="line">    m = hashlib.md5()</div><div class="line">    m.update(bytes(new_key, encoding=<span class="string">'utf8'</span>))  <span class="comment"># python3中是字节</span></div><div class="line">    md5_key = m.hexdigest()  <span class="comment"># 加密后是字符串</span></div><div class="line"></div><div class="line">    md5_key_time = <span class="string">'%s|%s'</span> % (md5_key, ctime)  <span class="comment"># 把当前时间发送后API，API利用时间进行加密，最后比较的是密文</span></div><div class="line">    <span class="keyword">return</span> md5_key_time</div></pre></td></tr></table></figure>
+<p>调用：</p>
+<ul>
+<li>client/Base</li>
+<li>注意要有请求头，主要是包含OpenKey</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post_asset</span><span class="params">(self, server_info)</span>:</span></div><div class="line">        data = encrypt(json.dumps(server_info))  <span class="comment"># 把采集到的资产信息序列化化成字符串 加密后变成字节</span></div><div class="line">        <span class="comment"># requests.post(settings.API, json=server_info)  # 向API发送数据 json=() 内部json序列化</span></div><div class="line">        requests.post(settings.API, data=data,headers=&#123;<span class="string">'OpenKey'</span>: auth(), <span class="string">'content_type'</span>: <span class="string">'application/json'</span>&#125;)  <span class="comment"># 向API发送数据 json=() 内部json序列化</span></div></pre></td></tr></table></figure>
+<p><strong>结合后的服务端</strong></p>
+<ul>
+<li>server_info= decrypt(request.body)  # 对数据进行解密</li>
+<li>server_info = json.loads(server_info) # 对字符串反序列化成字典类型的数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">import</span> hashlib</div><div class="line"></div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, HttpResponse</div><div class="line"><span class="keyword">from</span> repository <span class="keyword">import</span> models</div><div class="line"><span class="keyword">from</span> api.service <span class="keyword">import</span> PluginManager</div><div class="line"><span class="keyword">from</span> autoserver <span class="keyword">import</span> settings</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt</span><span class="params">(msg)</span>:</span></div><div class="line">    <span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</div><div class="line">    key = <span class="string">b'jlaksdflj77asdfh'</span>  <span class="comment"># 需要同样的key</span></div><div class="line">    cipher = AES.new(key, AES.MODE_CBC, key)</div><div class="line">    result = cipher.decrypt(msg)  <span class="comment"># 对字节进行解密</span></div><div class="line">    data = result[<span class="number">0</span>:-result[<span class="number">-1</span>]]</div><div class="line">    <span class="keyword">return</span> data.decode(<span class="string">'utf8'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 在全局(存在内存中)建立已访问列表，格式是&#123;'key秘钥|时间':超时时间&#125; 后期可以用redis memcache等直接设置超时时间</span></div><div class="line">api_key_record = &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">asset</span><span class="params">(request)</span>:</span></div><div class="line"></div><div class="line">    client_md5_citme = request.META.get(<span class="string">'HTTP_OPENKEY'</span>) <span class="comment"># 客户端发送过来的MD5和用于加密的时间</span></div><div class="line">    <span class="comment"># print(client_md5_citme)</span></div><div class="line">    client_md5_key,client_time = client_md5_citme.split(<span class="string">'|'</span>) <span class="comment"># 进行分割</span></div><div class="line"></div><div class="line">    <span class="comment"># 第一关：时间验证</span></div><div class="line">    client_time = float(client_time) <span class="comment"># 把字符串类型的转化成数字</span></div><div class="line">    server_time = time.time()</div><div class="line"></div><div class="line">    <span class="keyword">if</span> server_time - client_time &gt; <span class="number">10</span>:</div><div class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">"小伙子，超时了，第一关没有通过验证"</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 第二关：规则验证</span></div><div class="line">    temp = <span class="string">'%s|%s'</span>%(settings.AUTH_KEY,client_time)</div><div class="line">    m = hashlib.md5()</div><div class="line">    m.update(bytes(temp, encoding=<span class="string">'utf8'</span>))</div><div class="line">    server_md5_key = m.hexdigest()  <span class="comment"># 服务端利用客户端发送的时间进行MD5加密的数据</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> server_md5_key!= client_md5_key:</div><div class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">'第二关没有通过验证'</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 在进入第三关之前删除api_key_record中的超时的值</span></div><div class="line">    <span class="comment"># 字典不能通过for循环中删除</span></div><div class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> list(api_key_record.keys()): <span class="comment"># 需要把字典的keys()转换成列表</span></div><div class="line">        v = api_key_record[k]</div><div class="line">        <span class="keyword">if</span> server_time &gt; v:</div><div class="line">            <span class="keyword">del</span> api_key_record[k] <span class="comment"># 如果超时，则删除api_key_record中相应的记录</span></div><div class="line"></div><div class="line">    <span class="comment"># 第三关：建立访问列表（全局）</span></div><div class="line">    <span class="keyword">if</span> client_md5_citme <span class="keyword">in</span> api_key_record:</div><div class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">'第三关没有通过验证'</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        api_key_record[client_md5_citme] = client_time + <span class="number">10</span> <span class="comment"># 设置超时时间 10s后超时，然后从列表中删除</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">"GET"</span>:</div><div class="line">        aaa = <span class="string">"重要的数据"</span></div><div class="line">        <span class="keyword">return</span> HttpResponse(aaa)</div><div class="line"></div><div class="line">    <span class="keyword">elif</span> request.method == <span class="string">'POST'</span>:</div><div class="line">        server_info= decrypt(request.body)  <span class="comment"># 对数据进行解密</span></div><div class="line">        server_info = json.loads(server_info) <span class="comment"># 对字符串反序列化成字典类型的数据</span></div><div class="line">        <span class="comment"># print(server_info)</span></div><div class="line">        <span class="comment"># 新资产信息</span></div><div class="line">        <span class="comment"># server_info = json.loads(request.body.decode('utf-8'))  # 数据存在于body中</span></div><div class="line">        print(server_info)</div><div class="line">        <span class="comment"># 数据库中的老的资产信息</span></div><div class="line">        hostname = server_info[<span class="string">'basic'</span>][<span class="string">'data'</span>][<span class="string">'hostname'</span>]  <span class="comment"># 获取主机名</span></div><div class="line">        server_obj = models.Server.objects.filter(hostname=hostname).first()  <span class="comment"># 获得server对象</span></div><div class="line">        <span class="comment"># print(server_obj)  # 这里获得是主机名</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> server_obj:</div><div class="line">            <span class="keyword">return</span> HttpResponse(<span class="string">'当前主机名在资产中未录入'</span>)</div><div class="line">        asset_obj = server_obj.asset  <span class="comment"># 直接获得是资产对象 一对一的关系</span></div><div class="line"></div><div class="line"></div><div class="line">        PluginManager(hostname,server_info,asset_obj,server_obj).exec_plugin()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">'...'</span>)</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/08/06/CMDB 数据加密/" data-title="CMDB 数据加密" data-url="https://github.com/ythzx/ythzx.github.io/2017/08/06/CMDB 数据加密/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/05/CMDB之API验证/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">CMDB API验证</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RSA加密"><span class="nav-number">1.</span> <span class="nav-text">RSA加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AES-加密"><span class="nav-number">2.</span> <span class="nav-text">AES 加密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装模块"><span class="nav-number">2.1.</span> <span class="nav-text">安装模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密过程"><span class="nav-number">2.2.</span> <span class="nav-text">加密过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解密过程"><span class="nav-number">2.3.</span> <span class="nav-text">解密过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不用空格进行补足–机智的加密解密"><span class="nav-number">2.4.</span> <span class="nav-text">不用空格进行补足–机智的加密解密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#还有一个问题是-v2取余是0的情况"><span class="nav-number">2.4.1.</span> <span class="nav-text">还有一个问题是 v2取余是0的情况</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最终封装成函数"><span class="nav-number">2.5.</span> <span class="nav-text">最终封装成函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-加密和AES数据加密结合"><span class="nav-number">3.</span> <span class="nav-text">API 加密和AES数据加密结合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端发送数据的形式"><span class="nav-number">3.1.</span> <span class="nav-text">客户端发送数据的形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端接收数据并解密"><span class="nav-number">3.2.</span> <span class="nav-text">服务端接收数据并解密</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
