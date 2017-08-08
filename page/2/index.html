@@ -96,6 +96,64 @@
         
           <section id="main">
   
+    <article id="post-Hicharts图表的使用"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/07/30/Hicharts图表的使用/">Hicharts图表的使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/07/30/Hicharts图表的使用/" class="article-date">
+	  <time datetime="2017-07-30T07:49:20.813Z" itemprop="datePublished">七月 30, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            Hicharts图表的使用引用
+在4.0之后就不需要jQuery了,z这里是用ajax向后台发送数据引入js或者CDN，这里采用的是引入js的方式
+在Hicarts文件中的index中查看相应的图表，查看页面的代码
+12&lt;script src="/static/jquery-1.12.4.js"&gt;&lt;/script&gt;&lt;script src="/static/plugins/Highcharts-5.0.12/code/highcharts.js"&gt;&lt;/script&gt;
+饼图饼图最终就是在container中显示
+加载完后通过ajax发送POST请求，后台返回数据，ajax中发送数据要携带csrf_token,在这里要注意的是是字符串形式
+12...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/07/30/Hicharts图表的使用/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Saltstack 环境配置 Centos7 Python3"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -340,67 +398,6 @@ agent程序放在每台服务器agent程序放在每台服务器,这是采集本
 <!-- Table of Contents -->
 
   
-    <article id="post-Django ORM models操作"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/07/14/Django ORM models操作/">Django ORM models操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/07/14/Django ORM models操作/" class="article-date">
-	  <time datetime="2017-07-14T11:12:14.112Z" itemprop="datePublished">七月 14, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            Django ORM models操作Django ORM基本操作
-一、数据库的创建及增删改查1 使用类创建表
-在models.py中 from django.db import models
-继承models.Model
-
-1 写类，对应表名
-1234from django.db import modelsclass UserInfo(models.Model):    name = models.CharField(max_length=16)    age = models.IntegerField()
-
-设置外键  ut = models.ForeignKey(‘UserType’)
-设置外键可以为空, null=True    ut = models.ForeignKey(‘...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/07/14/Django ORM models操作/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -517,6 +514,18 @@ agent程序放在每台服务器agent程序放在每台服务器,这是采集本
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/08/08/rabbitmq消息队列/">(no title)</a></h6>
+              <span>八月 8, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/08/06/CMDB 数据加密/">CMDB 数据加密</a></h6>
               <span>八月 6, 2017</span>
             </div>
@@ -571,18 +580,6 @@ agent程序放在每台服务器agent程序放在每台服务器,这是采集本
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/07/26/Saltstack 环境配置 Centos7 Python3/">Saltstack 环境配置 Centos7 Python3</a></h6>
-              <span>七月 26, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -615,7 +612,7 @@ agent程序放在每台服务器agent程序放在每台服务器,这是采集本
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 

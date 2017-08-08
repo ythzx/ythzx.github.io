@@ -9,12 +9,20 @@
   
   
   
-  <meta property="og:type" content="website">
+  <meta name="description" content="rabbitmq消息队列centos下yum安装RabbitMQ1234567891011121314151617181920212223241.安装前准备     wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm    rpm -ivh epel-release-6-8.noarch.rp">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Peter's Blog Center">
-<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/index.html">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/08/08/rabbitmq消息队列/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="rabbitmq消息队列centos下yum安装RabbitMQ1234567891011121314151617181920212223241.安装前准备     wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm    rpm -ivh epel-release-6-8.noarch.rp">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170808184951199-2113197381.png">
+<meta property="og:image" content="http://www.rabbitmq.com/img/tutorials/python-two.png?_=5248247">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170808232825808-1635320985.jpg">
+<meta property="og:updated_time" content="2017-08-08T15:29:44.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Peter's Blog Center">
+<meta name="twitter:description" content="rabbitmq消息队列centos下yum安装RabbitMQ1234567891011121314151617181920212223241.安装前准备     wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm    rpm -ivh epel-release-6-8.noarch.rp">
+<meta name="twitter:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170808184951199-2113197381.png">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
   
@@ -45,7 +53,7 @@
 
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   <header id="allheader" class="site-header" role="banner">
@@ -94,9 +102,7 @@
             
       <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
         
-          <section id="main">
-  
-    <article id="post-rabbitmq消息队列"  class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-rabbitmq消息队列" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -206,470 +212,59 @@
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-CMDB 数据加密"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/08/06/CMDB 数据加密/">CMDB 数据加密</a>
-    </h1>
-  
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/08/08/rabbitmq消息队列/" data-title="" data-url="https://github.com/ythzx/ythzx.github.io/2017/08/08/rabbitmq消息队列/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/08/06/CMDB 数据加密/" class="article-date">
-	  <time datetime="2017-08-06T03:38:40.031Z" itemprop="datePublished">八月 6, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            当CMDB运行在内网的时候，经过API验证的三关是没有问题的，但是如果运行在外网，有一个问题是，黑客截取后的访问速度比客户端快的时候还会造成数据泄露。为了解决这个问题，就要对数据进行加密
-RSA加密
-RSA是一种非对称加密，但是对加密的字符串的长度需要设置。但是字符串的长度是不固定的，而且这种方式的加密，加密的字符串越长，加密的时间越长。
-
-pip install rsa
-rsa.newkeys(256) 256代表加密的位数 256/8=32 就是32个字节，但是源码中32-11=21 也就是最多加密21个字节
-
-123456789101112131415161718192021222324252627282930313233343536373839import rsaimport ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/08/06/CMDB 数据加密/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
 
       
     </footer>
   </div>
   
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-CMDB之API验证"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/08/05/CMDB之API验证/">CMDB API验证</a>
-    </h1>
   
+    <a href="/2017/08/06/CMDB 数据加密/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">CMDB 数据加密</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/08/05/CMDB之API验证/" class="article-date">
-	  <time datetime="2017-08-05T11:21:11.184Z" itemprop="datePublished">八月 5, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            CMDB API验证为什么做API验证API验证是防止数据在传输的过程中,保证数据不被篡改
-如何设计的API验证灵感来源于Torando中加密Cookie的源码，主要是生成加密的随机字符串。
-MD5（key+time）|time 就是把秘钥和客户端的当前时间通过MD5进行加密，同时把当前时间发送到API
-然后自己在服务端设计了三关验证的设计：
-
-时间，
-算法规则，验证密文
-已访问的记录
-
-想API获取数据的时候，需要进行验证是否是合法的请求，为了达到这一目的，采用的基础方案是在装机的时候在服务器中和客户端中都保存一份秘钥，客户端想要获取数据的时候需要携带秘钥过来，GET请求的时候通过请求头发送。
-API验证之字符串+请求头
-客户端向API发送GET请求的时候可以在请求有中加数据，是字典...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/08/05/CMDB之API验证/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
-
-      
-    </footer>
-  </div>
   
 </article>
 
 <!-- Table of Contents -->
 
-  
-    <article id="post-使用Python生成ASCII字符画"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#rabbitmq消息队列"><span class="nav-number">1.</span> <span class="nav-text">rabbitmq消息队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#centos下yum安装RabbitMQ"><span class="nav-number">1.1.</span> <span class="nav-text">centos下yum安装RabbitMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#python的队列-queue"><span class="nav-number">1.1.1.</span> <span class="nav-text">python的队列 queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息队列解决的问题："><span class="nav-number">1.1.2.</span> <span class="nav-text">消息队列解决的问题：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队列的作用："><span class="nav-number">1.1.3.</span> <span class="nav-text">队列的作用：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引入rabbitmq的原因："><span class="nav-number">1.1.4.</span> <span class="nav-text">引入rabbitmq的原因：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生产者消费者模型"><span class="nav-number">1.1.5.</span> <span class="nav-text">生产者消费者模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ-配置"><span class="nav-number">1.2.</span> <span class="nav-text">RabbitMQ 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rabbitmq-创建用户和设置权限"><span class="nav-number">1.2.1.</span> <span class="nav-text">rabbitmq 创建用户和设置权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端连接的时候需要配置认证参数"><span class="nav-number">1.2.2.</span> <span class="nav-text">客户端连接的时候需要配置认证参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ-都能为程序提供队列"><span class="nav-number">1.3.</span> <span class="nav-text">RabbitMQ 都能为程序提供队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-rabbitmq的路由routing-key"><span class="nav-number">1.3.1.</span> <span class="nav-text">1 rabbitmq的路由routing_key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-实现最简单的队列"><span class="nav-number">1.3.2.</span> <span class="nav-text">2 实现最简单的队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-如何保证队列中的消息被处理完毕"><span class="nav-number">1.3.3.</span> <span class="nav-text">3 如何保证队列中的消息被处理完毕</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-消费者端："><span class="nav-number">1.3.3.1.</span> <span class="nav-text">3.1 消费者端：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-rabbitmq-server-保持持久-durable-True"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">3.2 rabbitmq-server 保持持久 durable=True</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-多个消费者的时候-消费者的公平分发"><span class="nav-number">1.3.4.</span> <span class="nav-text">4 多个消费者的时候(消费者的公平分发)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-消息发布订阅Publish-Subscribe-消息发布-订阅-rabbit广播-组播-消息过滤-exchange"><span class="nav-number">1.3.5.</span> <span class="nav-text">5 消息发布订阅Publish\Subscribe(消息发布\订阅)　 rabbit广播 组播 消息过滤(exchange)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生产者和消费者端都要声明"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">生产者和消费者端都要声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动生成队列-消费后删除"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">自动生成队列 消费后删除</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPC-remote-producer-call"><span class="nav-number">1.4.</span> <span class="nav-text">RPC remote producer call</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置一个异步RPC"><span class="nav-number">1.4.1.</span> <span class="nav-text">设置一个异步RPC</span></a></li></ol></li></ol></li></ol>
     
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/08/04/使用Python生成ASCII字符画/">使用Python生成ASCII字符画</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/08/04/使用Python生成ASCII字符画/" class="article-date">
-	  <time datetime="2017-08-04T06:55:37.457Z" itemprop="datePublished">八月 4, 2017</time>
-	</a>
-
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            使用Python生成ASCII字符画在很多的网站主页中或者程序的注释中会有一些好看的字符注释画。显得很牛逼的样子
-例如：
-知乎123456789101112131415161718192021         _____                    _____                    _____                    _____                   /\    \                  /\    \                  /\    \                  /\    \                 /::\____\                /::\    \          ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/08/04/使用Python生成ASCII字符画/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-CMDB数据库设计"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/07/31/CMDB数据库设计/">CMDB 数据库设计</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/07/31/CMDB数据库设计/" class="article-date">
-	  <time datetime="2017-07-31T11:22:01.646Z" itemprop="datePublished">七月 31, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            CMDB数据库设计具体的资产
-服务器表和网卡、内存、硬盘是一对多的关系，一个服务器可以有多个网卡、多个内存、多个硬盘
-hostname设置成unique=True，唯一
-硬盘有多个槽位，slot,最后入库的时候数据也是根据槽位进行的操作
-related_nameserver_obj = models.ForeignKey(&#39;Server&#39;, related_name=&#39;disk&#39;)通过Server的对象obj,通过related_name 就能反向关联到Disk表，这就是代替了小写的表明_set
-网络设备也是资产信息，所以需要资产信息表，和服务器表的关系是一对一关系
-IDC机房
-用户相关资产需要划分部门，实际上就是业务线表，部门表和资产表也是一对多的关系...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/07/31/CMDB数据库设计/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
-  </nav>
-
+  </aside>
 </section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" 搜索…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="搜索">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">联系我们</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-   			<li><a href="https://github.com/ythzx/ythzx.github.io" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://weibo.com/" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://www.twitter.com/" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://www.facebook.com/" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://:www.google.com/" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="https://www.instagram.com/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
-
-   		
-   			<li><a href="null" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
-
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>最新文章</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/08/08/rabbitmq消息队列/">(no title)</a></h6>
-              <span>八月 8, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/08/06/CMDB 数据加密/">CMDB 数据加密</a></h6>
-              <span>八月 6, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/08/05/CMDB之API验证/">CMDB API验证</a></h6>
-              <span>八月 5, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/08/04/使用Python生成ASCII字符画/">使用Python生成ASCII字符画</a></h6>
-              <span>八月 4, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/07/31/CMDB数据库设计/">CMDB 数据库设计</a></h6>
-              <span>七月 31, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/07/30/Hicharts图表的使用/">Hicharts图表的使用</a></h6>
-              <span>七月 30, 2017</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">41</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Django/" style="font-size: 18px;">Django</a> <a href="/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
       <footer id="footer" class="site-footer">
