@@ -96,63 +96,6 @@
         
           <section id="main">
   
-    <article id="post-Python 面向对象(一)"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/14/Python 面向对象(一)/">Python 面向对象(一)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/14/Python 面向对象(一)/" class="article-date">
-	  <time datetime="2017-04-14T10:59:43.652Z" itemprop="datePublished">四月 14, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            应用场景：需求经常变化的软件，一般需求的变化都集中在用户层，互联网应用，企业内部软件，游戏等都是面向对象的程序设计大显身手的好地方
-面向对象中都是类，通过程序中的类来实现对象
-Python3已经把类型和类整合起来了 ，int 等都是类。
-现实生活中，是现有对象后有类。在程序中是先有类后有对象。
-
-使用类需要实例化和引用类的变量和类的函数12345678class Garen:    camp='Demacia'    #　这是类的共同特征    def attack(self):  #　定义的类的方法，需要参数        print('attack')obj = Garen()# print(obj)# print(Garen.camp)  #　打印类的特征Garen.attack...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/14/Python 面向对象(一)/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
     <article id="post-Python递归"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -384,6 +327,64 @@ allall内部只有一个元素，内部是一个可迭代的对象
 <!-- Table of Contents -->
 
   
+    <article id="post-Python迭代器"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/11/Python迭代器/">Python迭代器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/11/Python迭代器/" class="article-date">
+	  <time datetime="2017-04-11T07:26:06.584Z" itemprop="datePublished">四月 11, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            什么是迭代1 迭代器通常我们认为的迭代是能够循环的，如字符串，列表，元组等，这些数据类型都是根据自身的索引值进行循环的。
+实际上，我们也是需要对字典、集合、文件等内容进行循环读取其内容的，这些数据类型本身是无序的，也就是没有索引值，索引我们要对这些内容进行读取的时候就用到了迭代器。
+
+1.1 可迭代对象可迭代的对象本身内置的iter()函数可以判断是否是可迭代对象
+例如：123d = &#123;'a': 1, 'b': 2&#125;&gt;&gt;&gt; d.__iter__()&lt;dict_keyiterator object at 0x0000000002220138&gt;
+可迭代的对象都内置了.iter()方法，等同于iter(d).  函数的参数是可迭代的对象
+1....
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/04/11/Python迭代器/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
 
 
   <nav id="page-nav">
@@ -512,18 +513,6 @@ allall内部只有一个元素，内部是一个可迭代的对象
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/08/08/rabbitmq消息队列/">rabbitmq消息队列</a></h6>
-              <span>八月 8, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
               <h6 style="margin: 0;"><a href="/2017/08/06/CMDB 数据加密/">CMDB 数据加密</a></h6>
               <span>八月 6, 2017</span>
             </div>
@@ -566,6 +555,18 @@ allall内部只有一个元素，内部是一个可迭代的对象
 
           </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2017/07/30/Hicharts图表的使用/">Hicharts图表的使用</a></h6>
+              <span>七月 30, 2017</span>
+            </div>
+
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -578,7 +579,7 @@ allall内部只有一个元素，内部是一个可迭代的对象
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">41</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">41</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -598,7 +599,7 @@ allall内部只有一个元素，内部是一个可迭代的对象
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
