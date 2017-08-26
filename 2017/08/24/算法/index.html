@@ -12,38 +12,23 @@
   
   
   <meta name="description" content="算法（Algorithm）：一个计算过程，解决问题的方法
-递归递归的两个特点：
-
-调用自身
-结束条件
-
-1234567891011def func3(x):    if x &amp;gt; 0:        print(x)        func3(x - 1)func3(3)def func3(x):    if x &amp;gt; 0:        func3(x - 1)        print">
+递归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/08/24/算法/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
 <meta property="og:description" content="算法（Algorithm）：一个计算过程，解决问题的方法
-递归递归的两个特点：
-
-调用自身
-结束条件
-
-1234567891011def func3(x):    if x &amp;gt; 0:        print(x)        func3(x - 1)func3(3)def func3(x):    if x &amp;gt; 0:        func3(x - 1)        print">
+递归">
 <meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825232909183-1012617169.jpg">
 <meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825232901293-535964560.jpg">
 <meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825232921371-963883936.jpg">
 <meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825232932574-1350549544.jpg">
 <meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825232938808-2103550385.jpg">
-<meta property="og:updated_time" content="2017-08-25T16:17:23.187Z">
+<meta property="og:updated_time" content="2017-08-26T03:22:06.284Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法">
 <meta name="twitter:description" content="算法（Algorithm）：一个计算过程，解决问题的方法
-递归递归的两个特点：
-
-调用自身
-结束条件
-
-1234567891011def func3(x):    if x &amp;gt; 0:        print(x)        func3(x - 1)func3(3)def func3(x):    if x &amp;gt; 0:        func3(x - 1)        print">
+递归">
 <meta name="twitter:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825232909183-1012617169.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
@@ -148,7 +133,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>算法（Algorithm）：一个计算过程，解决问题的方法</p>
-<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归的两个特点：</p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><a id="more"></a>
+<p>递归的两个特点：</p>
 <ul>
 <li>调用自身</li>
 <li>结束条件</li>
@@ -186,6 +172,7 @@
 <p>所以最后相差的会很大</p>
 <h4 id="尾递归的和二分速度差不多"><a href="#尾递归的和二分速度差不多" class="headerlink" title="尾递归的和二分速度差不多"></a>尾递归的和二分速度差不多</h4><p>尾递归没有在出栈的时候的保存，所以速度快</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">bin_search_rec</span><span class="params">(data_set, value, low, high)</span>:</span></div><div class="line">    <span class="keyword">if</span> low &lt;= high:</div><div class="line">        mid = (low + high) // <span class="number">2</span></div><div class="line">        <span class="keyword">if</span> data_set[mid] == value:</div><div class="line">            <span class="keyword">return</span> mid</div><div class="line">        <span class="keyword">elif</span> data_set[mid] &gt; value:</div><div class="line">            <span class="keyword">return</span> bin_search_rec(data_set, value, low, mid - <span class="number">1</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> bin_search_rec(data_set, value, mid + <span class="number">1</span>, high)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">li =[</div><div class="line">    &#123;<span class="string">'id'</span>: <span class="number">1001</span>, <span class="string">'name'</span>: <span class="string">"张三"</span>, <span class="string">'age'</span>: <span class="number">20</span>&#125;,</div><div class="line">    &#123;<span class="string">'id'</span>: <span class="number">1002</span>, <span class="string">'name'</span>: <span class="string">"李四"</span>, <span class="string">'age'</span>: <span class="number">25</span>&#125;,</div><div class="line">    &#123;<span class="string">'id'</span>: <span class="number">1004</span>, <span class="string">'name'</span>: <span class="string">"王五"</span>, <span class="string">'age'</span>: <span class="number">23</span>&#125;,</div><div class="line">    &#123;<span class="string">'id'</span>: <span class="number">1007</span>, <span class="string">'name'</span>: <span class="string">"赵六"</span>, <span class="string">'age'</span>: <span class="number">33</span>&#125;</div><div class="line">]</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">bin_searhc</span><span class="params">(li, val)</span>:</span></div><div class="line">    low = <span class="number">0</span></div><div class="line">    high = len(li) - <span class="number">1</span></div><div class="line">    <span class="keyword">while</span> low &lt;= high:</div><div class="line">        mid = (low + high) // <span class="number">2</span></div><div class="line">        <span class="keyword">if</span> li[mid][<span class="string">'id'</span>] == val:</div><div class="line">            <span class="keyword">return</span> li[mid]</div><div class="line">        <span class="keyword">elif</span> li[mid][<span class="string">'id'</span>] &lt; val:</div><div class="line">            low = mid + <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            high = mid - <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">None</span>  <span class="comment"># 单high &lt; low 的时候不存在</span></div><div class="line"></div><div class="line">res = bin_searhc(li,<span class="number">1002</span>)</div><div class="line">print(res)</div></pre></td></tr></table></figure>
 
       
     </div>

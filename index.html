@@ -119,46 +119,26 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>算法（Algorithm）：一个计算过程，解决问题的方法</p>
-<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归的两个特点：</p>
-<ul>
-<li>调用自身</li>
-<li>结束条件</li>
-</ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func3</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">if</span> x &gt; <span class="number">0</span>:</div><div class="line">        print(x)</div><div class="line">        func3(x - <span class="number">1</span>)</div><div class="line">func3(<span class="number">3</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func3</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">if</span> x &gt; <span class="number">0</span>:</div><div class="line">        func3(x - <span class="number">1</span>)</div><div class="line">        print(x)</div><div class="line">func3(<span class="number">3</span>)</div></pre></td></tr></table></figure>
-<p>![]<br>(<a href="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825224958418-638409811.jpg" target="_blank" rel="external">http://images2017.cnblogs.com/blog/658994/201708/658994-20170825224958418-638409811.jpg</a>)<br>![]<br>(<a href="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825225002980-1149857509.jpg" target="_blank" rel="external">http://images2017.cnblogs.com/blog/658994/201708/658994-20170825225002980-1149857509.jpg</a>)</p>
-<p>我的小鲤鱼<br>![]<br>(<a href="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825225900949-574999163.png" target="_blank" rel="external">http://images2017.cnblogs.com/blog/658994/201708/658994-20170825225900949-574999163.png</a>)</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(depth)</span>:</span></div><div class="line">    <span class="keyword">if</span> depth == <span class="number">0</span>:</div><div class="line">        print(<span class="string">'我的小鲤鱼'</span>,end=<span class="string">''</span>)  <span class="comment"># end = '' 代表不换行</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'抱着'</span>,end=<span class="string">''</span>)</div><div class="line">        func(depth<span class="number">-1</span>)</div><div class="line">        print(<span class="string">'的我'</span>,end=<span class="string">''</span>)</div><div class="line">func(<span class="number">3</span>)</div></pre></td></tr></table></figure>
-<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>评估算法运行效率的</p>
-<p>时间复杂度是算法运行时间的式子</p>
-<p>时间复杂度可以用表示时间复杂度的数和单位共同组成 ，单位就是n的几次方<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">O(1)</div><div class="line">O(n)</div><div class="line">O(n^2)</div><div class="line">O(n^3)</div></pre></td></tr></table></figure></p>
-<p>![]<br>(<a href="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825230649480-1075677653.jpg" target="_blank" rel="external">http://images2017.cnblogs.com/blog/658994/201708/658994-20170825230649480-1075677653.jpg</a>)  </p>
-<p>while循环 折半<br>O(log2n)</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>时间复杂度是用来估计算法运行时间的一个式子（单位）。<br>一般来说，时间复杂度高的算法比复杂度低的算法慢。不同量级的不能比较</p>
-<ul>
-<li>常见的时间复杂度（按效率排序）<br>O(1)&lt;O(logn)&lt;O(n)&lt;O(nlogn)&lt;O(n^2)&lt;O(n^2logn)&lt;O(n^3)</li>
-<li>不常见的时间复杂度（看看就好）<br>O(n!) O(2n) O(nn) …</li>
-</ul>
-<p><strong>如何一眼判断时间复杂度？</strong><br>循环减半的过程 O(logn)<br>几次循环就是n的几次方的复杂度</p>
-<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><p>内存占用大小</p>
-<p>O(1)<br>Sn = O(n)</p>
-<p>空间换时间 算法跑的快</p>
-<h2 id="列表查找"><a href="#列表查找" class="headerlink" title="列表查找"></a>列表查找</h2><p>从列表中查指定元素</p>
-<p>输出：元素下标或未找到元素</p>
-<h3 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h3><p>从头开始查找，直到查找到结果</p>
-<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><p><strong>有序的列表</strong>查找</p>
-<p>val &lt; mid : high = mid -1<br>val &gt; mid : low = mid +1</p>
-<p><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825232909183-1012617169.jpg" alt=""><br><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825232901293-535964560.jpg" alt=""><br><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825232921371-963883936.jpg" alt=""><br><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825232932574-1350549544.jpg" alt=""><br><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170825232938808-2103550385.jpg" alt=""></p>
-<h4 id="二分法和顺序查找测试"><a href="#二分法和顺序查找测试" class="headerlink" title="二分法和顺序查找测试"></a>二分法和顺序查找测试</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> random</div><div class="line">   ...: n = <span class="number">10000</span></div><div class="line">   ...: li = list(range(n))</div><div class="line">   ...:</div><div class="line">   ...: <span class="function"><span class="keyword">def</span> <span class="title">bin_searhc</span><span class="params">(li, val)</span>:</span></div><div class="line">   ...:     low = <span class="number">0</span></div><div class="line">   ...:     high = len(li) - <span class="number">1</span></div><div class="line">   ...:     <span class="keyword">while</span> low &lt;= high:</div><div class="line">   ...:         mid = (low + high) // <span class="number">2</span></div><div class="line">   ...:         <span class="keyword">if</span> li[mid] == val:</div><div class="line">   ...:             <span class="keyword">return</span> mid</div><div class="line">   ...:         <span class="keyword">elif</span> li[mid] &lt; val:</div><div class="line">   ...:             low = mid + <span class="number">1</span></div><div class="line">   ...:         <span class="keyword">else</span>:</div><div class="line">   ...:             high = mid - <span class="number">1</span></div><div class="line">   ...:     <span class="keyword">return</span> <span class="keyword">None</span>  <span class="comment"># 单high &lt; low 的时候不存在</span></div><div class="line">   ...:</div><div class="line"></div><div class="line">In [<span class="number">2</span>]:</div><div class="line"></div><div class="line">In [<span class="number">2</span>]: %timeit bin_searhc(li,<span class="number">3200</span>)</div><div class="line">The slowest run took <span class="number">4.12</span> times longer than the fastest. This could</div><div class="line"> intermediate result <span class="keyword">is</span> being cached.</div><div class="line"><span class="number">100000</span> loops, best of <span class="number">3</span>: <span class="number">5.08</span> µs per loop</div><div class="line"></div><div class="line">In [<span class="number">3</span>]: %timeit li.index(<span class="number">3200</span>)</div><div class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">64.3</span> µs per loop</div></pre></td></tr></table></figure>
-<ul>
-<li>index 的时间复杂度是O(n)</li>
-<li>bin_search的时间复杂度是O(logn)</li>
-</ul>
-<p>2**64  仅仅查找64次<br>O(logn)</p>
-<p>所以最后相差的会很大</p>
-<h4 id="尾递归的和二分速度差不多"><a href="#尾递归的和二分速度差不多" class="headerlink" title="尾递归的和二分速度差不多"></a>尾递归的和二分速度差不多</h4><p>尾递归没有在出栈的时候的保存，所以速度快</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">bin_search_rec</span><span class="params">(data_set, value, low, high)</span>:</span></div><div class="line">    <span class="keyword">if</span> low &lt;= high:</div><div class="line">        mid = (low + high) // <span class="number">2</span></div><div class="line">        <span class="keyword">if</span> data_set[mid] == value:</div><div class="line">            <span class="keyword">return</span> mid</div><div class="line">        <span class="keyword">elif</span> data_set[mid] &gt; value:</div><div class="line">            <span class="keyword">return</span> bin_search_rec(data_set, value, low, mid - <span class="number">1</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> bin_search_rec(data_set, value, mid + <span class="number">1</span>, high)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span></div></pre></td></tr></table></figure>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+            算法（Algorithm）：一个计算过程，解决问题的方法
+递归
+递归的两个特点：
+
+调用自身
+结束条件
+
+1234567891011def func3(x):    if x &gt; 0:        print(x)        func3(x - 1)func3(3)def func3(x):    if x &gt; 0:        func3(x - 1)        print(x)func3(3)
+![](http://images2017.cnblogs.com/blog/658994/201708/658994-20170825224958418-638409811.jpg)![](http://images2017.cnblogs.com/blog/658...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/08/24/算法/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
