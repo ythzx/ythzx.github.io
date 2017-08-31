@@ -20,7 +20,16 @@
 <meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170828155137171-282233838.jpg">
 <meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170828192450515-571329311.jpg">
 <meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170828193554749-785639260.jpg">
-<meta property="og:updated_time" content="2017-08-28T15:25:21.611Z">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170829160947374-1741245804.jpg">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170829155422577-51660328.jpg">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170829164651921-1176486039.jpg">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170829193411749-663981047.jpg">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170829202527437-2001491233.jpg">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170830154835593-822555292.jpg">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170830192222640-1930404303.jpg">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170830192556358-1646121091.jpg">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201708/658994-20170830192717687-510259449.jpg">
+<meta property="og:updated_time" content="2017-08-31T00:59:11.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫">
 <meta name="twitter:description" content="基本操作">
@@ -196,28 +205,159 @@
 <li>proxies 代理 防止封IP</li>
 </ul>
 <p>格式是字典<br>需要用户名 密码的代理</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">param_proxies</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># proxies = &#123;</span></div><div class="line">    <span class="comment"># "http": "61.172.249.96:80",</span></div><div class="line">    <span class="comment"># "https": "http://61.185.219.126:3128",</span></div><div class="line">    <span class="comment"># &#125;</span></div><div class="line"></div><div class="line">    <span class="comment"># proxies = &#123;'http://10.20.1.128': 'http://10.10.1.10:5323'&#125;</span></div><div class="line"></div><div class="line">    <span class="comment"># ret = requests.get("http://www.proxy360.cn/Proxy", proxies=proxies)</span></div><div class="line">    <span class="comment"># print(ret.headers)</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment"># from requests.auth import HTTPProxyAuth</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment"># proxyDict = &#123;</span></div><div class="line">    <span class="comment"># 'http': '77.75.105.165',</span></div><div class="line">    <span class="comment"># 'https': '77.75.105.165'</span></div><div class="line">    <span class="comment"># &#125;</span></div><div class="line">    <span class="comment"># auth = HTTPProxyAuth('username', 'mypassword')</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment"># r = requests.get("http://www.google.com", proxies=proxyDict, auth=auth)</span></div><div class="line">    <span class="comment"># print(r.text)</span></div></pre></td></tr></table></figure>
 <ul>
 <li>stream<br>针对大的文件，一点点的获取数据<br>res.iter_content()</li>
 </ul>
 <p>自动关闭上下文<br>from contextlib import closing<br>with closing()</p>
-<p>现在的网站Http https都能登录 证书</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">param_stream</span><span class="params">()</span>:</span></div><div class="line">    ret = requests.get(<span class="string">'http://127.0.0.1:8000/test/'</span>, stream=<span class="keyword">True</span>)</div><div class="line">    print(ret.content)</div><div class="line">    ret.close() <span class="comment"># 关闭连接</span></div><div class="line"></div><div class="line">    <span class="comment"># from contextlib import closing  自动关闭上下文</span></div><div class="line">    <span class="comment"># with closing(requests.get('http://httpbin.org/get', stream=True)) as r:</span></div><div class="line">    <span class="comment"># # 在此处理响应。</span></div><div class="line">    <span class="comment"># for i in r.iter_content():</span></div><div class="line">    <span class="comment"># print(i)</span></div></pre></td></tr></table></figure>
 <ul>
 <li>verify</li>
 </ul>
-<p>True 带证书<br>False 不带证书</p>
+<p>现在的网站Http https都能登录 证书<br>True 带证书<br>False 不带证书<br>知乎等网站可带可不带，证书就是对数据进行加密</p>
 <ul>
 <li>cert<br>证书是一个文件xxx.pem</li>
 </ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">param_stream</span><span class="params">()</span>:</span></div><div class="line">    ret = requests.get(<span class="string">'http://127.0.0.1:8000/test/'</span>, stream=<span class="keyword">True</span>,cert=<span class="string">'xxx.pem'</span>)</div><div class="line">    print(ret.content)</div><div class="line">    ret.close()</div><div class="line"></div><div class="line">    <span class="comment"># from contextlib import closing</span></div><div class="line">    <span class="comment"># with closing(requests.get('http://httpbin.org/get', stream=True)) as r:</span></div><div class="line">    <span class="comment"># # 在此处理响应。</span></div><div class="line">    <span class="comment"># for i in r.iter_content():</span></div><div class="line">    <span class="comment"># print(i)</span></div></pre></td></tr></table></figure>
 <h5 id="request的session"><a href="#request的session" class="headerlink" title="request的session"></a>request的session</h5><p>request 的session 可认为是一个容器<br>放的所有请求，用的时候直接用session携带<br>但是不推荐使用这个，遇到问题的时候找不到</p>
-<h4 id="Beautiful-Soup模块中的方法"><a href="#Beautiful-Soup模块中的方法" class="headerlink" title="Beautiful Soup模块中的方法"></a>Beautiful Soup模块中的方法</h4><p>from bs4.elements import </p>
-<h2 id="高性能-Socket-select"><a href="#高性能-Socket-select" class="headerlink" title="高性能(Socket+select)"></a>高性能(Socket+select)</h2><ul>
-<li>twisted</li>
-<li>torando</li>
-<li>gevent</li>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line">session = requests.Session()</div><div class="line"></div><div class="line"><span class="comment">### 1、首先登陆任何页面，获取cookie</span></div><div class="line"></div><div class="line">i1 = session.get(url=<span class="string">"http://dig.chouti.com/help/service"</span>)</div><div class="line"></div><div class="line"><span class="comment">### 2、用户登陆，携带上一次的cookie，后台对cookie中的 gpsd 进行授权</span></div><div class="line">i2 = session.post(</div><div class="line">    url=<span class="string">"http://dig.chouti.com/login"</span>,</div><div class="line">    data=&#123;</div><div class="line">        <span class="string">'phone'</span>: <span class="string">"8615131255089"</span>,</div><div class="line">        <span class="string">'password'</span>: <span class="string">"xxxxxx"</span>,</div><div class="line">        <span class="string">'oneMonth'</span>: <span class="string">""</span></div><div class="line">    &#125;</div><div class="line">)</div><div class="line"></div><div class="line">i3 = session.post(</div><div class="line">    url=<span class="string">"http://dig.chouti.com/link/vote?linksId=8589623"</span>,</div><div class="line">)</div><div class="line">print(i3.text)</div></pre></td></tr></table></figure>
+<h4 id="Beautiful-Soup模块中的方法"><a href="#Beautiful-Soup模块中的方法" class="headerlink" title="Beautiful Soup模块中的方法"></a>Beautiful Soup模块中的方法</h4><p>from bs4.elements import Tag</p>
+<p>lxml模块比html.parser的效率高</p>
+<ul>
+<li>.name 获取标签名</li>
+<li>attrs 可以对属性进行修改</li>
 </ul>
+<p>tag.atttrs[‘aaa’] = aaa 添加<br>del tag.atttrs[‘aaa’] 删除</p>
+<ul>
+<li><p>children 子标签 获取到的孩子中也包含文本内容</p>
+</li>
+<li><p>descandants 子子孙孙</p>
+</li>
+<li>decompose  递归删除所有标签</li>
+<li>extract 找到具体的标签并删除 删除后有返回值</li>
+<li>decode 对象转换成字符串</li>
+<li>decode_contents() 不包含当前标签</li>
+<li>encode 转换成字节</li>
+<li>find获取第一个标签</li>
+</ul>
+<p>可以设置递归<br>text 文本</p>
+<ul>
+<li>find_all 找所有的</li>
+</ul>
+<p>可以加列表的形式<br>name=[‘a’,’b’]</p>
+<p>正则表达式re.compile()</p>
+<p>方法筛选：<br>def func(tag):<br>return tag.has_attr(‘’)<br>find_all(name = func)</p>
+<ul>
+<li>has_attr 是否有某个属性</li>
+<li>get_text() 获取所有的文本内容 </li>
+<li>index 计算标签的额索引位置</li>
+<li>is_empty_element 是否空标签</li>
+<li>当前关联的标签<br>soup.next<br>soup.element 下一个标签</li>
+</ul>
+<p>tag.parent</p>
+<ul>
+<li>查找某标签的关联标签<br>tag.find_next()  类似筛选器<br>括号</li>
+<li>select select_one 类似css选择器</li>
+</ul>
+<p>find find_all 各有各的好处</p>
+<ul>
+<li><p>标签内容<br>tag.text 只读<br>tag.get_test()<br>tag.string=’content’ 可读可写 可以设置内容</p>
+</li>
+<li><p>追加标签 append</p>
+</li>
+</ul>
+<p>追加一个原来存在的标签 会移动</p>
+<p>可以自己创建一个标签 然后追加</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># from bs4.element import Tag</span></div><div class="line"><span class="comment"># obj = Tag(name='i', attrs=&#123;'id': 'it'&#125;)</span></div><div class="line"><span class="comment"># obj.string = '我是一个新来的'</span></div><div class="line"><span class="comment"># tag = soup.find('body')</span></div><div class="line"><span class="comment"># tag.insert(2, obj)</span></div><div class="line"><span class="comment"># print(soup)</span></div></pre></td></tr></table></figure>
+<ul>
+<li>insert </li>
+</ul>
+<p>insert_before</p>
+<ul>
+<li><p>replace_with </p>
+</li>
+<li><p>创建标签之间的关系<br>setup<br>相对位置没有变化  </p>
+</li>
+<li><p>wrap<br>包裹</p>
+</li>
+<li>unwrap 去掉包裹</li>
+</ul>
+<h3 id="web微信"><a href="#web微信" class="headerlink" title="web微信"></a>web微信</h3><ul>
+<li>轮询</li>
+<li><p>长轮询 ：客户端连接服务端 长轮询是基于Http的特性<br>  无新数据到来，夯住，30s后断开<br>  有新数据到来，立即返回数据，并断开<br>客户端发请求后 服务端夯住不断开 有消息的来，断开连接并把消息发送到全部的<br>消息是实时的，没有延迟。数据多的时候，断开次数频繁</p>
+<ul>
+<li>无消息：超时之后断开，客户端立即发送请求</li>
+<li>有消息：立即返回</li>
+</ul>
+</li>
+<li>WebSocket</li>
+</ul>
+<p>Html5 对浏览器有限制 未来会大批量应用，未来的趋势<br>会维持一个</p>
+<p>关键点：<br><strong>magic string 魔法字符串</strong></p>
+<h3 id="微信扫码登录界面"><a href="#微信扫码登录界面" class="headerlink" title="微信扫码登录界面"></a>微信扫码登录界面</h3><h4 id="扫码后显示自己的头像"><a href="#扫码后显示自己的头像" class="headerlink" title="扫码后显示自己的头像"></a>扫码后显示自己的头像</h4><p>打开页面，第一次get请求后的返回值,返回的内容包含状态码及随机字符串，这个随机字符串是根据时间戳生成的</p>
+<p><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170829160947374-1741245804.jpg" alt=""></p>
+<p>在微信的登录界面有一个pending状态的get请求，每隔25s发一次请求，等待扫码。如果没有扫码会一直pending，这是长轮询。<br>会携带UUID和时间戳向新的url发送请求，这一次是获取头像<br><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170829155422577-51660328.jpg" alt=""></p>
+<p>当一直没有扫码的时候，返回的是408  <code>window.code=408;</code> </p>
+<p>扫码但是没有确认的时候，返回的是201，同时返回头像地址</p>
+<p><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170829164651921-1176486039.jpg" alt=""></p>
+<p>把头像地址替换二维码地址</p>
+<p>遇到返回window.code=400错误，代表请求的地址写错了，服务器不会返回</p>
+<p>在手机上确认登录后，返回的200 然后跳转到新的页面，</p>
+<p>确认登录后会返回200的同时会返回一个地址，但是这个地址是不完整的，会加上<code>&amp;fun=new&amp;version=v2</code>,然后到这里发送新的请求，这里是获取凭证，后期都要用这个凭证。凭证的格式是XML格式，同样能通BeautifulSoup解析成Html对象</p>
+<p><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170829193411749-663981047.jpg" alt=""></p>
+<p>其中重要的是skey,wxsid,wxuin,passticket<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">error</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ret</span>&gt;</span>0<span class="tag">&lt;/<span class="name">ret</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">message</span>&gt;</span><span class="tag">&lt;/<span class="name">message</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">skey</span>&gt;</span>@crypt_30f5f088_5ddb687e77720296a905a4253c740ba3<span class="tag">&lt;/<span class="name">skey</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">wxsid</span>&gt;</span>qRsCypofawTAVTEA<span class="tag">&lt;/<span class="name">wxsid</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">wxuin</span>&gt;</span>1023038961<span class="tag">&lt;/<span class="name">wxuin</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">pass_ticket</span>&gt;</span>xPTt6lFXRnr5emBTn7k5CR8WE%2BbUYp62ceW9GRLixAKF6cD4y2jC0Vvt4Bx2Kq8a<span class="tag">&lt;/<span class="name">pass_ticket</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">isgrayscale</span>&gt;</span>1<span class="tag">&lt;/<span class="name">isgrayscale</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">error</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>登录后保存下cookie，勇于后期的使用，但是这里的cookie是空的。大厂牛逼的程序员是在获取凭证后通过写入cookie的，所以需要在这里获取cookie并把才cookie</p>
+<h4 id="获取用户信息-最近联系人信息"><a href="#获取用户信息-最近联系人信息" class="headerlink" title="获取用户信息 最近联系人信息"></a>获取用户信息 最近联系人信息</h4><p>通过json发送数据而不是data，data的对应的格式formdata，json对应的是Request Payload</p>
+<p>通过看url的请求可知，请求中用到了之前获得的凭证信息<br><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170829202527437-2001491233.jpg" alt=""></p>
+<h4 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h4><p>发送的消息是通过webwxsendmsg 发送的POST请求，是通过json格式发送的，而不是data,在发送完消息后会有synccheck进行长轮询请求，这个是等待用户回消息。</p>
+<p><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170830154835593-822555292.jpg" alt=""></p>
+<p>这里主要是发送的内容格式，自己发送的时候也要构造成这种方式。<br><a href="http://images2017.cnblogs.com/blog/658994/201708/658994-20170830155401499-536200397.jpg" target="_blank" rel="external">http://images2017.cnblogs.com/blog/658994/201708/658994-20170830155401499-536200397.jpg</a></p>
+<h4 id="发送POST请求的时候注销csrf-token"><a href="#发送POST请求的时候注销csrf-token" class="headerlink" title="发送POST请求的时候注销csrf_token"></a>发送POST请求的时候注销csrf_token</h4><h4 id="接收消息"><a href="#接收消息" class="headerlink" title="接收消息"></a>接收消息</h4><p>接收消息分为两部分，第一步是一直检测是否有消息发送过来，一直是pending长轮询。第二步是有消息后发送POST并接收消息。</p>
+<p>synccheck 检测是否有人发送消息<br>webwxcheck 用于接收消息</p>
+<p>下面的synckey在初始化的时候有<br><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170830192222640-1930404303.jpg" alt=""></p>
+<p>接收到消息后发送POST请求：<br><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170830192556358-1646121091.jpg" alt=""></p>
+<p>SyncKey是关键：怎么获取  —-在初始化的时候有！！当有人发送消息后，synckey会更新，长轮询的时候还需要带着这个。获取后更新session中的synckey，注意数据库中的覆盖：需要先在内存中保存然后保存到数据库</p>
+<p>注意消息的检测和接收都依赖cookie</p>
+<p>接收到的消息内容：<br><img src="http://images2017.cnblogs.com/blog/658994/201708/658994-20170830192717687-510259449.jpg" alt=""></p>
+<p>注意请求头；</p>
+<ul>
+<li>User-agent 用户设备</li>
+<li>Referer的设置 上一次请求的url</li>
+<li>Content-Type： application/json</li>
+<li>host </li>
+<li>Cookie 的本质也是请求头<br>这是Http协议的本质</li>
+</ul>
+<p>有时候自己定义请求头</p>
+<p>web微信：</p>
+<ul>
+<li>检测网络请求</li>
+<li>尝试（请求头、cookie）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">get请求中有parmas 写上参数，自动拼接路径</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">前端不能向微信后台发送请求</div><div class="line"></div><div class="line">同源策略</div><div class="line"></div><div class="line">返回 201 有人扫了有头像</div><div class="line"></div><div class="line">408 超时</div><div class="line"></div><div class="line">扫码成功后 200</div><div class="line"></div><div class="line">返回一个凭证</div><div class="line"></div><div class="line">自己获取的凭证不全</div><div class="line"></div><div class="line">凭证是XML格式的字符串</div><div class="line"></div><div class="line">登录后初始化 获取最近联系人信息</div><div class="line"></div><div class="line">初始化放在获取凭证的地方进行保存</div><div class="line"></div><div class="line">POST 发送json方式</div><div class="line"></div><div class="line">username 是唯一标识</div><div class="line"></div><div class="line">SyncKey</div><div class="line"></div><div class="line"></div><div class="line">request中有session信息</div><div class="line"></div><div class="line">Refer防止盗链</div><div class="line">通过requests 在Header中发送</div><div class="line">不仅需要Refer 还需要cookie</div><div class="line"></div><div class="line">最终验证得到需要content—Type</div><div class="line"></div><div class="line">把图片制作成近似验证码的方式</div></pre></td></tr></table></figure>
+<h2 id="高性能-Socket-select"><a href="#高性能-Socket-select" class="headerlink" title="高性能(Socket+select)"></a>高性能(Socket+select)</h2><p>进程和线程会消耗资源，一个线程实现并发请求：使用IO+协程，本质：socket+IO多路复用</p>
+<ul>
+<li>twisted </li>
+<li>torando 模块</li>
+<li>gevent</li>
+<li>ayncio</li>
+<li>本质：socket+IO多路复用</li>
+</ul>
+<p>线程之间的上文之间的切换耗费时间</p>
+<h3 id="线程池-进程池"><a href="#线程池-进程池" class="headerlink" title="线程池 进程池"></a>线程池 进程池</h3><h3 id="异步非阻塞"><a href="#异步非阻塞" class="headerlink" title="异步非阻塞"></a>异步非阻塞</h3><ul>
+<li>异步  回调<br>执行完返回</li>
+<li>非阻塞 不等待</li>
+</ul>
+<p>socket连接的时候是阻塞的，发消息 等待返回<br>创建socket对象，设置setblocking（False）就设置成非阻塞 recvd的时候 没有数据就报错</p>
+<h3 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h3><p>gvent内部依赖greenlet  libevent</p>
+<p>greenlet 实现了协程 不能实现遇到IO阻塞自动改变</p>
+<p>gevent 实现了遇到IO阻塞的时候切换</p>
+<h3 id="协程和异步非阻塞的区别"><a href="#协程和异步非阻塞的区别" class="headerlink" title="协程和异步非阻塞的区别"></a>协程和异步非阻塞的区别</h3><p>没有关系</p>
+<p>协程就是控制代码的切换，可以人为控制</p>
+<p>只是现在结合起来使用了</p>
 <p>异步+协程</p>
 <h2 id="web版微信"><a href="#web版微信" class="headerlink" title="web版微信"></a>web版微信</h2><h2 id="Scrapy框架"><a href="#Scrapy框架" class="headerlink" title="Scrapy框架"></a>Scrapy框架</h2><p>提高竞争力：深入源码</p>
-<h2 id="自己的爬虫框架"><a href="#自己的爬虫框架" class="headerlink" title="自己的爬虫框架"></a>自己的爬虫框架</h2>
+<h2 id="自己的爬虫框架"><a href="#自己的爬虫框架" class="headerlink" title="自己的爬虫框架"></a>自己的爬虫框架</h2><p>socket+IO多路复用</p>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -275,7 +415,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">1.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#requests"><span class="nav-number">1.1.</span> <span class="nav-text">requests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeautifulSoup"><span class="nav-number">1.2.</span> <span class="nav-text">BeautifulSoup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取汽车之家的新闻"><span class="nav-number">1.3.</span> <span class="nav-text">获取汽车之家的新闻</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python代码登录GitHub"><span class="nav-number">1.4.</span> <span class="nav-text">Python代码登录GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Github的登录方式"><span class="nav-number">1.4.1.</span> <span class="nav-text">Github的登录方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽屉新热-点赞"><span class="nav-number">1.4.2.</span> <span class="nav-text">抽屉新热 点赞</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requests-Beautiful-Soup使用"><span class="nav-number">2.</span> <span class="nav-text">requests Beautiful Soup使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#requests模块中的方法"><span class="nav-number">2.1.</span> <span class="nav-text">requests模块中的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方式"><span class="nav-number">2.1.1.</span> <span class="nav-text">请求方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用参数"><span class="nav-number">2.1.2.</span> <span class="nav-text">常用参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定制请求头发送json数据"><span class="nav-number">2.2.</span> <span class="nav-text">定制请求头发送json数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不常用参数"><span class="nav-number">2.2.1.</span> <span class="nav-text">不常用参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#request的session"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">request的session</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Beautiful-Soup模块中的方法"><span class="nav-number">2.2.2.</span> <span class="nav-text">Beautiful Soup模块中的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高性能-Socket-select"><span class="nav-number">3.</span> <span class="nav-text">高性能(Socket+select)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web版微信"><span class="nav-number">4.</span> <span class="nav-text">web版微信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy框架"><span class="nav-number">5.</span> <span class="nav-text">Scrapy框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自己的爬虫框架"><span class="nav-number">6.</span> <span class="nav-text">自己的爬虫框架</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">1.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#requests"><span class="nav-number">1.1.</span> <span class="nav-text">requests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeautifulSoup"><span class="nav-number">1.2.</span> <span class="nav-text">BeautifulSoup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取汽车之家的新闻"><span class="nav-number">1.3.</span> <span class="nav-text">获取汽车之家的新闻</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python代码登录GitHub"><span class="nav-number">1.4.</span> <span class="nav-text">Python代码登录GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Github的登录方式"><span class="nav-number">1.4.1.</span> <span class="nav-text">Github的登录方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽屉新热-点赞"><span class="nav-number">1.4.2.</span> <span class="nav-text">抽屉新热 点赞</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requests-Beautiful-Soup使用"><span class="nav-number">2.</span> <span class="nav-text">requests Beautiful Soup使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#requests模块中的方法"><span class="nav-number">2.1.</span> <span class="nav-text">requests模块中的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方式"><span class="nav-number">2.1.1.</span> <span class="nav-text">请求方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用参数"><span class="nav-number">2.1.2.</span> <span class="nav-text">常用参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定制请求头发送json数据"><span class="nav-number">2.2.</span> <span class="nav-text">定制请求头发送json数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不常用参数"><span class="nav-number">2.2.1.</span> <span class="nav-text">不常用参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#request的session"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">request的session</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Beautiful-Soup模块中的方法"><span class="nav-number">2.2.2.</span> <span class="nav-text">Beautiful Soup模块中的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web微信"><span class="nav-number">2.3.</span> <span class="nav-text">web微信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微信扫码登录界面"><span class="nav-number">2.4.</span> <span class="nav-text">微信扫码登录界面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#扫码后显示自己的头像"><span class="nav-number">2.4.1.</span> <span class="nav-text">扫码后显示自己的头像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取用户信息-最近联系人信息"><span class="nav-number">2.4.2.</span> <span class="nav-text">获取用户信息 最近联系人信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发送消息"><span class="nav-number">2.4.3.</span> <span class="nav-text">发送消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发送POST请求的时候注销csrf-token"><span class="nav-number">2.4.4.</span> <span class="nav-text">发送POST请求的时候注销csrf_token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收消息"><span class="nav-number">2.4.5.</span> <span class="nav-text">接收消息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高性能-Socket-select"><span class="nav-number">3.</span> <span class="nav-text">高性能(Socket+select)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池-进程池"><span class="nav-number">3.1.</span> <span class="nav-text">线程池 进程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步非阻塞"><span class="nav-number">3.2.</span> <span class="nav-text">异步非阻塞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协程"><span class="nav-number">3.3.</span> <span class="nav-text">协程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协程和异步非阻塞的区别"><span class="nav-number">3.4.</span> <span class="nav-text">协程和异步非阻塞的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web版微信"><span class="nav-number">4.</span> <span class="nav-text">web版微信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy框架"><span class="nav-number">5.</span> <span class="nav-text">Scrapy框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自己的爬虫框架"><span class="nav-number">6.</span> <span class="nav-text">自己的爬虫框架</span></a></li></ol>
     
     </div>
   </aside>
