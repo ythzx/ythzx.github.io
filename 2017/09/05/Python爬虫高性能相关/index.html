@@ -11,46 +11,16 @@
   
   
   
-  <meta name="description" content="1 Python爬虫高性能(Socket+select)在编写爬虫时，性能的消耗主要在IO请求中，当单进程单线程模式下请求URL时必然会引起等待，从而使得请求整体变慢。
-进程和线程会消耗资源，一个线程实现并发请求：使用IO多路复用+协程，本质：Socket+IO多路复用
-有关高性能的模块：
-
-twisted 
-torando 模块
-gevent
-ayncio
-本质：socket+IO多路复用
-
-线">
+  <meta name="description" content="1 Python爬虫高性能(Socket+select)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python爬虫高性能相关(异步非阻塞实现并发)">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/09/05/Python爬虫高性能相关/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
-<meta property="og:description" content="1 Python爬虫高性能(Socket+select)在编写爬虫时，性能的消耗主要在IO请求中，当单进程单线程模式下请求URL时必然会引起等待，从而使得请求整体变慢。
-进程和线程会消耗资源，一个线程实现并发请求：使用IO多路复用+协程，本质：Socket+IO多路复用
-有关高性能的模块：
-
-twisted 
-torando 模块
-gevent
-ayncio
-本质：socket+IO多路复用
-
-线">
-<meta property="og:updated_time" content="2017-09-04T12:30:57.457Z">
+<meta property="og:description" content="1 Python爬虫高性能(Socket+select)">
+<meta property="og:updated_time" content="2017-09-11T11:38:44.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python爬虫高性能相关(异步非阻塞实现并发)">
-<meta name="twitter:description" content="1 Python爬虫高性能(Socket+select)在编写爬虫时，性能的消耗主要在IO请求中，当单进程单线程模式下请求URL时必然会引起等待，从而使得请求整体变慢。
-进程和线程会消耗资源，一个线程实现并发请求：使用IO多路复用+协程，本质：Socket+IO多路复用
-有关高性能的模块：
-
-twisted 
-torando 模块
-gevent
-ayncio
-本质：socket+IO多路复用
-
-线">
+<meta name="twitter:description" content="1 Python爬虫高性能(Socket+select)">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
   
@@ -153,7 +123,8 @@ ayncio
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-Python爬虫高性能-Socket-select"><a href="#1-Python爬虫高性能-Socket-select" class="headerlink" title="1 Python爬虫高性能(Socket+select)"></a>1 Python爬虫高性能(Socket+select)</h2><p>在编写爬虫时，性能的消耗主要在IO请求中，当单进程单线程模式下请求URL时必然会引起等待，从而使得请求整体变慢。</p>
+        <h2 id="1-Python爬虫高性能-Socket-select"><a href="#1-Python爬虫高性能-Socket-select" class="headerlink" title="1 Python爬虫高性能(Socket+select)"></a>1 Python爬虫高性能(Socket+select)</h2><a id="more"></a>
+<p>在编写爬虫时，性能的消耗主要在IO请求中，当单进程单线程模式下请求URL时必然会引起等待，从而使得请求整体变慢。</p>
 <p>进程和线程会消耗资源，一个线程实现并发请求：使用IO多路复用+协程，本质：Socket+IO多路复用</p>
 <p>有关高性能的模块：</p>
 <ul>
