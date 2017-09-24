@@ -264,7 +264,7 @@ settings中配置al...
 <!-- Table of Contents -->
 
   
-    <article id="post-Python爬虫高性能相关"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-rabbitmq消息队列"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -272,7 +272,7 @@ settings中配置al...
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/05/Python爬虫高性能相关/">Python爬虫高性能相关(异步非阻塞实现并发)</a>
+      <a class="article-title" href="/2017/08/08/rabbitmq消息队列/">rabbitmq消息队列</a>
     </h1>
   
 
@@ -280,8 +280,8 @@ settings中配置al...
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/09/05/Python爬虫高性能相关/" class="article-date">
-	  <time datetime="2017-09-05T00:40:57.669Z" itemprop="datePublished">九月 5, 2017</time>
+	Posted on <a href="/2017/08/08/rabbitmq消息队列/" class="article-date">
+	  <time datetime="2017-08-08T00:42:22.447Z" itemprop="datePublished">八月 8, 2017</time>
 	</a>
 
     </div>
@@ -291,24 +291,13 @@ settings中配置al...
 
           
             <div class="entry-summary" style="margin-left:0;">
-            1 Python爬虫高性能(Socket+select)
-在编写爬虫时，性能的消耗主要在IO请求中，当单进程单线程模式下请求URL时必然会引起等待，从而使得请求整体变慢。
-进程和线程会消耗资源，一个线程实现并发请求：使用IO多路复用+协程，本质：Socket+IO多路复用
-有关高性能的模块：
-
-twisted 
-torando 模块
-gevent
-ayncio
-本质：socket+IO多路复用
-
-线程之间的上文之间的切换耗费时间
-1.1 线程池 进程池下面是模拟线程池1234567891011# 线程池import timefrom concurrent.futures import ThreadPoolExecutor,ProcessPoolExecutordef task(i): ...
+            rabbitmq消息队列centos下yum安装RabbitMQ
+1234567891011121314151617181920212223241.安装前准备     wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm    rpm -ivh epel-release-6-8.noarch.rpm    wget -P /etc/yum.repos.d/ http://repos.fedorapeople.org/repos/peter/erlang/epel-erlang.repo     yum clean all     yum -y install erlang2.安装ra...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/09/05/Python爬虫高性能相关/#more">阅读全文</a>
+            <a href="/2017/08/08/rabbitmq消息队列/#more">阅读全文</a>
           </p>
         </div>
       
@@ -317,7 +306,7 @@ ayncio
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
 
       
     </footer>
@@ -328,7 +317,7 @@ ayncio
 <!-- Table of Contents -->
 
   
-    <article id="post-爬虫"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-GIT系列"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -336,7 +325,7 @@ ayncio
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/08/28/爬虫/">爬虫</a>
+      <a class="article-title" href="/2017/08/07/GIT系列/">Git 分布式版本控制系统</a>
     </h1>
   
 
@@ -344,8 +333,8 @@ ayncio
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/08/28/爬虫/" class="article-date">
-	  <time datetime="2017-08-28T00:39:19.693Z" itemprop="datePublished">八月 28, 2017</time>
+	Posted on <a href="/2017/08/07/GIT系列/" class="article-date">
+	  <time datetime="2017-08-07T00:44:44.764Z" itemprop="datePublished">八月 7, 2017</time>
 	</a>
 
     </div>
@@ -355,21 +344,27 @@ ayncio
 
           
             <div class="entry-summary" style="margin-left:0;">
-            基本操作
-url发送http请求
-requests安装：pip3 install requests使用：import requests
+            Git 分布式版本控制系统版本控制
+之前的版本控制是通过文件管理版本，每个版本需要保留
+文件管理缺点：
 
-requests.get
-encoding 默认的编码格式utf8,涉及不同的编码格式的时候可以自己指定
-content 字节内容
-text 解码后的文本内容
+多个文件
+协同操作 将文件发来发去
+容易丢失 
 
-1234567import requestsfrom bs4 import BeautifulSoupresponse = requests.get('http://www.autohome.com.cn/news/')response.encoding = 'gbk' # 用的是gb2312print(response.content) # 查看的是字节内容print(response.t...
+版本管理工具
+VSS 有人在修改代码的时候，别人不能修改
+SVN 集中式版本管理，服务端有所有的版本，客户端只有一个版本
+Git 分布式版本管理系统
+
+git命令一定要在.git 目录进行提交
+创建git进入程序目录 git init  创建.git文件,包含所有的版本
+1234567891011`git status`查看状态`git add 文件名`提交之前需要配置：`git config --local user.name``git config --local user.email`git log 查看修改的记录`git c...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/08/28/爬虫/#more">阅读全文</a>
+            <a href="/2017/08/07/GIT系列/#more">阅读全文</a>
           </p>
         </div>
       
@@ -378,7 +373,7 @@ text 解码后的文本内容
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
 
       
     </footer>
@@ -393,7 +388,7 @@ text 解码后的文本内容
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
 
 </section>
@@ -541,8 +536,8 @@ text 解码后的文本内容
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/09/05/Python爬虫高性能相关/">Python爬虫高性能相关(异步非阻塞实现并发)</a></h6>
-              <span>九月 5, 2017</span>
+              <h6 style="margin: 0;"><a href="/2017/08/08/rabbitmq消息队列/">rabbitmq消息队列</a></h6>
+              <span>八月 8, 2017</span>
             </div>
 
           </li>
@@ -553,8 +548,8 @@ text 解码后的文本内容
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/08/28/爬虫/">爬虫</a></h6>
-              <span>八月 28, 2017</span>
+              <h6 style="margin: 0;"><a href="/2017/08/07/GIT系列/">Git 分布式版本控制系统</a></h6>
+              <span>八月 7, 2017</span>
             </div>
 
           </li>
@@ -565,8 +560,8 @@ text 解码后的文本内容
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/08/24/算法/">算法</a></h6>
-              <span>八月 24, 2017</span>
+              <h6 style="margin: 0;"><a href="/2017/08/04/使用Python生成ASCII字符画/">使用Python生成ASCII字符画</a></h6>
+              <span>八月 4, 2017</span>
             </div>
 
           </li>
@@ -583,7 +578,7 @@ text 解码后的文本内容
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">44</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">43</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -593,7 +588,7 @@ text 解码后的文本内容
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Django/" style="font-size: 18px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+      <a href="/tags/Django/" style="font-size: 18px;">Django</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JavaScript/" style="font-size: 14px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -603,7 +598,7 @@ text 解码后的文本内容
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
