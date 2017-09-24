@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>cmdb资产采集方案 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Django" />
+  
+  
+  
+  
+  <meta name="description" content="CMDB资产采集方案CMDB 资产采集的方案总共有四种">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMDB资产采集方案">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/07/26/self/CMDB采集方案/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="CMDB资产采集方案CMDB 资产采集的方案总共有四种">
+<meta property="og:updated_time" content="2017-07-26T10:47:52.251Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CMDB资产采集方案">
+<meta name="twitter:description" content="CMDB资产采集方案CMDB 资产采集的方案总共有四种">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-self/CMDB采集方案" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      CMDB资产采集方案
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/07/26/self/CMDB采集方案/" class="article-date">
+	  <time datetime="2017-07-26T01:14:16.490Z" itemprop="datePublished">七月 26, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CMDB资产采集方案"><a href="#CMDB资产采集方案" class="headerlink" title="CMDB资产采集方案"></a>CMDB资产采集方案</h1><h1 id="CMDB-资产采集的方案总共有四种"><a href="#CMDB-资产采集的方案总共有四种" class="headerlink" title="CMDB 资产采集的方案总共有四种"></a>CMDB 资产采集的方案总共有四种</h1><a id="more"></a>
+<ul>
+<li>Agent</li>
+<li>SSH类</li>
+<li>Saltstack</li>
+<li>Puttet</li>
+</ul>
+<p>方案设计，从性能上考虑</p>
+<p>下面前三种是用Python开发的，目标是兼容三种采集方式的软件</p>
+<p>原理要明白</p>
+<p><strong>如何实现自动采集？</strong><br>    subprocess<br>    Linux基本命令<br>    v = subprocess.getoutput(‘ls’)</p>
+<h2 id="1-Agent方式"><a href="#1-Agent方式" class="headerlink" title="1 Agent方式"></a>1 Agent方式</h2><ul>
+<li>API：Django接收数据并入库</li>
+<li>程序：放置在每台服务器</li>
+</ul>
+<p><strong>应用场景：机器多的时候</strong></p>
+<p>每台服务器都有程序,程序实现采集数据(执行subprocess)，然后把数据发送到api</p>
+<h4 id="API-接收数据并入库-Django"><a href="#API-接收数据并入库-Django" class="headerlink" title="API 接收数据并入库(Django)"></a>API 接收数据并入库(Django)</h4><ul>
+<li>url</li>
+<li>发送数据格式</li>
+<li>返回值</li>
+</ul>
+<h4 id="agent程序放在每台服务器"><a href="#agent程序放在每台服务器" class="headerlink" title="agent程序放在每台服务器"></a>agent程序放在每台服务器</h4><p>agent程序放在每台服务器,这是采集本机的数据，速度快，采集完后发送到API<br>subprocess.getoutput(‘ifconfig’)</p>
+<p>agent程序<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> subprocess</div><div class="line"></div><div class="line">v1 = subprocess.getoutput(<span class="string">'ipconfig'</span>)  <span class="comment"># 查看的是本机IP</span></div><div class="line"></div><div class="line">v2 = subprocess.getoutput(<span class="string">'dir'</span>)  <span class="comment"># 查看本机</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line">url = <span class="string">'http://127.0.0.1:8000/asset.html'</span></div><div class="line">response = requests.post(url, data=&#123;<span class="string">'k1'</span>: v1, <span class="string">'k2'</span>: v2&#125;)  <span class="comment"># 使用request模块进行post进行访问</span></div><div class="line">print(response.text)</div></pre></td></tr></table></figure></p>
+<p>api程序<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render,HttpResponse</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">asset</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="keyword">if</span> request.method == <span class="string">"POST"</span>:</div><div class="line">        print(request.POST)  <span class="comment"># 打印接收的内容</span></div><div class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">"1001"</span>)  <span class="comment"># 返回值</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">"用post访问"</span>)</div></pre></td></tr></table></figure></p>
+<p>当agent程序访问的时候，api就接收到了数据，这里还有一点是，Django中先把csrf注释</p>
+<h2 id="2-SSH类"><a href="#2-SSH类" class="headerlink" title="2 SSH类"></a>2 SSH类</h2><p><strong>场景：paramiko(机器少)</strong></p>
+<ul>
+<li>API：Django接收数据并入库</li>
+<li>程序：放在中控机,中控机远程连接机器，这里借助paramiko</li>
+</ul>
+<p>或者</p>
+<ul>
+<li>Paramiko,中控机放一份 远程连接服务器，执行命令，获取结果</li>
+<li>将结果发送API</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ssh方式</div><div class="line">    封装了Python的paramiko</div><div class="line">    fabric</div><div class="line">    ansible</div></pre></td></tr></table></figure>
+<p>中控机</p>
+<p>远程连接服务器，执行，<br>结果发送到api</p>
+<p><strong>中控机连接中的程序</strong></p>
+<ul>
+<li>注意端口和密码</li>
+<li>接收到的数据是字节，需要decode<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> paramiko</div><div class="line"></div><div class="line"><span class="comment"># 创建SSH对象</span></div><div class="line">ssh = paramiko.SSHClient()</div><div class="line"><span class="comment"># 允许连接不在know_hosts文件中的主机</span></div><div class="line">ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())</div><div class="line"><span class="comment"># 连接服务器</span></div><div class="line">ssh.connect(hostname=<span class="string">'192.168.11.126'</span>, port=<span class="number">8888</span>, username=<span class="string">'root'</span>, password=<span class="string">'密码'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 执行命令</span></div><div class="line">stdin, stdout, stderr = ssh.exec_command(<span class="string">'ls'</span>)</div><div class="line"><span class="comment"># 获取命令结果</span></div><div class="line">result = stdout.read()</div><div class="line"></div><div class="line"><span class="comment"># 关闭连接</span></div><div class="line">ssh.close()</div><div class="line"></div><div class="line"></div><div class="line">print(result.decode())  <span class="comment"># 把字节数据转换</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line">url = <span class="string">'http://127.0.0.1:8000/asset.html'</span></div><div class="line">response = requests.post(url, data=&#123;<span class="string">'k1'</span>: result&#125;)  <span class="comment"># 使用request模块进行post进行访问</span></div><div class="line">print(response.text)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3-Saltstack"><a href="#3-Saltstack" class="headerlink" title="3 Saltstack"></a>3 Saltstack</h2><p><strong>场景：机器多的时候，公司正在用</strong></p>
+<p>salt-master 的interface设置成主机的IP，salt-minionshe</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>参考： <a href="http://repo.saltstack.com/#rhel" target="_blank" rel="external">http://repo.saltstack.com/#rhel</a></p>
+<p><strong>Master</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">1. 安装salt-master</div><div class="line">    yum install salt-master</div><div class="line">2. 修改配置文件：/etc/salt/master</div><div class="line">    interface: 0.0.0.0    # 表示Master的IP </div><div class="line">3. 启动</div><div class="line">    service salt-master start</div></pre></td></tr></table></figure>
+<p><strong>Minion</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">1. 安装salt-minion</div><div class="line">    yum install salt-minion</div><div class="line"></div><div class="line">2. 修改配置文件 /etc/salt/minion</div><div class="line">    master: 10.211.55.4           # master的地址</div><div class="line">    或</div><div class="line">    master:</div><div class="line">        - 10.211.55.4</div><div class="line">        - 10.211.55.5</div><div class="line">    random_master: True</div><div class="line"></div><div class="line">    id: c2.salt.com                    # 客户端在salt-master中显示的唯一ID</div><div class="line">3. 启动</div><div class="line">    service salt-minion start</div></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<p>在修改配置文件的时候，interface master 冒号后面要有空格</p>
+<p>查看启动状态</p>
+<p><code>systemctl status salt-master</code>  <code>systemctl status salt-minion</code></p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>配置主要是/etc/salt/master  和  /etc/salt/minion</p>
+<p>minion要指定指定的IP是主的IP</p>
+<h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">salt-key -L                    # 查看已授权和未授权的slave</div><div class="line">salt-key -A     全部授权   </div><div class="line">salt-key -a  salve_id      # 接受指定id的salve</div><div class="line">salt-key -r  salve_id      # 拒绝指定id的salve</div><div class="line">salt-key -d  salve_id      # 删除指定id的salve</div></pre></td></tr></table></figure>
+<p>遇到错误：<br><code>Minion did not return. [No response]</code></p>
+<p>解决：<br><code>rm -fr pki/minion/minion_master.pub</code></p>
+<p>重启服务：<br><code>systemctl restart salt-minion</code></p>
+<p>参考：<br><a href="http://www.cnblogs.com/phennry/p/5419451.html" target="_blank" rel="external">http://www.cnblogs.com/phennry/p/5419451.html</a></p>
+<p>centos 修改主机名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim /etc/hostname </div><div class="line">通过nmtui修改，之后重启hostnamed</div><div class="line">systemctl restart systemd-hostnamed</div></pre></td></tr></table></figure></p>
+<p>salt ‘*’ cmd.run ‘ls’</p>
+<p><strong>salt原理：</strong><br>    RPC<br>    默认维护了消息队列</p>
+<pre><code>发送：master --》消息队列-》minon1/minon2
+
+接收：minon1/minion2--》临时队列--》master
+</code></pre><h2 id="4-puppet-ruby开发的"><a href="#4-puppet-ruby开发的" class="headerlink" title="4 puppet(ruby开发的)"></a>4 puppet(ruby开发的)</h2><p>slive 每30分钟自动执行，然后发送到master</p>
+<p>应用场景：公司在使用，</p>
+<p>参考：<br><a href="http://www.cnblogs.com/wupeiqi/articles/6415436.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/6415436.html</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/07/26/self/CMDB采集方案/" data-title="CMDB资产采集方案" data-url="https://github.com/ythzx/ythzx.github.io/2017/07/26/self/CMDB采集方案/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/26/Saltstack 环境配置 Centos7 Python3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Saltstack 环境配置 Centos7 Python3
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/24/Django权限管理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Django权限管理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CMDB资产采集方案"><span class="nav-number">1.</span> <span class="nav-text">CMDB资产采集方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CMDB-资产采集的方案总共有四种"><span class="nav-number">2.</span> <span class="nav-text">CMDB 资产采集的方案总共有四种</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Agent方式"><span class="nav-number">2.1.</span> <span class="nav-text">1 Agent方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#API-接收数据并入库-Django"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">API 接收数据并入库(Django)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#agent程序放在每台服务器"><span class="nav-number">2.1.0.2.</span> <span class="nav-text">agent程序放在每台服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SSH类"><span class="nav-number">2.2.</span> <span class="nav-text">2 SSH类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Saltstack"><span class="nav-number">2.3.</span> <span class="nav-text">3 Saltstack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">2.3.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权"><span class="nav-number">2.3.3.</span> <span class="nav-text">授权</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-puppet-ruby开发的"><span class="nav-number">2.4.</span> <span class="nav-text">4 puppet(ruby开发的)</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

@@ -12,8 +12,7 @@
   <meta name="description" content="Django分页分页的目的是：在数据量太大分批获取数据并在页面上进行展示
 简单的操作就是通过切片获取
 12user_list = models.UserInfo.objects.all()[1:10]user_list = models.UserInfo.objects.all()[10:20]
-Django自带分页适合做上下页，只能在Django中用
-分页操作实现首先导入对象Paginator">
+Django自带分页">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Peter's Blog Center">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/07/03/Django分页操作/index.html">
@@ -21,16 +20,14 @@ Django自带分页适合做上下页，只能在Django中用
 <meta property="og:description" content="Django分页分页的目的是：在数据量太大分批获取数据并在页面上进行展示
 简单的操作就是通过切片获取
 12user_list = models.UserInfo.objects.all()[1:10]user_list = models.UserInfo.objects.all()[10:20]
-Django自带分页适合做上下页，只能在Django中用
-分页操作实现首先导入对象Paginator">
-<meta property="og:updated_time" content="2017-07-15T15:27:56.835Z">
+Django自带分页">
+<meta property="og:updated_time" content="2017-09-24T15:47:33.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Peter's Blog Center">
 <meta name="twitter:description" content="Django分页分页的目的是：在数据量太大分批获取数据并在页面上进行展示
 简单的操作就是通过切片获取
 12user_list = models.UserInfo.objects.all()[1:10]user_list = models.UserInfo.objects.all()[10:20]
-Django自带分页适合做上下页，只能在Django中用
-分页操作实现首先导入对象Paginator">
+Django自带分页">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
   
@@ -126,7 +123,8 @@ Django自带分页适合做上下页，只能在Django中用
         <h2 id="Django分页"><a href="#Django分页" class="headerlink" title="Django分页"></a>Django分页</h2><p>分页的目的是：在数据量太大分批获取数据并在页面上进行展示</p>
 <p>简单的操作就是通过切片获取</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">user_list = models.UserInfo.objects.all()[<span class="number">1</span>:<span class="number">10</span>]</div><div class="line">user_list = models.UserInfo.objects.all()[<span class="number">10</span>:<span class="number">20</span>]</div></pre></td></tr></table></figure>
-<h2 id="Django自带分页"><a href="#Django自带分页" class="headerlink" title="Django自带分页"></a>Django自带分页</h2><p>适合做上下页，只能在Django中用</p>
+<h2 id="Django自带分页"><a href="#Django自带分页" class="headerlink" title="Django自带分页"></a>Django自带分页</h2><a id="more"></a>
+<p>适合做上下页，只能在Django中用</p>
 <h3 id="分页操作实现"><a href="#分页操作实现" class="headerlink" title="分页操作实现"></a>分页操作实现</h3><p>首先导入对象<code>Paginator</code></p>
 <p><code>from django.core.paginator import Paginator,Page,PageNotAnInteger,EmptyPage</code></p>
 <p>在浏览器中通过GET发送当前的页码，后面加上<code>?page=1</code></p>
