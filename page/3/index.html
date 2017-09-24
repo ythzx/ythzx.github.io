@@ -96,6 +96,61 @@
         
           <section id="main">
   
+    <article id="post-Django 模板函数"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/07/23/Django 模板函数/">Django 模板函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/07/23/Django 模板函数/" class="article-date">
+	  <time datetime="2017-07-23T09:08:44.724Z" itemprop="datePublished">七月 23, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            Django 模板函数在模板中的函数是只需要函数名，不用加括号，自动执行
+在前端中的函数
+不用加括号，函数自动执行
+前端1234567891011&#123;% for item in userinfo.keys %&#125;    &lt;h3&gt;&#123;&#123; item &#125;&#125;&lt;/h3&gt;&#123;% endfor %&#125;&#123;% for item in userinfo.values %&#125;    &lt;h3&gt;&#123;&#123; item &#125;&#125;&lt;/h3&gt;&#123;% endfor %&#125;&#123;% for k,v in userinfo.items %&...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/07/23/Django 模板函数/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Django ORM models操作"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -327,67 +382,6 @@ XMLHttprequest对象的主要方法:12345678910111213141516171819202122232425262
 <!-- Table of Contents -->
 
   
-    <article id="post-CORS的原理及应用"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/07/09/CORS的原理及应用/">CORS的原理及应用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/07/09/CORS的原理及应用/" class="article-date">
-	  <time datetime="2017-07-09T02:17:59.529Z" itemprop="datePublished">七月 9, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            CORS的原理及应用
-CORS是跨站资源共享，同样是解决浏览器的同源策略
-其本质是设置响应头，使得浏览器允许跨域请求。
-第三方网站返回数据的时候在浏览器的响应头中添加允许的域名，允许所有的用*   
-1 简单请求
-简单请求是只发一次请求
-ajax请求不变，第三方后台修改
-s4的后台，在返回值中添加允许的域名和端口，注意不同后面写具体的域名，自己出错是在后面加上了cors
-允许所有的，用*
-123456789101112def new_users(request):    print('请求is coming')    user_list = [        'aaa',        'bbb',        'ccc'    ]    user_list_str = json.d...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/07/09/CORS的原理及应用/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -516,6 +510,18 @@ s4的后台，在返回值中添加允许的域名和端口，注意不同后面
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/09/23/名称空间 作用域 闭包/">(no title)</a></h6>
+              <span>九月 23, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/09/23/Django+Nginx+uwsgi部署/">Django+Nginx+uwsgi部署</a></h6>
               <span>九月 23, 2017</span>
             </div>
@@ -558,18 +564,6 @@ s4的后台，在返回值中添加允许的域名和端口，注意不同后面
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/08/04/使用Python生成ASCII字符画/">使用Python生成ASCII字符画</a></h6>
-              <span>八月 4, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -602,7 +596,7 @@ s4的后台，在返回值中添加允许的域名和端口，注意不同后面
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 

@@ -96,6 +96,62 @@
         
           <section id="main">
   
+    <article id="post-Python 静态方法 类方法"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/04/22/Python 静态方法 类方法/">Python 静态方法 类方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/04/22/Python 静态方法 类方法/" class="article-date">
+	  <time datetime="2017-04-22T10:20:49.028Z" itemprop="datePublished">四月 22, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            通常情况下，类中函数中定义的所有函数,,都是对象的绑定方法，除此之外，还有专门的静态方法和类方法，这两个是专门给类使用的，但是对象非要调用也是不会报错的。
+对象在调用的时候会把自己传递给self，也就是绑定方法的第一个参数。
+1 静态方法
+这里定义spam的时候没有self,而是传入了xyz,类在使用的时候必须传入3个参数1234567class Foo:    @staticmethod  # spam = staticmethod(apam)    def spam(x,y,z):        print(x,y,z)    # spm = staticmethod(spam)Foo.spam(1,2,3)
+应用场景首相先了解下时间模块的使用1234567&gt;&gt;&gt;...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/04/22/Python 静态方法 类方法/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python封装补充"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -330,61 +386,6 @@ Python2 中有新式类 和 经典类            Python2 默认的是经典类
 <!-- Table of Contents -->
 
   
-    <article id="post-Python 继承、派生、组合、接口、抽象类"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/19/Python 继承、派生、组合、接口、抽象类/">Python 继承、派生、组合、接口、抽象类</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/04/19/Python 继承、派生、组合、接口、抽象类/" class="article-date">
-	  <time datetime="2017-04-19T08:57:35.262Z" itemprop="datePublished">四月 19, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            继承是一种是的关系，和组合对比，组合是一种有的关系，这两者都是解决代用重用问题的
-继承
-注意：继承不是遗传，在显示角度中，是通过对象抽象成类，再把这些类抽象成一个，就是父类。是自下而上的过程，在程序中是首先由父类，然后由类，之后才有对象，是自上而下的过程。
-123456789101112131415class classparent1:  #父类    passclass classparent2:    passclass useclass1(classparent1):  # 单继承    passclass useclass2(classparent1,classparent2):  # 多继承    passprint(useclass1.__bases__)print(use...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/04/19/Python 继承、派生、组合、接口、抽象类/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
@@ -513,6 +514,18 @@ Python2 中有新式类 和 经典类            Python2 默认的是经典类
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/09/23/名称空间 作用域 闭包/">(no title)</a></h6>
+              <span>九月 23, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/09/23/Django+Nginx+uwsgi部署/">Django+Nginx+uwsgi部署</a></h6>
               <span>九月 23, 2017</span>
             </div>
@@ -555,18 +568,6 @@ Python2 中有新式类 和 经典类            Python2 默认的是经典类
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/08/04/使用Python生成ASCII字符画/">使用Python生成ASCII字符画</a></h6>
-              <span>八月 4, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -599,7 +600,7 @@ Python2 中有新式类 和 经典类            Python2 默认的是经典类
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 

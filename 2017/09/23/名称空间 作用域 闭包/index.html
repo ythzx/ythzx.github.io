@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="什么是名称空间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Peter's Blog Center">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/09/23/名称空间 作用域 闭包/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="什么是名称空间">
+<meta property="og:updated_time" content="2017-09-24T16:21:21.668Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Peter's Blog Center">
+<meta name="twitter:description" content="什么是名称空间">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-名称空间 作用域 闭包" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/09/23/名称空间 作用域 闭包/" class="article-date">
+	  <time datetime="2017-09-23T15:27:30.883Z" itemprop="datePublished">九月 23, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是名称空间"><a href="#什么是名称空间" class="headerlink" title="什么是名称空间"></a>什么是名称空间</h2><a id="more"></a>
+<p>名称空间是存放名字的地方，对于x=1来说，1存放在内存中，x这个名字和x=1之间的绑定关系存放在名称空间中。</p>
+<h3 id="名称空间的加载顺序"><a href="#名称空间的加载顺序" class="headerlink" title="名称空间的加载顺序"></a>名称空间的加载顺序</h3><p>对于test.py来说<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、Python解释器先启动，先加载内置名称空间</div><div class="line"><span class="number">2</span>、对于test.py这个文件，加载文件中的全局名称空间，如函数名，定义的变量名</div><div class="line"><span class="number">3</span>、在执行文件中的代码的时候，调用函数，临时产生局部名称空间</div></pre></td></tr></table></figure></p>
+<h3 id="名字的查找顺序"><a href="#名字的查找顺序" class="headerlink" title="名字的查找顺序"></a>名字的查找顺序</h3><p>局部名称空间–》全局名称空间–》内置名称空间</p>
+<p><strong>在全局无法查看局部的，在局部可以查看全局的</strong></p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>作用域就是范围</p>
+<ul>
+<li>全局作用域：内置名称空间、全局名称空间属于这个范围，全局存活，全局有效</li>
+<li>局部作用域：局部名称空间属于该范围，临时存活，局部有效</li>
+</ul>
+<p>作用域在函数定义的时候就确定了，与函数的调用位置无关</p>
+<h3 id="查看作用域：globals-locals"><a href="#查看作用域：globals-locals" class="headerlink" title="查看作用域：globals(),locals()"></a>查看作用域：globals(),locals()</h3><p>LEGB 代表名字查找顺序: locals -&gt; enclosing function -&gt; globals -&gt; <strong>builtins</strong><br>locals 是函数内的名字空间，包括局部变量和形参<br>enclosing 外部嵌套函数的名字空间（闭包中常见）<br>globals 全局变量，函数定义所在模块的名字空间<br>builtins 内置模块的名字空间</p>
+<h2 id="闭包函数"><a href="#闭包函数" class="headerlink" title="闭包函数"></a>闭包函数</h2><p>内部函数包含对外部作用域而非全局作用域的引用</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">counter</span><span class="params">()</span>:</span></div><div class="line">    n = <span class="number">0</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">incr</span><span class="params">()</span>:</span></div><div class="line">        <span class="keyword">nonlocal</span> n</div><div class="line">        x = n</div><div class="line">        n+=<span class="number">1</span></div><div class="line">        <span class="keyword">return</span> x</div><div class="line">    <span class="keyword">return</span> incr</div><div class="line"></div><div class="line">c = counter() <span class="comment"># c 就是函数incr</span></div><div class="line">print(c)</div><div class="line">print(c()) <span class="comment"># 0</span></div><div class="line">print(c()) <span class="comment"># 1</span></div><div class="line">print(c()) <span class="comment"># 2</span></div><div class="line">print(c()) <span class="comment"># 3</span></div><div class="line"></div><div class="line">print(c.__closure__[<span class="number">0</span>].cell_contents) <span class="comment"># 擦看闭包的元素</span></div></pre></td></tr></table></figure>
+<h3 id="闭包的意义与作用"><a href="#闭包的意义与作用" class="headerlink" title="闭包的意义与作用"></a>闭包的意义与作用</h3><p>返回的函数对象，不仅仅是一个函数对象，在该函数外还包裹了一层作用域，使得函数无论在何处被调用，都优先使用自己外层的作用域</p>
+<p>应用：延迟计算</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(url)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">()</span>:</span></div><div class="line">        response = requests.get(url)</div><div class="line">        response.encoding = <span class="string">'utf-8'</span></div><div class="line">        <span class="keyword">return</span> response.text</div><div class="line">    <span class="keyword">return</span> get</div><div class="line">baidu = index(<span class="string">'http://www.baidu.com'</span>)</div><div class="line">print(baidu())</div></pre></td></tr></table></figure>
+<h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>装饰器是闭包函数的一种应用场景</p>
+<h3 id="一-为什么用装饰器"><a href="#一-为什么用装饰器" class="headerlink" title="一 为什么用装饰器"></a>一 为什么用装饰器</h3><p>开放封闭原则：对修改封闭，对扩展开放</p>
+<h3 id="二-什么是装饰器"><a href="#二-什么是装饰器" class="headerlink" title="二 什么是装饰器"></a>二 什么是装饰器</h3><p>装饰器他人的器具，本身可以是任意可调用对象，被装饰者也可以是任意可调用对象。<br>强调装饰器的原则：1 不修改被装饰对象的源代码 2 不修改被装饰对象的调用方式<br>装饰器的目标：在遵循1和2的前提下，为被装饰对象添加上新功能</p>
+<h3 id="三-装饰器的使用"><a href="#三-装饰器的使用" class="headerlink" title="三 装饰器的使用"></a>三 装饰器的使用</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">timer</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args,**kwargs)</span>:</span></div><div class="line">        start_time = time.time()</div><div class="line">        res = func(*args,**kwargs)</div><div class="line">        stop_time = time.time()</div><div class="line">        print(<span class="string">'run time is %s'</span>%(stop_time-start_time))</div><div class="line">        <span class="keyword">return</span> res</div><div class="line">    <span class="keyword">return</span> wrapper</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@timer</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></div><div class="line">    time.sleep(<span class="number">3</span>)</div><div class="line">    print(<span class="string">'foo run'</span>)</div><div class="line">foo()</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/09/23/名称空间 作用域 闭包/" data-title="" data-url="https://github.com/ythzx/ythzx.github.io/2017/09/23/名称空间 作用域 闭包/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/24/Python pep8代码规范/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Python pep8代码规范
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/23/Django+Nginx+uwsgi部署/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Django+Nginx+uwsgi部署</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是名称空间"><span class="nav-number">1.</span> <span class="nav-text">什么是名称空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#名称空间的加载顺序"><span class="nav-number">1.1.</span> <span class="nav-text">名称空间的加载顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#名字的查找顺序"><span class="nav-number">1.2.</span> <span class="nav-text">名字的查找顺序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域"><span class="nav-number">2.</span> <span class="nav-text">作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看作用域：globals-locals"><span class="nav-number">2.1.</span> <span class="nav-text">查看作用域：globals(),locals()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包函数"><span class="nav-number">3.</span> <span class="nav-text">闭包函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包的意义与作用"><span class="nav-number">3.1.</span> <span class="nav-text">闭包的意义与作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰器"><span class="nav-number">4.</span> <span class="nav-text">装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-为什么用装饰器"><span class="nav-number">4.1.</span> <span class="nav-text">一 为什么用装饰器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-什么是装饰器"><span class="nav-number">4.2.</span> <span class="nav-text">二 什么是装饰器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-装饰器的使用"><span class="nav-number">4.3.</span> <span class="nav-text">三 装饰器的使用</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
