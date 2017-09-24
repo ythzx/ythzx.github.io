@@ -96,7 +96,7 @@
         
           <section id="main">
   
-    <article id="post-Linux之Nginx服务 nfs文件存储 负载均衡"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-hello-world"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -104,7 +104,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/">Linux之Nginx服务 nfs文件存储 负载均衡</a>
+      <a class="article-title" href="/2017/03/09/hello-world/">Hello World</a>
     </h1>
   
 
@@ -112,8 +112,8 @@
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/" class="article-date">
-	  <time datetime="2017-03-20T15:51:25.666Z" itemprop="datePublished">三月 20, 2017</time>
+	Posted on <a href="/2017/03/09/hello-world/" class="article-date">
+	  <time datetime="2017-03-09T09:07:24.008Z" itemprop="datePublished">三月 9, 2017</time>
 	</a>
 
     </div>
@@ -123,21 +123,14 @@
 
           
             <div class="entry-summary" style="margin-left:0;">
-            一、搭建Nginx服务
-Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发音为“engine X”，是一个高性能的HTTP和反向代理服务器，同时也是一个IMAP/POP3/SMTP 代理服务器
+            this is a test
+1hello world
 
-1 安装扩展包epel在安装Nginx之前需要安装epel扩展包，先通过rpm -qi epel-release 查看一下是否安装，通过查看已经安装，如果没有安装就需要通过yum install epel进行安装
-
-通过yum安装Nginx需要有扩展的源epel.repo ，确定有后yum install nginx -y 就开始安装
-
-查看下Nginx版本是1.10.2，这是官方的稳定版本
-
-2 修改配置文件Nginx的配置文件村村存放在/etc/nginx/ngi...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/03/20/Linux之Nginx服务 nfs文件存储 负载均衡/#more">阅读全文</a>
+            <a href="/2017/03/09/hello-world/#more">阅读全文</a>
           </p>
         </div>
       
@@ -145,272 +138,6 @@ Nginx 是俄罗斯人编写的十分轻量级的HTTP 服务器,Nginx，它的发
     <footer class="entry-meta entry-footer">
       
       
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Linux系统分区 进程管理 软件包安装"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/18/Linux系统分区 进程管理 软件包安装/">Linux系统分区 进程管理 软件包安装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/18/Linux系统分区 进程管理 软件包安装/" class="article-date">
-	  <time datetime="2017-03-18T09:51:05.862Z" itemprop="datePublished">三月 18, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            对于一块新的磁盘来说，系统能够使用需要有分区、格式化文件系统、挂载等主要操作，下面通过命令的方式对一块磁盘进行操作。
-
-一、 Linux系统分区1.1 在虚拟机开机前选择虚拟机配置，添加一个新的SCSI接口的硬盘，设定大小为15G
-
-1.2 查看系统现在的磁盘情况ls /dev/sd  通过tab按键可以查看/dev/sd挂载的硬盘，刚才添加的磁盘是第三块硬盘，所以名字是sdc,硬盘的命名就是以英文字母的顺序命名的
-
-1.3 对新添加的磁盘sdc进行分区分区命令是fdisk  /dev/sdc
-
-现在通过帮助信息开始操作
-
-1.3.4 新建分区输入n,在选项中有两个，p和e,p是创建主分区，e是扩展分区。
-给主分区添加5G
-
-扩展分区选择系统大小的时候，将剩余的全部空间给扩展分区，就选...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/18/Linux系统分区 进程管理 软件包安装/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/16/Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode/">Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/16/Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode/" class="article-date">
-	  <time datetime="2017-03-16T10:41:16.269Z" itemprop="datePublished">三月 16, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1 将用户信息数据库文件和组信息数据库文件纵向合并为一个文件/1.txt（覆盖）
-使用 cat命令将查看的文件合并输出到/1.txt
-这里的关键：定位到文件，如果后面加上/后被认为是目录 
-
-分为两步，先将/etc/passwd 通过cat查看后将信息输出到/2.txt,之后将/etc/group 追加到/2.txt中
-也可以同上面 的覆盖一样，直接追加
-
-2 归档文件 tar
-2.1 gzip bzip2压缩相应的解压时gunzip bunzip2
-
-2.2 tar 加参数tar czf 直接打包后压缩gzip
-tar cjf 直接打包后压缩bzip2
-
-tar xf 是统一的解压方法
-
-3 vi编辑器的使用进入命令行模式复制改行内容，在下方粘贴80行
-yy 80p
-G :定位到最后...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/16/Linux命令基础操作--vim 归档 压缩 分区 格式化 挂载 Innode/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python数据类型 变量"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/13/Python数据类型 变量/">python输入输出 数据类型 变量</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/13/Python数据类型 变量/" class="article-date">
-	  <time datetime="2017-03-13T11:28:58.885Z" itemprop="datePublished">三月 13, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            输入输出
-print()在Python3中是函数
-
-1&gt;&gt;&gt;print('hello world')  #print注意print前面不要有任何空格
-
-
-print输出多个字符，中间用逗号连接，最后输出的时候回替换成空格
-
-
-name = input()在交互行弹出，输入的内容会存name变量
-
-Python基础任何编程语言都有自己的语法，编译器或者解释器负责把符合语法的代码转换成机器码，然后让CPU执行。Python不是编译型是解释型的。Python主要采用缩进的方式
-12345a=100if a &gt;=0:	print(a)else:	print(-a)
-
-当语句以冒号:结尾时，缩进的语句视为代码块。我认为就是具体的逻辑部分缩进有利有弊。好处是强迫你写出格式化...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/13/Python数据类型 变量/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-操作系统和网络基础"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/03/13/操作系统和网络基础/">操作系统和网络基础</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/03/13/操作系统和网络基础/" class="article-date">
-	  <time datetime="2017-03-13T10:56:53.622Z" itemprop="datePublished">三月 13, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1 操作系统1.1为什么要有操作系统
-操作系统（Operating System，简称OS）是管理和控制计算机硬件与软件资源的计算机程序，是直接运行在“裸机”上的最基本的系统软件，任何其他软件都必须在操作系统的支持下才能运行。
-
-
-1.2操作系统的位置
-操作系统位于计算机硬件与应用软件之间，本质也是一个软件。 操作系统分为两部分：
-
-由操作系统的内核（运行于内核态，管理硬件资源）
-系统调用（运行于用户态，为应用程序员写的应用程序提供系统调用接口）所以，单纯的说操作系统是运行于内核态的，是不准确的
-
-1.3操作系统的功能
-系统调用接口隐藏硬件调用接口，为应用程序员提供调用硬件资源的更好，更简单，更清晰的模型（系统调用接口）。应用程序员有了这些接口后，就不用再考虑操作硬件的细节，专心开发自...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/03/13/操作系统和网络基础/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
       
     </footer>
   </div>
@@ -424,7 +151,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/18/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/20/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/18/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span>
   </nav>
 
 </section>
@@ -614,7 +341,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">46</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">44</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -634,7 +361,7 @@ Python基础任何编程语言都有自己的语法，编译器或者解释器�
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 

@@ -96,7 +96,7 @@
         
           <section id="main">
   
-    <article id="post-多表操作"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Django 安全机制"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -104,7 +104,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/07/10/多表操作/">Django models多表操作</a>
+      <a class="article-title" href="/2017/07/03/Django 安全机制/">Django 安全机制</a>
     </h1>
   
 
@@ -112,8 +112,51 @@
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/07/10/多表操作/" class="article-date">
-	  <time datetime="2017-07-10T11:09:36.233Z" itemprop="datePublished">七月 10, 2017</time>
+	Posted on <a href="/2017/07/03/Django 安全机制/" class="article-date">
+	  <time datetime="2017-07-03T15:19:43.991Z" itemprop="datePublished">七月 3, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Django-安全机制"><a href="#Django-安全机制" class="headerlink" title="Django 安全机制"></a>Django 安全机制</h1><h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>Cookie是保存在用户浏览器端的键值对</p>
+<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><p>Session是保存在服务端的数据</p>
+<h3 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h3><h3 id="CSRF-跨站请求伪造攻击"><a href="#CSRF-跨站请求伪造攻击" class="headerlink" title="CSRF 跨站请求伪造攻击"></a>CSRF 跨站请求伪造攻击</h3>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Django中间件"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/07/03/Django中间件/">Django中间件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/07/03/Django中间件/" class="article-date">
+	  <time datetime="2017-07-03T15:08:14.622Z" itemprop="datePublished">七月 3, 2017</time>
 	</a>
 
     </div>
@@ -123,15 +166,25 @@
 
           
             <div class="entry-summary" style="margin-left:0;">
-            Django models多表操作单独创建第三张表的情况
-推荐使用的是使用values/value_list,selet_related的方式，查询效率高
-建立表1234567891011class Boy(models.Model):    name = models.CharField(max_length=32)class Girl(models.Model):    nick = models.CharField(max_length=32)class Love(models.Model):    b = models.ForeignKey('Boy')    g = models.ForeignKey('Girl')
-表建立联合唯一索引unique_together12345...
+            Django中间件HTTP请求周期初识
+在HTTP请求周期中，之前的了解是：用户请求-&gt;URL-&gt;view视图-&gt;url-&gt;用户
+实际在用户请求和URL之间是中间件
+
+Django 的中间件的本质是类，有几个中间件，就有经过几个类，每个类都有相应的方法。
+Django中的中间件Django的中间件在setting中MIDDLEWARE
+中间件是有顺序的，按照setting中的从上到下顺序执行
+在Django1.10以上的版本中，当请求从上到下执行，如到达csrf出现问题，会从同一级别的csrf返回。
+在之前的版本中，请求到达csrf出现问题，会从最后一个中间件返回。
+
+自定义中间件可以在当前的中间件的基础上进行修改，也可以自己定制新的中间件
+小功能：
+
+比如，黑...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/07/10/多表操作/#more">阅读全文</a>
+            <a href="/2017/07/03/Django中间件/#more">阅读全文</a>
           </p>
         </div>
       
@@ -151,24 +204,14 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-self/博客项目文档"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Django分页操作"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/07/10/self/博客项目文档/">Django博客项目</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-meta">
       
-	Posted on <a href="/2017/07/10/self/博客项目文档/" class="article-date">
-	  <time datetime="2017-07-10T08:53:47.092Z" itemprop="datePublished">七月 10, 2017</time>
+	Posted on <a href="/2017/07/03/Django分页操作/" class="article-date">
+	  <time datetime="2017-07-03T01:12:17.655Z" itemprop="datePublished">七月 3, 2017</time>
 	</a>
 
     </div>
@@ -178,14 +221,77 @@
 
           
             <div class="entry-summary" style="margin-left:0;">
-            Django博客项目配置静态文件
-setting中添加123STATICFILES_DIRS =(    os.path.join(BASE_DIR,'static'),)
-数据库MySQL配置setting前提是新建数据库blog12345678910DATABASES = &#123;    'default': &#123;        'ENGINE': 'django.db.backends.mysql',        'NAME': 'blog',        'USER': 'root',        'PASSWORD': '871577942@mysql',        'HOST': 'localhost',        'PORT': 3306,   ...
+            Django分页分页的目的是：在数据量太大分批获取数据并在页面上进行展示
+简单的操作就是通过切片获取
+12user_list = models.UserInfo.objects.all()[1:10]user_list = models.UserInfo.objects.all()[10:20]
+Django自带分页
+适合做上下页，只能在Django中用
+分页操作实现首先导入对象Paginator
+from django.core.paginator import Paginator,Page,PageNotAnInteger,EmptyPage
+在浏览器中通过GET发送当前的页码，后面加上?page=1
+如http://127.0.0.1:8000/index.html?page=1...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/07/10/self/博客项目文档/#more">阅读全文</a>
+            <a href="/2017/07/03/Django分页操作/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Django母板及布局"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/07/02/Django母板及布局/">Django 的母板及布局(Bootstrap)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/07/02/Django母板及布局/" class="article-date">
+	  <time datetime="2017-07-02T14:40:57.063Z" itemprop="datePublished">七月 2, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            Django 的母板及布局(Bootstrap)Django 的母板是作为公共的部分,其他的页面都能利用这个页面，并在其基础上进行添加
+Django 的母板中可以嵌入3部分
+
+css
+content
+js
+
+母板的形式：123456&#123;% block css %&#125;&#123;% endblock %&#125;&lt;body&gt;    ...&lt;body/&gt;&#123;% block content %&#125;&#123;% endblock %&#125;&#123;% block js %&#125;&#123;% endblock %&#125;
+子板中继承母板的内容12345678910111213&#123;% block css %&#...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/07/02/Django母板及布局/#more">阅读全文</a>
           </p>
         </div>
       
@@ -205,7 +311,7 @@ setting中添加123STATICFILES_DIRS =(    os.path.join(BASE_DIR,'static'),)
 <!-- Table of Contents -->
 
   
-    <article id="post-Form组件的扩展 钩子"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -213,7 +319,7 @@ setting中添加123STATICFILES_DIRS =(    os.path.join(BASE_DIR,'static'),)
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/07/09/Form组件的扩展 钩子/">Form组件的验证流程及扩展(钩子)</a>
+      <a class="article-title" href="/2017/06/26/Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器/">Sublime 安装Boxy + OmniMarkupPreviewer</a>
     </h1>
   
 
@@ -221,8 +327,8 @@ setting中添加123STATICFILES_DIRS =(    os.path.join(BASE_DIR,'static'),)
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/07/09/Form组件的扩展 钩子/" class="article-date">
-	  <time datetime="2017-07-09T08:58:16.246Z" itemprop="datePublished">七月 9, 2017</time>
+	Posted on <a href="/2017/06/26/Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器/" class="article-date">
+	  <time datetime="2017-06-26T08:27:06.881Z" itemprop="datePublished">六月 26, 2017</time>
 	</a>
 
     </div>
@@ -232,13 +338,13 @@ setting中添加123STATICFILES_DIRS =(    os.path.join(BASE_DIR,'static'),)
 
           
             <div class="entry-summary" style="margin-left:0;">
-            Form组件的验证流程及扩展(钩子)常用的form
-1234567891011121314151617181920212223class TestForm(Form):    t1 = fields.CharField(        widget=widgets.Textarea  # 输入框    )    t2 = fields.CharField(        widget=widgets.CheckboxInput  # 单选框    )    t3 = fields.MultipleChoiceField(        choices=[(1, '篮球'), (2, '足球')],  # 多选框的内容        widget=widgets.CheckboxSele...
+            Sublime 安装Boxy + OmniMarkupPreviewer Package Install 安装网络安装
+ctrl+反引号打开控制台，在控制台中输入代码1import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.requ...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/07/09/Form组件的扩展 钩子/#more">阅读全文</a>
+            <a href="/2017/06/26/Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器/#more">阅读全文</a>
           </p>
         </div>
       
@@ -247,130 +353,7 @@ setting中添加123STATICFILES_DIRS =(    os.path.join(BASE_DIR,'static'),)
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Ajax的原理及Django上传"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/07/09/Ajax的原理及Django上传/">Ajax的原理及Django上传组件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/07/09/Ajax的原理及Django上传/" class="article-date">
-	  <time datetime="2017-07-09T04:36:25.864Z" itemprop="datePublished">七月 9, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            Ajax的原理及Django上传组件Ajax的原理
-ajax 是异步JavaScript和xml
-ajax就是向后台提交数据但是不刷新页面
-原生Ajax XMLHttprequest
-创建一个XMLHttprequest对象
-回调函数onreadystatechange 对应jQuery中的success
-状态值是不断变化的，4代表完成，已经接收到全部响应数据；
-open是创建请求
-send是发送数据
-
-XMLHttprequest对象的主要方法:123456789101112131415161718192021222324252627282930313233343536373839a. void open(String method,String url,Boolen async) ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/07/09/Ajax的原理及Django上传/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-CORS的原理及应用"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/07/09/CORS的原理及应用/">CORS的原理及应用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/07/09/CORS的原理及应用/" class="article-date">
-	  <time datetime="2017-07-09T02:17:59.529Z" itemprop="datePublished">七月 9, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            CORS的原理及应用
-CORS是跨站资源共享，同样是解决浏览器的同源策略
-其本质是设置响应头，使得浏览器允许跨域请求。
-第三方网站返回数据的时候在浏览器的响应头中添加允许的域名，允许所有的用*   
-1 简单请求
-简单请求是只发一次请求
-ajax请求不变，第三方后台修改
-s4的后台，在返回值中添加允许的域名和端口，注意不同后面写具体的域名，自己出错是在后面加上了cors
-允许所有的，用*
-123456789101112def new_users(request):    print('请求is coming')    user_list = [        'aaa',        'bbb',        'ccc'    ]    user_list_str = json.d...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/07/09/CORS的原理及应用/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sublime/">Sublime</a></li></ul>
 
       
     </footer>
@@ -385,7 +368,7 @@ s4的后台，在返回值中添加允许的域名和端口，注意不同后面
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
   </nav>
 
 </section>
@@ -575,7 +558,7 @@ s4的后台，在返回值中添加允许的域名和端口，注意不同后面
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">46</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">44</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -595,7 +578,7 @@ s4的后台，在返回值中添加允许的域名和端口，注意不同后面
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 

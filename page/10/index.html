@@ -96,7 +96,7 @@
         
           <section id="main">
   
-    <article id="post-Python 进程线程总结"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python socket网络编程"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -104,7 +104,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/11/Python 进程线程总结/">Python 进程 线程总结</a>
+      <a class="article-title" href="/2017/05/03/Python socket网络编程/">Python socket网络编程</a>
     </h1>
   
 
@@ -112,8 +112,8 @@
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/05/11/Python 进程线程总结/" class="article-date">
-	  <time datetime="2017-05-11T03:37:21.657Z" itemprop="datePublished">五月 11, 2017</time>
+	Posted on <a href="/2017/05/03/Python socket网络编程/" class="article-date">
+	  <time datetime="2017-05-03T00:39:37.579Z" itemprop="datePublished">五月 3, 2017</time>
 	</a>
 
     </div>
@@ -123,29 +123,18 @@
 
           
             <div class="entry-summary" style="margin-left:0;">
-            操作系统的底层是 进程 线程 实现的
-进程
-操作系统完成系统进程的切换，中间有状态的保存。进程有自己独立的空间，进程多，资源消耗大
-进程是最小的资源管理单位可以理解为盛放线程的容器
-线程线程是最小的执行单位
-串行、并行、 并发 、并行有多个CPU
-并发只有一个CPU
-GILCPython同一时刻只有一个线程被执行
-Threading 多线程
-实例化方法
-类的继承 还要重写run方法
+            1  服务器 客户端架构  C/S架构
+server端要求：121.力求一直提供服务2. 绑定一个地址，客户能够一直找到
+2 OSI七层123数据链路层是 以太网协议IP是通过子网查找 ARP协议 Mac地址TCP/UDP 是传输层 找对应的端口
 
-join  SetDemon是实例化的对象应用的
-join 是主线程等子线程4
-setDaemon 守护线程程序直到不存在非守线程的时候退出也就是需要等待非守护线程结束
-同步锁（互斥锁）由于多线程共用数据
-CPU只要有IO操作，就进行切换，但是同步锁锁住了后，切换完第一步后就还是回来处理加锁的
-死锁是两个...
+3 SOCKET层socket是把TCP/协议隐藏在Scocket后面
+
+4 socket工作流程先从服务器端说起。服务器端先初始化Socket，然后与端口绑定(bind)，对端口进行监听(listen)，调用accept阻塞，等待客户端连接。在这时如果有个客户端初始化一个Socket，然后连接服务器(connect)，如果连接成功，这时客户端与服务器端的连接就建立了。客户端发送数据请求，服务器端接收请求并处理请求，然后把回应数据发送给客户...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/05/11/Python 进程线程总结/#more">阅读全文</a>
+            <a href="/2017/05/03/Python socket网络编程/#more">阅读全文</a>
           </p>
         </div>
       
@@ -165,7 +154,7 @@ CPU只要有IO操作，就进行切换，但是同步锁锁住了后，切换完
 <!-- Table of Contents -->
 
   
-    <article id="post-Python Select模型"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python模块调用"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -173,7 +162,7 @@ CPU只要有IO操作，就进行切换，但是同步锁锁住了后，切换完
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/11/Python Select模型/">Python Select模型</a>
+      <a class="article-title" href="/2017/05/02/Python模块调用/">Python模块调用</a>
     </h1>
   
 
@@ -181,8 +170,8 @@ CPU只要有IO操作，就进行切换，但是同步锁锁住了后，切换完
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/05/11/Python Select模型/" class="article-date">
-	  <time datetime="2017-05-11T00:43:28.983Z" itemprop="datePublished">五月 11, 2017</time>
+	Posted on <a href="/2017/05/02/Python模块调用/" class="article-date">
+	  <time datetime="2017-05-02T09:43:32.712Z" itemprop="datePublished">五月 2, 2017</time>
 	</a>
 
     </div>
@@ -192,15 +181,15 @@ CPU只要有IO操作，就进行切换，但是同步锁锁住了后，切换完
 
           
             <div class="entry-summary" style="margin-left:0;">
-            IO多路复用
-IO多路复用就是我们经常说的select epoll.select和epoll的好处是单个process就可以同时处理多个网络IO。基本原理是select\epoll会不断的轮询所负责的所有socket，当有某个socket数据到达了，就通知用户进程。下面是流程图：
-当用户进程调用了select，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket，当任何一个socket中的数据准备好了，select就会返回。这个时候用户进程再调用read操作，将数据从kernel拷贝到用户进程。
-注意1：select函数返回结果中如果有文件可读了，那么进程就可以通过调用accept()或recv()来让kernel将位于内核中准备到的数据copy...
+            1 模块
+一个模块是包含了Python定义和声明的文件，文件名，就是模块名字加上py 后缀把定义的函数、变量保存到文件中，通过Python test.py的方式执行，test.py就是脚本文件。程序功能越来越多，这些监本文件还可以当做模块导入其他的模块中，实现了重利用。
+import使用import的时候，想要使用spam下面的方法，必须使用spam.的方式12345import spamprint(spam.money)spam.read1()spam.read2()spam.change()
+from… import …对比import spam，会将源文件的名称空间’spam’带到当前名称空间中，使用时必须是spam.名字的方式而from 语句相当于import，也会创建新的名称...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/05/11/Python Select模型/#more">阅读全文</a>
+            <a href="/2017/05/02/Python模块调用/#more">阅读全文</a>
           </p>
         </div>
       
@@ -220,7 +209,7 @@ IO多路复用就是我们经常说的select epoll.select和epoll的好处是单
 <!-- Table of Contents -->
 
   
-    <article id="post-Python IO模型"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python错误和异常"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -228,7 +217,7 @@ IO多路复用就是我们经常说的select epoll.select和epoll的好处是单
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/10/Python IO模型/">Python IO模型</a>
+      <a class="article-title" href="/2017/05/02/Python错误和异常/">Python 错误和异常</a>
     </h1>
   
 
@@ -236,8 +225,8 @@ IO多路复用就是我们经常说的select epoll.select和epoll的好处是单
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/05/10/Python IO模型/" class="article-date">
-	  <time datetime="2017-05-10T00:45:53.608Z" itemprop="datePublished">五月 10, 2017</time>
+	Posted on <a href="/2017/05/02/Python错误和异常/" class="article-date">
+	  <time datetime="2017-05-02T09:22:18.321Z" itemprop="datePublished">五月 2, 2017</time>
 	</a>
 
     </div>
@@ -247,27 +236,16 @@ IO多路复用就是我们经常说的select epoll.select和epoll的好处是单
 
           
             <div class="entry-summary" style="margin-left:0;">
-            之前学到gevent 遇到IO操作，自动切换
-对于一个network IO (这里我们以read举例)，它会涉及到两个系统对象，一个是调用这个IO的process (or thread)，另一个就是系统内核(kernel)。当一个read操作发生时，它会经历两个阶段：
-
-1 等待数据准备 (Waiting for the data to be ready)
-2 将数据从内核拷贝到进程中 (Copying the data from the kernel to the process)
-
-记住这两点很重要，因为这些IO Model的区别就是在两个阶段上各有不同的情况。
-IO模型
-
-阻塞IO
-非阻塞IO
-IO多路复用（监听多个连接）
-异步IO
-驱动信号
-
-1 阻塞IO blocking默认...
+            1 错误和异常
+1.1 错误python 中的错误有两种，语法错误和逻辑错误
+这种错误是我们应该避免的
+1.2 异常python中的异常是程序运行过程中产生的，有异常不一定要把程序停止，只要把异常抛出，然后查看异常产生的原因即可。
+1.2.1  python中的异常种类123456789101112131415161718192021222324252627AttributeError 试图访问一个对象没有的属性，比如foo.x，但是foo没有属性xIOError 输入/输出异常；基本上是无法打开文件ImportError 无法引入模块或包；基本上是路径问题或名称错误IndentationError 语法错误（的子类） ；代码没有正确对齐IndexError 下标索引超出序列边界，比如...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/05/10/Python IO模型/#more">阅读全文</a>
+            <a href="/2017/05/02/Python错误和异常/#more">阅读全文</a>
           </p>
         </div>
       
@@ -287,7 +265,7 @@ IO多路复用（监听多个连接）
 <!-- Table of Contents -->
 
   
-    <article id="post-Python 多线程应用"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python模块（二）"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -295,7 +273,7 @@ IO多路复用（监听多个连接）
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/09/Python 多线程应用/">Python 多线程应用</a>
+      <a class="article-title" href="/2017/04/27/Python模块（二）/">Python 模块（二）</a>
     </h1>
   
 
@@ -303,8 +281,8 @@ IO多路复用（监听多个连接）
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/05/09/Python 多线程应用/" class="article-date">
-	  <time datetime="2017-05-09T07:04:27.828Z" itemprop="datePublished">五月 9, 2017</time>
+	Posted on <a href="/2017/04/27/Python模块（二）/" class="article-date">
+	  <time datetime="2017-04-27T01:05:54.050Z" itemprop="datePublished">四月 27, 2017</time>
 	</a>
 
     </div>
@@ -314,13 +292,14 @@ IO多路复用（监听多个连接）
 
           
             <div class="entry-summary" style="margin-left:0;">
-            同步锁
-123456789101112131415161718192021222324252627282930import timeimport threadingdef subNum():    global num    # print("ok")    lock.acquire()  # 加锁    temp = num    time.sleep(1)    num = temp - 1  # 加在公共数据上    lock.release()  # 解锁num = 100thread_list = []lock = threading.Lock()for i in range(100):    t = threading.Thread(target=subNum)    t....
+            1 logging 模块
+logging有两种的配置的方式，configure、logger
+1.1 config方式12345678910111213141516import logging'''日志的配置：config模式只能选择在屏幕或者在文件输出'''logging.basicConfig(level=logging.DEBUG,                    format='%(asctime)s [%(lineno)s] %(message)s' ,                    filename='log.txt',                    filemode='a'                    )# logging.debug('d...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/05/09/Python 多线程应用/#more">阅读全文</a>
+            <a href="/2017/04/27/Python模块（二）/#more">阅读全文</a>
           </p>
         </div>
       
@@ -340,7 +319,7 @@ IO多路复用（监听多个连接）
 <!-- Table of Contents -->
 
   
-    <article id="post-Python 并发编程"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-Python模块"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -348,7 +327,7 @@ IO多路复用（监听多个连接）
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/05/08/Python 并发编程/">Python 并发编程</a>
+      <a class="article-title" href="/2017/04/26/Python模块/">Python 模块</a>
     </h1>
   
 
@@ -356,8 +335,8 @@ IO多路复用（监听多个连接）
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/05/08/Python 并发编程/" class="article-date">
-	  <time datetime="2017-05-08T07:43:24.990Z" itemprop="datePublished">五月 8, 2017</time>
+	Posted on <a href="/2017/04/26/Python模块/" class="article-date">
+	  <time datetime="2017-04-26T15:15:57.827Z" itemprop="datePublished">四月 26, 2017</time>
 	</a>
 
     </div>
@@ -367,29 +346,26 @@ IO多路复用（监听多个连接）
 
           
             <div class="entry-summary" style="margin-left:0;">
-            1 为什么有操作系统
+            [TOC]
 
-操作系统： 位于底层和应用软件之间
-工作方式： 向下管理硬件 向上提供接口
+模块就是py文件
 
-1.1 操作系统进程切换：
-出现IO操作（像time.sleep之类的）
-固定时间（是操作系统控制的切换时间）
-
-1.2进程的定义：进程是一个程序在一个数据集谁给你的动态执行过程。程序、数据集（程序过程中使用的资源）、进程控制块（切换的时候 保存状态）
-进程并发的时候，如果是一个应用程序，会把资源进行传递
-进程是通过进程切换，是共享的资源，保存的的时候保存的是进程的资源集
-
-进程：  资源管理单位（容器）
-线程：  最小执行单位
-
-1.3  并行和并发的区别：串行是线程依次执行，运行期间独享内存并行是每个线程占用一个内核并发是有等待
- python的多线程： 由于GIL，同一时刻，同一...
+注意文件的命名不能和模块的名字相同，正则在寻找的时候首先从当前路径寻找，然后从内置查找
+1 时间模块time
+Python中有三种表示时间的方法：
+1.时间戳
+- 时间戳timestap(浮点型数字)：（计算机）
+time.time()
+1970年1月1日的是0
+2.元组（struct time）结构化时间
+- 结构化时间：(操作时间)
+ &gt;&gt;&gt; time.localtime()  # 默认放的是time.time（）
+time.struct_time(tm_year=2017, tm_mon=4,                                 tm_mday=26, tm_hour=9, tm_min=15, tm...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/05/08/Python 并发编程/#more">阅读全文</a>
+            <a href="/2017/04/26/Python模块/#more">阅读全文</a>
           </p>
         </div>
       
@@ -413,7 +389,7 @@ IO多路复用（监听多个连接）
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/9/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/11/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/9/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/11/">下一页</a>
   </nav>
 
 </section>
@@ -603,7 +579,7 @@ IO多路复用（监听多个连接）
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">46</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">44</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -623,7 +599,7 @@ IO多路复用（监听多个连接）
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 

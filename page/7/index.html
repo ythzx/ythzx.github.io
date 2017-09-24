@@ -96,7 +96,7 @@
         
           <section id="main">
   
-    <article id="post-Django母板及布局"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-jQuery 基础"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -104,7 +104,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/07/02/Django母板及布局/">Django 的母板及布局(Bootstrap)</a>
+      <a class="article-title" href="/2017/05/31/jQuery 基础/">jQuery 基础</a>
     </h1>
   
 
@@ -112,8 +112,8 @@
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/07/02/Django母板及布局/" class="article-date">
-	  <time datetime="2017-07-02T14:40:57.063Z" itemprop="datePublished">七月 2, 2017</time>
+	Posted on <a href="/2017/05/31/jQuery 基础/" class="article-date">
+	  <time datetime="2017-05-31T00:35:28.587Z" itemprop="datePublished">五月 31, 2017</time>
 	</a>
 
     </div>
@@ -123,20 +123,18 @@
 
           
             <div class="entry-summary" style="margin-left:0;">
-            Django 的母板及布局(Bootstrap)Django 的母板是作为公共的部分,其他的页面都能利用这个页面，并在其基础上进行添加
-Django 的母板中可以嵌入3部分
+            
+jQuery是一个快速的，简洁的javaScript库，使用户能更方便地处理HTMLdocuments、events
 
-css
-content
-js
-
-母板的形式：123456&#123;% block css %&#125;&#123;% endblock %&#125;&lt;body&gt;    ...&lt;body/&gt;&#123;% block content %&#125;&#123;% endblock %&#125;&#123;% block js %&#125;&#123;% endblock %&#125;
-子板中继承母板的内容12345678910111213&#123;% block css %&#...
+jQuery对象
+jQuery 对象就是通过jQuery包装DOM对象后产生的对象
+jQuery是通过$符号进行调用，同样的支持jQuery,123456&lt;p&gt;ppp&lt;/p&gt;	&lt;script src="jquery-3.2.1.js"&gt;&lt;/script&gt;	&lt;script&gt;		$("p").css("color","red");		var $ele=$("p");//这是jQuery对象		//var $ele=jQuery("p");//和上面的效果是一样的
+jQuery对象转换成DOM对象$variabl...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/07/02/Django母板及布局/#more">阅读全文</a>
+            <a href="/2017/05/31/jQuery 基础/#more">阅读全文</a>
           </p>
         </div>
       
@@ -145,7 +143,7 @@ js
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
       
     </footer>
@@ -156,7 +154,7 @@ js
 <!-- Table of Contents -->
 
   
-    <article id="post-Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-JavaScript DOM"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -164,7 +162,7 @@ js
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/06/26/Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器/">Sublime 安装Boxy + OmniMarkupPreviewer</a>
+      <a class="article-title" href="/2017/05/25/JavaScript DOM/">JavaScript BOM  DOM 对象</a>
     </h1>
   
 
@@ -172,8 +170,8 @@ js
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/06/26/Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器/" class="article-date">
-	  <time datetime="2017-06-26T08:27:06.881Z" itemprop="datePublished">六月 26, 2017</time>
+	Posted on <a href="/2017/05/25/JavaScript DOM/" class="article-date">
+	  <time datetime="2017-05-25T00:48:05.644Z" itemprop="datePublished">五月 25, 2017</time>
 	</a>
 
     </div>
@@ -183,13 +181,23 @@ js
 
           
             <div class="entry-summary" style="margin-left:0;">
-            Sublime 安装Boxy + OmniMarkupPreviewer Package Install 安装网络安装
-ctrl+反引号打开控制台，在控制台中输入代码1import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.requ...
+            browser object modeldocument onject model
+BOM对象
+window对象
+所有浏览器都支持 window 对象。概念上讲.一个html文档对应一个window对象.功能上讲: 控制浏览器窗口的.使用上讲: window对象不需要创建对象,直接使用即可.
+Window 对象方法
+alert()            显示带有一段消息和一个确认按钮的警告框。
+confirm()          显示带有一段消息以及确认按钮和取消按钮的对话框。
+prompt()           显示可提示用户输入的对话框。
+
+open()             打开一个新的浏览器窗口或查找一个已命名的窗口。
+
+close()            关闭浏览器窗...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/06/26/Sublime +Markdown+OmniMarkupPreviewer 搭建实时预览的markdown编辑器/#more">阅读全文</a>
+            <a href="/2017/05/25/JavaScript DOM/#more">阅读全文</a>
           </p>
         </div>
       
@@ -198,7 +206,7 @@ ctrl+反引号打开控制台，在控制台中输入代码1import urllib.reques
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sublime/">Sublime</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
       
     </footer>
@@ -209,7 +217,7 @@ ctrl+反引号打开控制台，在控制台中输入代码1import urllib.reques
 <!-- Table of Contents -->
 
   
-    <article id="post-django项目"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-JavaScript对象"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -217,7 +225,7 @@ ctrl+反引号打开控制台，在控制台中输入代码1import urllib.reques
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/06/23/django项目/">Django 从0开始创建一个项目</a>
+      <a class="article-title" href="/2017/05/24/JavaScript对象/">JavaScript 对象</a>
     </h1>
   
 
@@ -225,8 +233,8 @@ ctrl+反引号打开控制台，在控制台中输入代码1import urllib.reques
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/06/23/django项目/" class="article-date">
-	  <time datetime="2017-06-23T09:22:31.043Z" itemprop="datePublished">六月 23, 2017</time>
+	Posted on <a href="/2017/05/24/JavaScript对象/" class="article-date">
+	  <time datetime="2017-05-24T15:02:02.091Z" itemprop="datePublished">五月 24, 2017</time>
 	</a>
 
     </div>
@@ -236,22 +244,16 @@ ctrl+反引号打开控制台，在控制台中输入代码1import urllib.reques
 
           
             <div class="entry-summary" style="margin-left:0;">
-            Django 从0开始创建一个项目创建Django工程及配置
-创建工程：django-admin starproject 项目名
+            JavaScript中除了null和undefined以外其他的数据类型都被定义成了对象，也可以用创建对象的方法定义变量，String、Math、Array、Date、RegExp都是JavaScript中重要的内置对象，在JavaScript程序大多数功能都是基于对象实现的。
 
-创建APP：Python3 manage.py startapp app名称
-
-可以创建多个app,每个app代表不同的业务，开发的时候互不影响
-URL通过路由分发实现跳转
-
-
-注册APP：在后面加上app的名称
-1234567891011INSTALLED_APPS = [    'django.contrib.admin',    'django.contrib.auth',    'django.contrib.contenttypes',    'django.contrib.sessions',    'django.contrib.messag...
+字符串对象
+字符串对象创建字符串创建(两种方式)       ① 变量 = “字符串”       ② 字串对象名称 = new String (字符串)12var str1="hello world";var str1= new String("hello word");
+上面创建的字符串是一个字符串对象1String &#123;0: &quot;h&quot;, 1: &quot;e&quot;, 2:...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/06/23/django项目/#more">阅读全文</a>
+            <a href="/2017/05/24/JavaScript对象/#more">阅读全文</a>
           </p>
         </div>
       
@@ -260,7 +262,7 @@ URL通过路由分发实现跳转
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
       
     </footer>
@@ -271,7 +273,7 @@ URL通过路由分发实现跳转
 <!-- Table of Contents -->
 
   
-    <article id="post-Django操作数据库"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-JavaScript基础"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -279,7 +281,7 @@ URL通过路由分发实现跳转
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/06/15/Django操作数据库/">Django操作数据库</a>
+      <a class="article-title" href="/2017/05/23/JavaScript基础/">JavaScript基础</a>
     </h1>
   
 
@@ -287,8 +289,8 @@ URL通过路由分发实现跳转
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/06/15/Django操作数据库/" class="article-date">
-	  <time datetime="2017-06-15T00:38:34.655Z" itemprop="datePublished">六月 15, 2017</time>
+	Posted on <a href="/2017/05/23/JavaScript基础/" class="article-date">
+	  <time datetime="2017-05-23T01:00:14.378Z" itemprop="datePublished">五月 23, 2017</time>
 	</a>
 
     </div>
@@ -298,25 +300,32 @@ URL通过路由分发实现跳转
 
           
             <div class="entry-summary" style="margin-left:0;">
-            首先是建立数据表一对一一对多多对多
-1  自己开发Web框架
-开发Web框架涉及的内容
+            历史 简介
+一个完整的 JavaScript 实现是由以下 3 个不同部分组成
 
-socket
-http协议
-  无状态是指Web浏览器和Web服务器之间不需要建立持久的连接，这意味着当一个客户端向服务器端发出请求，然后Web服务器返回响应(response)，连接就被关闭了
+核心（ECMAScript） 
+文档对象模型（DOM） Document object model (整合js，css，html)
+浏览器对象模型（BOM） Broswer object model（整合js和浏览器）
+Javascript 在开发中绝大多数情况是基于对象的.也是面向对象的.
 
-HTML知识
-数据库（pymysql,SQLAlchemery）
+所谓的基于对象就是直接使用，用new创建一个新的类
+ECMAScript 描述了以下内容：
 
-互联网的通信都是基于sock进行通信的HTTP:无状态、短连接TCP：不断开WEB应用（网站）：
-HTTP协议：
-1234567891011121314151617181920212223242526272829303132发送：				POST /index HTTP/1.1				Host: 127.0.0.1:8080				Co...
+语法 
+类型 
+语句 
+关键字 
+保留字 
+运算符 
+对象 (封装 继承 多态) 基于对象的语言.使用对象.
+JavaScript的引入方式
+
+JS的引入方式123456&#123;#1 直接编写#&#125;    &l...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/06/15/Django操作数据库/#more">阅读全文</a>
+            <a href="/2017/05/23/JavaScript基础/#more">阅读全文</a>
           </p>
         </div>
       
@@ -325,7 +334,7 @@ HTTP协议：
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
       
     </footer>
@@ -336,7 +345,7 @@ HTTP协议：
 <!-- Table of Contents -->
 
   
-    <article id="post-MySQL高级"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-html+css实现抽屉网站页面"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -344,7 +353,7 @@ HTTP协议：
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/06/12/MySQL高级/">MySQL高级</a>
+      <a class="article-title" href="/2017/05/19/html+css实现抽屉网站页面/">html+css实现抽屉网站页面</a>
     </h1>
   
 
@@ -352,8 +361,8 @@ HTTP协议：
     
     <div class="article-meta">
       
-	Posted on <a href="/2017/06/12/MySQL高级/" class="article-date">
-	  <time datetime="2017-06-12T08:02:20.394Z" itemprop="datePublished">六月 12, 2017</time>
+	Posted on <a href="/2017/05/19/html+css实现抽屉网站页面/" class="article-date">
+	  <time datetime="2017-05-19T14:02:01.075Z" itemprop="datePublished">五月 19, 2017</time>
 	</a>
 
     </div>
@@ -363,19 +372,14 @@ HTTP协议：
 
           
             <div class="entry-summary" style="margin-left:0;">
-            1 视图
-设置的别名create view as + SQL语句
-用别名代表临时表
-2 触发器对某张表增删改时，使用触发器自定义关联表，这个是数据级别的自动操作
-所谓的前后是用C语言写的装饰器，这中间先解析new  :insert 有old :delete 
-updata 都有
-3 函数内置函数：    聚合函数    select curdate();– 获得当前时间    字符串    时间类        格式化时间 DATE_FORMAT(时间，“%”)自定义函数:
-123456789101112131415	delimeter \\   -- 修改结束符create functionf1(	i1 int,    i1 int	)begin	declare num int de...
+            首先是布局
+布局图
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041051061071081091101111121131141151161171181191201211221231241251261271281291301311321331341351361371381391401411421431441451461471481...
           
 
         
           <p class="article-more-link">
-            <a href="/2017/06/12/MySQL高级/#more">阅读全文</a>
+            <a href="/2017/05/19/html+css实现抽屉网站页面/#more">阅读全文</a>
           </p>
         </div>
       
@@ -384,7 +388,7 @@ updata 都有
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
 
       
     </footer>
@@ -399,7 +403,7 @@ updata 都有
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/6/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/8/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/6/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/8/">下一页</a>
   </nav>
 
 </section>
@@ -589,7 +593,7 @@ updata 都有
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">46</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">44</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -609,7 +613,7 @@ updata 都有
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
