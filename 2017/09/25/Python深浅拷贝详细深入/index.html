@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python深浅拷贝详细深入 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Python" />
+  
+  
+  
+  
+  <meta name="description" content="赋值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python深浅拷贝详细深入">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/09/25/Python深浅拷贝详细深入/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="赋值">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201709/658994-20170919133332790-1166564160.png">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201709/658994-20170919134416509-679782868.png">
+<meta property="og:updated_time" content="2017-09-24T17:14:16.536Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python深浅拷贝详细深入">
+<meta name="twitter:description" content="赋值">
+<meta name="twitter:image" content="http://images2017.cnblogs.com/blog/658994/201709/658994-20170919133332790-1166564160.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-Python深浅拷贝详细深入" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python深浅拷贝详细深入
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/09/25/Python深浅拷贝详细深入/" class="article-date">
+	  <time datetime="2017-09-24T17:12:39.895Z" itemprop="datePublished">九月 25, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h2><a id="more"></a>
+<p>赋值是对内存地址的引用</p>
+<p><img src="http://images2017.cnblogs.com/blog/658994/201709/658994-20170919133332790-1166564160.png" alt=""></p>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><p>浅拷贝就是额外在内存中创建第一层数据，注意第一层的意思是最外层的数据，然后第一层的数据仍然指向原来内存中的数据</p>
+<p><img src="http://images2017.cnblogs.com/blog/658994/201709/658994-20170919134416509-679782868.png" alt=""></p>
+<p>浅拷贝是新建了子对象，仅仅拷贝了第一层的数据，但是内部的数据还是引用</p>
+<h3 id="最外层的数据"><a href="#最外层的数据" class="headerlink" title="最外层的数据"></a>最外层的数据</h3><p>改变原始数据的最外层，深浅拷贝都已经拷贝了这一层，不会首影响,只有原来的数据改变</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">i1=&#123;<span class="string">'k3'</span>: [<span class="string">'hijack'</span>, <span class="number">678</span>], <span class="string">'k2'</span>: <span class="number">123</span>, <span class="string">'k1'</span>: <span class="string">'hi'</span>&#125;</div><div class="line"><span class="keyword">import</span> copy</div><div class="line">i2=copy.copy(i1)</div><div class="line">i3=copy.deepcopy(i1)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>i1[<span class="string">"k4"</span>]=<span class="string">"add_data_test"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>i2</div><div class="line">&#123;<span class="string">'k3'</span>: [<span class="string">'hijack'</span>, <span class="number">678</span>], <span class="string">'k2'</span>: <span class="number">123</span>, <span class="string">'k1'</span>: <span class="string">'hi'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>i3</div><div class="line">&#123;<span class="string">'k3'</span>: [<span class="string">'hijack'</span>, <span class="number">678</span>], <span class="string">'k2'</span>: <span class="number">123</span>, <span class="string">'k1'</span>: <span class="string">'hi'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>i1</div><div class="line">&#123;<span class="string">'k3'</span>: [<span class="string">'hijack'</span>, <span class="number">678</span>], <span class="string">'k2'</span>: <span class="number">123</span>, <span class="string">'k1'</span>: <span class="string">'hi'</span>, <span class="string">'k4'</span>: <span class="string">'add_data_test'</span>&#125;</div></pre></td></tr></table></figure>
+<h3 id="改变内层数据"><a href="#改变内层数据" class="headerlink" title="改变内层数据"></a>改变内层数据</h3><p>浅拷贝仅仅没有涉及到内层的数据，会受影响</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>i1[<span class="string">"k3"</span>].append(<span class="string">"k3_test"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>i1</div><div class="line">&#123;<span class="string">'k3'</span>: [<span class="string">'hijack'</span>, <span class="number">678</span>, <span class="string">'k3_test'</span>], <span class="string">'k2'</span>: <span class="number">123</span>, <span class="string">'k1'</span>: <span class="string">'hi'</span>, <span class="string">'k4'</span>: <span class="string">'add_data_test'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>i2</div><div class="line">&#123;<span class="string">'k3'</span>: [<span class="string">'hijack'</span>, <span class="number">678</span>, <span class="string">'k3_test'</span>], <span class="string">'k2'</span>: <span class="number">123</span>, <span class="string">'k1'</span>: <span class="string">'hi'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>i3</div><div class="line">&#123;<span class="string">'k3'</span>: [<span class="string">'hijack'</span>, <span class="number">678</span>], <span class="string">'k2'</span>: <span class="number">123</span>, <span class="string">'k1'</span>: <span class="string">'hi'</span>&#125;</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>深拷贝是创建完全新的内存地址，全部的都是新的</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>copy.copy()得到的是新的对象，但是数据还是引用。要得到一个完全一样的对象，用copy.deepcopy()</p>
+<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> copy</div><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>,],<span class="number">6</span>]</div><div class="line">b = a <span class="comment"># b是对a的引用</span></div><div class="line">c = copy.copy(a) <span class="comment"># 浅拷贝</span></div><div class="line">d = copy.deepcopy(a) <span class="comment"># 深拷贝</span></div><div class="line">b.append(<span class="number">10</span>)</div><div class="line">c[<span class="number">3</span>].append(<span class="number">11</span>)</div><div class="line">d[<span class="number">3</span>].append(<span class="number">12</span>)</div><div class="line"></div><div class="line">print(a)  <span class="comment"># [1,2,3,[4,5,11],6,10]  # 改变了原始数据</span></div><div class="line">print(b)  <span class="comment"># [1,2,3,[4,5,11],6,10]  # 改变了原始数据</span></div><div class="line">print(c)  <span class="comment"># [1,2,3,[4,5,11],6,]    # 内层的数据是引用</span></div><div class="line">print(d)  <span class="comment"># [1,2,3,[4,5,12],6,]    # 新的对象</span></div></pre></td></tr></table></figure>
+<p><a href="https://www.52pojie.cn/thread-616677-1-1.html" target="_blank" rel="external">https://www.52pojie.cn/thread-616677-1-1.html</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/09/25/Python深浅拷贝详细深入/" data-title="Python深浅拷贝详细深入" data-url="https://github.com/ythzx/ythzx.github.io/2017/09/25/Python深浅拷贝详细深入/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/25/Python内存管理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Python内存管理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值"><span class="nav-number">1.</span> <span class="nav-text">赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浅拷贝"><span class="nav-number">2.</span> <span class="nav-text">浅拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最外层的数据"><span class="nav-number">2.1.</span> <span class="nav-text">最外层的数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变内层数据"><span class="nav-number">2.2.</span> <span class="nav-text">改变内层数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深拷贝"><span class="nav-number">3.</span> <span class="nav-text">深拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试题"><span class="nav-number">5.</span> <span class="nav-text">面试题</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
