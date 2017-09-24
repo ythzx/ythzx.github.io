@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python pep8代码规范 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Python" />
+  
+  
+  
+  
+  <meta name="description" content="介绍(Introduction)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python pep8代码规范">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/09/24/Python pep8代码规范/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="介绍(Introduction)">
+<meta property="og:updated_time" content="2017-09-24T15:35:29.971Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python pep8代码规范">
+<meta name="twitter:description" content="介绍(Introduction)">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-Python pep8代码规范" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python pep8代码规范
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/09/24/Python pep8代码规范/" class="article-date">
+	  <time datetime="2017-09-24T06:56:36.477Z" itemprop="datePublished">九月 24, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍-Introduction"><a href="#介绍-Introduction" class="headerlink" title="介绍(Introduction)"></a>介绍(Introduction)</h2><a id="more"></a>
+<p>官方文档：<a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8 – Style Guide for Python Code</a></p>
+<p>很多的项目都有自己的代码规范，如果和自己的项目冲突,优先按照自己项目的规范。</p>
+<p><strong>保持盲目的一致是头脑简单的表现(A Foolish Consistency Is The Hobgoblin Of Little Minds)</strong></p>
+<h2 id="代码风格-Code-lay-out"><a href="#代码风格-Code-lay-out" class="headerlink" title="代码风格(Code lay-out)"></a>代码风格(Code lay-out)</h2><h3 id="缩进-Indentation"><a href="#缩进-Indentation" class="headerlink" title="缩进(Indentation)"></a>缩进(Indentation)</h3><p><strong>采用4个空格进行缩进，对于续行来说，4空格的规则可以不遵守。</strong></p>
+<p>续行有两种方式：隐式续行，悬挂续行。隐式续行是垂直对齐于圆括号、方括号和花括号。<br>悬挂续行注意两点：第一行不包含参数，在续行中要再缩进一级</p>
+<p>YES<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 同开始分界符(左括号)对齐</span></div><div class="line">foo = long_function_name(var_one, var_two,</div><div class="line">                         var_three, var_four)  <span class="comment"># 和左侧的圆括号对齐</span></div><div class="line"><span class="comment"># 续行多缩进一级以同其他代码区别</span></div><div class="line"><span class="comment">#悬挂续行多缩进了一级，同时第一行没有参数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">long_function_name</span><span class="params">(</span></span></div><div class="line">        var_one, var_two, var_three,</div><div class="line">        var_four):</div><div class="line">    print(var_one)   </div><div class="line"></div><div class="line"><span class="comment"># 悬挂缩进需要多缩进一级</span></div><div class="line"><span class="comment"># 区别于下面的</span></div><div class="line">foo = long_function_name(</div><div class="line">    var_one, var_two,</div><div class="line">    var_three, var_four)</div></pre></td></tr></table></figure></p>
+<p>NO<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 采用垂直对齐时第一行不应该有参数</span></div><div class="line">foo = long_function_name(var_one, var_two,</div><div class="line">    var_three, var_four)</div><div class="line"></div><div class="line"><span class="comment"># 续行并没有被区分开，因此需要再缩进一级</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">long_function_name</span><span class="params">(</span></span></div><div class="line">    var_one, var_two, var_three,</div><div class="line">    var_four):</div><div class="line">    print(var_one)</div><div class="line"></div><div class="line">foo = long_function_name(</div><div class="line">var_one, var_two,</div><div class="line">var_three, var_four)</div></pre></td></tr></table></figure></p>
+<h4 id="多行if语句"><a href="#多行if语句" class="headerlink" title="多行if语句"></a>多行if语句</h4><p>如果if语句太长，需要用多行书写，2个字符(例如,if)加上一个空格和一个左括号刚好是4空格的缩进，但这对多行条件语句的续行是没用的。因为这会和if语句中嵌套的其他的缩进的语句产生视觉上的冲突。这份PEP中并没有做出明确的说明应该怎样来区分条件语句和if语句中所嵌套的语句。以下几种方法都是可行的，但不仅仅只限于这几种方法： </p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 不采用额外缩进</span></div><div class="line"><span class="keyword">if</span> (this_is_one_thing <span class="keyword">and</span></div><div class="line">    that_is_another_thing):</div><div class="line">    do_something()</div><div class="line"></div><div class="line"><span class="comment"># 增加一行注释，在编辑器中显示时能有所区分</span></div><div class="line"><span class="comment"># supporting syntax highlighting.</span></div><div class="line"><span class="keyword">if</span> (this_is_one_thing <span class="keyword">and</span></div><div class="line">    that_is_another_thing):</div><div class="line">    <span class="comment"># Since both conditions are true, we can frobnicate.</span></div><div class="line">    do_something()</div><div class="line"></div><div class="line"><span class="comment"># 在条件语句的续行增加一级缩进</span></div><div class="line"><span class="keyword">if</span> (this_is_one_thing</div><div class="line">        <span class="keyword">and</span> that_is_another_thing):</div><div class="line">    do_something()</div></pre></td></tr></table></figure>
+<h4 id="多行结束右圆-方-花括号可以单独一行书写，和上一行的缩进对齐："><a href="#多行结束右圆-方-花括号可以单独一行书写，和上一行的缩进对齐：" class="headerlink" title="多行结束右圆/方/花括号可以单独一行书写，和上一行的缩进对齐："></a>多行结束右圆/方/花括号可以单独一行书写，和上一行的缩进对齐：</h4><p>自己换行的时候，习惯于右括号在做左侧</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">my_list = [</div><div class="line">    <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>,</div><div class="line">    <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>,</div><div class="line">    ]</div><div class="line">result = some_function_that_takes_arguments(</div><div class="line">    <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>,</div><div class="line">    <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>,</div><div class="line">    )</div></pre></td></tr></table></figure>
+<p>也可以和多行开始的第一行的第一个字符对齐：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">my_list = [</div><div class="line">    <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>,</div><div class="line">    <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>,</div><div class="line">]</div><div class="line">result = some_function_that_takes_arguments(</div><div class="line">    <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>,</div><div class="line">    <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>,</div><div class="line">)</div></pre></td></tr></table></figure>
+<h3 id="Tab还是空格？-Tab-Or-Space"><a href="#Tab还是空格？-Tab-Or-Space" class="headerlink" title="Tab还是空格？(Tab Or Space?)"></a>Tab还是空格？(Tab Or Space?)</h3><p>推荐使用空格缩进，Python3不允许table和space混合使用</p>
+<h3 id="每行最大长度-Maximum-Line-Length"><a href="#每行最大长度-Maximum-Line-Length" class="headerlink" title="每行最大长度(Maximum Line Length)"></a>每行最大长度(Maximum Line Length)</h3><p>每行最多79个字符，</p>
+<p>对于连续大段的文字（比如文档字符串(docstring)或注释），其结构上的限制更少，这些行应该被限制在72个字符长度内。</p>
+<p>限制宽度是为了更好的进行代码review</p>
+<p>一些团队会强烈希望行长度比79个字符更长。当代码仅仅只由一个团队维护时，可以达成一致让行长度增加到80到100字符(实际上最大行长是99字符)，注释和文档字符串仍然是以72字符换行。</p>
+<p><strong>推荐使用圆括号、方括号、花括号的隐式续行，长行最好加上反斜杠区别续行</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'/path/to/some/file/you/want/to/read'</span>) <span class="keyword">as</span> file_1, \</div><div class="line">     open(<span class="string">'/path/to/some/file/being/written'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> file_2:</div><div class="line">    file_2.write(file_1.read())</div></pre></td></tr></table></figure>
+<h3 id="空行-Blank-Line"><a href="#空行-Blank-Line" class="headerlink" title="空行(Blank Line)"></a>空行(Blank Line)</h3><p>用两个空行隔离function和类</p>
+<p>使用1个空行来分隔类中的方法(method)定义。</p>
+<p>在函数内（尽量少地）使用空行使代码逻辑更清晰。</p>
+<h3 id="Imports"><a href="#Imports" class="headerlink" title="Imports"></a>Imports</h3><p>Imports应该分行写，而不是都写在一行</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 分开写</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="comment"># 不要像下面一样写在一行</span></div><div class="line"><span class="keyword">import</span> sys, os</div></pre></td></tr></table></figure>
+<p>这样写也是可以的：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> Popen, PIPE</div></pre></td></tr></table></figure></p>
+<p>Imports应该写在代码文件的开头，位于模块(module)注释和文档字符串之后，模块全局变量(globals)和常量(constants)声明之前。</p>
+<p>mports应该按照下面的顺序分组来写：</p>
+<ul>
+<li>标准库imports</li>
+<li>相关第三方imports</li>
+<li>本地应用/库的特定imports</li>
+</ul>
+<p>导入的时候推荐使用绝对路径导入，这样会更加清晰</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
+<li>常量：大写+下划线<br>USER_CONSTANT 对于不会发生改变的全局变量，使用大写加下划线</li>
+<li>私有变量 : 小写和一个前导下划线<br>_private_value</li>
+</ul>
+<h3 id="函数和方法"><a href="#函数和方法" class="headerlink" title="函数和方法"></a>函数和方法</h3><p>总体而言应该使用，小写和下划线<br>参考：</p>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>类使用驼峰式的命名,所有单词首字母大写其余字母小写<br>如：MimeTypes</p>
+<p>对于基类而言，可以使用一个 Base 或者 Abstract 前缀<br>BaseCookie<br>AbstractGroup</p>
+<p><a href="https://www.python.org/dev/peps/pep-0008/#introduction" target="_blank" rel="external">https://www.python.org/dev/peps/pep-0008/#introduction</a></p>
+<p><a href="http://nanshu.wang/post/2015-07-04/" target="_blank" rel="external">http://nanshu.wang/post/2015-07-04/</a></p>
+<p><a href="http://lmmsoft.github.io/blog/2012/01/23/python-%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BCpep8/" target="_blank" rel="external">http://lmmsoft.github.io/blog/2012/01/23/python-%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BCpep8/</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/09/24/Python pep8代码规范/" data-title="Python pep8代码规范" data-url="https://github.com/ythzx/ythzx.github.io/2017/09/24/Python pep8代码规范/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/23/Django+Nginx+uwsgi部署/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Django+Nginx+uwsgi部署</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍-Introduction"><span class="nav-number">1.</span> <span class="nav-text">介绍(Introduction)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码风格-Code-lay-out"><span class="nav-number">2.</span> <span class="nav-text">代码风格(Code lay-out)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缩进-Indentation"><span class="nav-number">2.1.</span> <span class="nav-text">缩进(Indentation)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多行if语句"><span class="nav-number">2.1.1.</span> <span class="nav-text">多行if语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多行结束右圆-方-花括号可以单独一行书写，和上一行的缩进对齐："><span class="nav-number">2.1.2.</span> <span class="nav-text">多行结束右圆/方/花括号可以单独一行书写，和上一行的缩进对齐：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tab还是空格？-Tab-Or-Space"><span class="nav-number">2.2.</span> <span class="nav-text">Tab还是空格？(Tab Or Space?)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#每行最大长度-Maximum-Line-Length"><span class="nav-number">2.3.</span> <span class="nav-text">每行最大长度(Maximum Line Length)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空行-Blank-Line"><span class="nav-number">2.4.</span> <span class="nav-text">空行(Blank Line)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Imports"><span class="nav-number">2.5.</span> <span class="nav-text">Imports</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数和方法"><span class="nav-number">3.1.</span> <span class="nav-text">函数和方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类"><span class="nav-number">3.2.</span> <span class="nav-text">类</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

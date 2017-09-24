@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Peter&#39;s Blog Center</title>
+  <title>tag: python | Peter&#39;s Blog Center</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -11,7 +11,7 @@
   
   <meta property="og:type" content="website">
 <meta property="og:title" content="Peter's Blog Center">
-<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/page/3/index.html">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/tags/Python/page/10/index.html">
 <meta property="og:site_name" content="Peter's Blog Center">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Peter's Blog Center">
@@ -96,304 +96,44 @@
         
           <section id="main">
   
-    <article id="post-CMDB 数据加密"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+  
+  
     
     
-      <header class="article-header">
-        
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <h1><a href="/archives/2017" class="archive-year">2017</a></h1>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2017/03/11/Python之禅/" class="archive-article-date">
+		  <time datetime="2017-03-11T09:32:33.065Z" itemprop="datePublished">3月 11, 2017</time>
+	  </a>
+      
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/08/06/CMDB 数据加密/">CMDB 数据加密</a>
+      <a class="archive-article-title" href="/2017/03/11/Python之禅/">Python之禅</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/08/06/CMDB 数据加密/" class="article-date">
-	  <time datetime="2017-08-06T03:38:40.031Z" itemprop="datePublished">八月 6, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            当CMDB运行在内网的时候，经过API验证的三关是没有问题的，但是如果运行在外网，有一个问题是，黑客截取后的访问速度比客户端快的时候还会造成数据泄露。为了解决这个问题，就要对数据进行加密
-RSA加密
-RSA是一种非对称加密，但是对加密的字符串的长度需要设置。但是字符串的长度是不固定的，而且这种方式的加密，加密的字符串越长，加密的时间越长。
-
-pip install rsa
-rsa.newkeys(256) 256代表加密的位数 256/8=32 就是32个字节，但是源码中32-11=21 也就是最多加密21个字节
-
-123456789101112131415161718192021222324252627282930313233343536373839import rsaimport ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/08/06/CMDB 数据加密/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
-
-      
-    </footer>
+    </header>
   </div>
-  
 </article>
-
-<!-- Table of Contents -->
-
   
-    <article id="post-CMDB之API验证"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/08/05/CMDB之API验证/">CMDB API验证</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/08/05/CMDB之API验证/" class="article-date">
-	  <time datetime="2017-08-05T11:21:11.184Z" itemprop="datePublished">八月 5, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            CMDB API验证为什么做API验证API验证是防止数据在传输的过程中,保证数据不被篡改
-如何设计的API验证灵感来源于Torando中加密Cookie的源码，主要是生成加密的随机字符串。
-MD5（key+time）|time 就是把秘钥和客户端的当前时间通过MD5进行加密，同时把当前时间发送到API
-然后自己在服务端设计了三关验证的设计：
-
-时间，
-算法规则，验证密文
-已访问的记录
-
-想API获取数据的时候，需要进行验证是否是合法的请求，为了达到这一目的，采用的基础方案是在装机的时候在服务器中和客户端中都保存一份秘钥，客户端想要获取数据的时候需要携带秘钥过来，GET请求的时候通过请求头发送。
-API验证之字符串+请求头
-客户端向API发送GET请求的时候可以在请求有中加数据，是字典...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/08/05/CMDB之API验证/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-使用Python生成ASCII字符画"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/08/04/使用Python生成ASCII字符画/">使用Python生成ASCII字符画</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/08/04/使用Python生成ASCII字符画/" class="article-date">
-	  <time datetime="2017-08-04T06:55:37.457Z" itemprop="datePublished">八月 4, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            使用Python生成ASCII字符画在很多的网站主页中或者程序的注释中会有一些好看的字符注释画。显得很牛逼的样子
-例如：
-知乎123456789101112131415161718192021         _____                    _____                    _____                    _____                   /\    \                  /\    \                  /\    \                  /\    \                 /::\____\                /::\    \          ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/08/04/使用Python生成ASCII字符画/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-CMDB数据库设计"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/07/31/CMDB数据库设计/">CMDB 数据库设计</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/07/31/CMDB数据库设计/" class="article-date">
-	  <time datetime="2017-07-31T11:22:01.646Z" itemprop="datePublished">七月 31, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            CMDB数据库设计具体的资产
-服务器表和网卡、内存、硬盘是一对多的关系，一个服务器可以有多个网卡、多个内存、多个硬盘
-hostname设置成unique=True，唯一
-硬盘有多个槽位，slot,最后入库的时候数据也是根据槽位进行的操作
-related_nameserver_obj = models.ForeignKey(&#39;Server&#39;, related_name=&#39;disk&#39;)通过Server的对象obj,通过related_name 就能反向关联到Disk表，这就是代替了小写的表明_set
-网络设备也是资产信息，所以需要资产信息表，和服务器表的关系是一对一关系
-IDC机房
-用户相关资产需要划分部门，实际上就是业务线表，部门表和资产表也是一对多的关系...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/07/31/CMDB数据库设计/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Hicharts图表的使用"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/07/30/Hicharts图表的使用/">Hicharts图表的使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/07/30/Hicharts图表的使用/" class="article-date">
-	  <time datetime="2017-07-30T07:49:20.813Z" itemprop="datePublished">七月 30, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            Hicharts图表的使用引用
-在4.0之后就不需要jQuery了,z这里是用ajax向后台发送数据引入js或者CDN，这里采用的是引入js的方式
-在Hicarts文件中的index中查看相应的图表，查看页面的代码
-12&lt;script src="/static/jquery-1.12.4.js"&gt;&lt;/script&gt;&lt;script src="/static/plugins/Highcharts-5.0.12/code/highcharts.js"&gt;&lt;/script&gt;
-饼图饼图最终就是在container中显示
-加载完后通过ajax发送POST请求，后台返回数据，ajax中发送数据要携带csrf_token,在这里要注意的是是字符串形式
-12...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/07/30/Hicharts图表的使用/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
+    </div></section>
   
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/tags/Python/page/9/">上一页</a><a class="page-number" href="/tags/Python/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Python/page/8/">8</a><a class="page-number" href="/tags/Python/page/9/">9</a><span class="page-number current">10</span>
   </nav>
 
 </section>
