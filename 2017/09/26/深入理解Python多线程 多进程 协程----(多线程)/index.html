@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>深入理解python多线程 多进程 协程----（多线程） | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Python" />
+  
+  
+  
+  
+  <meta name="description" content="1 什么是线程在操作系统中，每个进程都有一个地址空间，而且默认有一个控制线程
+进程是资源单位，线程是执行单位
+进程只是用来把资源集中到一起，线程是CPU上的执行单位
+2 线程的开销小如果我们的软件是一个工厂，该工厂有多条流水线，流水线工作需要电源，电源只有一个即cpu（单核cpu）
+一个车间就是一个进程，一个车间至少一条流水线（一个进程至少一个线程）
+创建一个进程，就是创建一个车间（申请空间，在该">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解Python多线程 多进程 协程----（多线程）">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="1 什么是线程在操作系统中，每个进程都有一个地址空间，而且默认有一个控制线程
+进程是资源单位，线程是执行单位
+进程只是用来把资源集中到一起，线程是CPU上的执行单位
+2 线程的开销小如果我们的软件是一个工厂，该工厂有多条流水线，流水线工作需要电源，电源只有一个即cpu（单核cpu）
+一个车间就是一个进程，一个车间至少一条流水线（一个进程至少一个线程）
+创建一个进程，就是创建一个车间（申请空间，在该">
+<meta property="og:updated_time" content="2017-10-10T12:06:45.267Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解Python多线程 多进程 协程----（多线程）">
+<meta name="twitter:description" content="1 什么是线程在操作系统中，每个进程都有一个地址空间，而且默认有一个控制线程
+进程是资源单位，线程是执行单位
+进程只是用来把资源集中到一起，线程是CPU上的执行单位
+2 线程的开销小如果我们的软件是一个工厂，该工厂有多条流水线，流水线工作需要电源，电源只有一个即cpu（单核cpu）
+一个车间就是一个进程，一个车间至少一条流水线（一个进程至少一个线程）
+创建一个进程，就是创建一个车间（申请空间，在该">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-深入理解Python多线程 多进程 协程----(多线程)" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      深入理解Python多线程 多进程 协程----（多线程）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/" class="article-date">
+	  <time datetime="2017-09-26T15:57:53.487Z" itemprop="datePublished">九月 26, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-什么是线程"><a href="#1-什么是线程" class="headerlink" title="1 什么是线程"></a>1 什么是线程</h2><p>在操作系统中，每个进程都有一个地址空间，而且默认有一个控制线程</p>
+<p>进程是资源单位，线程是执行单位</p>
+<p>进程只是用来把资源集中到一起，线程是CPU上的执行单位</p>
+<h2 id="2-线程的开销小"><a href="#2-线程的开销小" class="headerlink" title="2 线程的开销小"></a>2 线程的开销小</h2><p>如果我们的软件是一个工厂，该工厂有多条流水线，流水线工作需要电源，电源只有一个即cpu（单核cpu）</p>
+<p>一个车间就是一个进程，一个车间至少一条流水线（一个进程至少一个线程）</p>
+<p>创建一个进程，就是创建一个车间（申请空间，在该空间内建至少一条流水线）</p>
+<p>而建线程，就只是在一个车间内造一条流水线，无需申请空间，所以创建开销小</p>
+<p>进程之间是竞争关系，线程之间是协作关系：</p>
+<p><a href="http://www.cnblogs.com/linhaifeng/articles/7430082.html" target="_blank" rel="external">http://www.cnblogs.com/linhaifeng/articles/7430082.html</a></p>
+<h2 id="3-为什么用多线程"><a href="#3-为什么用多线程" class="headerlink" title="3 为什么用多线程"></a>3 为什么用多线程</h2><ul>
+<li>多线程共享一个进程的地址空间</li>
+<li>线程比进程更轻量级 更容易创建 可撤销，创建线程比创建进程快10-100倍，在有大量线程需要动态和快速修改时，这一特性很有用</li>
+<li>在CPU系统中，为了利用多核，可以开启多个线程，比开进程开销的小</li>
+</ul>
+<p>不同进程之间的关系是竞争关系，抢占CPU，同一进程内的线程是合作关系，一个线程可以访问另一个线程的内存。</p>
+<p>多线程的设计时有难度的。<br>　1. 父进程有多个线程，那么开启的子线程是否需要同样多的线程</p>
+<p>　　　如果是，那么附近中某个线程被阻塞，那么copy到子进程后，copy版的线程也要被阻塞吗，想一想nginx的多线程模式接收用户连接。</p>
+<p>　　2. 在同一个进程中，如果一个线程关闭了问题，而另外一个线程正准备往该文件内写内容呢？</p>
+<pre><code>如果一个线程注意到没有内存了，并开始分配更多的内存，在工作一半时，发生线程切换，新的线程也发现内存不够用了，又开始分配更多的内存，这样内存就被分配了多次，这些问题都是多线程编程的典型问题，需要仔细思考和设计。
+</code></pre><h2 id="4-threading模块"><a href="#4-threading模块" class="headerlink" title="4 threading模块"></a>4 threading模块</h2><p>multiprocess模块的完全模仿了threading模块的接口，二者在使用层面，有很大的相似性</p>
+<h3 id="4-1-开启线程的两种昂方式"><a href="#4-1-开启线程的两种昂方式" class="headerlink" title="4.1 开启线程的两种昂方式"></a>4.1 开启线程的两种昂方式</h3><p>方式一：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(name)</span>:</span></div><div class="line">    time.sleep(<span class="number">2</span>)</div><div class="line">    print(<span class="string">"%s say hello"</span>%name)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    t = Thread(target=foo,args=(<span class="string">'aaa'</span>,))</div><div class="line">    t.start()</div><div class="line">    print(<span class="string">'主线程'</span>)</div></pre></td></tr></table></figure></p>
+<p>方式二：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sayhi</span><span class="params">(Thread)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></div><div class="line">        super().__init__()</div><div class="line">        self.name = name</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        time.sleep(<span class="number">2</span>)</div><div class="line">        print(<span class="string">"%s say hello"</span> % self.name)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    t = Sayhi(<span class="string">'bbb'</span>)</div><div class="line">    t.start()</div><div class="line">    print(<span class="string">'主线程'</span>)</div></pre></td></tr></table></figure>
+<h2 id="5-在一个进程下开启多个线程与在一个进程下开启多个子进程的区别"><a href="#5-在一个进程下开启多个线程与在一个进程下开启多个子进程的区别" class="headerlink" title="5  在一个进程下开启多个线程与在一个进程下开启多个子进程的区别"></a>5  在一个进程下开启多个线程与在一个进程下开启多个子进程的区别</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'hello'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="comment"># 在主进程下开启线程</span></div><div class="line">    t = Thread(target=work) <span class="comment"># 会先执行work 然后打印</span></div><div class="line">    t.start()</div><div class="line">    print(<span class="string">'主线程/主进程'</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 在主进程下开启子进程</span></div><div class="line">    p = Process(target=work)</div><div class="line">    p.start()</div><div class="line">    print(<span class="string">'主线程/主进程'</span>) <span class="comment"># 先打印</span></div></pre></td></tr></table></figure>
+<p>结果：<br>hello<br>主线程/主进程<br>主线程/主进程<br>hello</p>
+<p>参考：<br><a href="http://www.cnblogs.com/linhaifeng/articles/7430082.html" target="_blank" rel="external">http://www.cnblogs.com/linhaifeng/articles/7430082.html</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/" data-title="深入理解Python多线程 多进程 协程----（多线程）" data-url="https://github.com/ythzx/ythzx.github.io/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          深入理解Python多线程 多进程 协程----（多进程）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/25/Python深浅拷贝详细深入/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Python深浅拷贝详细深入</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是线程"><span class="nav-number">1.</span> <span class="nav-text">1 什么是线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-线程的开销小"><span class="nav-number">2.</span> <span class="nav-text">2 线程的开销小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-为什么用多线程"><span class="nav-number">3.</span> <span class="nav-text">3 为什么用多线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-threading模块"><span class="nav-number">4.</span> <span class="nav-text">4 threading模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-开启线程的两种昂方式"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 开启线程的两种昂方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-在一个进程下开启多个线程与在一个进程下开启多个子进程的区别"><span class="nav-number">5.</span> <span class="nav-text">5  在一个进程下开启多个线程与在一个进程下开启多个子进程的区别</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

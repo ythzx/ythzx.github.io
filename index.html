@@ -213,6 +213,73 @@ start.py
 <!-- Table of Contents -->
 
   
+    <article id="post-深入理解Python多线程 多进程 协程----(多线程)"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/">深入理解Python多线程 多进程 协程----（多线程）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/" class="article-date">
+	  <time datetime="2017-09-26T15:57:53.487Z" itemprop="datePublished">九月 26, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-什么是线程"><a href="#1-什么是线程" class="headerlink" title="1 什么是线程"></a>1 什么是线程</h2><p>在操作系统中，每个进程都有一个地址空间，而且默认有一个控制线程</p>
+<p>进程是资源单位，线程是执行单位</p>
+<p>进程只是用来把资源集中到一起，线程是CPU上的执行单位</p>
+<h2 id="2-线程的开销小"><a href="#2-线程的开销小" class="headerlink" title="2 线程的开销小"></a>2 线程的开销小</h2><p>如果我们的软件是一个工厂，该工厂有多条流水线，流水线工作需要电源，电源只有一个即cpu（单核cpu）</p>
+<p>一个车间就是一个进程，一个车间至少一条流水线（一个进程至少一个线程）</p>
+<p>创建一个进程，就是创建一个车间（申请空间，在该空间内建至少一条流水线）</p>
+<p>而建线程，就只是在一个车间内造一条流水线，无需申请空间，所以创建开销小</p>
+<p>进程之间是竞争关系，线程之间是协作关系：</p>
+<p><a href="http://www.cnblogs.com/linhaifeng/articles/7430082.html" target="_blank" rel="external">http://www.cnblogs.com/linhaifeng/articles/7430082.html</a></p>
+<h2 id="3-为什么用多线程"><a href="#3-为什么用多线程" class="headerlink" title="3 为什么用多线程"></a>3 为什么用多线程</h2><ul>
+<li>多线程共享一个进程的地址空间</li>
+<li>线程比进程更轻量级 更容易创建 可撤销，创建线程比创建进程快10-100倍，在有大量线程需要动态和快速修改时，这一特性很有用</li>
+<li>在CPU系统中，为了利用多核，可以开启多个线程，比开进程开销的小</li>
+</ul>
+<p>不同进程之间的关系是竞争关系，抢占CPU，同一进程内的线程是合作关系，一个线程可以访问另一个线程的内存。</p>
+<p>多线程的设计时有难度的。<br>　1. 父进程有多个线程，那么开启的子线程是否需要同样多的线程</p>
+<p>　　　如果是，那么附近中某个线程被阻塞，那么copy到子进程后，copy版的线程也要被阻塞吗，想一想nginx的多线程模式接收用户连接。</p>
+<p>　　2. 在同一个进程中，如果一个线程关闭了问题，而另外一个线程正准备往该文件内写内容呢？</p>
+<pre><code>如果一个线程注意到没有内存了，并开始分配更多的内存，在工作一半时，发生线程切换，新的线程也发现内存不够用了，又开始分配更多的内存，这样内存就被分配了多次，这些问题都是多线程编程的典型问题，需要仔细思考和设计。
+</code></pre><h2 id="4-threading模块"><a href="#4-threading模块" class="headerlink" title="4 threading模块"></a>4 threading模块</h2><p>multiprocess模块的完全模仿了threading模块的接口，二者在使用层面，有很大的相似性</p>
+<h3 id="4-1-开启线程的两种昂方式"><a href="#4-1-开启线程的两种昂方式" class="headerlink" title="4.1 开启线程的两种昂方式"></a>4.1 开启线程的两种昂方式</h3><p>方式一：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(name)</span>:</span></div><div class="line">    time.sleep(<span class="number">2</span>)</div><div class="line">    print(<span class="string">"%s say hello"</span>%name)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    t = Thread(target=foo,args=(<span class="string">'aaa'</span>,))</div><div class="line">    t.start()</div><div class="line">    print(<span class="string">'主线程'</span>)</div></pre></td></tr></table></figure></p>
+<p>方式二：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sayhi</span><span class="params">(Thread)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></div><div class="line">        super().__init__()</div><div class="line">        self.name = name</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        time.sleep(<span class="number">2</span>)</div><div class="line">        print(<span class="string">"%s say hello"</span> % self.name)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    t = Sayhi(<span class="string">'bbb'</span>)</div><div class="line">    t.start()</div><div class="line">    print(<span class="string">'主线程'</span>)</div></pre></td></tr></table></figure>
+<h2 id="5-在一个进程下开启多个线程与在一个进程下开启多个子进程的区别"><a href="#5-在一个进程下开启多个线程与在一个进程下开启多个子进程的区别" class="headerlink" title="5  在一个进程下开启多个线程与在一个进程下开启多个子进程的区别"></a>5  在一个进程下开启多个线程与在一个进程下开启多个子进程的区别</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'hello'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="comment"># 在主进程下开启线程</span></div><div class="line">    t = Thread(target=work) <span class="comment"># 会先执行work 然后打印</span></div><div class="line">    t.start()</div><div class="line">    print(<span class="string">'主线程/主进程'</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 在主进程下开启子进程</span></div><div class="line">    p = Process(target=work)</div><div class="line">    p.start()</div><div class="line">    print(<span class="string">'主线程/主进程'</span>) <span class="comment"># 先打印</span></div></pre></td></tr></table></figure>
+<p>结果：<br>hello<br>主线程/主进程<br>主线程/主进程<br>hello</p>
+<p>参考：<br><a href="http://www.cnblogs.com/linhaifeng/articles/7430082.html" target="_blank" rel="external">http://www.cnblogs.com/linhaifeng/articles/7430082.html</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-Python深浅拷贝详细深入"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -308,64 +375,6 @@ start.py
         
           <p class="article-more-link">
             <a href="/2017/09/25/Python内存管理/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-Python pep8代码规范"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/24/Python pep8代码规范/">Python pep8代码规范</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/09/24/Python pep8代码规范/" class="article-date">
-	  <time datetime="2017-09-24T06:56:36.477Z" itemprop="datePublished">九月 24, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            介绍(Introduction)
-官方文档：PEP 8 – Style Guide for Python Code
-很多的项目都有自己的代码规范，如果和自己的项目冲突,优先按照自己项目的规范。
-保持盲目的一致是头脑简单的表现(A Foolish Consistency Is The Hobgoblin Of Little Minds)
-代码风格(Code lay-out)缩进(Indentation)采用4个空格进行缩进，对于续行来说，4空格的规则可以不遵守。
-续行有两种方式：隐式续行，悬挂续行。隐式续行是垂直对齐于圆括号、方括号和花括号。悬挂续行注意两点：第一行不包含参数，在续行中要再缩进一级
-YES123456789101112131415# 同开始分界符(左括号)对齐foo = ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/09/24/Python pep8代码规范/#more">阅读全文</a>
           </p>
         </div>
       
@@ -525,6 +534,18 @@ YES123456789101112131415# 同开始分界符(左括号)对齐foo = ...
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/">深入理解Python多线程 多进程 协程----（多线程）</a></h6>
+              <span>九月 26, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/2017/09/25/Python深浅拷贝详细深入/">Python深浅拷贝详细深入</a></h6>
               <span>九月 25, 2017</span>
             </div>
@@ -555,18 +576,6 @@ YES123456789101112131415# 同开始分界符(左括号)对齐foo = ...
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2017/09/23/名称空间 作用域 闭包/">名称空间 作用域 闭包</a></h6>
-              <span>九月 23, 2017</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -579,7 +588,7 @@ YES123456789101112131415# 同开始分界符(左括号)对齐foo = ...
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">47</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">48</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -599,7 +608,7 @@ YES123456789101112131415# 同开始分界符(左括号)对齐foo = ...
     <h3 class="widget-title">归档</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">18</span></li></ul>
     </div>
   </div>
 
