@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>agent的配置文件 | Peter&#39;s Blog Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Django" />
+  
+  
+  
+  
+  <meta name="description" content="软件通常有自己默认的配置文件，还有用户自定义的配置文件。下面是参考Django对配置文件的管理方式在Agent中实现的
+from django.conf import settings # 整合了默认的配置文件和用户自定义的配置文件from django.conf import global_settings # Django内部默认的配置文件
+
+start.py">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agent的配置文件">
+<meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2017/10/11/Agent的配置文件/index.html">
+<meta property="og:site_name" content="Peter's Blog Center">
+<meta property="og:description" content="软件通常有自己默认的配置文件，还有用户自定义的配置文件。下面是参考Django对配置文件的管理方式在Agent中实现的
+from django.conf import settings # 整合了默认的配置文件和用户自定义的配置文件from django.conf import global_settings # Django内部默认的配置文件
+
+start.py">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/658994/201710/658994-20171011145550480-1097543269.jpg">
+<meta property="og:updated_time" content="2017-10-11T06:58:57.976Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Agent的配置文件">
+<meta name="twitter:description" content="软件通常有自己默认的配置文件，还有用户自定义的配置文件。下面是参考Django对配置文件的管理方式在Agent中实现的
+from django.conf import settings # 整合了默认的配置文件和用户自定义的配置文件from django.conf import global_settings # Django内部默认的配置文件
+
+start.py">
+<meta name="twitter:image" content="http://images2017.cnblogs.com/blog/658994/201710/658994-20171011145550480-1097543269.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Peter&#39;s Blog Center" rel="home"> Peter&#39;s Blog Center </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container" style='background: rgba(255,255,255,0.5);'>
+    <div id="wrap" style='background: rgba(255,255,255,0.5);'>
+            
+      <div id="content" class="outer" style='background: rgba(255,255,255,0.5);'>
+        
+          <section id="main" style="float:none;"><article id="post-Agent的配置文件" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Agent的配置文件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/10/11/Agent的配置文件/" class="article-date">
+	  <time datetime="2017-10-11T05:37:17.399Z" itemprop="datePublished">十月 11, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>软件通常有自己默认的配置文件，还有用户自定义的配置文件。下面是参考Django对配置文件的管理方式在Agent中实现的</p>
+<p>from django.conf import settings # 整合了默认的配置文件和用户自定义的配置文件<br>from django.conf import global_settings # Django内部默认的配置文件</p>
+<p><img src="http://images2017.cnblogs.com/blog/658994/201710/658994-20171011145550480-1097543269.jpg" alt=""></p>
+<h3 id="start-py"><a href="#start-py" class="headerlink" title="start.py"></a>start.py</h3><a id="more"></a>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line">启动文件，文件开始执行后把config.settings 写入系统环境变量，(参考Django的manage.py).</div><div class="line">系统的环境变量是字典的形式</div><div class="line">之后从系统环境变量中通过反射的方式导入模块</div><div class="line">"""</div><div class="line"></div><div class="line">os.environ[<span class="string">'USER_SETTINGS'</span>] = <span class="string">"config.settings"</span>  <span class="comment"># 把用户自定义的配置文件的路径以字符串的方式添加到系统环境变量中</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> lib.conf.config <span class="keyword">import</span> settings</div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line">下面是测试：</div><div class="line">通过settings就可以点出USER PWD EMAIL</div><div class="line">"""</div><div class="line">print(settings.USER)</div><div class="line">print(settings.PWD)</div><div class="line">print(settings.EMAIL)</div></pre></td></tr></table></figure>
+<h3 id="lib-conf-config-py"><a href="#lib-conf-config-py" class="headerlink" title="lib/conf/config.py"></a>lib/conf/config.py</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> importlib</div><div class="line"><span class="keyword">from</span> lib.conf <span class="keyword">import</span> global_settings</div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line">该文件用于导入系统配置文件和用户自定义文件，</div><div class="line">"""</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Settings</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        先加载系统默认的配置文件，然后加载用户自定义的配置文件，</div><div class="line">        如果用户自定义的配置文件中和系统配置文件重复，会覆盖系统的配置文件</div><div class="line">        """</div><div class="line"></div><div class="line">        <span class="comment"># ###### 加载系统默认的配置文件 ######</span></div><div class="line"></div><div class="line">        <span class="string">"""</span></div><div class="line">        通过dir获取配置文件中的所有内容，把大写的配置文件找出来</div><div class="line">        通过反射的方式把对应配置文件的值取出来</div><div class="line">        最后把配置文件中的内容通过setattr 设置到self中</div><div class="line">        """</div><div class="line">        <span class="keyword">for</span> name <span class="keyword">in</span> dir(global_settings):</div><div class="line">            <span class="keyword">if</span> name.isupper():</div><div class="line">                value = getattr(global_settings, name)</div><div class="line">                setattr(self, name, value)</div><div class="line"></div><div class="line">        <span class="comment"># ###### 加载用户自定义的配置文件 ######</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        从系统的环境变量中，通过字符串导入模块</div><div class="line">        """</div><div class="line">        settings_module = os.environ.get(<span class="string">'USER_SETTINGS'</span>)</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> settings_module:</div><div class="line">            <span class="keyword">return</span></div><div class="line">        m = importlib.import_module(settings_module)  <span class="comment"># 通过字符串的方式导入模块</span></div><div class="line">        <span class="keyword">for</span> name <span class="keyword">in</span> dir(m):</div><div class="line">            value = getattr(m, name)</div><div class="line">            setattr(self, name, value)</div><div class="line"></div><div class="line"></div><div class="line">settings = Settings()  <span class="comment"># 实例化的对象setting 中包含了系统默认配置和用户自定义的配置</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/2017/10/11/Agent的配置文件/" data-title="Agent的配置文件" data-url="https://github.com/ythzx/ythzx.github.io/2017/10/11/Agent的配置文件/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"ythzx"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">深入理解Python多线程 多进程 协程----（多进程）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#start-py"><span class="nav-number">1.</span> <span class="nav-text">start.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lib-conf-config-py"><span class="nav-number">2.</span> <span class="nav-text">lib/conf/config.py</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Peter&#39;s Blog Center All Rights Reserved.
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?93b40df12317201527431272f20ac28a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+  <script type="text/javascript" color="33,33,33" zindex="-1" opacity="1" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
