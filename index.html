@@ -152,6 +152,67 @@ start.py
 <!-- Table of Contents -->
 
   
+    <article id="post-深入理解Python多线程 多进程 协程----(多进程)"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/">深入理解Python多线程 多进程 协程----（多进程）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/" class="article-date">
+	  <time datetime="2017-09-26T15:57:53.487Z" itemprop="datePublished">九月 26, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            1 什么是进程
+ 进程：正在进行的一个过程或者说一个任务。而负责执行任务则是cpu
+1.1 并发与并行无论是并行还是并发，在用户看来都是’同时’运行的，不管是进程还是线程，都只是一个任务而已，真是干活的是cpu，cpu来做这些任务，而一个cpu同一时刻只能执行一个任务
+
+并发：是伪并行，即看起来是同时运行。单个cpu+多道技术就可以实现并发，（并行也属于并发）
+
+并行：同时运行，只有具备多个cpu才能实现并行
+
+
+单核下，可以利用多道技术，多个核，每个核也都可以利用多道技术（多道技术是针对单核而言的）有四个核，六个任务，这样同一时间有四个任务被执行，假设分别被分配给了cpu1，cpu2，cpu3，cpu4，一旦任务1遇到I/O就被迫中断执行，此时任务5就拿到cpu1的时间片去执行，这就...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-深入理解Python多线程 多进程 协程----(多线程)"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -196,67 +257,6 @@ http://www.cnblogs.com/linhaifeng/articles/7430082.html
         
           <p class="article-more-link">
             <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-深入理解Python多线程 多进程 协程----(多进程)"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/">深入理解Python多线程 多进程 协程----（多进程）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/" class="article-date">
-	  <time datetime="2017-09-26T15:57:53.487Z" itemprop="datePublished">九月 26, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1 什么是进程
- 进程：正在进行的一个过程或者说一个任务。而负责执行任务则是cpu
-1.1 并发与并行无论是并行还是并发，在用户看来都是’同时’运行的，不管是进程还是线程，都只是一个任务而已，真是干活的是cpu，cpu来做这些任务，而一个cpu同一时刻只能执行一个任务
-
-并发：是伪并行，即看起来是同时运行。单个cpu+多道技术就可以实现并发，（并行也属于并发）
-
-并行：同时运行，只有具备多个cpu才能实现并行
-
-
-单核下，可以利用多道技术，多个核，每个核也都可以利用多道技术（多道技术是针对单核而言的）有四个核，六个任务，这样同一时间有四个任务被执行，假设分别被分配给了cpu1，cpu2，cpu3，cpu4，一旦任务1遇到I/O就被迫中断执行，此时任务5就拿到cpu1的时间片去执行，这就...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/#more">阅读全文</a>
           </p>
         </div>
       
@@ -518,7 +518,7 @@ http://www.cnblogs.com/linhaifeng/articles/7430082.html
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/">深入理解Python多线程 多进程 协程----（多线程）</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/">深入理解Python多线程 多进程 协程----（多进程）</a></h6>
               <span>九月 26, 2017</span>
             </div>
 
@@ -530,7 +530,7 @@ http://www.cnblogs.com/linhaifeng/articles/7430082.html
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/">深入理解Python多线程 多进程 协程----（多进程）</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/">深入理解Python多线程 多进程 协程----（多线程）</a></h6>
               <span>九月 26, 2017</span>
             </div>
 
