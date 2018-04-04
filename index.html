@@ -119,14 +119,26 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Python 本身就是面向对象的，其中最重要的要素之一是封装，所谓封装就是类中的属性和方法，分为公有和私有，公有可以被外界访问，私有不能被外界访问，这就是封装职工最关键的概念————访问控制。</p>
-<p>访问控制有三个级别：公有、私有、受保护</p>
-<ul>
-<li>私有：只有类自身可以访问</li>
-<li>受保护：只有类自身和子类可以访问</li>
-<li>公有：任何类都可以访问</li>
-</ul>
-<h2 id="私有-Private"><a href="#私有-Private" class="headerlink" title="私有(Private)"></a>私有(Private)</h2><h2 id="受保护-Procted"><a href="#受保护-Procted" class="headerlink" title="受保护(Procted)"></a>受保护(Procted)</h2><h2 id="公有-Pubulic"><a href="#公有-Pubulic" class="headerlink" title="公有(Pubulic)"></a>公有(Pubulic)</h2>
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            Python 本身就是面向对象的，其中最重要的要素之一是封装，所谓封装就是类中的属性和方法，分为公有和私有，公有可以被外界访问，私有不能被外界访问，这就是封装职工最关键的概念————访问控制。
+访问控制有三个级别：公有、私有、受保护
+
+私有：只有类自身可以访问
+受保护：只有类自身和子类可以访问
+公有：任何类都可以访问
+
+私有(Private)
+受保护(Procted)公有(Pubulic)
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2018/04/04/python面向对象的访问控制/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -167,45 +179,21 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="在Windows上安装Docker客户端"><a href="#在Windows上安装Docker客户端" class="headerlink" title="在Windows上安装Docker客户端"></a>在Windows上安装Docker客户端</h2><p>1、下载Docker TollBox:<br><a href="https://docs.docker.com/toolbox/toolbox_install_windows/" target="_blank" rel="external">https://docs.docker.com/toolbox/toolbox_install_windows/</a></p>
-<p>2、安装的exe文件<br>在安装的过程中选中相应的勾选项，基本上是全部选择。<br>docker在安装的过程中会自动安装Virtual Box，自己测试的时候安装的是5.2.4</p>
-<p>3、自己在安装的的过程没有选择安装 git 还是用的自己的，之后用Docker TollBox.exe中的单独安装了一次，但是在点击Docker Quickstart Terminal 的时候并没有找到相应的路径，<br>自己设置路径后，选择的还是gitbash.cmd,直接祖安泽bash会闪退。<br>通过观察别人的启动界面。是执行start.sh,自己输入后执行成功。</p>
-<p>4、进入bash后会自动寻找最新的boot2docker.iso，但是下载速度很慢，复制下载路径用IDM全速下载后存放到指定的路径<br>如下图：</p>
-<p><img src="http://images2017.cnblogs.com/blog/658994/201801/658994-20180126103332334-1056149851.png" alt=""></p>
-<p><img src="http://images2017.cnblogs.com/blog/658994/201801/658994-20180126103407865-1490803188.png" alt=""></p>
-<h3 id="使用ssh-连接docker"><a href="#使用ssh-连接docker" class="headerlink" title="使用ssh 连接docker"></a>使用ssh 连接docker</h3><p>IP：102.168.99.100<br>username: docker<br>password: tcuser   </p>
-<h3 id="使用docker加速器"><a href="#使用docker加速器" class="headerlink" title="使用docker加速器"></a>使用docker加速器</h3><p>使用的是Docker Toolbox，使用以下配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker-machine ssh default</div><div class="line">sudo sed -i &quot;s|EXTRA_ARGS=&apos;|EXTRA_ARGS=&apos;--registry-mirror=加速地址 |g&quot; /var/lib/boot2docker/profile</div><div class="line">exit</div><div class="line">docker-machine restart default</div></pre></td></tr></table></figure></p>
-<p>其中的地址是通过注册后获得的，地址：<br><a href="https://www.daocloud.io/mirror#accelerator-doc" target="_blank" rel="external">https://www.daocloud.io/mirror#accelerator-doc</a></p>
-<h3 id="Docker中使用centos-7"><a href="#Docker中使用centos-7" class="headerlink" title="Docker中使用centos 7"></a>Docker中使用centos 7</h3><p><code>docker pull daocloud.io/centos:7</code></p>
-<p>查看下载的镜像：docker images<br><img src="http://images2017.cnblogs.com/blog/658994/201801/658994-20180126141511100-660755567.png" alt=""></p>
-<p>使用 <code>docker run -ti image_name /bin/bash</code> 进入相应的系统，image_name用前4位即可</p>
-<p>但是报错：<br>错误如下:<br><img src="http://images2017.cnblogs.com/blog/658994/201801/658994-20180126150546803-77345060.png" alt=""></p>
-<p>参考资料得到 需要在前面加上winpty,依旧报错，先注册的hub.docker试试 <code>docker login</code> </p>
-<p>因为自己在windows系统运行的，在进入镜像的时候是<br><code>winpty docker run -ti xxxx bash</code></p>
-<p>-t 是启动终端<br>-i是允许进行交互</p>
-<p><img src="http://images2017.cnblogs.com/blog/658994/201801/658994-20180126152534584-1586119171.png" alt=""></p>
-<p>进入系统并查看系统的版本<br><img src="http://images2017.cnblogs.com/blog/658994/201801/658994-20180126152945084-141721891.png" alt=""></p>
-<h2 id="Docker安装Python"><a href="#Docker安装Python" class="headerlink" title="Docker安装Python"></a>Docker安装Python</h2><p><a href="http://www.runoob.com/docker/docker-install-python.html" target="_blank" rel="external">http://www.runoob.com/docker/docker-install-python.html</a></p>
-<p>使用源码的方式安装Python3，下载源码</p>
-<p>Centos中无法使用make，make install，命令 make: command not found</p>
-<p>make是gcc的编译器，VPS买来必定要安装<br>安装：<br>yum -y install gcc automake autoconf libtool make<br>安装g++:<br>yum install gcc gcc-c++</p>
-<p>can’t decompress data; zlib not available</p>
-<p>解决方法：<br>1、安装依赖zlib、zlib-devel<br>2、重新编译安装Python</p>
-<h3 id="查看创建的Docker镜像并进行打包操作"><a href="#查看创建的Docker镜像并进行打包操作" class="headerlink" title="查看创建的Docker镜像并进行打包操作"></a>查看创建的Docker镜像并进行打包操作</h3><p><a href="https://www.v2ex.com/t/292035" target="_blank" rel="external">https://www.v2ex.com/t/292035</a><br><img src="http://images2017.cnblogs.com/blog/658994/201801/658994-20180126173240569-1253733473.png" alt=""></p>
-<p>进行打包：</p>
-<p><img src="http://images2017.cnblogs.com/blog/658994/201801/658994-20180126173949397-151452672.png" alt=""></p>
-<p>遇到的问题是重新加载的镜像中的Python的环境变量有问题</p>
-<p>之前的设置环境变量的方式是在<code>/etc/profile</code>中增加 <code>PATH=/usr/local/python3.6/bin:$PATH</code> 和<code>export PATH</code></p>
-<p>但是这个docker中有问题，通过查找资料。<br><code>vim ~/.bashrc</code>,在其中增加上面的环境变量<br><code>source ~/.bashrc</code> </p>
-<p>但是docker的启动方式是 -c 但是上面的是 -i执行的，所以自己在start.sh脚本中增加了<code>source ~/.bashrc</code><br>重启后成功执行，但是真正的docker 并不是这样的，docker 是通过dockerfile中的env进行管理的，能够展示整个过程</p>
-<p><img src="http://images2017.cnblogs.com/blog/658994/201801/658994-20180129103623359-700232462.jpg" alt=""></p>
-<p><img src="http://images2017.cnblogs.com/blog/658994/201801/658994-20180129103805093-54081277.jpg" alt=""></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://blog.csdn.net/tina_ttl/article/details/51372604" target="_blank" rel="external">http://blog.csdn.net/tina_ttl/article/details/51372604</a></p>
-<p><a href="http://blog.csdn.net/xbinworld/article/details/78945879" target="_blank" rel="external">http://blog.csdn.net/xbinworld/article/details/78945879</a></p>
-<p><a href="http://blog.csdn.net/tina_ttl/article/details/51372604" target="_blank" rel="external">http://blog.csdn.net/tina_ttl/article/details/51372604</a></p>
-<p><a href="http://blog.csdn.net/u012767761/article/details/78107870" target="_blank" rel="external">http://blog.csdn.net/u012767761/article/details/78107870</a></p>
-<p><a href="https://segmentfault.com/a/1190000007092014" target="_blank" rel="external">https://segmentfault.com/a/1190000007092014</a></p>
+        
 
+          
+            <div class="entry-summary" style="margin-left:0;">
+            在Windows上安装Docker客户端
+1、下载Docker TollBox:https://docs.docker.com/toolbox/toolbox_install_windows/
+2、安装的exe文件在安装的过程中选中相应的勾选项，基本上是全部选择。docker在安装的过程中会自动安装Virtual Box，自己测试的时候安装的是5.2.4
+3、自己在安装的的过程没有选择安装 git 还是用的自己的，之后用Docker TollBox.exe中的单独安装了一次，但是在点击Docker Quickstart Terminal 的时候并没有找到相应的路径，自己设置路径后，选择的还是gitbash.cmd,直接祖安泽bash会闪退。通过观察别人的启动界面。是执行start.sh...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2018/01/25/Docker 入门教程与实践/#more">阅读全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -279,6 +267,67 @@ start.py
 <!-- Table of Contents -->
 
   
+    <article id="post-深入理解Python多线程 多进程 协程----(多进程)"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/">深入理解Python多线程 多进程 协程----（多进程）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/" class="article-date">
+	  <time datetime="2017-09-26T15:57:53.487Z" itemprop="datePublished">九月 26, 2017</time>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            1 什么是进程
+ 进程：正在进行的一个过程或者说一个任务。而负责执行任务则是cpu
+1.1 并发与并行无论是并行还是并发，在用户看来都是’同时’运行的，不管是进程还是线程，都只是一个任务而已，真是干活的是cpu，cpu来做这些任务，而一个cpu同一时刻只能执行一个任务
+
+并发：是伪并行，即看起来是同时运行。单个cpu+多道技术就可以实现并发，（并行也属于并发）
+
+并行：同时运行，只有具备多个cpu才能实现并行
+
+
+单核下，可以利用多道技术，多个核，每个核也都可以利用多道技术（多道技术是针对单核而言的）有四个核，六个任务，这样同一时间有四个任务被执行，假设分别被分配给了cpu1，cpu2，cpu3，cpu4，一旦任务1遇到I/O就被迫中断执行，此时任务5就拿到cpu1的时间片去执行，这就...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/#more">阅读全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-深入理解Python多线程 多进程 协程----(多线程)"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -323,67 +372,6 @@ http://www.cnblogs.com/linhaifeng/articles/7430082.html
         
           <p class="article-more-link">
             <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-深入理解Python多线程 多进程 协程----(多进程)"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/">深入理解Python多线程 多进程 协程----（多进程）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/" class="article-date">
-	  <time datetime="2017-09-26T15:57:53.487Z" itemprop="datePublished">九月 26, 2017</time>
-	</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            1 什么是进程
- 进程：正在进行的一个过程或者说一个任务。而负责执行任务则是cpu
-1.1 并发与并行无论是并行还是并发，在用户看来都是’同时’运行的，不管是进程还是线程，都只是一个任务而已，真是干活的是cpu，cpu来做这些任务，而一个cpu同一时刻只能执行一个任务
-
-并发：是伪并行，即看起来是同时运行。单个cpu+多道技术就可以实现并发，（并行也属于并发）
-
-并行：同时运行，只有具备多个cpu才能实现并行
-
-
-单核下，可以利用多道技术，多个核，每个核也都可以利用多道技术（多道技术是针对单核而言的）有四个核，六个任务，这样同一时间有四个任务被执行，假设分别被分配给了cpu1，cpu2，cpu3，cpu4，一旦任务1遇到I/O就被迫中断执行，此时任务5就拿到cpu1的时间片去执行，这就...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/#more">阅读全文</a>
           </p>
         </div>
       
@@ -555,7 +543,7 @@ http://www.cnblogs.com/linhaifeng/articles/7430082.html
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/">深入理解Python多线程 多进程 协程----（多线程）</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/">深入理解Python多线程 多进程 协程----（多进程）</a></h6>
               <span>九月 26, 2017</span>
             </div>
 
@@ -567,7 +555,7 @@ http://www.cnblogs.com/linhaifeng/articles/7430082.html
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多进程)/">深入理解Python多线程 多进程 协程----（多进程）</a></h6>
+              <h6 style="margin: 0;"><a href="/2017/09/26/深入理解Python多线程 多进程 协程----(多线程)/">深入理解Python多线程 多进程 协程----（多线程）</a></h6>
               <span>九月 26, 2017</span>
             </div>
 
