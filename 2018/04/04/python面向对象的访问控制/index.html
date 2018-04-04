@@ -18,7 +18,7 @@
 受保护：只有类自身和子类可以访问
 公有：任何类都可以访问
 
-私有(Private)">
+公有(Pubulic)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面向对象的访问控制">
 <meta property="og:url" content="https://github.com/ythzx/ythzx.github.io/2018/04/04/python面向对象的访问控制/index.html">
@@ -30,8 +30,8 @@
 受保护：只有类自身和子类可以访问
 公有：任何类都可以访问
 
-私有(Private)">
-<meta property="og:updated_time" content="2018-04-04T04:44:10.957Z">
+公有(Pubulic)">
+<meta property="og:updated_time" content="2018-04-04T06:00:11.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象的访问控制">
 <meta name="twitter:description" content="Python 本身就是面向对象的，其中最重要的要素之一是封装，所谓封装就是类中的属性和方法，分为公有和私有，公有可以被外界访问，私有不能被外界访问，这就是封装职工最关键的概念————访问控制。
@@ -41,7 +41,7 @@
 受保护：只有类自身和子类可以访问
 公有：任何类都可以访问
 
-私有(Private)">
+公有(Pubulic)">
   
     <link rel="alternate" href="/atom.xml" title="Peter&#39;s Blog Center" type="application/atom+xml">
   
@@ -138,7 +138,7 @@
     <div class="article-meta">
       
 	Posted on <a href="/2018/04/04/python面向对象的访问控制/" class="article-date">
-	  <time datetime="2018-04-04T03:32:19.800Z" itemprop="datePublished">四月 4, 2018</time>
+	  <time datetime="2018-04-04T05:21:07.844Z" itemprop="datePublished">四月 4, 2018</time>
 	</a>
 
     </div>
@@ -151,8 +151,21 @@
 <li>受保护：只有类自身和子类可以访问</li>
 <li>公有：任何类都可以访问</li>
 </ul>
-<h2 id="私有-Private"><a href="#私有-Private" class="headerlink" title="私有(Private)"></a>私有(Private)</h2><a id="more"></a>
-<h2 id="受保护-Procted"><a href="#受保护-Procted" class="headerlink" title="受保护(Procted)"></a>受保护(Procted)</h2><h2 id="公有-Pubulic"><a href="#公有-Pubulic" class="headerlink" title="公有(Pubulic)"></a>公有(Pubulic)</h2>
+<h2 id="公有-Pubulic"><a href="#公有-Pubulic" class="headerlink" title="公有(Pubulic)"></a>公有(Pubulic)</h2><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 公有Public</div><div class="line">class Foo(object):</div><div class="line">    bar = 123</div><div class="line"></div><div class="line">    def __init__(self, name):</div><div class="line">        self.name = name</div><div class="line"></div><div class="line">print(Foo.bar)  # 123</div><div class="line">foo = Foo(&apos;hello&apos;)</div><div class="line">print(foo.name)  # hello</div></pre></td></tr></table></figure>
+<p>Foo中的bar属性是类属性，<code>__init__</code> 中的name是实例的属性，bar和name都是公有属性，外部可以访问</p>
+<h2 id="受保护-Procted"><a href="#受保护-Procted" class="headerlink" title="受保护(Procted)"></a>受保护(Procted)</h2><p>在Python中定义一个受保护的属性，在其名字前面加上<code>_</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"># 受保护(Procted)</div><div class="line">class Foo(object):</div><div class="line">    _bar = 123</div><div class="line"></div><div class="line">    def __init__(self, name):</div><div class="line">        self._name = name</div><div class="line"></div><div class="line"></div><div class="line">class Son(Foo):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    继承Foo</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    def print_name(self):</div><div class="line">        print(self._name)</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def print_bar(cls):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        类方法</div><div class="line">        :return:</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        print(cls._bar)</div><div class="line"></div><div class="line"># print(Foo._bar)</div><div class="line"># foo = Foo(&apos;hello&apos;)</div><div class="line"># print(foo._name)</div><div class="line"></div><div class="line">Son.print_bar()  # 123</div><div class="line">son =Son(456)  # 因为是继承，在实例化的时候需要传参数</div><div class="line">son.print_name()  # 456</div></pre></td></tr></table></figure></p>
+<p>定义的Son继承自Foo，受保护的对象只能在类的内部和子类中被访问</p>
+<p>验证是否能在外部访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">print(Son._bar) # 123</div><div class="line">son = Son(456)</div><div class="line">print(son._name) # 456</div></pre></td></tr></table></figure></p>
+<p><strong>实际是可以的，Python用下划线定义受保护的变量，是一种约定规范，而不是语言层面真正实现了访问控制。</strong></p>
+<h2 id="私有-Private"><a href="#私有-Private" class="headerlink" title="私有(Private)"></a>私有(Private)</h2><p>Python定义私有属性，在属性名前加两个下划线<code>__</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">class Foo(object):</div><div class="line">    __bar = 123</div><div class="line"></div><div class="line">    def __init__(self, name):</div><div class="line">        self.__name = name</div><div class="line"></div><div class="line"></div><div class="line">class Son(Foo):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    继承Foo</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    def print_name(self):</div><div class="line">        print(self.__name)</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def print_bar(cls):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        类方法</div><div class="line">        :return:</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        print(cls.__bar)</div><div class="line"></div><div class="line"></div><div class="line">print(Son.__bar)  # ERR</div><div class="line">son = Son(456)</div><div class="line">print(son.__name) # ERR</div></pre></td></tr></table></figure>
+<h3 id="深入了解私有属性"><a href="#深入了解私有属性" class="headerlink" title="深入了解私有属性"></a>深入了解私有属性</h3><p>Python是如何实现私有属性的：<br>在Cpython中，会把双下滑线的属性变成<code>_ClassName__ProctedName</code>,不同的Python解释器的处理可能不一致，不作为通用的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class Foo(object):</div><div class="line">    __bar = 123</div><div class="line"></div><div class="line">print(Foo._Foo__bar)</div></pre></td></tr></table></figure>
+<h3 id="特例"><a href="#特例" class="headerlink" title="特例"></a>特例</h3><p>使用双下滑想线定义私有属性，当属性后也有双下滑线的时候，Python解释器会当做魔术方法，不做私有处理<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class Foo(object):</div><div class="line">    __bar__ = 123</div><div class="line"></div><div class="line">print(Foo.__bar__)  # 123</div></pre></td></tr></table></figure></p>
+<p>定义的属性名是<code>__</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class Foo(object):</div><div class="line">    __ = 123</div><div class="line"></div><div class="line">print(Foo.__)</div></pre></td></tr></table></figure></p>
+<h2 id="函数的访问控制"><a href="#函数的访问控制" class="headerlink" title="函数的访问控制"></a>函数的访问控制</h2><p>前面主要介绍了属性的访问控制，<br>在Python中函数是一等公民，所谓一等公民，<br>就是函数可以像变量一样使用，所以函数的访问控制和属性一样，一样应用上面的规则</p>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -210,7 +223,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#私有-Private"><span class="nav-number">1.</span> <span class="nav-text">私有(Private)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#受保护-Procted"><span class="nav-number">2.</span> <span class="nav-text">受保护(Procted)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公有-Pubulic"><span class="nav-number">3.</span> <span class="nav-text">公有(Pubulic)</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#公有-Pubulic"><span class="nav-number">1.</span> <span class="nav-text">公有(Pubulic)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#受保护-Procted"><span class="nav-number">2.</span> <span class="nav-text">受保护(Procted)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#私有-Private"><span class="nav-number">3.</span> <span class="nav-text">私有(Private)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#深入了解私有属性"><span class="nav-number">3.1.</span> <span class="nav-text">深入了解私有属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特例"><span class="nav-number">3.2.</span> <span class="nav-text">特例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的访问控制"><span class="nav-number">4.</span> <span class="nav-text">函数的访问控制</span></a></li></ol>
     
     </div>
   </aside>
